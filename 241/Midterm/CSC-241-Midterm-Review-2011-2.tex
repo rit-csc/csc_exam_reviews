@@ -2,6 +2,7 @@
 \documentclass[11pt]{article}
 \usepackage{fullpage}
 \usepackage{listings}
+\usepackage{needspace}
 
 \lstset{ %
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -73,8 +74,9 @@ def reverse_file( filename ):
 \end{lstlisting}
 
     \item Given the following function bar:
+\needspace{15\baselineskip}
 \begin{lstlisting}
-bar( baz ):
+def bar( baz ):
     if len( baz ) < 2:
         return baz
     pivot = baz[0]
@@ -90,6 +92,7 @@ bar( baz ):
             larger.append(element)
     return bar(smaller) + pivot_list + bar(larger)
 \end{lstlisting}
+
         \begin{enumerate}
             \item Perform a substitution trace on bar( [4,3,6,32,9] ).
 \begin{lstlisting}
@@ -101,7 +104,7 @@ bar([3]) + [4] + bar([]) + [6] + bar([9]) + [32] + bar([])
 \end{lstlisting}
             \item What’s the base case for `bar'?
 
-                When len(baz) < 2, so [] and [n].
+                When len(baz) $<$ 2, so [] and [n].
             \item What does `bar' do?
 
                 `bar' sorts the list of numbers (it’s actually quicksort).
