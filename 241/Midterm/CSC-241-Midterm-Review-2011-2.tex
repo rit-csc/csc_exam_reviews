@@ -3,6 +3,8 @@
 \usepackage{fullpage}
 \usepackage{listings}
 \usepackage{needspace}
+\usepackage{color}
+\usepackage{ifthen}
 
 \lstset{ %
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -16,6 +18,14 @@ tabsize=4,		                % sets default tabsize to 4 spaces
 language=Python
 }
 
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\lstset{basicstyle=\large}\color{white}}{}
+}
+{
+    \newenvironment{answer}{\lstset{basicstyle=\large}}{}
+}
+
 
 \begin{document}
 \noindent{\Large CS-241 Midterm Exam Review \hfill Winter, 2011-2}
@@ -24,6 +34,7 @@ language=Python
     \item\label{reverse()} Write a function which reverses a string (e.g. ``Don't
         get sick'' becomes ``kcis teg t'noD'').
 
+\begin{answer}
 \begin{lstlisting}
 def reverse( string ):
     if len( string ) < 2:
@@ -31,6 +42,7 @@ def reverse( string ):
     else:
         return reverse( string[1:] ) + string[0]
 \end{lstlisting}
+\end{answer}
 
     \item Write a function that takes in a string and returns a string that
           reverses the letters in each word, but keeps the word ordering the
@@ -39,6 +51,7 @@ def reverse( string ):
           may use the function reverse() from question \#\ref{reverse()} in
           your solution.
 
+\begin{answer}
 \begin{lstlisting}
 def reverse_words( string ):
     split_string = string.split()
@@ -52,6 +65,7 @@ def reverse_words( string):
         str += reverse( word )
     return str
 \end{lstlisting}
+\end{answer}
 
     \item Write a function that takes in a file name, and returns the average
         size of a word eg. a file containing:\\
@@ -62,6 +76,7 @@ def reverse_words( string):
 
         has an average length of: 3.6
 
+\begin{answer}
 \begin{lstlisting}
 def reverse_file( filename ):
     characters = 0
@@ -72,6 +87,7 @@ def reverse_file( filename ):
             characters += len(word)
     return characters/words
 \end{lstlisting}
+\end{answer}
 
     \item Given the following function bar:
 \needspace{15\baselineskip}
@@ -95,6 +111,7 @@ def bar( baz ):
 
         \begin{enumerate}
             \item Perform a substitution trace on bar( [4,3,6,32,9] ).
+\begin{answer}
 \begin{lstlisting}
 bar([3]) + [4] + bar([6,32,9])
 bar([3]) + [4] + bar([]) + [6] + bar([32,9])
@@ -102,15 +119,22 @@ bar([3]) + [4] + bar([]) + [6] + bar([9]) + [32] + bar([])
 [3] + [4] + [] + [6] + [] + [9] + [32]
 [3,4,6,9,32]
 \end{lstlisting}
+\end{answer}
+
             \item What’s the base case for `bar'?
 
+                \begin{answer}
                 When len(baz) $<$ 2, so [] and [n].
+                \end{answer}
             \item What does `bar' do?
 
+                \begin{answer}
                 `bar' sorts the list of numbers (it’s actually quicksort).
+                \end{answer}
 
             \item How would you test this function?
 
+                \begin{answer}
                 Empty list
                 1 element list
                 2 element list
@@ -118,6 +142,7 @@ bar([3]) + [4] + bar([]) + [6] + bar([9]) + [32] + bar([])
                 sorted list
                 unsorted list
                 reverse-sorted list
+                \end{answer}
 
         \end{enumerate}
 
@@ -125,6 +150,7 @@ bar([3]) + [4] + bar([]) + [6] + bar([9]) + [32] + bar([])
         of all of those numbers.
         \begin{enumerate}
             \item Recursively.
+\begin{answer}
 \begin{lstlisting}
 def sum( numbers ):
     if len(numbers) == 0:
@@ -132,8 +158,10 @@ def sum( numbers ):
     else
         return numbers[0] + sum( numbers[1:] )
 \end{lstlisting}
+\end{answer}
 
             \item Iteratively
+\begin{answer}
 \begin{lstlisting}
 def sum( numbers ):
     index = 0
@@ -143,13 +171,16 @@ def sum( numbers ):
         index += 1
     return sum
 \end{lstlisting}
+\end{answer}
 
             \item How would you test this function?
+                \begin{answer}
                 \begin{itemize}
                     \item Empty list
                     \item 1 element list
                     \item multi-element list
                 \end{itemize}
+                \end{answer}
         \end{enumerate}
 
 \end{enumerate}
