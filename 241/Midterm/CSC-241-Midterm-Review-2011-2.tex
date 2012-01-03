@@ -1,0 +1,153 @@
+% Author: David Larsen <dcl9934@cs.rit.edu>
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{listings}
+
+\lstset{ %
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Python
+}
+
+
+\begin{document}
+\noindent{\Large CS-241 Midterm Exam Review \hfill Winter, 2011-2}
+
+\begin{enumerate}
+    \item\label{reverse()} Write a function which reverses a string (e.g. ``Don't
+        get sick'' becomes ``kcis teg t'noD'').
+
+\begin{lstlisting}
+def reverse( string ):
+    if len( string ) < 2:
+        return string
+    else:
+        return reverse( string[1:] ) + string[0]
+\end{lstlisting}
+
+    \item Write a function that takes in a string and returns a string that
+          reverses the letters in each word, but keeps the word ordering the
+          same.  (e.g. reverse\_words(``I wear a Stetson now -- Stetsons are
+          cool'') returns ``I raew a nostetS won -- snostetS era looc''). You
+          may use the function reverse() from question \#\ref{reverse()} in
+          your solution.
+
+\begin{lstlisting}
+def reverse_words( string ):
+    split_string = string.split()
+    return reverse( split_string[0] ) + reverse_words( split_string[1:] )
+\end{lstlisting}
+\begin{center}{\LARGE OR}\end{center}
+\begin{lstlisting}
+def reverse_words( string):
+    str = ""
+    for word in string.split():
+        str += reverse( word )
+    return str
+\end{lstlisting}
+
+    \item Write a function that takes in a file name, and returns the average
+        size of a word eg. a file containing:\\
+
+        lots of work\\
+        no rest for midterms\\
+        sad for you\\
+
+        has an average length of: 3.6
+
+\begin{lstlisting}
+def reverse_file( filename ):
+    characters = 0
+    words = 0
+    for line in open(filename):
+        for word in line.split():
+            words += 1
+            characters += len(word)
+    return characters/words
+\end{lstlisting}
+
+    \item Given the following function bar:
+\begin{lstlisting}
+bar( baz ):
+    if len( baz ) < 2:
+        return baz
+    pivot = baz[0]
+    smaller = list()
+    pivot_list = list()
+    larger = list()
+    for element in baz:
+        if element == pivot:
+            pivot_list.append(element)
+        elif element < pivot:
+            smaller.append(element)
+        else:
+            larger.append(element)
+    return bar(smaller) + pivot_list + bar(larger)
+\end{lstlisting}
+        \begin{enumerate}
+            \item Perform a substitution trace on bar( [4,3,6,32,9] ).
+\begin{lstlisting}
+bar([3]) + [4] + bar([6,32,9])
+bar([3]) + [4] + bar([]) + [6] + bar([32,9])
+bar([3]) + [4] + bar([]) + [6] + bar([9]) + [32] + bar([])
+[3] + [4] + [] + [6] + [] + [9] + [32]
+[3,4,6,9,32]
+\end{lstlisting}
+            \item What’s the base case for `bar'?
+
+                When len(baz) < 2, so [] and [n].
+            \item What does `bar' do?
+
+                `bar' sorts the list of numbers (it’s actually quicksort).
+
+            \item How would you test this function?
+
+                Empty list
+                1 element list
+                2 element list
+                3 element list
+                sorted list
+                unsorted list
+                reverse-sorted list
+
+        \end{enumerate}
+
+    \item Write a function that takes in a list of numbers and returns the sum
+        of all of those numbers.
+        \begin{enumerate}
+            \item Recursively.
+\begin{lstlisting}
+def sum( numbers ):
+    if len(numbers) == 0:
+        return 0
+    else
+        return numbers[0] + sum( numbers[1:] )
+\end{lstlisting}
+
+            \item Iteratively
+\begin{lstlisting}
+def sum( numbers ):
+    index = 0
+    sum = 0
+    while index < len(numbers):
+        sum += numbers[index]
+        index += 1
+    return sum
+\end{lstlisting}
+
+            \item How would you test this function?
+                \begin{itemize}
+                    \item Empty list
+                    \item 1 element list
+                    \item multi-element list
+                \end{itemize}
+        \end{enumerate}
+
+\end{enumerate}
+\end{document}

@@ -1,0 +1,171 @@
+% Author: David Larsen <dcl9934@cs.rit.edu>
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{listings}
+
+\lstset{ %
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Java
+}
+
+
+\begin{document}
+\noindent{\Large CS-241 Final Exam Review \hfill Fall, 2011-1}
+
+\begin{enumerate}
+    \item Write a function the recursively sums the elements of a list
+        \vspace{2.5in}
+    \item Given the linked list: $1 \rightarrow 2 \rightarrow 3$
+        \begin{enumerate}
+            \item 1 points to 2 and 2 points to 3. What does 3 point to?
+                \vspace{0.5in}
+            \item Draw out the linked list structure and add a 5 to the end.
+                \vspace{1.25in}
+            \item Write some pseudo-code for appending data to the end of a list.
+                \vspace{3.5in}
+            \pagebreak
+            \item Looking at the list from (b), you notice that we forgot to
+                  add in a 4. What is a procedure for doing this? (There are
+                  many possibilities)
+                \vspace{2.5in}
+        \end{enumerate}
+    \item Write a Python function, given a sorted linked list, returns a Python
+    list of all of the elements which are in the list more than once. (eg.
+    $1\rightarrow2\rightarrow2\rightarrow3\rightarrow3\rightarrow3$ would return [2,3,3] )
+        \vspace{3in}
+    \item If your solution to (3) was iterative, write it recursively; if it
+    was recursive, write it iteratively.
+        \pagebreak
+    \item Write a function which reverses a linked list.
+        \vspace{4in}
+    \item If we have a balanced binary search tree (its height is as small as
+    possible) containing 'n' nodes.
+        \begin{enumerate}
+            \item What is its height?
+                \vspace{.25in}
+            \item How much time would it take to traverse to any of the leaf
+            nodes of this tree.
+                \vspace{.25in}
+            \item What's the worst case search time for an (unbalanced) search
+            tree?
+                \pagebreak
+        \end{enumerate}
+    \item Write a function that determines if a given element is in a binary search tree.
+        \vspace{3in}
+    \item Write a function which counts the number of leaf nodes in a given binary tree.
+        \pagebreak
+    \item Create a binary search tree, drawing the whole tree
+        again for each element inserted from the list: [1,2,8,3,5].
+        \vspace{6in}
+    \item Describe the behavior of a greedy algorithm.
+        \pagebreak
+
+    \item What does the following code snipped to?
+        \begin{verbatim}
+        def theRentIsTooDamnHigh( n ):
+            if len(n) <= 1:
+                return n
+            return theRentIsTooDamnHigh(n[1:]) + n[0]
+        \end{verbatim}
+            \vspace{1in}
+        Show a substitution trace of theRentIsTooDamnHigh( ``meat'' )
+            \vspace{2in}
+    \item Write a function called ``removeOpt( string )'' that:
+        \begin{itemize}
+            \item Takes a string as an argument
+            \item returns a string with all substrings in [brackets] removed.
+        \end{itemize}
+        For example:    
+            removeOpt("This [is] [a] [nice] string")
+            returns ``this   string'' 
+        \pagebreak
+    
+    \item Write a function that returns a dictionary identifying how often each
+    letter appears in a string. Do not include frequencies for letters that
+    were not in the string. For example running your function on ``a can''
+    would return the dictionary {'a': 2, 'c': 1, 'n': 1}.
+        \vspace{3in}
+    
+    \item Draw the output of this turtle code
+        \begin{verbatim}
+from turtle import *
+def todayIsTheDay( length, n ):
+    if( n <= 0 ):
+        return
+    forward( length )
+    left( 90 )
+    todayIsTheDay( length//2, n-1 )
+    right( 180 )
+    todayIsTheDay( length//2, n-1 )
+    left( 90 )
+    back( length )
+
+todayIsTheDay( 100, 3 )
+        \end{verbatim}
+
+        \pagebreak
+    
+    \item Write a function which reads in a string and returns a list of all of
+    the words in the string, broken up by spaces, without using the
+    string.split() function.
+        \vspace{5in}
+
+    \item Below is python code for a function that performs an insertion sort
+    and prints ``data'' after each iteration of the for-loop.
+\begin{verbatim}
+def insertion_sort( data ):
+    for marker in range( 1, len( data ) ):
+        val = data[marker]
+        i = marker
+        while i > 0 and data[i-1] > val:
+            data[i] = data[i-1]
+            i -= 1
+        data[i] = val
+        print( data )
+\end{verbatim}
+        Write out what the function will print for the input list: [3,2,7,1].
+        \pagebreak
+
+    \item Write the body for the function ``wordCounter'', which opens a text
+    file and records the number of occurrences of each word in the file. You
+    should use a dictionary to track the occurrences, and return the completed
+    dictionary from the function.
+        \vspace{3.5in}
+
+    \item For each of the operations below, give the big-O time complexity for
+    both a Linked List and an Array List.
+        \begin{enumerate}
+            \item Insert at the beginning\vspace{0.2in}
+            \item Remove at the beginning\vspace{0.2in}
+            \item Insert at the end\vspace{0.2in}
+            \item Remove at the end\vspace{0.2in}
+            \item Access the last element\vspace{0.2in}
+        \end{enumerate}
+    When is it better to use an array list over a linked list?
+\end{enumerate}
+\end{document}
+
+Old stuff follows.
+\noindent{\Large CS-243 \hfill Week 10: Review}
+\begin{enumerate}
+	% Patterns
+	\item When you're writing an ordered Collection, how can you determine if one
+		generic object is supposed to come before another?
+		\vspace{1in}
+	\item Create a BufferedReader that reads its input from the keyboard.
+		\vspace{.3in}
+	\item Now create a BufferedReader as above, but catch all of the exceptions.
+		\vspace{3in}
+	\item When can one object access another object's private variables?
+		\vspace{.5in}	% When they are from the same class
+	\item When an object ``decorates'' another object, what happens?
+		\vspace{.75in}
+	
+\end{enumerate}
