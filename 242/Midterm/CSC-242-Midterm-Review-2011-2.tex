@@ -34,21 +34,22 @@ language=Python
 
 \begin{enumerate}
 \section*{Stacks and Queues}
-    \item What data structure is important for doing a depth-ﬁrst traversal?
+    \item What data structure is important for doing a depth-first traversal?
 
         \begin{answer}
         A stack.
         \end{answer}
 
-    \item If you want to ﬁnd the shortest path to a node on a graph, what type
-        of traversal would be best to use? Why?
+    \item When traversing graphs last quarter, we didn't need to use either a
+        stack or a queue. Why not?
 
         \begin{answer}
-        A breadth-first traversal will {\em always} find a path with the
-        minimum number of hops. This happens because we evaluate all of the
-        nodes at the same distance away from the start point at the same time.
-        We can say that the first time we see the node we want, we will have
-        taken the shortest path to reach it.
+        We did depth-first traversals last quarter, when we did the pre, in and
+        post-order tree traversals. We didn't need to maintain our own stack
+        because our solutions were recursive: Python took care of maintaining
+        the data at various stages of the traversal. Calling a function was
+        like push()ing onto the stack and returning from a function was like
+        pop()ing from the stack.
         \end{answer}
 
     \item If we wanted to implement a stack as a linked list, what linked-list
@@ -60,7 +61,17 @@ language=Python
         \end{answer}
 
 \section*{Graph Searching}
-    \item foobar
+    \item If you want to ﬁnd the shortest path to a node on a graph, what type
+        of traversal would be best to use? Why?
+
+        \begin{answer}
+        A breadth-first traversal will {\em always} find a path with the
+        minimum number of hops. This happens because we evaluate all of the
+        nodes at the same distance away from the start point at the same time.
+        We can say that the first time we see the node we want, we will have
+        taken the shortest path to reach it.
+        \end{answer}
+
 \section*{Backtracking}
     \item foobar
    
