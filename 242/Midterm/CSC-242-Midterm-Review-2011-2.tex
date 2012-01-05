@@ -73,7 +73,53 @@ language=Python
         \end{answer}
 
 \section*{Backtracking}
-    \item foobar
+    \item The algorithm below is broken. Fix it.
+    \begin{lstlisting}
+        def solve(config):
+          if not isGoal(config):
+             return config
+          else:
+             for child in successors(config):
+                solution = solve(child)
+                if solution == None:
+                   return solution
+                return None
+    \end{lstlisting}        
+    \begin{answer}
+    \begin{lstlisting}
+        def solve(config):
+          """solve: Config -> Config or NoneType"""
+          if isGoal(config):
+             return config
+          else:
+             for child in successors(config):
+                if isValid(child):
+                    solution = solve(child)
+                    if solution != None:
+                       return solution
+             return None
+    \end{lstlisting}
+    \end{answer}
+    
+    \item
+    \begin {enumerate}
+        \item What functions need to be written for your corrected code above to run? 
+            \begin{answer}
+                \begin{enumerate}
+                  \item isGoal( config )
+                  \item sucessors( config )
+                  \item isValid( config )
+                \end{enumerate}
+            \end{answer}
+        \item What must these functions return?
+            \begin{answer}
+                \begin{enumerate}
+                    \item isGoal( config ) returns a bool
+                    \item sucessors( config ) returns a list of possible sucessor configurations
+                    \item isvalid( config ) returns a bool
+                \end{enumerate}
+            \end{answer}
+    \end{enumerate}
    
 \end{enumerate}
 
