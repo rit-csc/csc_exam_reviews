@@ -78,8 +78,8 @@ language=Python
     \item Show the principal data structure (stack or queue) for traversing the
         following graph and show the final path. When given the option to
         traverse multiple nodes, go in alphabetical order.
-
-        \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+     
+           \begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm,
                             semithick]
 
         \node[state]            (A)                         {A};
@@ -238,7 +238,37 @@ language=Python
                 \end{enumerate}
             \end{answer}
     \end{enumerate}
-   
+\section*{Djkstra's}  
+    \item Perform Dijkstra's shortest path algorithm on the following
+    weighted graph to find the shortest path between A and D. Show the
+    order vertices are finalized. What is the cost from A to D? \\
+
+\begin{centering}
+\begin{tikzpicture}[shorten >=1pt,auto,node distance=3.8cm,
+                    semithick]
+      \node[state](F)                    {F};
+      \node[state](A) [below left  of=F] {A};
+      \node[state](B) [below right of=F] {B};
+      \node[state](C) [above right of=F] {C};
+      \node[state](D) [above       of=F] {D};
+      \node[state](E) [above left  of=F] {E};
+      \path (A) edge                  node {9}  (B)
+            (B) edge [bend right]     node {17} (C)
+            (C) edge                  node {8}  (D)
+            (D) edge                  node {11} (E)
+            (E) edge [bend right]     node {16} (A)
+            (A) edge                  node {11} (F)
+            (B) edge                  node {12} (F)
+            (C) edge                  node {13} (F)
+            (E) edge                  node {4}  (F);
+ \end{tikzpicture} \\
+ \end{centering}
+ \begin{answer}    
+    Finalized order: A B F E C D \\
+    Path: A F E D \\
+    Cost: 26 \\
+ \end{answer}
+
 \end{enumerate}
 
 \end{document}
