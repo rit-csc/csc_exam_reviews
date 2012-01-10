@@ -5,6 +5,9 @@
 \usepackage{needspace}
 \usepackage{color}
 \usepackage{ifthen}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
 
 \lstset{ %
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -70,6 +73,121 @@ language=Python
         nodes at the same distance away from the start point at the same time.
         We can say that the first time we see the node we want, we will have
         taken the shortest path to reach it.
+        \end{answer}
+
+    \item Show the principal data structure (stack or queue) for traversing the
+        following graph and show the final path. When given the option to
+        traverse multiple nodes, go in alphabetical order.
+
+        \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                            semithick]
+
+        \node[state]            (A)                         {A};
+        \node[state]            (B) [below left of=A]       {B};
+        \node[state]            (C) [below of=A]            {C};
+        \node[state]            (D) [below right of=A]       {D};
+        \node[state]            (E) [below of=D]            {E};
+        \node[state]            (F) [right of=D]            {F};
+
+        \path   (A) edge node {} (B)
+                    edge node {} (C)
+                    edge node {} (D)
+                (B) edge node {} (C)
+                (C) edge node {} (E)
+                (D) edge node {} (E)
+                    edge node {} (F)
+                (E) edge node {} (F);
+
+        \end{tikzpicture}
+
+        \begin{enumerate}
+            \item\label{DFT} With a depth-first traversal from A to F:
+
+                \begin{answer}
+                \begin{tabular}{|c|}
+                ~\\
+                ~\\
+                A\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{|c|}
+                B\\
+                C\\
+                D\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{|c|}
+                ~\\
+                C\\
+                D\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{|c|}
+                ~\\
+                E\\
+                D\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{|c|}
+                ~\\
+                ~\\
+                D\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{|c|}
+                ~\\
+                ~\\
+                F\\\hline
+                \end{tabular}
+                Path: A $\rightarrow$ B $\rightarrow$ C $\rightarrow$ E
+                $\rightarrow$ D $\rightarrow$ F.
+                \end{answer}
+
+            \item With a breadth-first traversal from A to F:
+
+                \begin{answer}
+                \begin{tabular}{c}
+                \hline
+                A\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{c}
+                \hline
+                BCD\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{c}
+                \hline
+                CD\\\hline
+                \end{tabular}
+                $\rightarrow$
+                \begin{tabular}{c}
+                \hline
+                DE\\\hline
+                \end{tabular}
+
+                Path: A $\rightarrow$ D $\rightarrow$ E.
+                \end{answer}
+
+        \end{enumerate}
+
+    \item When we traverse a graph, either depth-first or breadth-first, how do
+        we keep track of the path to the goal state? That is, once we find a
+        node, how do we find out what the path we took to get to it was?
+
+        \begin{answer}
+        We often use a dictionary that maps a node to the node that we came
+        from to get to it. So, for \ref{DFT}, we would end up with a table like:
+        \begin{tabular}{r|l}
+        node & parent\\\hline
+        F & D\\
+        D & E\\
+        C & A\\
+        A & {\tt None}
+        \end{tabular}
+
+        To find the answer, we just follow each node to its parent until we
+        reach {\tt None}.
         \end{answer}
 
 \section*{Backtracking}
