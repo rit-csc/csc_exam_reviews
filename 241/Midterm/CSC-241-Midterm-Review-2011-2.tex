@@ -74,10 +74,13 @@ def reverse( string ):
 \begin{answer}
 \begin{lstlisting}
 def shift_left(string, offset):
-    offset = offset % len(string)
-    first = string[offset:]
-    last = string[:offset]
-    return first + last
+    if len(string) == 0:
+        return string
+    else:
+        offset = offset % len(string)
+        first = string[offset:]
+        last = string[:offset]
+        return first + last
 \end{lstlisting}
 \end{answer}
 
@@ -95,7 +98,13 @@ def shift_right(string, offset):
         \item Testing: Provide 3 test cases, using specific values for the input
             string and amount of shifting and what the expected output should be
             for each.
-        \vspace{1in}
+
+            \begin{answer}
+                shift\_left(``'', 5) should return ""\\
+                shift\_left(``A'',5) should return "A"\\
+                shift\_left(``ABADCAFE'',300) == shift\_left("ABADCAFE",4)\\
+                shift\_left(``FOO'', 1) should return "OOF"
+            \end{answer}
     \end{enumerate}
 
 
