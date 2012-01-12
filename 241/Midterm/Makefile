@@ -1,10 +1,10 @@
 
 .PHONY: default clean realclean
 
-default: $(shell ls *.tex | sed 's/\(.*\)\.tex$$/\1.dvi \1.pdf/')
+default: $(shell ls *.tex | sed 's/\(.*\)\.tex$$/ \1.pdf/')
 
-%.dvi: %.tex
-	latex $<
+#%.dvi: %.tex
+#	latex $<
 
 %.pdf: %.tex
 	pdflatex $<

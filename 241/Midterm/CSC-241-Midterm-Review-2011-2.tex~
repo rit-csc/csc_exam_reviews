@@ -179,26 +179,7 @@ def sum( numbers ):
 
     \item What does the following evaluate to?
     \begin{lstlisting}
-def writeThatDown( n ):
-    if n < 5:
-        return n
-    return (2 * n)
 
-def he( n ):
-    temp = n + 180
-    if temp > 185:
-        return temp
-    return n
-
-def putstheFernback( n ):
-    return -n
-
-n = 20
-n = he(putstheFernback(writeThatDown( n ) ) )
-print( n )
     \end{lstlisting}
-    \begin{answer}
-        -40
-    \end{answer}
  \end{enumerate}
 \end{document}
