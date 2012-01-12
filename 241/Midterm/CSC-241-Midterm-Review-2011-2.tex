@@ -71,23 +71,26 @@ def reverse_words( string):
 \end{answer}
 
     \item Write a function that takes in a file name, and returns the average
-        size of a word eg. a file containing:\\
+        size of a word in that file. The files will only have 1 word per line,
+        for example:
 
-        lots of work\\
-        no rest for midterms\\
-        sad for you\\
+        \begin{center}
+        No\\
+        soup\\
+        for\\
+        you!
+        \end{center}
 
-        has an average length of: 3.6
+        which has an average length of: 3.25
 
 \begin{answer}
 \begin{lstlisting}
-def reverse_file( filename ):
+def average_wordlength(filename):
     characters = 0
     words = 0
     for line in open(filename):
-        for word in line.split():
-            words += 1
-            characters += len(word)
+        words += 1
+        characters += len(line)
     return characters/words
 \end{lstlisting}
 \end{answer}
