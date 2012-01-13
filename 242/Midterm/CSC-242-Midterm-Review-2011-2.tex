@@ -43,7 +43,7 @@ language=Python
         A stack.
         \end{answer}
 
-    \item When traversing graphs last quarter, we didn't need to use either a
+    \item When traversing trees last quarter, we didn't need to use either a
         stack or a queue. Why not?
 
         \begin{answer}
@@ -62,6 +62,49 @@ language=Python
         push( stack, element ) $\rightarrow$ insertFront( linked-list, element )\\
         pop( stack ) $\rightarrow$ removeFront( linked-list )
         \end{answer}
+        
+    \item Write your own stack class using python's built in lists to manage the elements of your stack. \\
+    Your stack must provide the following functionality:
+          \begin{itemize}
+          \item []push( elm ) - push elm onto the top of the stack
+          \item []pop() - return the top elm of the stack and remove it from the stack
+          \item []isEmpty() - is the stack empty()
+          \item []peek() - which returns the top element of the stack without modifying the stack. 
+          \item []\_\_str\_\_
+          \end{itemize}
+          \begin{answer}
+          \begin{lstlisting}
+          class Stack:
+            def __init__(self):
+                self.lst = []
+            def push(self, val ):
+                self.lst.append( val )
+            def pop(self):
+                return self.lst.pop()
+            def peek(self):
+                return self.lst[-1]
+            def isEmpty(self):
+                return (len(self.lst) == 0)
+            def __str__(self):
+                return str(self.lst)
+                  \end{lstlisting}
+          \end{answer}
+
+          \pagebreak
+     \item Write a function to sort a stack of integers in ascending order. You are allowed to use new stacks,
+     but you are not allowed to use any other data structure. 
+     \begin{answer}
+     \begin{lstlisting}
+     def sortStack( stk ):
+        stack2 = Stack()
+        while not stk.isEmpty():
+            temp = stk.pop()
+            while not stack2.isEmpty() and stack2.peek() > temp:
+                stk.push(stack2.pop())
+            stack2.push(temp)
+        return stack2 
+     \end{lstlisting}
+     \end{answer}
 
 \section*{Graph Searching}
     \item If you want to find the shortest path to a node on a graph, what type
@@ -233,7 +276,7 @@ language=Python
             \begin{answer}
                 \begin{enumerate}
                     \item isGoal( config ) returns a bool
-                    \item sucessors( config ) returns a list of possible sucessor configurations
+                    \item successors( config ) returns a list of possible successor configurations
                     \item isvalid( config ) returns a bool
                 \end{enumerate}
             \end{answer}
