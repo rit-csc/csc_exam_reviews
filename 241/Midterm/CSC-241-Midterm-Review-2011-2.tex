@@ -47,9 +47,33 @@ def reverse( string ):
 \end{lstlisting}
 \end{answer}
 
+    \item Perform a substitution trace on 
+    \begin{lstlisting}
+    reverse('Cinco-fone')
+    \end{lstlisting}
+%\needspace{15\baselineskip}
+
+\begin{answer}
+\begin{lstlisting}
+reverse('Cinco-fone')
+reverse('inco-fone') + 'C'
+reverse('nco-fone') + 'i' + 'C'
+reverse('co-fone') + 'n'  + 'i' + 'C'
+reverse('o-fone') + 'c' + 'n'  + 'i' + 'C'
+reverse('-fone') + 'o'  + 'c' + 'n'  + 'i' + 'C'
+reverse('fone') + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
+reverse('one') + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
+reverse('ne') + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
+reverse('e') + 'n' + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
+'e' + 'n' + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
+'enof-ocniC'
+\end{lstlisting}
+\end{answer}
+\pagebreak
     \item Define a function that takes an input string and rotates the sequence
         of letters in each word by n. For example: shift\_left(``DEADBEEF'', 3)
-        will produce the output string ``DBEEFDEA''. You should be able to
+        will produce the output string ``DBEEFDEA''. \\ shift\_left("Giant Robot", 4) will produce "t RobotGian"\\ 
+        shift\_left("X", 5) will produce "X" \\You should be able to
         shift a string by a value greater than the length of the
         string\footnote{The \% operator, which finds the remainder of a
         division operation will be useful here.}.\\ 
@@ -109,7 +133,7 @@ def shift_right(string, offset):
 \end{answer}
 
     \end{enumerate}
-
+\pagebreak
     \item Write a function that takes in a file name, and returns the average
         size of a word in that file. The files will only have 1 word per line,
         for example:
@@ -136,30 +160,6 @@ def average_wordlength(filename):
 \end{lstlisting}
 \end{answer}
 
-    \item Perform a substitution trace on 
-    \begin{lstlisting}
-    reverse('Cinco-fone')
-    \end{lstlisting}
-%\needspace{15\baselineskip}
-
-\begin{answer}
-\begin{lstlisting}
-reverse('Cinco-fone')
-reverse('inco-fone') + 'C'
-reverse('nco-fone') + 'i' + 'C'
-reverse('co-fone') + 'n'  + 'i' + 'C'
-reverse('o-fone') + 'c' + 'n'  + 'i' + 'C'
-reverse('-fone') + 'o'  + 'c' + 'n'  + 'i' + 'C'
-reverse('fone') + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
-reverse('one') + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
-reverse('ne') + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
-reverse('e') + 'n' + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
-'e' + 'n' + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
-'enof-ocniC'
-
-\end{lstlisting}
-\pagebreak
-\end{answer}
     \item Write a function that takes in a string representation of a number and returns the sum
         of all of digits in the string. \\For example sum( '11111' ) returns 5. \\
         \emph{Assume a function len( str ) which returns the length of a string is provided. \\
@@ -196,9 +196,8 @@ def sumIt( numbers ):
                     \item string length $>$ 1
                 \end{itemize}
                 \end{answer}
-
-\end{enumerate}
 \pagebreak
+\end{enumerate}
 \item Assuming the turtle is facing east, write the python code to draw the following picture given the proper depth as input:
     \begin{itemize}
             \item depth = 0
