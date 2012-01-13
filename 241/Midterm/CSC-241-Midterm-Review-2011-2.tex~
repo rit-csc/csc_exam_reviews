@@ -40,7 +40,7 @@ language=Python
 \begin{answer}
 \begin{lstlisting}
 def reverse( string ):
-    if string == '' :
+    if len( string ) < 2:
         return string
     else:
         return reverse( string[1:] ) + string[0]
@@ -52,9 +52,7 @@ def reverse( string ):
         will produce the output string ``DBEEFDEA''. You should be able to
         shift a string by a value greather than the length of the
         string\footnote{The \% operator, which finds the remainder of a
-        division operation will be useful here.}.\\ 
-        \emph{Assume a funtion len( str ) which returns the length of a string is provided}
-
+        division operation will be useful here.}.
 
     \begin{enumerate}
         \item Design: Give breif description on how your function should
@@ -121,8 +119,7 @@ def shift_right(string, offset):
         you!
         \end{center}
 
-        which has an average length of: 3.25 \\ \emph{Assume a funtion len( str ) which returns the length of a string is provided}
-
+        which has an average length of: 3.25
 
 \begin{answer}
 \begin{lstlisting}
@@ -158,13 +155,9 @@ reverse('e') + 'n' + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
 'enof-ocniC'
 
 \end{lstlisting}
-\pagebreak
 \end{answer}
     \item Write a function that takes in a string representation of a number and returns the sum
-        of all of digits in the string. \\For example sum( '11111' ) returns 5. \\
-        \emph{Assume a funtion len( str ) which returns the length of a string is provided. \\
-         assume a function int( str ) which, given a string representation of an integer, returns its integer value }
-
+        of all of digits in the string. \\For example sum( '11111' ) returns 5
         \begin{enumerate}
             \item Recursively.
 \begin{answer}
@@ -192,12 +185,12 @@ def sumIt( numbers ):
             \item How would you test this function?
                 \begin{answer}
                 \begin{itemize}
-                    \item Empty string 
-                    \item String length = 1
-                    \item string length $>$ 1
+                    \item Empty list
+                    \item 1 element list
+                    \item multi-element list
                 \end{itemize}
                 \end{answer}
-\pagebreak
+
 \item Assuming the turtle is facing east, write the python code to draw the following picture given the proper depth as input:
     \begin{itemize}
             \item depth = 0
@@ -250,28 +243,10 @@ print( n )
 
 \item Write a function which performs a basic string compression, which uses counts of repeated characters. For example 
 the string $abbbccccaaa$ would be compressed to: $a1b3c4a3$. If the length of the compressed string is longer than the original 
-string, return the original string. This function is only required to work with letters.\\
- \emph{Assume a funtion len( str ) which returns the length of a string is provided. \\
-      assume a function int( str ) which, given a string representation of an integer, returns its integer value. \\
-      Assume a function str( int ) which, given an integer, returns the string representation of this integer, is provided. }
+string, return the original string. This function is only required to work with letters. 
 
 \begin{answer}
-\begin{lstlisting}
-def compress( string ):
-    new = ''
-    i = 0
-    while i < len( string ):
-        count = 1
-        char = string[i]
-        while i+1 < len(string) and string[i] == string[i+1]:
-            count +=1
-            i += 1
-        new = new +  char + str(count)
-        i += 1
-    if len( new ) > len( string ):
-        return string 
-    return new
-\end{lstlisting}
+
 \end{answer}
  \end{enumerate}
 \end{document}
