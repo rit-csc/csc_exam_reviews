@@ -259,19 +259,19 @@ the string $abbbccccaaa$ would be compressed to: $a1b3c4a3$.
 \begin{lstlisting}
 def compress( string ):
     new = ''
-    curChar = string[0]
-    count = 0
-    for char in string:
-        if char == curChar:
-            count += 1
-        else:
-            new = new + curChar + str(count)
-            curChar = char
-            count = 1 
-
-    new = new + curChar + str(count)
+    i = 0
+    while i < len( string ):
+        count = 1
+        char = string[i]
+        while i+1 < len(string) and string[i] == string[i+1]:
+            count +=1
+            i += 1
+        new = new +  char + str(count)
+        i += 1
     return new
 \end{lstlisting}
+OR
+\begin
 \end{answer}
  \end{enumerate}
 \end{document}
