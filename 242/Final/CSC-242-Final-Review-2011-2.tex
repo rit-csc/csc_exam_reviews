@@ -1,0 +1,76 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage{needspace}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+\lstset{ %
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Python
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{white}}{}
+}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{red}}{}
+}
+
+
+\author{Computer Science Community}
+\title{CS-242 Final Exam Review \---- Winter 2011-2}
+
+\begin{document}
+\noindent{\Large CS-242 Midterm Exam Review \hfill Winter, 2011-2}
+
+\begin{enumerate}
+\section*{Backtracking}
+\section*{Hashing and Hash Tables}
+\section*{Sorting}
+
+\item\label{qsort-worst-case} What kind of data causes Quicksort's worst-case
+      time complexity?
+
+      \begin{answer}
+      {\huge FIXME}
+      \end{answer}
+
+\item What causes Quicksort to run so slowly on the input you describe in
+      question \ref{qsort-worst-case}?
+
+    \begin{answer}
+    {\huge FIXME}
+    \end{answer}
+
+\item In Quicksort, why do we select a random pivot value, rather than always
+      pivoting on the first element?
+
+      \begin{answer}
+      With real-world data, we're more likely to encounter ordered or
+      semi-ordered data than randomised data. This makes it more likely for us
+      run into Quicksort's worst-case time complexity. We run into this bad
+      time complexity if we select pivots which are near the lowest or highest
+      values.
+
+      Selecting a random value to pivot on helps us encounter the average case
+      evens out the distribution of ordered and unordered data. Even if we're
+      getting in sorted data, if we select pivots randomly, we should be able
+      to end up with average time complexity.
+      \end{answer}
+
+\section*{Heaps and Heapsort}
+\section*{Dynamic Programming}
+\end{enumerate}
+
+\end{document}
