@@ -85,6 +85,8 @@ language=Python
       n'th number in the Fibonacci sequence from a solution given earlier in
       the quarter, we notice that there is a lot of extra work being done.
 
+      \marginpar{\small\em You can safely ignore the things mentioning
+      `ftrace': those are just there to make drawing the call graph easy.}
       \lstinputlisting{naive_fibonacci.py}
 
 \begin{verbatim}
@@ -112,6 +114,9 @@ language=Python
       Write an implementation of `fib' which will not do duplicate work.
 
     \begin{answer}
+    \marginpar{\small\em Note the approach to default assignment for the table:
+    if table was set to [0,1] in parameter list, we would be modifying it
+    globally whenever we appended to it.}
     \lstinputlisting{memoized_fibonacci.py}
 \begin{verbatim}
 >>> fib(3)
