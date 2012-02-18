@@ -81,45 +81,52 @@ language=Python
 
 \section*{Dynamic Programming}
 
-\item We're trying to find out how durable eggs are by dropping them off of a
-      36 story building. We want to find the break point for the eggs with as
-      few drops as possible (because this building doesn't have an elevator,
-      and we hate walking up stairs!), but we only have 2 eggs. We want to
-      find a general solution for the minimum number of drops given 1 or more
-      eggs and a building with any number of stories.
-      
-    \begin{enumerate}
-    \item We'll be solving this problem with dynamic programming. We'll need
-          to use a two dimensional table which uses the number of test eggs
-          available and the number of stories we haven't tested on. What
-          should be the value that we store at that location?
-          
-        \begin{answer} The value at that index will be the number of steps
-        taken to get to that state.
+\item When we trace all of the function calls being made while computing the
+      n'th number in the Fibonacci sequence from a solution given earlier in
+      the quarter, we notice that there is a lot of extra work being done.
 
-          \[\textrm{weight}( \textrm{eggs}, \textrm{stories left} ) =
-          \textrm{minimal number \# of steps to get to this point}\]
-        \end{answer}
+      \lstinputlisting{naive_fibonacci.py}
 
-    \item Write the function which will fill in a single cell of the table.
-    {\\\Huge TODO: Place generated table here}
+\begin{verbatim}
+>>> fib(4)
+    0 fib( (4,) {} )
+    1 |  fib( (3,) {} )
+    2 |  |  fib( (2,) {} )
+    3 |  |  |  fib( (1,) {} )               # fib(1) called
+    3 |  |  |  fib( (1,) {} ) returns: 1
+    3 |  |  |  fib( (0,) {} )
+    3 |  |  |  fib( (0,) {} ) returns: 0
+    2 |  |  fib( (2,) {} ) returns: 1
+    2 |  |  fib( (1,) {} )                  # fib(1) called again
+    2 |  |  fib( (1,) {} ) returns: 1
+    1 |  fib( (3,) {} ) returns: 2
+    1 |  fib( (2,) {} )
+    2 |  |  fib( (1,) {} )                  # fib(1) called once more
+    2 |  |  fib( (1,) {} ) returns: 1
+    2 |  |  fib( (0,) {} )
+    2 |  |  fib( (0,) {} ) returns: 0
+    1 |  fib( (2,) {} ) returns: 1
+    0 fib( (4,) {} ) returns: 3
+\end{verbatim}
 
-        \begin{answer}
-        \begin{align*}
-        W(e,s) = 1 + min\{ & max(W(e-1,1-1),W(e,s-1)),\\
-                           & max(W(e-1,2-1),W(e,s-2)),\\
-                           & \cdots,\\
-                           & max(W(e-1,(s-1)-1),W(e,s-(s-1))),\\
-                           & max(W(e-1,s-1),W(e,s-s))\}
-        \end{align*}
+      Write an implementation of `fib' which will not do duplicate work.
 
-        {\Huge TODO: Also implement in Python.}
-
-        \end{answer}
-    
-    \item What location in the table has our final answer?
-
-    \end{enumerate}
+    \begin{answer}
+    \lstinputlisting{memoized_fibonacci.py}
+\begin{verbatim}
+>>> fib(3)
+    0 fib( (3,) {} )
+    1 |  fib( (2, [0, 1]) {} )
+    2 |  |  fib( (1, [0, 1]) {} )
+    2 |  |  fib( (1, [0, 1]) {} ) returns: 1
+    2 |  |  fib( (0, [0, 1]) {} )
+    2 |  |  fib( (0, [0, 1]) {} ) returns: 0
+    1 |  fib( (2, [0, 1]) {} ) returns: 1
+    1 |  fib( (1, [0, 1, 1]) {} )
+    1 |  fib( (1, [0, 1, 1]) {} ) returns: 1
+    0 fib( (3,) {} ) returns: 2
+\end{verbatim}
+    \end{answer}
 
 \end{enumerate}
 
