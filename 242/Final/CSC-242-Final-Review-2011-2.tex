@@ -7,6 +7,7 @@
 \usepackage{pgf}
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
+\usepackage{amsmath}
 
 \lstset{ %
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -42,9 +43,108 @@ language=Python
 \noindent{\Large \thetitle \hfill \thedate}
 
 \begin{enumerate}
+
+\item How can you use a stack to determine if an input string has
+      properly balanced delimiters. (eg. ``[{}]'' is accepted, but ``(()'' and
+      ``[(])'' are not)?
+
+    \begin{answer}
+    \Huge TODO: Write answer
+    \end{answer}
+
+\item What role does the queue play in a Breadth First Search?
+
+    \begin{answer}
+    \Huge TODO: Write answer
+    \end{answer}
+
+\item Given a Breadth First Search algorithm, how would you change it to
+      perform a Depth First Search?
+
+    \begin{answer}
+    Change the stack to a queue.
+    \end{answer}
+
+\item What data structures can be used to represent a weighted  digraph? How?
+
+    \begin{answer}
+    A matrix, a hash table and a linked structure.
+    \Huge TODO: Expand on answer
+    \end{answer}
+
+\item When is a vertex's sum weight  finalized in Dijkstra's algorithm?
+
+    \begin{answer}
+    \Huge TODO
+    \end{answer}
+
+\item What role do the priority queue play in finding the shortest path?
+      When do we use it?
+
+    \begin{answer}
+    \Huge TODO
+    \end{answer}
+
+\item Why does Dijkstra's algorithm not work correctly on graphs with negative
+      edge weights?
+
+    \begin{answer}
+    \Huge TODO
+    \end{answer}
+
 \section*{Backtracking}
+
+\item How is backtracking better suited for solving a Tetravex board than
+      using regular brute force?
+
+    \begin{answer}
+    \Huge TODO: Write answer
+    \end{answer}
+
 \section*{Hashing and Hash Tables}
+
+\item What is the maximum number of collisions that a hashing algorithm that
+      outputs 0 if an input word starts with a vowel and 1 if the input word
+      starts with a consonant on the following list of words: ``balloon'',
+      ``clock'', ``radio'', ``elephant'' and ``aardvark''?
+
+    \begin{answer}
+    \Huge TODO\\
+    Why didn't I fill in answers for myself in my SI worksheets that I made?
+    This would be so much easier. :'(
+    \end{answer}
+
 \section*{Sorting}
+
+\item Fill in the table for the asymptotic running time of each sorting
+      algorithm.
+      \begin{center}
+      \begin{tabular}{|r|c|c|c|}
+        \hline
+        ~ & Best & Worst & Average \\\hline
+        MergeSort &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
+        Quicksort &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+            \begin{answer}$O(n^2)$\end{answer} &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
+        HeapSort &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
+      \end{tabular}
+      \end{center}
+
+\item What sorting algorithm splits its input list into two other lists, one
+      which has element which are all smaller than a value (which is randomly
+      selected) and one which has elements which are all larger than the
+      randomly selected value?
+
+    \begin{answer}
+    Quicksort.
+    \end{answer}
 
 \item\label{qsort-worst-case} What kind of data causes Quicksort's worst-case
       time complexity?
@@ -76,8 +176,94 @@ language=Python
       to end up with average time complexity.
       \end{answer}
 
+\item Show the stages of a Merge sort and a Quicksort on the following list:
+      [3,5,1,3,2,7,9]. Be sure to identify your pivot.
+
+    \begin{answer}
+    \end{answer}
+
 \section*{Heaps and Heapsort}
+
+\item For a binary heap of height $h$, what is the maximum number of swaps
+      occurring after an insert operation?
+
+    \begin{answer}
+    \Huge TODO
+    \end{answer}
+
+\item Given a node in an array-based binary heap at index $i$, whare are the
+      indices of both its children? What is the index of its parent?
+
+    \begin{answer}
+    The children are at $2i+1$ and $2i+2$. The parent is at
+    $\lfloor\frac{i-1}{2}\rfloor$.
+    \end{answer}
+
+\item Run a heap sort on the following list: [3,5,1,3,2,7,9], showing the heap
+      at each stage. Be sure to heapify the list first.
+
+    \begin{answer}
+    \Huge TODO
+    \end{answer}
+
 \section*{Dynamic Programming}
+
+\item When we trace all of the function calls being made while computing the
+      n'th number in the Fibonacci sequence from a solution given earlier in
+      the quarter, we notice that there is a lot of extra work being done.
+
+      \marginpar{\small\em You can safely ignore the things mentioning
+      `ftrace': those are just there to make drawing the call graph easy.}
+      \lstinputlisting{naive_fibonacci.py}
+
+\begin{verbatim}
+>>> fib(4)
+    0 fib( (4,) {} )
+    1 |  fib( (3,) {} )
+    2 |  |  fib( (2,) {} )
+    3 |  |  |  fib( (1,) {} )               # fib(1) called
+    3 |  |  |  fib( (1,) {} ) returns: 1
+    3 |  |  |  fib( (0,) {} )
+    3 |  |  |  fib( (0,) {} ) returns: 0
+    2 |  |  fib( (2,) {} ) returns: 1
+    2 |  |  fib( (1,) {} )                  # fib(1) called again
+    2 |  |  fib( (1,) {} ) returns: 1
+    1 |  fib( (3,) {} ) returns: 2
+    1 |  fib( (2,) {} )
+    2 |  |  fib( (1,) {} )                  # fib(1) called once more
+    2 |  |  fib( (1,) {} ) returns: 1
+    2 |  |  fib( (0,) {} )
+    2 |  |  fib( (0,) {} ) returns: 0
+    1 |  fib( (2,) {} ) returns: 1
+    0 fib( (4,) {} ) returns: 3
+\end{verbatim}
+
+      Write an implementation of `fib' which will not do duplicate work.
+
+    \begin{answer}
+    \marginpar{\small\em Note the approach to default assignment for the table:
+    if table was set to [0,1] in the parameter list, we would be modifying it
+    globally whenever we appended to it.}
+    \lstinputlisting{memoized_fibonacci.py}
+\begin{verbatim}
+>>> fib(4)
+    0 fib( (4,) {} )
+    1 |  fib( (3, [0, 1]) {} )
+    2 |  |  fib( (2, [0, 1]) {} )
+    3 |  |  |  fib( (1, [0, 1]) {} )
+    3 |  |  |  fib( (1, [0, 1]) {} ) returns: 1
+    3 |  |  |  fib( (0, [0, 1]) {} )
+    3 |  |  |  fib( (0, [0, 1]) {} ) returns: 0
+    2 |  |  fib( (2, [0, 1]) {} ) returns: 1
+    2 |  |  fib( (1, [0, 1, 1]) {} )
+    2 |  |  fib( (1, [0, 1, 1]) {} ) returns: 1
+    1 |  fib( (3, [0, 1]) {} ) returns: 2
+    1 |  fib( (2, [0, 1, 1, 2]) {} )
+    1 |  fib( (2, [0, 1, 1, 2]) {} ) returns: 1
+    0 fib( (4,) {} ) returns: 3
+\end{verbatim}
+    \end{answer}
+
 \end{enumerate}
 
 \end{document}
