@@ -50,22 +50,22 @@ language=Python
 
     \begin{answer}
     \begin{lstlisting} 
-def delims_are_balanced(inString):
-    ''' String -> boolean
-    Determines if the input string has balanced delimiters
-    Delimiters are () [] {} and <>  
-     
-    '''
-    open_delim = {'(': ')', '[': ']', '{': '}', '<': '>'}
-    close_delim = [')', ']', '}', '>']
-    stack = Stack()
+    def delims_are_balanced(inString):
+        ''' String -> boolean
+        Determines if the input string has balanced delimiters
+        Delimiters are () [] {} and <>  
         
-    for char in inString:
-        if char in open_delim:
-            stack.push(char)
-        elif char in close_delim and open_delim[stack.peek()] == char:
-            stack.pop()
-    return stack.is_empty()
+        '''
+        open_delim = {'(': ')', '[': ']', '{': '}', '<': '>'}
+        close_delim = [')', ']', '}', '>']
+        stack = Stack()
+        
+        for char in inString:
+            if char in open_delim:
+                stack.push(char)
+            elif char in close_delim and open_delim[stack.peek()] == char:
+                stack.pop()
+        return stack.is_empty()
     \end{lstlisting}
     \end{answer}
 
