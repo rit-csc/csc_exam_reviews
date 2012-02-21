@@ -54,16 +54,14 @@ def delims_are_balanced(inString):
     ''' String -> boolean
     Determines if the input string has balanced delimiters
     Delimiters are () [] {} and <>  
-     
+    
     '''
-    open_delim = {'(': ')', '[': ']', '{': '}', '<': '>'}
-    close_delim = [')', ']', '}', '>']
+    delim = {'(': ')', '[': ']', '{': '}', '<': '>'}
     stack = Stack()
-        
     for char in inString:
-        if char in open_delim:
+        if char in delim:
             stack.push(char)
-        elif char in close_delim and open_delim[stack.peek()] == char:
+        elif char in delim.values() and delim[stack.peek()] == char:
             stack.pop()
     return stack.is_empty()
     \end{lstlisting}
