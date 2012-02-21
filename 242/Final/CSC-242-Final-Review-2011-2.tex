@@ -70,7 +70,9 @@ def delims_are_balanced(inString):
 \item What role does the queue play in a Breadth First Search?
 
     \begin{answer}
-    \Huge TODO: Write answer
+    The FIFO nature of a queue ensures that vertices are visited on a level-by-level basis. That is, if the traversal 
+    begins at vertex $v$, then all of $v$'s children are visited, followed by $v$'s grandchildren and so on. It is
+    this behavior that ensures that the path selected from a start vertex to a end vertex is of minimal length.
     \end{answer}
 
 \item Given a Breadth First Search algorithm, how would you change it to
