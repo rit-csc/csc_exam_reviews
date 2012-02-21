@@ -61,13 +61,13 @@ def delims_are_balanced(inString):
     for char in inString:
         if char in delim:
             stack.push(char)
+        
         elif char in delim.values():
             if stack.is_empty():
                 return False
             if delim[stack.peek()] == char:
                 stack.pop()
     return stack.is_empty()
-    \end{lstlisting}
     \end{answer}
 
 \item What role does the queue play in a Breadth First Search?
