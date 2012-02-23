@@ -91,7 +91,16 @@ def delims_are_balanced(inString):
 
     \begin{answer}
     A matrix, a hash table and a linked structure.
-    \Huge TODO: Expand on answer
+    {\bf With a matrix}, we can create a table such that the element at W[a][b]
+    contains edge weight between two nodes. This approach works well for dense
+    graphs.
+    {\bf With a hash table}, we can key on the source node and store a list of
+    attached nodes, along with their weights. This approach works well for
+    sparse graphs, because it uses less memory than a matrix.
+    We also have the option of using a {\bf purely linked structure}, such that
+    each node has a list of other nodes that it connects to, with an associated
+    cost. This will most closely resemble the actual structure of the graph in
+    memory, but it may become difficult to manage.
     \end{answer}
 
 \item When is a vertex's sum weight  finalized in Dijkstra's algorithm?
