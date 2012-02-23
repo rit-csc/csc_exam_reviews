@@ -124,7 +124,25 @@ def delims_are_balanced(inString):
       edge weights?
 
     \begin{answer}
-    \Huge TODO
+    Dijkstra's algorithm doesn't work correctly on graphs with negative edge
+    weights due to one of its {\em greedy} behaviors.
+
+    When selecting the next node to visit, Dijkstra's algorithm chooses the
+    node with the current lowest total value, then {\em finalizes} that value
+    fever. If there were another route to that node, which had not yet been
+    explored (and contained a net negative weight) Dijkstra's algorithm would
+    return a suboptimal path. In the following example, the final edge weights
+    should be \{A:0,B:1,C:3\} but they are \{A:0,B:2,C:3\}
+
+    \begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm,semithick]
+        \node[initial,state] (A) {A};
+        \node[state]        (B) [right of=A] {B};
+        \node[state]        (C) [below right of=A] {C};
+
+        \path   (A) edge node {2} (B)
+                    edge node {3} (C)
+                (C) edge node {-2} (B);
+    \end{tikzpicture}
     \end{answer}
 
 \section*{Backtracking}
