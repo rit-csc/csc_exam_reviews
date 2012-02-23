@@ -136,6 +136,42 @@ def delims_are_balanced(inString):
     This would be so much easier. :'(
     \end{answer}
 
+\item Chris made a mistake in his chaining implementation!
+
+\begin{lstlisting}
+def noobDictionaryChaining():
+
+    emptyList = []
+    d = {}
+    for i in range(10):
+        d[i] = emptyList
+
+    d[hash('lol')].append['lol']
+    d[hash('rofl')].append['rofl']
+    d[hash('hahah')].append['hahah']
+    d[hash('lmfao')].append['lmfao']
+    print(d)
+\end{lstlisting}
+
+    \begin{enumerate}
+    \item Show what the dictionary (hashtable) looks like after this function
+          completes. Assume the hash() function returns len(input) \% len(d).
+
+        \begin{answer}
+        All of the elements in the hash table are a reference to the same list,
+        so all lookups will take $O(n)$ time.
+        \vspace{2in}
+        \end{answer}
+
+    \item What can we do to make the function behave as Chris expects it to
+          behave?
+
+        \begin{answer}
+        Line 6 should be ``d[i] = []''.
+        \end{answer}
+    \end{enumerate}
+
+
 \section*{Sorting}
 
 \item Fill in the table for the asymptotic running time of each sorting
