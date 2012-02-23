@@ -115,7 +115,9 @@ def delims_are_balanced(inString):
       When do we use it?
 
     \begin{answer}
-    \Huge TODO
+    The priority queue is used to select the next vertex to visit. We want to
+    visit the node which currently has the lowest tentative distance from the
+    start, so we use a priority queue which always returns the lowest element.
     \end{answer}
 
 \item Why does Dijkstra's algorithm not work correctly on graphs with negative
