@@ -103,10 +103,12 @@ def delims_are_balanced(inString):
     memory, but it may become difficult to manage.
     \end{answer}
 
-\item When is a vertex's sum weight  finalized in Dijkstra's algorithm?
+\item When is a vertex's sum weight finalized in Dijkstra's algorithm?
 
     \begin{answer}
-    \Huge TODO
+    A vertex's sum weight is final after it has updated the tentative distances
+    of all of its neighbors. As part of being finalized, it's moved from the
+    unvisited set to the visited set.
     \end{answer}
 
 \item What role does the priority queue play in finding the shortest path?
