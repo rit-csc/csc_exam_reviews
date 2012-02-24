@@ -233,7 +233,8 @@ def noobDictionaryChaining():
     \end{answer}
 
 \item\label{qsort-worst-case} What kind of data causes Quicksort's worst-case
-      time complexity?
+      time complexity? You may assume that we always pick the first element as
+      the pivot.
 
       \begin{answer}
       Data that is (nearly) sorted or is sorted in reverse order.
@@ -243,7 +244,20 @@ def noobDictionaryChaining():
       question \ref{qsort-worst-case}?
 
     \begin{answer}
-    {\huge FIXME}
+    Quicksort splits its input into two lists based on the value of the pivot.
+    If the pivot is either the smallest or the largest element, then one list
+    will only have no elements, while the others will have all of the elements
+    but the pivot. We can see this if we perform a substitution trace:
+
+\begin{verbatim}
+qsort([1,2,3,4])
+qsort([]) + [1] + qsort([2,3,4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([3,4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([])
+[1,2,3,4]
+\end{verbatim}
     \end{answer}
 
 \item In Quicksort, why do we select a random pivot value, rather than always
