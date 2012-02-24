@@ -178,9 +178,21 @@ def noobDictionaryChaining():
           completes. Assume the hash() function returns len(input) \% len(d).
 
         \begin{answer}
-        All of the elements in the hash table are a reference to the same list,
-        so all lookups will take $O(n)$ time.
-        \vspace{2in}
+            \begin{tabular}{l | r}
+    
+        	i & d[i] \\ \hline
+    		0 & ['curling', 'is', 'cool', 'now'] \\ 
+    		1 & ['curling', 'is', 'cool', 'now'] \\
+    		2 & ['curling', 'is', 'cool', 'now'] \\
+    		3 & ['curling', 'is', 'cool', 'now'] \\
+    		4 & ['curling', 'is', 'cool', 'now'] \\
+    		5 & ['curling', 'is', 'cool', 'now'] \\
+    		6 & ['curling', 'is', 'cool', 'now'] \\
+    		7 & ['curling', 'is', 'cool', 'now'] \\
+    		8 & ['curling', 'is', 'cool', 'now'] \\
+    		9 & ['curling', 'is', 'cool', 'now'] \\
+    
+    	    \end{tabular}
         \end{answer}
 
     \item What can we do to make the function behave as Chris expects it to
@@ -193,7 +205,21 @@ def noobDictionaryChaining():
     \item Draw the table of the properly behaving hash function.
         
         \begin{answer}
-        \vspace{3.5in}
+            \begin{tabular}{l | r}
+    
+        	i & d[i] \\ \hline
+    		0 & [] \\ 
+    		1 & [] \\
+    		2 & ['is'] \\
+    		3 & ['now'] \\
+    		4 & ['cool'] \\
+    		5 & [] \\
+    		6 & [] \\
+    		7 & ['curling'] \\
+    		8 & [] \\
+    		9 & [] \\
+    
+    	    \end{tabular}
         \end{answer}
     \end{enumerate}
 
@@ -287,7 +313,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       swaps occurring after an insert operation?
 
     \begin{answer}
-    \Huge TODO
+        log$_{\textrm{2}}$ n + 1, rounded down.
     \end{answer}
 
 \item Given a node in an array-based binary heap at index $i$, where are the
@@ -306,7 +332,23 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       at each stage. Be sure to heapify the list first.
 
     \begin{answer}
-    \vspace{3.5in}
+        Heapify:  \newline
+        	[\underline{3}, 5, 1, 3, 2, 7, 9] \newline
+    		[\underline{3},\underline{5}, 1, 3, 2, 7, 9] \newline
+    		[\underline{1}, \underline{5}, \underline{3}, 3, 2, 7, 9] \newline
+    		[\underline{1}, \underline{3}, \underline{3}, \underline{5}, 2, 7, 9] \newline
+    		[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, 7, 9] \newline
+    		[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, 9] \newline
+    		[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, \underline{9}] \newline 
+    	
+    	Sort: \newline
+    		[\underline{2}, \underline{3}, \underline{3}, \underline{5}, \underline{9}, \underline{7}, 1] \newline
+    		[\underline{3}, \underline{3}, \underline{7}, \underline{5}, \underline{9}, 2, 1] \newline
+    		[\underline{3}, \underline{5}, \underline{7}, \underline{9}, 3, 2, 1] \newline
+    		[\underline{5}, \underline{9}, \underline{7}, 3, 3, 2, 1] \newline
+    		[\underline{7}, \underline{9}, 5, 3, 3, 2, 1] \newline
+    		[\underline{9}, 7, 5, 3, 3, 2, 1] \newline
+    		[9, 7, 5, 3, 3, 2, 1] \newline
     \end{answer}
 
 \section*{Dynamic Programming}
