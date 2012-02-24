@@ -164,9 +164,7 @@ def delims_are_balanced(inString):
 def noobDictionaryChaining():
 
     emptyList = []
-    d = {}
-    for i in range(10):
-        d[i] = emptyList
+    d = [emptyList for x in range(3)]
 
     d[hash('curling')].append['curling']
     d[hash('is')].append['is']
@@ -307,7 +305,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       at each stage. Be sure to heapify the list first.
 
     \begin{answer}
-    \Huge TODO
+    \vspace{3.5in}
     \end{answer}
 
 \section*{Dynamic Programming}
