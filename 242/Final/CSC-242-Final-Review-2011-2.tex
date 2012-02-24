@@ -131,8 +131,9 @@ def delims_are_balanced(inString):
     node with the current lowest total value, then {\em finalizes} that value
     forever. If there were another route to that node, which had not yet been
     explored (and contained a net negative weight) Dijkstra's algorithm would
-    return a suboptimal path. In the following example, the final edge weights
-    should be \{A:0,B:1,C:3\} but they are \{A:0,B:2,C:3\}
+    return a suboptimal path. In the following example, the final transitive
+    costs should be \{A:0,B:1,C:3\} but Dijkstra's algorithm produces
+    \{A:0,B:2,C:3\}.
 
     \begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm,semithick]
         \node[initial,state] (A) {A};
