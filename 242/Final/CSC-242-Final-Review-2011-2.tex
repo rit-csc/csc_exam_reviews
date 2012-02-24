@@ -166,10 +166,10 @@ def noobDictionaryChaining():
     emptyList = []
     d = [emptyList for x in range(3)]
 
-    d[hash('curling')].append['curling']
-    d[hash('is')].append['is']
-    d[hash('cool')].append['cool']
-    d[hash('now')].append['now']
+    d[hash('curling')].append('curling')
+    d[hash('is')].append('is')
+    d[hash('cool')].append('cool')
+    d[hash('now')].append('now')
     print(d)
 \end{lstlisting}
 
@@ -178,19 +178,16 @@ def noobDictionaryChaining():
           completes. Assume the hash() function returns len(input) \% len(d).
 
         \begin{answer}
+            The problem here is in lines 3 and 4. Rather than creating a new
+            empty list for each line, each element in `d' contains a reference
+            to the same list.
+
             \begin{tabular}{l | r}
     
         	i & d[i] \\ \hline
     		0 & ['curling', 'is', 'cool', 'now'] \\ 
     		1 & ['curling', 'is', 'cool', 'now'] \\
     		2 & ['curling', 'is', 'cool', 'now'] \\
-    		3 & ['curling', 'is', 'cool', 'now'] \\
-    		4 & ['curling', 'is', 'cool', 'now'] \\
-    		5 & ['curling', 'is', 'cool', 'now'] \\
-    		6 & ['curling', 'is', 'cool', 'now'] \\
-    		7 & ['curling', 'is', 'cool', 'now'] \\
-    		8 & ['curling', 'is', 'cool', 'now'] \\
-    		9 & ['curling', 'is', 'cool', 'now'] \\
     
     	    \end{tabular}
         \end{answer}
@@ -199,7 +196,9 @@ def noobDictionaryChaining():
           behave?
 
         \begin{answer}
-        Line 6 should be ``d[i] = []''.
+        Delete line 3.
+
+        Line 4 should be d = [list() for x in range(3)]
         \end{answer}
 
     \item Draw the table of the properly behaving hash function.
@@ -208,16 +207,9 @@ def noobDictionaryChaining():
             \begin{tabular}{l | r}
     
         	i & d[i] \\ \hline
-    		0 & [] \\ 
-    		1 & [] \\
-    		2 & ['is'] \\
-    		3 & ['now'] \\
-    		4 & ['cool'] \\
-    		5 & [] \\
-    		6 & [] \\
-    		7 & ['curling'] \\
-    		8 & [] \\
-    		9 & [] \\
+            0 & ['curling','now'] \\ 
+            1 & ['cool'] \\
+            2 & ['is'] \\
     
     	    \end{tabular}
         \end{answer}
