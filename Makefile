@@ -4,7 +4,9 @@
 build:
 	$(MAKE) -C 241
 	$(MAKE) -C 242
+	$(MAKE) -C 243
 
 %:
 	$(MAKE) -C 241 $@
 	$(MAKE) -C 242 $@
+	$(MAKE) -C 243 $@
