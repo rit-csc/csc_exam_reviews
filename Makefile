@@ -4,6 +4,7 @@
 build:
 	$(MAKE) -C 241
 	$(MAKE) -C 242
+	$(MAKE) -C 243
 
 publish: build
 	rm -rf publish/
@@ -23,3 +24,4 @@ realclean:
 %:
 	$(MAKE) -C 241 $@
 	$(MAKE) -C 242 $@
+	$(MAKE) -C 243 $@
