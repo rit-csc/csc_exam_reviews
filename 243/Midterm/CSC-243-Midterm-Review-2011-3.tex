@@ -17,7 +17,7 @@ numbersep=5pt,                  % how far the line-numbers are from the code
 showspaces=false,               % show spaces adding particular underscores
 showstringspaces=false,         % underline spaces within strings
 tabsize=4,		                % sets default tabsize to 4 spaces
-language=Python
+language=Java
 }
 
 \ifthenelse{\isundefined{\isAnswerKey}}
@@ -44,8 +44,259 @@ language=Python
 
 \begin{enumerate}
 
-\item TODO
+\item Why can we not use {\tt ==} to determine if two strings are equivalent?
+
+    \begin{answer}
+    \huge TODO
+    \end{answer}
+
+\item If an instance variable is declared with {\tt protected} access, who can
+      access it?
+
+    \begin{answer}
+    \huge TODO
+    \end{answer}
+
+\item What is the difference between a class and an object?
+
+    \begin{answer}
+    \huge TODO
+    \end{answer}
+
+\item What is the difference between a constants and normal variables? Give an
+      example of a constant declaration.
+
+    \begin{answer}
+    A constant may never change during run time (it may be set {\em once}).
+
+    public static {\bf final} int numberOfPeopleWhoLikeJava = 0;
+    \end{answer}
+
+\item What is the difference between a constructor and a normal method?
+
+    \begin{answer}
+    \huge TODO
+    \end{answer}
+
+\item What should the visibility (public, private, N/A) be on the following
+      variables, constants and methods?\label{car-visibility}
+
+\begin{lstlisting}
+<visibility> class Car {
+   <visibility> final String VIN;
+   <visibility> String licensePlateNumber;  
+   <visibility> String owner;
+
+   <visibility> Car(String VIN, String licensePlateNumber, String owner) {
+       this.VIN = VIN;
+       this.licensePlateNumber = licensePlateNumber;
+       this.owner = owner;
+   }
+
+   <visibility> void changeOwner( <visibility> String newOwner )
+   {
+       owner = newOwner;
+   }
+}
+\end{lstlisting}
+
+    \begin{answer}
+\begin{lstlisting}
+public class Car {
+   public final String VIN;
+   private String licensePlateNumber;  
+   private String owner;
+
+   public Car(String VIN, String licensePlateNumber, String owner) {
+       this.VIN = VIN;
+       this.licensePlateNumber = licensePlateNumber;
+       this.owner = owner;
+   }
+
+   public void changeOwner( String newOwner )
+   {
+       owner = newOwner;
+   }
+\end{lstlisting}
+    \end{answer}
+
+\item Consider a class {\tt Car} that represents a car and stores information
+      like the vehicle's license plate number, VIN, expiration date, owner's
+      name etc.
+
+    \begin{enumerate}
+    \item Create a new object of class Car as defined in question
+        \ref{car-visibility}.
+        
+        \begin{answer}
+        Car myDepressingRide = new Car(``9270af8saf'', ``SAD MAN'', ``Elliot
+        Smith'');
+        \end{answer}
+
+    \item Retreive the license plate number from the car object you just
+    created by calling the getLicensePlate() method and store it in a variable.
+
+        \begin{answer}
+        String elliotsPlate = myDepressingRide.getLicensePlate();
+        \end{answer}
+    \end{enumerate}
+
+\item Define the following terms:
+    \begin{enumerate}
+    \item Polymorphism
+
+        \begin{answer}
+        \huge TODO
+        \end{answer}
+
+    \item Superclass
+
+        \begin{answer}
+        \huge TODO
+        \end{answer}
+
+    \item Subclass
+
+        \begin{answer}
+        \huge TODO
+        \end{answer}
+    \end{enumerate}
+
+\item What is the difference between an abstract class and an interface? Why
+      might you want to use an interface over an abstract class?
+
+      \begin{answer}
+      \huge TODO
+      \end{answer}
+
+\item When using overloaded methods, how does Java determine which method to
+      call?
+
+    \begin{answer}
+    \huge TODO
+    \end{answer}
+
+\pagebreak
+\item What gets printed by the following code?
+\begin{lstlisting}
+public class Class1 {
+	public Class1() {
+		System.out.println( "Class1()" );
+	}
+	public void print1() {
+		System.out.println( "Class1.print1()" );
+	}
+	public void print2() {
+		System.out.println("Class1.print2()" );
+	}
+}
+
+public class Class2 extends Class1 {
+	public Class2() {
+		System.out.println( "Class2()" );
+	}
+	public void print1() {
+		System.out.println("Class2.print1()");
+	}
+}
+
+public class Class3 extends Class1
+	private Class2 class2;
+	public Class3() {
+		System.out.println( "Class3()" );
+		class2 = new Class2();
+	}
+	public void print1() {
+		class2.print1();
+	}
+	public void print2(){
+		System.out.println("Class3.print2()");
+		super.print2();
+	}
+}
+
+public class TestClass {
+	public static void main( String[] args ) {
+		Class1 c1 = new Class2();
+		c1.print1();
+		c1.print2();
+
+		System.out.println();
+		Class1 c2 = new Class3();
+		c2.print1();
+		c2.print2();
+	}
+}
+\end{lstlisting}
+    
+    \begin{answer}
+    \huge TODO
+    \end{answer}
+
+\pagebreak
+\item Find at least 6 errors in the following code:
+\begin{lstlisting}
+public interface Vehicle {
+	public void getSpeed();
+	public void accelerate(int speed_increase);
+	public void brake(int speed_decrease);
+}
+public class Car implements Vehicle {
+	private int speed;
+	public Car(int initialSpeed){
+		this.speed = initialSpeed;
+	}
+	public int getSpeed(){
+		return speed;
+	}
+	public int accelerate(int speed_increase) {
+		speed += speed_increase;
+	}
+	public int brake(int speed_decrease) {
+		speed -= speed_decrease;
+	}
+}
+public class Toyota extends Car {
+	public int getSpeed(){
+		return speed;
+	}
+	public void brake(Integer speed_decrease) {}
+	public void factoryRecall(){
+		System.out.println("Replace my floor mat!");
+	}
+}
+public class Truck implements Vehicle {
+	public void accelerate(int speed_increase) {
+		super.accelerate(speed_increase/2);
+	}
+	public void brake(int speed_decrease) {
+		super.brake(speed_decrease/2);
+	}
+}
+public class demolitonDerby {
+	public static void main(String[] args) {
+		Vechicle	prius, mack, impreza;
+		prius = new Toyota();
+		mack = new Truck();
+		impreza = new Car();
+		
+		impreza.accelerate(5);
+		prius.factoryRecall();
+		prius.accelerate(impreza.getSpeed());
+		mack.accelerate(5.0);
+	}
+\end{lstlisting}
 
 \end{enumerate}
 
 \end{document}
+
+Topics for this exam:
+- Basic Java syntax
+    - Method overloading
+    - Visibility modifiers
+    - The 'static' keyword
+    - Generics
+- Classes
+- Interfaces
+- Inheritance
