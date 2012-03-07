@@ -19,6 +19,7 @@ publish: build
 realclean:
 	$(MAKE) -C 241 $@
 	$(MAKE) -C 242 $@
+	$(MAKE) -C 243 $@
 	$(RM) -rf publish
 
 %:
