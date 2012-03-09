@@ -47,14 +47,17 @@ language=Java
 \item Why can we not use {\tt ==} to determine if two strings are equivalent?
 
     \begin{answer}
-    \huge TODO
+    {\tt ==} will check to see if two objects are the exact same object. If we
+    want to compare objects by meaning, they'll have to implement the {\tt
+    Comparable} intefrace, which declares the {\tt equals} method. For strings
+    we could say {\tt ``yes''.equals(``yes'')}.
     \end{answer}
 
 \item If an instance variable is declared with {\tt protected} access, who can
       access it?
 
     \begin{answer}
-    \huge TODO
+    Methods in that class and methods in all of its subclasses.
     \end{answer}
 
 \item What is the difference between a class and an object?
