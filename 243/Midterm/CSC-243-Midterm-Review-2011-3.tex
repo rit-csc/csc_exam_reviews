@@ -285,6 +285,7 @@ public class demolitonDerby {
 		impreza = new Car();
 		
 		impreza.accelerate(5);
+		prius.brake(2);
 		prius.factoryRecall();
 		prius.accelerate(impreza.getSpeed());
 		mack.accelerate(5.0);
@@ -295,11 +296,11 @@ public class demolitonDerby {
     \begin{tabular}{r l} % TODO Fix some answers here
     Line \# & Error \\\hline
     22  & getSpeed()'s return type ({\tt long}) differs from Car or Vehicle.\\
-    25  & FIXME Does autoboxing make this legal?\\
+    25,46& Calling brake() on Toyotas will call the superclass's brake()\\
     30  & Truck implements vehicle, but does not have getSpeed()\\
-    46  & {\tt prius} was declared as a {\tt Vehicle}, so we can't call\\
+    47  & {\tt prius} was declared as a {\tt Vehicle}, so we can't call\\
     ~   & methods that aren't declared in {\tt Vehicle}.\\
-    48  & FIXME I don't think it's legal to pass a double to an int.
+    49  & FIXME I don't think it's legal to pass a double to an int.
     \end{tabular}
     \end{answer}
 
