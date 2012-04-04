@@ -169,14 +169,18 @@ A subclass is a derived class which inherits one or more property from a parent 
       might you want to use an interface over an abstract class?
 
       \begin{answer}
-      \huge TODO
+Abstract classes allow for default method definition, any class which extends this abstract class has access to these definitions. An interface is a list of methods and proprties that any class which implement this interface must define.
+If you anticipate creating multiple versions of your component, create an abstract class. Abstract classes provide a simple and easy way to version your components. By updating the base class, all inheriting classes are automatically updated with the change. Interfaces, on the other hand, cannot be changed once created. If a new version of an interface is required, you must create a whole new interface.
+If the functionality you are creating will be useful across a wide range of disparate objects, use an interface. Abstract classes should be used primarily for objects that are closely related, whereas interfaces are best suited for providing common functionality to unrelated classes.
+If you are designing small, concise bits of functionality, use interfaces. If you are designing large functional units, use an abstract class.
+If you want to provide common, implemented functionality among all implementations of your component, use an abstract class. Abstract classes allow you to partially implement your class, whereas interfaces contain no implementation for any members.
       \end{answer}
 
 \item When using overloaded methods, how does Java determine which method to
       call?
 
     \begin{answer}
-    \huge TODO
+The type and number of arguments determine which method to call.
     \end{answer}
 
 \pagebreak
@@ -203,7 +207,7 @@ public class Class2 extends Class1 {
 	}
 }
 
-public class Class3 extends Class1
+public class Class3 extends Class1{
 	private Class2 class2;
 	public Class3() {
 		System.out.println( "Class3()" );
@@ -233,7 +237,19 @@ public class TestClass {
 \end{lstlisting}
     
     \begin{answer}
-    \huge TODO
+Class1()\\
+Class2()\\
+Class2.print1()\\
+Class1.print2()\\
+\\
+Class1()\\
+Class3()\\
+Class1()\\
+Class2()\\
+Class2.print1()\\
+Class3.print2()\\
+Class1.print2()\\
+
     \end{answer}
 
 \pagebreak
