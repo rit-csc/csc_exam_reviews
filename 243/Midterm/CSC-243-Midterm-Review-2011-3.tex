@@ -49,7 +49,7 @@ language=Java
     \begin{answer}
     {\tt ==} will check to see if two objects are the exact same object. If we
     want to compare objects by meaning, they'll have to implement the {\tt
-    Comparable} intefrace, which declares the {\tt equals} method. For strings
+    Comparable} interface, which declares the {\tt equals} method. For strings
     we could say {\tt ``yes''.equals(``yes'')}.
     \end{answer}
 
@@ -78,7 +78,7 @@ language=Java
 \item What is the difference between a constructor and a normal method?
 
     \begin{answer}
-A Constructor is a special method which creates an instance of a class. It requres the use of the new keyword (or this() or super()) and can not be directly invoked by a method call. Constuctors have no return type and have the same name as the class. 
+A Constructor is a special method which creates an instance of a class. It requires the use of the new keyword (or this() or super()) and can not be directly invoked by a method call. Constructors have no return type and have the same name as the class. 
     \end{answer}
 
 \item What should the visibility (public, private, N/A) be on the following
@@ -169,12 +169,8 @@ A subclass is a derived class which inherits one or more property from a parent 
       might you want to use an interface over an abstract class?
 
       \begin{answer}
-Abstract classes allow for default method definition, any class which extends this abstract class has access to these definitions. An interface is a list of methods and proprties that any class which implement this interface must define.
-If you anticipate creating multiple versions of your component, create an abstract class. Abstract classes provide a simple and easy way to version your components. By updating the base class, all inheriting classes are automatically updated with the change. Interfaces, on the other hand, cannot be changed once created. If a new version of an interface is required, you must create a whole new interface.
-If the functionality you are creating will be useful across a wide range of disparate objects, use an interface. Abstract classes should be used primarily for objects that are closely related, whereas interfaces are best suited for providing common functionality to unrelated classes.
-If you are designing small, concise bits of functionality, use interfaces. If you are designing large functional units, use an abstract class.
-If you want to provide common, implemented functionality among all implementations of your component, use an abstract class. Abstract classes allow you to partially implement your class, whereas interfaces contain no implementation for any members.
-      \end{answer}
+    Abstract classes allow for default method behavior to be defined, while interfaces allow only method declaration. Since java allows a class to extend only a single class but implement many interfaces, interfaces provide some extended capabilities. However, extending an abstract class allows usage of the defined default behaviors. 
+     \end{answer}
 
 \item When using overloaded methods, how does Java determine which method to
       call?
