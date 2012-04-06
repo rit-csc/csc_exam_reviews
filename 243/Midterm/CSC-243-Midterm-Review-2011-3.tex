@@ -307,9 +307,14 @@ public class demolitonDerby {
     \begin{answer}
     \begin{tabular}{r l} % TODO Fix some answers here
     Line \# & Error \\\hline
+    14  & Returns int, should return void\\
+    17  & Returns int, should return void\\
     22  & getSpeed()'s return type ({\tt long}) differs from Car or Vehicle.\\
+    23  & speed is private.\\
     25,46& Calling brake() on Toyotas will call the superclass's brake()\\
     30  & Truck implements vehicle, but does not have getSpeed()\\
+    32  & Can't call super(), this has no superclass.\\
+    33  & Can't call super(), this has no superclass.\\
     47  & {\tt prius} was declared as a {\tt Vehicle}, so we can't call\\
     ~   & methods that aren't declared in {\tt Vehicle}.\\
     49  & FIXME I don't think it's legal to pass a double to an int.
