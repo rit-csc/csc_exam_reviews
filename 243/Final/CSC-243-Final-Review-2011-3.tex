@@ -44,7 +44,58 @@ language=Java
 
 \begin{enumerate}
 
-\item TODO
+\item {\bf Nick's Heavy Threads} Nick operates a store in Marketview Mall which
+      has poor lighting, blasts black metal and sells jeans. Only one pair of
+      jeans are available to purchase at a time, though there are more
+      available in the back. If a size is out that you don't want, you must
+      wait for someone else to purchase the jeans. Nick's only employee, Hank,
+      sits in a chair and stares at people angrily until someone makes a
+      purchase, when he replaces the jeans with the same model of a random
+      size.
+    
+\begin{lstlisting}
+public class NicksHeavyThreads
+{
+    Jeans awesomeJeans;
+    public static void main(String... args)
+    {
+      MeanWorker.start();
+      for(int i=0; i < 10; ++i)
+      {
+          LameCustomer.start();
+      }
+    }
+}
+\end{lstlisting}
+
+    \begin{enumerate}
+    \item What basic threading model can deal with this?
+        \begin{enumerate}
+        \item Banker's algorithm    \begin{answer}~\end{answer}
+        \item Producer/Consumer     \begin{answer}True\end{answer}
+        \item Y Combinator          \begin{answer}~\end{answer}
+        \item Pessimistic locking   \begin{answer}~\end{answer}
+        \end{enumerate}
+    
+    \item Write Hank's class. Recall that he must replace jeans as soon as they
+          are sold.
+
+        \begin{answer}
+\begin{lstlisting}
+public class MeanWorker
+{
+    public void run()
+    {
+        synchronized (awesomeJeans) {
+            if( awesomeJeans == 0 )
+            {
+                awesomeJeans++;
+            }
+        }
+    }
+\end{lstlisting}
+        \end{answer}
+    \end{enumerate}
 
 \end{enumerate}
 
