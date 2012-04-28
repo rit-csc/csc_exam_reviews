@@ -1,0 +1,46 @@
+digraph g {
+    word1[label = "\"This\""];
+    word2[label = "\"was\""];
+    word3[label = "\"hard\""];
+    word4[label = "\"to\""];
+    word5[label = "\"draw\""];
+
+    node [shape = record];
+
+    root[label = "{{10|20|\<nil\>} | {<f0>|<f1>|<f2>|<f3>}} "];
+
+    subgraph { rank = same;
+        internal1[label = "{{<p>3|5|7} | {<f0>|<f1>|<f2>|<f3>}}"];
+        internal2[label = "{{<p>10|13|\<nil\>} | {<f0>|<f1>|<f2>|<f3>}}"];
+        internal3[label = "{{<p>35|50|99} | {<f0>|<f1>|<f2>|<f3>}}"];
+
+        internal1 -> internal2;
+        internal2-> internal3;
+    }
+
+    subgraph { rank = same;
+        data1[label = "{{1|2|} | {<1>|<2>|<3>|<n> }}"];
+        data2[label = "{{3||} | {<1>|<2>|<3>|<n> }}"];
+        data3[label = "{{99|100|} | {<1>|<2>|<3>|<n> }}"];
+
+        data1 -> data2;
+        data2 -> data3 [style=dotted];
+    }
+
+    root:f0 -> internal1;
+    root:f1 -> internal2;
+    root:f2 -> internal3;
+
+
+    internal1:f0 -> data1;
+    internal1:f1 -> data2;
+    internal3:f2 -> data3;
+
+    data1:1 -> word1;
+    data1:2 -> word2;
+
+    data2:1 -> word3;
+
+    data3:1 -> word4;
+    data3:2 -> word5;
+}

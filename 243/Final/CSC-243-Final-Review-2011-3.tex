@@ -97,6 +97,38 @@ public class MeanWorker
         \end{answer}
     \end{enumerate}
 
+
+\item{\bf B+Trees} A B+Tree is a tree made up of arrays.
+
+\begin{figure}
+\caption{A partially drawn $\textrm{B}^+$-Tree}
+\includegraphics[width=5in]{b_plus_tree_dot.pdf}
+\end{figure}
+
+    \begin{enumerate}
+    \item We need classes to represent the nodes of the tree. Implement these
+    classes so that they use generic types and all of their members are public.
+
+\begin{answer}
+\begin{lstlisting}
+public interface Node<K,V> {}
+
+public class InternalNode<K,V> implements BTreeNode<K,V>
+{
+    K[] keys;
+    Node<K,V>[] children;
+}
+
+public class LeafNode<K,V> implements BTreeNode<K,V>
+{
+    K keys[];
+    V values[];
+}
+\end{lstlisting}
+\end{answer}
+
+    \end{enumerate}
+
 \end{enumerate}
 
 \end{document}
