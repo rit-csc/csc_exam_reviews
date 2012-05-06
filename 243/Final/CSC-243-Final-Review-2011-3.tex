@@ -161,6 +161,65 @@ public class LeafNode<K,V> implements BTreeNode<K,V>
 
     \end{enumerate}
 
+\item What is the output when LookAtDatMagic's main is executed?
+\begin{lstlisting}
+public class HeySteve{
+    public int bananza(int in) throws NewException{
+        if ( in == 7 ){
+            throw new NewException("HeySteve, cut that out!");
+        }
+        return in;
+    }
+}
+
+public class NewException extends Exception{
+    public NewException(String message){
+        super(message);
+    }
+
+}
+           
+public class WakaWaka{
+    public String BeachBash(Object a, Object b) throws NewException{
+        if ( a.equals(b) ){
+            throw new NewException("It's a Beach-bash! WakaWaka!");
+        }
+        return "Da-nanananan";
+    }
+}
+
+public class LookAtDatMagic{
+    public void magic() throws NewException{
+        int maraca = 5;
+        try{
+            HeySteve steve = new HeySteve();
+            maraca = steve.bananza(7);
+        }catch(NewException e){
+            System.out.println(e.getMessage());
+        }finally{
+            WakaWaka waka = new WakaWaka();
+            System.out.println(waka.BeachBash(maraca, 5));
+        }
+    }
+
+    public static void main(String[] args){
+        try{
+            LookAtDatMagic ladm = new LookAtDatMagic();
+            ladm.magic();
+        }catch(NewException e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+\end{lstlisting}
+\begin{answer}
+HeySteve, cut that out!
+
+
+It's a Beach-bash! WakaWaka!
+\end{answer}
 \end{enumerate}
 
 \vfill
