@@ -2,8 +2,8 @@ This is a collection of practice exams for Freshman level Computer Science
 exams at RIT. 
 
 == Building
-To build the PDFs, you'll need LaTeX and PGF/Tikz installed. You can generate
-the PDFs by executing `make'.
+To build the PDFs, you'll need LaTeX, TeXlive-extra, graphviz and PGF/Tikz
+installed. You can generate the PDFs by executing `make'.
 
 == Adding Questions
 To add a question to an existing exam, write it up as a standard question in
