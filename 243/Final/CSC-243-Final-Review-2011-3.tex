@@ -158,18 +158,12 @@ static class MeanWorker extends Thread
     \end{enumerate}
 
 
-\item{\bf $\textrm{B}^+$Trees} A $\textrm{B}^+$ tree is a data structure that
+\item{\bf $\textrm{B}^+$Trees} A $\textrm{B}^+$Tree is a data structure that
 can be used to map from keys to values. Figure \ref{b-tree} shows a tree that
-maps from ints to Strings. Note that there are 4 slots for values, even though
-there are only 3 keys. This is because the arrays of keys in the top two rows
-specify a range: [3,5,7] are less than 10, so they go into the leftmost
-reference, while [15,20,\_] are all $\geq 20$ and $<35$.
+maps from {\tt ints} to Strings.
 
-The bottom row of nodes have a direct correspondence between a key and a value.
-And each level of nodes is connected together as a linked list.
-
-\begin{figure}
-\caption{A partially drawn $\textrm{B}^+$-Tree of strings, keyed on integers}
+\begin{figure}[h]
+\caption{A partially drawn $\textrm{B}^+$Tree of strings, keyed on {\tt int}s}
 \label{b-tree}
 \center
 \includegraphics[width=5in]{b_plus_tree_dot.pdf}
@@ -177,7 +171,7 @@ And each level of nodes is connected together as a linked list.
 
     \begin{enumerate}
     \item What Java Collections Framework interface should a
-    $\textrm{B}^+$-Tree be able to implement?
+    $\textrm{B}^+$Tree be able to implement?
 
         \begin{answer}
         Java.util.Map$<$K,V$>$
@@ -193,7 +187,7 @@ And each level of nodes is connected together as a linked list.
 
     \item We need classes to represent the nodes of the tree. Implement these
     classes so that they use generic types and all of their members are package
-    private.
+    private. Don't implement the constructors or any other methods.
 
 \begin{answer}
 \begin{lstlisting}
