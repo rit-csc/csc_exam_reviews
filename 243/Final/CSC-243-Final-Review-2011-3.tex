@@ -276,17 +276,17 @@ It's a Beach-bash! WakaWaka!
 
 \item Briefly describe the difference between classes and objects.
 
-\begin{answer}
+    \begin{answer}
     A class is a construct which describes the properties and methods of an
     object. It can be thought of as a mold or template. An object is an 
     instantiation of a class. That is, a specific item created from the class
     "mold".
-\end{answer}
+    \end{answer}
 
 \item Briefly describe the difference (for objects) between a.equals(b), a==b,
-a.compareTo(b), and Comparator.compare(a,b).
+      a.compareTo(b), and Comparator.compare(a,b).
 
-\begin{answer}
+    \begin{answer}
     \begin{itemize}
 
     \item a.equals(b) Compares objects for equality. Automatically defined
@@ -304,7 +304,7 @@ a.compareTo(b), and Comparator.compare(a,b).
     o2))==sgn(comp2.compare(o1, o2)) for every object reference o1 and o2.
 
     \end{itemize}
-\end{answer}
+    \end{answer}
 
 \item Name the design pattern used in the following snippet of code.
 \begin{lstlisting}
@@ -342,20 +342,24 @@ The \emph{Factory} design pattern is used.
 \begin{enumerate}[(a)]
 
 \item Displays the contained components in a set number of rows and columns,
-where each row has the same height and each column the same width.\\*
+      where each row has the same height and each column the same width.
+
 \begin{answer}
 GridLayout
 \vspace{.5in}
 \end{answer}
 
 \item Attempts to display the contained components in a single row but will
-create a new row if necessary.\\*
+      create a new row if necessary.
+
 \begin{answer}
 FlowLayout
 \vspace{.5in}
 \end{answer}
 
-\item Allows the developer to specify the region (North, South, East, West, Center) of the panel to place the component in.\\*
+\item Allows the developer to specify the region (North, South, East, West,
+      Center) of the panel to place the component in.
+
 \begin{answer}
 BorderLayout
 \vspace{.5in}
@@ -366,10 +370,12 @@ BorderLayout
 \item 
     \begin{enumerate} 
     \item What is the Java Collections Framework?
+
     \begin{answer}
         a unified set of interfaces, algorithms and concrete implementaions 
     provided by Java to support collections of objects.
     \end{answer}
+
     \item Assume the follwing line of code is given:
     \begin{lstlisting}
         Collection<Integer> t = new ArrayList<Integer>();
@@ -383,6 +389,7 @@ BorderLayout
             System.out.println(t.get(i));
         }
     \end{lstlisting}
+
     \begin{answer}
     Collection does not support get(i). The better solution 
     \begin{lstlisting}
@@ -395,10 +402,12 @@ BorderLayout
 
     \end{lstlisting}
     \end{answer}
+
     \end{enumerate}
     
 
 \item Given the following class, Write the code necessary for the main to run.
+
 \begin{lstlisting}
 public class UFO{
     private Collection<Probable> toProbe;
@@ -448,6 +457,7 @@ public class UFO{
     }
 }
 \end{lstlisting}
+
 \begin{answer}
 \begin{lstlisting}
 public interface Probable{
@@ -543,6 +553,7 @@ public class RedNeck extends Human{
 
 \end{lstlisting}
 \end{answer}
+
 \end{enumerate}
 
 
