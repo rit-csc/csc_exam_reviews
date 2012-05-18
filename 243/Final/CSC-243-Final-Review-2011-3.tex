@@ -231,11 +231,42 @@ instantiation of a class. That is, a specific item created from the class "mold"
 \begin{answer}
     \begin{itemize}
         \item a.equals(b) Compares objects for equality. Automatically defined by java, but must be overwritten
-to provide intellegent behavior returns a boolean
+to provide intelligent behavior returns a boolean
     \item a == b  Checks references (if the two objects are the SAME object). Can also be used to check if a is null  
     \item a.compareTo(b) returns an int indicating if the a is less than (-1), equal to(0), or greater than b(+1). Indicates natural ordering 
     \item compare(a,b) returns -1 if a < b, 0 if a = b, +1 if a > b. comp1.equals(comp2) implies that sgn(comp1.compare(o1, o2))==sgn(comp2.compare(o1, o2)) for every object reference o1 and o2.
     \end{itemize}
+\end{answer}
+
+\item Name the design pattern used in the following snippet of code.
+\begin{lstlisting}
+public class Car
+{
+	private String make;
+	private String model;
+	private int mileage;
+
+	public Car(String make, String model, int mileage)
+	{
+		this.make=make;
+		this.model=model;
+		this.mileage=mileage;
+	}
+	public static Car makeCar(String str)
+	{
+		String arr[] = str.split(" ");
+		return new Car(arr[0], arr[1], Integer.parseInteger(arr[2]));
+	}
+
+	public static void main(String[] args)
+	{
+		Car myCar = Car.makeCar("Toyota Camry 200000");
+	}
+}
+\end{lstlisting}
+
+\begin{answer}
+The \emph{Factory} design pattern is used.
 \end{answer}
 
 \end{enumerate}
