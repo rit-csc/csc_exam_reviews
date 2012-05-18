@@ -51,14 +51,14 @@ language=Java
 \item {\bf Nick's Heavy Threads} Nick operates a store in Marketview Mall which
       has poor lighting, blasts black metal and sells jeans. Only one pair of
       jeans is available to purchase at a time, though there are more
-      stored in the back. If a size is out that you don't want, you must
-      wait for someone else to purchase the jeans. Nick's only employee, Hank,
-      sits in a chair and stares at people angrily until someone makes a
-      purchase, at which point he replaces the jeans with the same model of a random
-      size. In order to prevent customers' waiting infinitely for an unavailable
-      size, Hank will switch the jeans for a different size pair if no one has
-      bought them after a period of three seconds.
-    
+      stored in the back. If a size is out that you don't want, you must wait
+      for someone else to purchase the jeans. Nick's only employee, Hank, sits
+      in a chair and stares at people angrily until someone makes a purchase,
+      at which point he replaces the jeans with the same model of a random
+      size. In order to prevent customers' waiting infinitely for an
+      unavailable size, Hank will switch the jeans for a different size pair if
+      no one has bought them after a period of three seconds.
+
 \begin{lstlisting}
 public class NicksHeavyThreads
 {
@@ -93,13 +93,12 @@ public class NicksHeavyThreads
 
     \begin{enumerate}
     
-    \item Complete the implementation of the LameCustomer class; each instance must
-          choose a jeans size and wait for it to be available, update the jeans to
-          indicate that they have been taken, print the message
-          "Customer: I got my size \emph{size} jeans!" and inform all threads that
-          the jeans selection has changed.
-          (Hint: Remember to keep an accurate count of how many customers are in
-          the shop at any point.)
+    \item Complete the implementation of the LameCustomer class; each instance
+          must choose a jeans size and wait for it to be available, update the
+          jeans to indicate that they have been taken, print the message
+          "Customer: I got my size \emph{size} jeans!" and inform all threads
+          that the jeans selection has changed.  (Hint: Remember to keep an
+          accurate count of how many customers are in the shop at any point.)
 
 \begin{answer}
 \begin{lstlisting}
@@ -128,11 +127,13 @@ static class LameCustomer extends Thread
 \end{lstlisting}
 \end{answer}
 
-    \item Now implement the MeanWorker class, which should choose a size and stock a pair of jeans
-          of that size, print the message "Hank: I grumpily restocked with size \emph{size}," and
-          inform all threads that the selection has changed. It should then wait until someone
-          has taken the genes or until three seconds have elapsed, whichever comes first. These
-          steps should be repeated until all customers have left the store.
+    \item Now implement the MeanWorker class, which should choose a size and
+          stock a pair of jeans of that size, print the message "Hank: I
+          grumpily restocked with size \emph{size}," and inform all threads
+          that the selection has changed. It should then wait until someone has
+          taken the genes or until three seconds have elapsed, whichever comes
+          first. These steps should be repeated until all customers have left
+          the store.
 
 \begin{answer}
 \begin{lstlisting}
