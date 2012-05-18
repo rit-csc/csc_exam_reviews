@@ -235,7 +235,7 @@ instantiation of a class. That is, a specific item created from the class "mold"
 to provide intelligent behavior returns a boolean
     \item a == b  Checks references (if the two objects are the SAME object). Can also be used to check if a is null  
     \item a.compareTo(b) returns an int indicating if the a is less than (-1), equal to(0), or greater than b(+1). Indicates natural ordering 
-    \item compare(a,b) returns -1 if a < b, 0 if a = b, +1 if a > b. comp1.equals(comp2) implies that sgn(comp1.compare(o1, o2))==sgn(comp2.compare(o1, o2)) for every object reference o1 and o2.
+    \item compare(a,b) returns -1 if a $<$ b, 0 if a $=$ b, +1 if a $>$ b. comp1.equals(comp2) implies that sgn(comp1.compare(o1, o2))==sgn(comp2.compare(o1, o2)) for every object reference o1 and o2.
     \end{itemize}
 \end{answer}
 
@@ -296,6 +296,186 @@ BorderLayout
 
 \end{enumerate}
 
+\item 
+    \begin{enumerate} 
+    \item What is the Java Collections Framework?
+    \begin{answer}
+        a unified set of interfaces, algorithms and concrete implementaions 
+    provided by java to support collections of objects.
+    \end{answer}
+    \item Assume the follwing line of code is given:
+    \begin{lstlisting}
+        Collection<Integer> t = new ArrayList<Integer>();
+    \end{lstlisting}
+    What then is wrong with the following? Correct any errors:
+    \begin{lstlisting}
+        for( int i = 0; i < 20; i++){
+            t.add(i);
+        }
+        for( int i=0; i <  t.size(); i++ ){
+            System.out.println(t.get(i));
+        }
+    \end{lstlisting}
+    \begin{answer}
+    Collection does not support get(i). The better solution 
+    \begin{lstlisting}
+        for( int i = 0; i < 20; i++){
+            t.add(i);
+        }
+        for( Integer i : t ){
+            System.out.println(i);
+        }
+
+    \end{lstlisting}
+    \end{answer}
+    \end{enumerate}
+    
+
+\item Given the following class, Write the code necessary for the main to run.
+\begin{lstlisting}
+public class UFO{
+    private Collection<Probable> toProbe;
+    private int aggression;
+
+    public UFO(int agg){
+        toProbe = new ArrayList<Probable>();
+        aggression = agg;
+    }
+
+    public void probeEverything(){
+        for( Probable p : toProbe ){
+            p.probe();
+        }
+    }
+
+    public void sendHome(){
+        for( Probable p: toProbe ){
+            p.returnHome();
+        }
+    }
+
+    public void abduct(Collection<Probable> potentialAbductees){
+        for( Probable p : potentialAbductees ){
+            if( p.getMentalResolve() < aggression){
+                toProbe.add(p);
+            }
+        }
+    }
+
+    public static void main(String[] args){
+        UFO ufo = new UFO(1199999999);
+
+        field.add(new Cow("Bessie"));
+        //10 = mentalResolve
+        Human cleatus = new RedNeck("Cleatus", 10));
+        
+        // 50 == mentalResolve and 100 == academicRespect
+        Human brown = new Professor("Brown", 50, 100));         
+        
+        field.add(cleatus);
+        field.add(brown);
+
+        ufo.abduct(field);
+        ufo.probeEverything();
+        ufo.sendHome();
+    }
+}
+\end{lstlisting}
+\begin{answer}
+\begin{lstlisting}
+public interface Probable{
+    public void probe();
+
+    public int getMentalResolve();
+
+    public void returnHome();
+}
+public class Cow implements Probable{
+    private String name;
+
+    public Cow(String name){
+        this.name = name;
+    }
+
+    public int getMentalResolve(){
+        return 10;
+    }
+
+    public void probe(){
+       System.out.println("moo.");
+    }
+
+    public void returnHome(){
+        System.out.println(name + " is unimpressed.");
+    }
+}
+public abstract class Human implements Probable{
+    private int mentalResolve;
+    private String name;
+
+    public Human(String nm, int res){
+        name = nm;
+        mentalResolve = res;
+    }
+
+    public abstract void probe();
+
+    public abstract void returnHome();
+
+    public String getName(){
+        return name;
+    }
+
+    public int getMentalResolve(){
+        return mentalResolve;
+    }
+}
+
+public class Professor extends Human{
+    private int academicRespect;
+
+    public Professor(String name, int mental, int resp){
+        super(name, mental);
+        academicRespect = resp;
+    }
+
+    public void probe(){
+        System.out.println("\"What an exhilarating day for mankind!\", "
+                                  + "shouts Prof. " + getName());
+        System.out.println("\"Oh my!\", exclaims Prof. " + getName());
+    }
+
+    public void returnHome(){
+        adjustAcademicCareerToFocusOnAbductions();
+    }
+
+    public void adjustAcademicCareerToFocusOnAbductions(){
+        academicRespect = 0;
+    }
+}
+public class RedNeck extends Human{
+    public RedNeck(String nm, int res){
+        super(nm, res);
+    }
+
+    public void probe(){
+        System.out.println("\"Wut y'all doin wit dat der deevise?\", "
+                                           + "inquires " + getName() );
+        System.out.println("\"GAAAAH!!\", exlaims "+ getName() );
+    }
+
+    public void returnHome(){
+        beGuestOnJerrySpringerToTalkAboutTheProbing();
+    }
+
+    public void beGuestOnJerrySpringerToTalkAboutTheProbing(){
+        System.out.println("I's tellin ya Jerry!");
+    }
+
+}
+
+\end{lstlisting}
+\end{answer}
 \end{enumerate}
 
 
