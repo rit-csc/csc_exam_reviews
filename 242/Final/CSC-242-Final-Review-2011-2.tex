@@ -161,61 +161,46 @@ def delims_are_balanced(inString):
 \pagebreak
 \section*{Hashing and Hash Tables}
 
-\item Chris made a mistake in his chaining implementation!
+\item Chris made a mistake in his hashtable implementation!
 
-\begin{lstlisting}
-def noobDictionaryChaining():
-
-    emptyList = []
-    d = [emptyList for x in range(3)]
-
-    d[hash('curling')].append('curling')
-    d[hash('is')].append('is')
-    d[hash('cool')].append('cool')
-    d[hash('now')].append('now')
-    print(d)
-\end{lstlisting}
-
+    \lstinputlisting{code/wonkyhash.py}
     \begin{enumerate}
-    \item Show what the dictionary (hashtable) looks like after this function
-          completes. Assume the hash() function returns len(input) \% len(d).
+    \item Show what the hashtable looks like after the for loop on line 24
+          completes. 
 
         \begin{answer}
-            The problem here is in lines 3 and 4. Rather than creating a new
-            empty list for each line, each element in `d' contains a reference
-            to the same list.
+[once,
+a,
+[],
+[]]
 
-            \begin{tabular}{l | r}
-    
-        	i & d[i] \\ \hline
-    		0 & ['curling', 'is', 'cool', 'now'] \\ 
-    		1 & ['curling', 'is', 'cool', 'now'] \\
-    		2 & ['curling', 'is', 'cool', 'now'] \\
-    
-    	    \end{tabular}
         \end{answer}
 
-    \item What can we do to make the function behave as Chris expects it to
-          behave?
+    \item What is wrong with the code? What can we do to make the function behave as Chris expects it to behave?
 
         \begin{answer}
-        Delete line 3.
+        The issue is on line 6. This line overwrites the list the element, things are getting overwritten and the contains method will break. Change 
+\begin{lstlisting}
+self.table[self.bad_hash(element)] = element 
+\end{lstlisting} to 
+\begin{lstlisting}
+self.table[self.bad_hash(element)].append(element)
+\end{lstlisting}
 
-        Line 4 should be d = [list() for x in range(3)]
         \end{answer}
 
     \item Draw the table of the properly behaving hash function.
         
         \begin{answer}
-            \begin{tabular}{l | r}
-    
-        	i & d[i] \\ \hline
-            0 & ['curling','now'] \\ 
-            1 & ['cool'] \\
-            2 & ['is'] \\
-    
-    	    \end{tabular}
-        \end{answer}
+        [['wrestled', 'bear', 'once'],
+        ['I', 'a'],
+        [],
+    []]
+    \end{answer}
+\item Assuming that this hashtable will only be used on strings, is the hashing function being used a good one? Why or why not?
+    \begin{answer}
+        No, it ignores the fact that most english words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
+    \end{answer}
     \end{enumerate}
 
 
