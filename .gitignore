@@ -4,3 +4,5 @@
 *.dvi
 *.pyc
 *.*~
+*.class
+*.pyc
