@@ -21,5 +21,5 @@ class WonkyHashTable():
         return st
 
 htable = WonkyHashTable()
-for elm in ['I', 'wrestled', 'a', 'bear', 'once']:
+for elm in 'I wrestled a bear once'.split():
     htable.add_element(elm)

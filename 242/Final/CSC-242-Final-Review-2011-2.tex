@@ -426,9 +426,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       n'th number in the Fibonacci sequence from a solution given earlier in
       the quarter, we notice that there is a lot of extra work being done.
 
-      \marginpar{\small\em You can safely ignore the things mentioning
-      `ftrace': those are just there to make drawing the call graph easy.}
-      \lstinputlisting{naive_fibonacci.py}
+      \lstinputlisting{code/naive_fibonacci.py}
 
 \begin{verbatim}
 >>> fib(4)
@@ -456,10 +454,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       duplicate work.
 
     \begin{answer}
-    \marginpar{\small\em Note the approach to default assignment for the table:
-    if table was set to [0,1] in the parameter list, we would be modifying it
-    globally whenever we appended to it.}
-    \lstinputlisting{memoized_fibonacci.py}
+    \lstinputlisting{code/memoized_fibonacci.py}
 \begin{verbatim}
 >>> fib(4)
     0 fib( (4,) {} )

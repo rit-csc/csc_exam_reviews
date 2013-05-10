@@ -1,5 +1,3 @@
-from ftrace import ftrace
-@ftrace
 def fib(n, table=None):
     """Compute the n'th number in the Fibonacci sequence."""
     if table == None:
