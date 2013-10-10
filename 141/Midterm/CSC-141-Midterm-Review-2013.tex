@@ -309,29 +309,78 @@ You will be writing a function to satisfy both of their desires.
 \begin{enumerate}
 \item
 Write a \texttt{strhead()} function, which takes a string and returns the character in the first index of the string.
-
+\begin{answer}
+\begin{lstlisting}
+def strHead(str):
+    return str[0]
+\end{lstlisting}
+\end{answer}
 \item
 Write a \texttt{strtail()} function, which takes a string and returns everything in the string except for the first index of the string (everything after the head).
-
+\begin{answer}
+\begin{lstlisting}
+def strTail(str):
+    return str[1:]
+\end{lstlisting}
+\end{answer}
 \item
 \label{tailrecursive}
 Write a tail recursive function \texttt{coRec}, which takes a string and a character and returns the number of times the character appears in the string.
 For example, \texttt{coRec("Eric is enjoying the weather.", 'i')} should return \texttt{3}.
 Do not use the \texttt{len()} function.
+\begin{answer}
+\begin{lstlisting}
+def coRec(str,char):
+    if(str==''):
+        return 0
+    if(strHead(str)==char):
+        return 1+coRec(strTail(str),char)
+    else:
+        return coRec(strTail(string),char)
+\end{lstlisting}
+\end{answer}
 
 \item
 \label{iterative}
 Write a iterative function \texttt{rmIter}, which takes the same parameters above and returns the string with all instances of the character removed.
 For example, \texttt{rmIter("Chris has hats.", 'a')} should return \texttt{"Chris hs hts."}
+\begin{answer}
+\begin{lstlisting}
+def rmIter(str,char):
+    newString = ''
+    for i in range(0,len(str)):
+        if(str[i]!=char):
+            newString=newString + str[i]
+    return newString
+\end{lstlisting}
+\end{answer}
 
 \item
 \label{iternum}
 Write an iterative function (using a for/while loop, etc.) \texttt{rmNco}, which takes a string and a character, removes all instances of the character in the string, prints the resulting string, and lastly returns the number of times a character was removed.
 You may use the \texttt{len()} function.
 For example, \texttt{rmNco("We collectively enjoy things", 'o')} prints \texttt{"We cllectively enjy things"}, and returns \texttt{2}.
+\begin{answer}
+\begin{lstlisting}
+def rmNco(str,char):
+    count = 0
+    endString = ''
+    for i in range(0,len(str)):
+        if(str[i]!=char):
+            endString=endString+str[i]
+        else:
+            count++
+    print(endString)
+    return count
+\end{lstlisting}
+\end{answer}
 
 \item
 What are the complexity of the functions you wrote for parts \ref{tailrecursive}, \ref{iterative}, and \ref{iternum}?
+\begin{answer}
+
+All three functions run in O(N\textsuperscript{2}) time
+\end{answer}
 \end{enumerate}
 
  \end{enumerate}
