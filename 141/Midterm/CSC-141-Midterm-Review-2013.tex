@@ -272,5 +272,39 @@ def compress( string ):
     return new
 \end{lstlisting}
 \end{answer}
+
+\item
+Raymond and Connor have an issue.
+Raymond is a sadist and loves destroying or changing strings.
+Connor, on the other hand, loves keeping a count of things.
+You will be writing a function to satisfy both of their desires.
+\begin{enumerate}
+\item
+Write a \texttt{strhead()} function, which takes a string and returns the character in the first index of the string.
+
+\item
+Write a \texttt{strtail()} function, which takes a string and returns everything in the string except for the first index of the string (everything after the head).
+
+\item
+\label{tailrecursive}
+Write a tail recursive function \texttt{coRec}, which takes a string and a character and returns the number of times the character appears in the string.
+For example, \texttt{coRec("Eric is enjoying the weather.", 'i')} should return \texttt{3}.
+Do not use the \texttt{len()} function.
+
+\item
+\label{iterative}
+Write a iterative function \texttt{rmIter}, which takes the same parameters above and returns the string with all instances of the character removed.
+For example, \texttt{rmIter("Chris has hats.", 'a')} should return \texttt{"Chris hs hts."}
+
+\item
+\label{iternum}
+Write an iterative function (using a for/while loop, etc.) \texttt{rmNco}, which takes a string and a character, removes all instances of the character in the string, prints the resulting string, and lastly returns the number of times a character was removed.
+You may use the \texttt{len()} function.
+For example, \texttt{rmNco("We collectively enjoy things", 'o')} prints \texttt{"We cllectively enjy things"}, and returns \texttt{2}.
+
+\item
+What are the complexity of the functions you wrote for parts \ref{tailrecursive}, \ref{iterative}, and \ref{iternum}?
+\end{enumerate}
+
  \end{enumerate}
 \end{document}
