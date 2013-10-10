@@ -273,6 +273,34 @@ def compress( string ):
 \end{lstlisting}
 \end{answer}
 
+\newpage
+\item Below is python code for a function that performs an insertion sort
+    and prints ``data'' after each iteration of the for-loop.
+\begin{lstlisting}
+def insertion_sort( data ):
+    for marker in range( 1, len( data ) ):
+        val = data[marker]
+        i = marker
+        while i > 0 and data[i-1] > val:
+            data[i] = data[i-1]
+            i -= 1
+        data[i] = val
+        print( data )
+\end{lstlisting}
+        Write out what the function will print for the input list: [3,2,7,1].
+\begin{answer}
+\begin{lstlisting}
+[2,3,7,1]
+[2,3,7,1]
+[1,2,3,7]
+\end{lstlisting}
+\end{answer}
+\item What is the time complexity on the previous sorting algorithm? 
+\begin{answer}
+
+O(N\textsuperscript{2}) 
+\end{answer}
+
 \item
 Raymond and Connor have an issue.
 Raymond is a sadist and loves destroying or changing strings.
