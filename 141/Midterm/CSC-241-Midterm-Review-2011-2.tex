@@ -51,6 +51,7 @@ def reverse( string ):
     \begin{lstlisting}
     reverse('Cinco-fone')
     \end{lstlisting}
+
 %\needspace{15\baselineskip}
 
 \begin{answer}
@@ -247,7 +248,7 @@ print( n )
     \begin{answer}
         -40
     \end{answer}
-
+\pagebreak
 \item Write a function which performs a basic string compression, which uses counts of repeated characters. For example 
 the string $abbbccccaaa$ would be compressed to: $a1b3c4a3$. 
  \emph{Assume a function len( str ) which returns the length of a string is provided. \\
@@ -272,6 +273,14 @@ def compress( string ):
     return new
 \end{lstlisting}
 \end{answer}
+
+\item Write a Python function, given a list, returns a Python
+    list of all of the elements which are in the list more than once. (eg.
+    $[1, 2, 2, 3, 3, 3]$ would return [2,3,3] )
+        \vspace{3in}
+    \item If your solution to (3) was iterative, write it recursively; if it
+    was recursive, write it iteratively.
+
 \newpage
 \item Below is python code for a function that performs an insertion sort
     and prints ``data'' after each iteration of the for-loop.
@@ -297,5 +306,6 @@ def insertion_sort( data ):
 \end{lstlisting}
 \end{answer}
 \item What is the time complexity on the previous sorting algorithm?
+
  \end{enumerate}
 \end{document}
