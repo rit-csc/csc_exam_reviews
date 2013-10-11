@@ -6,7 +6,7 @@
 \usepackage{color}
 \usepackage{ifthen}
 \usepackage{graphicx}
-
+\usepackage{csc}
 
 \lstset{ %
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -27,11 +27,18 @@ language=Python
     \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{red}}{}
 }
 
-
+\title{CS-141 Midterm Exam Review}
 \author{Computer Science Community}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
 
 \begin{document}
-\noindent{\Large CS-141 Midterm Exam Review \hfill \today}
+\header
 
 \begin{enumerate}
     \item\label{reverse()} Write a function which reverses a string (e.g. ``Don't
