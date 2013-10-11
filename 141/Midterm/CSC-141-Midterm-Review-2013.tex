@@ -76,6 +76,31 @@ reverse('e') + 'n' + 'o' + 'f' + '-'  + 'o'  + 'c' + 'n'  + 'i' + 'C'
 'enof-ocniC'
 \end{lstlisting}
 \end{answer}
+
+ \item What does the following evaluate to?
+    \begin{lstlisting}
+def writeThatDown( n ):
+    if n < 5:
+        return n
+    return (2 * n)
+
+def he( n ):
+    temp = n + 180
+    if temp > 185:
+        return temp
+    return n
+
+def putstheFernback( n ):
+    return -n
+
+n = 20
+n = he(putstheFernback(writeThatDown( n ) ) )
+print( n )
+    \end{lstlisting}
+    \begin{answer}
+        -40
+    \end{answer}
+
 \pagebreak
     \item Define a function that takes an input string and rotates the sequence
         of letters in each word by n. For example: shift\_left(``DEADBEEF'', 3)
@@ -319,43 +344,9 @@ def rmNco(str,char):
 What are the complexity of the functions you wrote for parts \ref{tailrecursive}, \ref{iterative}, and \ref{iternum}?
 \begin{answer}
 
-All three functions run in O(N) time
+All three functions run in O(N) time \\
 \end{answer}
 \end{enumerate}
-
-\newpage
-
-\item Below is Python code for a function that performs an insertion sort
-    and prints \texttt{data} after each iteration of the \texttt{for} loop.
-\begin{lstlisting}
-def insertion_sort( data ):
-    for marker in range( 1, len( data ) ):
-        val = data[marker]
-        i = marker
-        while i > 0 and data[i-1] > val:
-            data[i] = data[i-1]
-            i -= 1
-        data[i] = val
-        print( data )
-\end{lstlisting}
-\begin{enumerate}
-\item
-Write out what the function will print for the input list: [3,2,7,1].
-\begin{answer}
-\begin{lstlisting}
-[2,3,7,1]
-[2,3,7,1]
-[1,2,3,7]
-\end{lstlisting}
-\end{answer}
-
-\item What is the sort algorithm's time complexity?
-\begin{answer}
-
-O(N\textsuperscript{2})
-\end{answer}
-\end{enumerate}
-
 
 \item Write a function which performs a basic string compression, which uses counts of repeated characters. For example 
 the string $abbbccccaaa$ would be compressed to: $a1b3c4a3$. 
@@ -381,6 +372,9 @@ def compress( string ):
     return new
 \end{lstlisting}
 \end{answer}
+
+\newpage
+
 
 \newpage
 \item
@@ -494,29 +488,36 @@ print(best.name, best.age, best.fastestTime)
 
 \newpage
 
- \item What does the following evaluate to?
-    \begin{lstlisting}
-def writeThatDown( n ):
-    if n < 5:
-        return n
-    return (2 * n)
+\item Below is Python code for a function that performs an insertion sort
+    and prints \texttt{data} after each iteration of the \texttt{for} loop.
+\begin{lstlisting}
+def insertion_sort( data ):
+    for marker in range( 1, len( data ) ):
+        val = data[marker]
+        i = marker
+        while i > 0 and data[i-1] > val:
+            data[i] = data[i-1]
+            i -= 1
+        data[i] = val
+        print( data )
+\end{lstlisting}
+\begin{enumerate}
+\item
+Write out what the function will print for the input list: [3,2,7,1].
+\begin{answer}
+\begin{lstlisting}
+[2,3,7,1]
+[2,3,7,1]
+[1,2,3,7]
+\end{lstlisting}
+\end{answer}
 
-def he( n ):
-    temp = n + 180
-    if temp > 185:
-        return temp
-    return n
+\item What is the sort algorithm's time complexity?
+\begin{answer}
 
-def putstheFernback( n ):
-    return -n
-
-n = 20
-n = he(putstheFernback(writeThatDown( n ) ) )
-print( n )
-    \end{lstlisting}
-    \begin{answer}
-        -40
-    \end{answer}
+O(N\textsuperscript{2})
+\end{answer}
+\end{enumerate}
 
 \item
 \textbf{Greedy algorithms.}
