@@ -390,17 +390,22 @@ O(N\textsuperscript{2})
 
 \newpage
 \item
+Sally is being plagued by an army of lookalike suiters, each of which presents her with an enticing but unbearable meal upon arrival.
+The dishes all smell amazing, however, so she can't help but try each one.
+A dish will never fail to disappoint her, but fortunately, some of the suiters shared recipes and created identical concoctions.
+Once Sally tastes a meal once, she can immediately smell out instances of the same dish and send their bearers away.
+\begin{enumerate}
+\item
 \label{listdupes}
-Write a Python function that, given a Python list, returns a list of all of the elements which are in the list more than once. (e.g.
-    $[1, 2, 2, 3, 3, 3]$ would return [2,3,3] )
+Write a Python function that, given a list of ``dishes,'' returns a list of the rejected dishes in the order they failed to fool her. (e.g. $[1, 2, 2, 3, 3, 3]$ would return [2,3,3] )
 \begin{answer}
 \begin{lstlisting}
 def find_dupes(lst):
 	result=[]
-	seen=set()
+	seen=[]
 	for member in lst:
 		if member not in seen:
-			seen.add(member)
+			seen.append(member)
 		else:
 			result.append(member)
 	return result
@@ -411,26 +416,36 @@ def find_dupes(lst):
 If your solution to \ref{listdupes} was iterative, write it recursively; if it was recursive, write it iteratively.
 \begin{answer}
 \begin{lstlisting}
-def find_recur(lst):
+def find_recur(lst, seen=[]):
 	if len(lst)==0:
 		return []
 	if lst[0] not in seen:
-		seen.add(lst[0])
-		return find_recursive(lst[1:], seen)
-	return [lst[0]]+find_recursive(lst[1:], seen)
+		seen.append(lst[0])
+		return find_recur(lst[1:], seen)
+	return [lst[0]]+find_recur(lst[1:], seen)
 \end{lstlisting}
 \textit{or}
 \begin{lstlisting}
-def find_tail(lst, result=[], seen=set()):
+def find_tail(lst, result=[], seen=[]):
 	if len(lst)==0:
 		return result
 	if lst[0] not in seen:
-		seen.add(lst[0])
+		seen.append(lst[0])
 	else:
 		result.append(lst[0])
 	return find_tail(lst[1:], result, seen)
 \end{lstlisting}
 \end{answer}
+
+\item
+What is the time complexity of your approach?
+Why? \\
+
+\begin{answer}
+$O(N^2)$, since the \texttt{seen} list must be searched linearly
+\end{answer}
+
+\end{enumerate}
 
 \end{enumerate}
 \end{document}
