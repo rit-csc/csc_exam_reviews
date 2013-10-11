@@ -409,6 +409,28 @@ def find_dupes(lst):
 
 \item
 If your solution to \ref{listdupes} was iterative, write it recursively; if it was recursive, write it iteratively.
+\begin{answer}
+\begin{lstlisting}
+def find_recur(lst):
+	if len(lst)==0:
+		return []
+	if lst[0] not in seen:
+		seen.add(lst[0])
+		return find_recursive(lst[1:], seen)
+	return [lst[0]]+find_recursive(lst[1:], seen)
+\end{lstlisting}
+\textit{or}
+\begin{lstlisting}
+def find_tail(lst, result=[], seen=set()):
+	if len(lst)==0:
+		return result
+	if lst[0] not in seen:
+		seen.add(lst[0])
+	else:
+		result.append(lst[0])
+	return find_tail(lst[1:], result, seen)
+\end{lstlisting}
+\end{answer}
 
 \end{enumerate}
 \end{document}
