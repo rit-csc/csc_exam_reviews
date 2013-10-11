@@ -293,13 +293,13 @@ For example, \texttt{coRec("Eric is enjoying the weather.", 'i')} should return 
 Do not use the \texttt{len()} function.
 \begin{answer}
 \begin{lstlisting}
-def coRec(str,char):
-    if(str==''):
-        return 0
-    if(strHead(str)==char):
-        return 1+coRec(strTail(str),char)
+def coRec(string,char,counter=0):
+    if(string==''):
+        return counter
+    if(strHead(string)==char):
+        return coRec(strTail(string),char,counter+1)
     else:
-        return coRec(strTail(string),char)
+        return coRec(strTail(string),char,counter)
 \end{lstlisting}
 \end{answer}
 
