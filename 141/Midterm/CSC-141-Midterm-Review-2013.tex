@@ -495,8 +495,18 @@ best = aWinnerIsYou(runners)
 print(best.name, best.age, best.fastestTime)
 \end{lstlisting}
 \end{answer}
-
 \end{enumerate}
+
+\item
+In the game Black and White, the player is faced with a row of identical double-sided chips.
+You can probably guess what colors the two sides of each chip are.
+The objective is to flip as many chips as necessary so their exposed colors match that of a target pattern. \\
+The catch?
+Reordering the chips is said to be Impossible by those who seem to know what they're talking about. \\
+The \textit{real} catch?
+Flipping a group of consecutive tiles can be accomplished in a single ``action.'' \\
+If every flip takes one ``action,'' write a function \texttt{bwMoves} that, given a starting pattern and target pattern as strings, returns the minimum number of actions required to get them to match?
+For instance, \texttt{bwMoves( 'BBWBBWBBBB', 'WWWWWBBWWB' )} should return 3.
 
 \end{enumerate}
 \end{document}
