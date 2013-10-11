@@ -393,9 +393,22 @@ O(N\textsuperscript{2})
 \label{listdupes}
 Write a Python function that, given a Python list, returns a list of all of the elements which are in the list more than once. (e.g.
     $[1, 2, 2, 3, 3, 3]$ would return [2,3,3] )
-        \vspace{3in}
-    \item If your solution to \ref{listdupes} was iterative, write it recursively; if it
-    was recursive, write it iteratively.
+\begin{answer}
+\begin{lstlisting}
+def find_dupes(lst):
+	result=[]
+	seen=set()
+	for member in lst:
+		if member not in seen:
+			seen.add(member)
+		else:
+			result.append(member)
+	return result
+\end{lstlisting}
+\end{answer}
 
- \end{enumerate}
+\item
+If your solution to \ref{listdupes} was iterative, write it recursively; if it was recursive, write it iteratively.
+
+\end{enumerate}
 \end{document}
