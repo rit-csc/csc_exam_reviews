@@ -224,56 +224,10 @@ def sumIt( numbers ):
       \end{lstlisting}
      \end{answer}
 
-    \item What does the following evaluate to?
-    \begin{lstlisting}
-def writeThatDown( n ):
-    if n < 5:
-        return n
-    return (2 * n)
 
-def he( n ):
-    temp = n + 180
-    if temp > 185:
-        return temp
-    return n
 
-def putstheFernback( n ):
-    return -n
 
-n = 20
-n = he(putstheFernback(writeThatDown( n ) ) )
-print( n )
-    \end{lstlisting}
-    \begin{answer}
-        -40
-    \end{answer}
 
-\item Write a function which performs a basic string compression, which uses counts of repeated characters. For example 
-the string $abbbccccaaa$ would be compressed to: $a1b3c4a3$. 
- \emph{Assume a function len( str ) which returns the length of a string is provided. \\
-      assume a function int( str ) which, given a string representation of an integer, returns its integer value. \\
-      Assume a function str( int ) which, given an integer, returns the string representation of this integer, is provided. }
-
-\begin{answer}
-\begin{lstlisting}
-def compress( string ):
-    new = ''
-    curChar = string[0]
-    count = 0
-    for char in string:
-        if char == curChar:
-            count += 1
-        else:
-            new = new + curChar + str(count)
-            curChar = char
-            count = 1 
-
-    new = new + curChar + str(count)
-    return new
-\end{lstlisting}
-\end{answer}
-
-\newpage
 \item
 Raymond and Connor have an issue.
 Raymond is a sadist and loves destroying or changing strings.
@@ -288,6 +242,7 @@ def strHead(str):
     return str[0]
 \end{lstlisting}
 \end{answer}
+
 \item
 Write a \texttt{strtail()} function, which takes a string and returns everything in the string except for the first index of the string (everything after the head).
 \begin{answer}
@@ -298,6 +253,8 @@ def strTail(str):
 \end{answer}
 \item
 \label{tailrecursive}
+
+\item
 Write a tail recursive function \texttt{coRec}, which takes a string and a character and returns the number of times the character appears in the string.
 For example, \texttt{coRec("Eric is enjoying the weather.", 'i')} should return \texttt{3}.
 Do not use the \texttt{len()} function.
@@ -328,7 +285,10 @@ def rmIter(str,char):
 \end{lstlisting}
 \end{answer}
 
+
 \newpage
+
+
 \item
 \label{iternum}
 Write an iterative function (using a for/while loop, etc.) \texttt{rmNco}, which takes a string and a character, removes all instances of the character in the string, prints the resulting string, and lastly returns the number of times a character was removed.
@@ -356,6 +316,8 @@ What are the complexity of the functions you wrote for parts \ref{tailrecursive}
 All three functions run in O(N) time
 \end{answer}
 \end{enumerate}
+
+\newpage
 
 \item Below is Python code for a function that performs an insertion sort
     and prints \texttt{data} after each iteration of the \texttt{for} loop.
@@ -387,6 +349,32 @@ Write out what the function will print for the input list: [3,2,7,1].
 O(N\textsuperscript{2})
 \end{answer}
 \end{enumerate}
+
+
+\item Write a function which performs a basic string compression, which uses counts of repeated characters. For example 
+the string $abbbccccaaa$ would be compressed to: $a1b3c4a3$. 
+ \emph{Assume a function len( str ) which returns the length of a string is provided. \\
+      assume a function int( str ) which, given a string representation of an integer, returns its integer value. \\
+      Assume a function str( int ) which, given an integer, returns the string representation of this integer, is provided. }
+
+\begin{answer}
+\begin{lstlisting}
+def compress( string ):
+    new = ''
+    curChar = string[0]
+    count = 0
+    for char in string:
+        if char == curChar:
+            count += 1
+        else:
+            new = new + curChar + str(count)
+            curChar = char
+            count = 1 
+
+    new = new + curChar + str(count)
+    return new
+\end{lstlisting}
+\end{answer}
 
 \newpage
 \item
@@ -497,6 +485,32 @@ print(best.name, best.age, best.fastestTime)
 \end{lstlisting}
 \end{answer}
 \end{enumerate}
+
+\newpage
+
+ \item What does the following evaluate to?
+    \begin{lstlisting}
+def writeThatDown( n ):
+    if n < 5:
+        return n
+    return (2 * n)
+
+def he( n ):
+    temp = n + 180
+    if temp > 185:
+        return temp
+    return n
+
+def putstheFernback( n ):
+    return -n
+
+n = 20
+n = he(putstheFernback(writeThatDown( n ) ) )
+print( n )
+    \end{lstlisting}
+    \begin{answer}
+        -40
+    \end{answer}
 
 \item
 \textbf{Greedy algorithms.}
