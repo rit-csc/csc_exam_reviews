@@ -41,8 +41,8 @@ language=Python
 \header
 
 \begin{enumerate}
-    \item\label{reverse()} Write a function which reverses a string (e.g. ``Don't
-        get sick'' becomes ``kcis teg t'noD'').
+    \item\label{reverse()} Write a recursive function that reverses a string (e.g. ``Don't
+        get sick'' yields ``kcis teg t'noD'').
 
 \begin{answer}
 \begin{lstlisting}
@@ -52,6 +52,7 @@ def reverse( string ):
     else:
         return reverse( string[1:] ) + string[0]
 \end{lstlisting}
+Other solutions are possible.
 \end{answer}
 
     \item Perform a substitution trace on 
