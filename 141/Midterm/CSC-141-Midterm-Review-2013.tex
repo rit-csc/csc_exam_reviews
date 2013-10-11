@@ -475,7 +475,7 @@ def makeRunner(r_name,r_age,r_fastestTime):
 \end{answer}
 
 \item The glorious leader has decided that, on this day, no runner named \texttt{Joe} may win
-gold. Given a list of track runner objects, write the function \texttt{aWinnerIsYou(r)} that finds the runner in the list \texttt{r} with the fastest time who's name is not Joe. 
+gold. Given a list of \texttt{TrackRunner} objects, write the function \texttt{aWinnerIsYou(r)} that finds the runner in the list \texttt{r} with the fastest time who's name is not Joe. 
 Then print the runner's name, age and time.
 \begin{lstlisting}
 
@@ -484,14 +484,15 @@ Then print the runner's name, age and time.
 \begin{lstlisting}
 def aWinnerIsYou(r):
     best = None
-    for i in range(len(runners)):
+    for i in range(len(r)):
         if r[i].name != 'Joe':
             if best == None:
                 best = r[i]
             elif best.fastestTime > r[i].fastestTime:
                 best = r[i]
     return best
-best = aWinnerIsYou(runners)
+
+best = aWinnerIsYou(runnersLst)
 print(best.name, best.age, best.fastestTime)
 \end{lstlisting}
 \end{answer}
