@@ -357,8 +357,8 @@ All three functions run in O(N) time
 \end{answer}
 \end{enumerate}
 
-\item Below is python code for a function that performs an insertion sort
-    and prints ``data'' after each iteration of the for-loop.
+\item Below is Python code for a function that performs an insertion sort
+    and prints \texttt{data} after each iteration of the \texttt{for} loop.
 \begin{lstlisting}
 def insertion_sort( data ):
     for marker in range( 1, len( data ) ):
@@ -370,7 +370,9 @@ def insertion_sort( data ):
         data[i] = val
         print( data )
 \end{lstlisting}
-        Write out what the function will print for the input list: [3,2,7,1].
+\begin{enumerate}
+\item
+Write out what the function will print for the input list: [3,2,7,1].
 \begin{answer}
 \begin{lstlisting}
 [2,3,7,1]
@@ -385,11 +387,12 @@ O(N\textsuperscript{2})
 \end{answer}
 
 \newpage
-\item Write a Python function, given a list, returns a Python
-    list of all of the elements which are in the list more than once. (eg.
+\item
+\label{listdupes}
+Write a Python function that, given a Python list, returns a list of all of the elements which are in the list more than once. (e.g.
     $[1, 2, 2, 3, 3, 3]$ would return [2,3,3] )
         \vspace{3in}
-    \item If your solution to (3) was iterative, write it recursively; if it
+    \item If your solution to \ref{listdupes} was iterative, write it recursively; if it
     was recursive, write it iteratively.
 
  \end{enumerate}
