@@ -70,7 +70,9 @@ language=Python
     \begin{answer}
     A constant may never change during run time (it may be set {\em once}).
 
-    public static {\bf final} int NUM_PEOPLE_WHO_LIKE_JAVA = 0;
+		\begin{lstlisting}
+public static final int NUM_PEOPLE_WHO_LIKE_JAVA = 0;
+		\end{lstlisting}
     \end{answer}
 
 \item What is the difference between overriding and overloading methods?  Give a example situation where each should be used.
@@ -89,16 +91,16 @@ language=Python
         \begin{answer}
         Polymorphism: the ability to create an object of more than one type. References and collections of a super class may hold instances of subclasses. Methods invoked on these objects determine the correct (type specific) behavior at runtime. \\
         EX: \\
-        \begin{verbatim}
-		ArrayList<Shape> shapes = new ArrayList<Shape>();
-        shapes[0] = new Square(1);
-        shapes[1] = new Circle(9);
-        shapes[2] = new Triangle(4);
-        for( int i = 0; i < shapes.size(); i++ ){ 
-        	double area = shapes[i].getArea();
-        	System.out.println("" + area);
-        }
-        \end{verbatim}
+		\begin{lstlisting}
+ArrayList<Shape> shapes = new ArrayList<Shape>();
+shapes[0] = new Square(1);
+shapes[1] = new Circle(9);
+shapes[2] = new Triangle(4);
+for( int i = 0; i < shapes.size(); i++ ){ 
+   	double area = shapes[i].getArea();
+   	System.out.println("" + area);
+}
+        \end{lstlisting}
         \end{answer}
 
 \item What is the difference between an abstract class and an interface? Why might you want to use an interface over an abstract class?
