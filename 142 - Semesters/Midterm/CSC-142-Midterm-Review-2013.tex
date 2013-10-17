@@ -1,0 +1,257 @@
+% Author: David Larsen <dcl9934@cs.rit.edu>
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage{needspace}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{csc}
+
+\lstset{ %
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Python
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{white}}{}
+}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{red}}{}
+}
+
+\title{CS-142 Midterm Exam Review}
+\author{Computer Science Community}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document}
+\header
+\begin{enumerate}
+
+\item Why can we not use {\tt ==} to determine if two strings are equivalent?
+
+    \begin{answer}
+    {\tt ==} will check to see if two objects are the exact same object. If we
+    want to compare objects by meaning, they'll have to implement the {\tt
+    Comparable} interface, which declares the {\tt equals} method. For strings
+    we could say {\tt ``yes''.equals(``yes'')}.
+    \end{answer}
+
+\item If an instance variable is declared with {\tt protected} access, who can
+      access it?
+
+    \begin{answer}
+    Methods in that class and methods in all of its subclasses.
+    \end{answer}
+
+\item What is the difference between a class and an object?
+
+    \begin{answer}
+    A class is a construct that defines methods and properties - it can be viewed as a template. An objects are instances of that class. Think of classes as molds and objects as individual things created by those molds.
+    \end{answer}
+
+\item What is the difference between a constants and normal variables? Give an
+      example of a constant declaration.
+
+    \begin{answer}
+    A constant may never change during run time (it may be set {\em once}).
+
+    public static {\bf final} int numberOfPeopleWhoLikeJava = 0;
+    \end{answer}
+
+\item What is the difference between overriding and overloading methods?  Give a example situation where each should be used.
+
+	\begin{answer}
+	Overriding: method with the exact same method declaration as a method in a superclass; overwrites and/or extends the functionality of the super() method
+	Overloading: 2 or more methods with the same name and return type that either:
+		\begin{enumerate}
+		\item have a different number of parameters\\ \textbf{OR}
+		\item have parameters of different types
+		\end{enumerate}
+	\end{answer}
+
+\item Define polymorphism and explain a situation in which you would use it.
+
+        \begin{answer}
+        Polymorphism: the ability to create an object of more than one type. References and collections of a super class may hold instances of subclasses. Methods invoked on these objects determine the correct (type specific) behavior at runtime. \\
+        EX: \\
+        \begin{verbatim}
+		ArrayList<Shape> shapes = new ArrayList<Shape>();
+        shapes[0] = new Square(1);
+        shapes[1] = new Circle(9);
+        shapes[2] = new Triangle(4);
+        for( int i = 0; i < shapes.size(); i++ ){ 
+        	double area = shapes[i].getArea();
+        	System.out.println("" + area);
+        }
+        \end{verbatim}
+        \end{answer}
+
+\item What is the difference between an abstract class and an interface? Why
+      might you want to use an interface over an abstract class?
+
+      \begin{answer}
+    Abstract classes allow for default method behavior to be defined, while interfaces allow only method declaration. Since java allows a class to extend only a single class but implement many interfaces, interfaces provide some extended capabilities. However, extending an abstract class allows usage of the defined default behaviors. 
+     \end{answer}
+
+\newpage
+\item What gets printed by the following code?
+\begin{lstlisting}
+public class Class1 {
+	public Class1() {
+		System.out.println( "Class1()" );
+	}
+	public void print1() {
+		System.out.println( "Class1.print1()" );
+	}
+	public void print2() {
+		System.out.println("Class1.print2()" );
+	}
+}
+
+public class Class2 extends Class1 {
+	public Class2() {
+		System.out.println( "Class2()" );
+	}
+	public void print1() {
+		System.out.println("Class2.print1()");
+	}
+}
+
+public class Class3 extends Class1{
+	private Class2 class2;
+	public Class3() {
+		System.out.println( "Class3()" );
+		class2 = new Class2();
+	}
+	public void print1() {
+		class2.print1();
+	}
+	public void print2(){
+		System.out.println("Class3.print2()");
+		super.print2();
+	}
+}
+
+public class TestClass {
+	public static void main( String[] args ) {
+		Class1 c1 = new Class2();
+		c1.print1();
+		c1.print2();
+
+		System.out.println();
+		Class1 c2 = new Class3();
+		c2.print1();
+		c2.print2();
+	}
+}
+\end{lstlisting}
+    
+    \begin{answer}
+    \begin{verbatim}
+	Class1()
+	Class2()
+	Class2.print1()
+	Class1.print2()
+	
+	Class1()
+	Class3()
+	Class1()
+	Class2()
+	Class2.print1()
+	Class3.print2()
+	Class1.print2()
+    \end{verbatim}
+    \end{answer}
+    
+\newpage
+\item Find at least 3 errors related to inheritance and interfaces in the
+      following code:\label{demolition-derby}
+\begin{lstlisting}
+public interface Vehicle {
+	public int getSpeed();
+	public void accelerate(int speed_increase);
+	public void brake(int speed_decrease);
+}
+public class Car implements Vehicle {
+	private int speed;
+	public Car(int initialSpeed){
+		this.speed = initialSpeed;
+	}
+	public int getSpeed(){
+		return speed;
+	}
+	public int accelerate(int speed_increase) {
+		speed += speed_increase;
+	}
+	public int brake(int speed_decrease) {
+		speed -= speed_decrease;
+	}
+}
+public class Toyota extends Car {
+	public long getSpeed(){
+		return speed;
+	}
+	public void brake(Integer speed_decrease) {}
+	public void factoryRecall(){
+		System.out.println("Replace my floor mat!");
+	}
+}
+public class Truck implements Vehicle {
+	public void accelerate(int speed_increase) {
+		super.accelerate(speed_increase/2);
+	}
+	public void brake(int speed_decrease) {
+		super.brake(speed_decrease/2);
+	}
+}
+public class demolitonDerby {
+	public static void main(String[] args) {
+		Vechicle	prius, mack, impreza;
+		prius = new Toyota();
+		mack = new Truck();
+		impreza = new Car();
+		
+		impreza.accelerate(5);
+		prius.brake(2);
+		prius.factoryRecall();
+		prius.accelerate(impreza.getSpeed());
+		mack.accelerate(5.0);
+	}
+\end{lstlisting}
+
+    \begin{answer}
+    \begin{tabular}{r l} % TODO Fix some answers here
+    Line \# & Error \\\hline
+    14  	& Returns int, should return void\\
+    17  	& Returns int, should return void\\
+    22  	& getSpeed()'s return type ({\tt long}) differs from Car or Vehicle.\\
+    23  	& speed is private.\\
+    25,46	& Calling brake() on Toyotas will call the superclass's brake()\\
+    30  	& Truck implements vehicle, but does not have getSpeed()\\
+    32  	& Can't call super(), this has no superclass.\\
+    33  	& Can't call super(), this has no superclass.\\
+    47  	& {\tt prius} was declared as a {\tt Vehicle}, so we can't call\\
+    ~  		& methods that aren't declared in {\tt Vehicle}.\\
+    49  	& FIXME I don't think it's legal to pass a double to an int without casting.
+    \end{tabular}
+    \end{answer}
+
+
+
+
+\end{enumerate}
+\end{document}
