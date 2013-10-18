@@ -70,7 +70,7 @@ public boolean checkString(String a, String b) {
 }
 \end{lstlisting}
 \begin{answer}
-Given the two strings $a$ and $b$, checkString() returns true if both string objects have the same memory address.  That means they are both references to the same thing.  The function does not check to see if the two strings have the same string value.  It is possible for two different strings to have the same value ("hellos") but with different memory addresses (though unlikely since Java strings are immutable and cached by most JVMs).  
+Given the two strings $a$ and $b$, checkString() returns true if both string objects have the same memory address.  That means they are both references to the same thing.  The function does not check to see if the two strings have the same string value.  It is possible for two different strings to have the same value (``hellos'') but with different memory addresses.  
 
 Talk about how, by default, Object's equal() checks memory addresses and can be extended by subclasses to check the objects' attributes.  In Java, it is not possible to override how == works.
 
