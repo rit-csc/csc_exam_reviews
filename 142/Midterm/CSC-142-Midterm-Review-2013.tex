@@ -11,24 +11,27 @@
 \usepackage{tikz}       %
 \usetikzlibrary{shapes} %
 \usepackage{tabularx}   % for helping matchtabular (matching questions)
+\usepackage{textcomp}	% So our quotes in code don't look like shit
 
 \lstset{ %
-basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
 numbers=left,                   % where to put the line-numbers
 stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
 numbersep=5pt,                  % how far the line-numbers are from the code
 showspaces=false,               % show spaces adding particular underscores
 showstringspaces=false,         % underline spaces within strings
 tabsize=4,		                % sets default tabsize to 4 spaces
-language=Python
+language=Java,
+upquote=true,
+columns=fixed
 }
 
 \ifthenelse{\isundefined{\isAnswerKey}}
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{white} \small{Answer:}\large}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{white} \small{Answer:}\large}{}
 }
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{red} \small{Answer:}\large}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{Answer:}\large}{}
 }
 
 % ----- Start matchtabular definition -----
