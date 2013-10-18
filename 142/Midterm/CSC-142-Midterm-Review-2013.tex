@@ -62,6 +62,7 @@ columns=fixed
 \begin{enumerate}
 
 
+
 \item Provide a detailed explaination of what the following code does:
 \begin{lstlisting}
 public boolean checkString(String a, String b) {
@@ -153,7 +154,7 @@ shapes.add(new Triangle(4.0, 5.0));
 // Outputs the correct area of each shape
 for( int i = 0; i < shapes.size(); i++ ){ 
    	double area = shapes.get(i).getArea();
-   	System.out.println("" + area);
+   	System.out.println(area);
 }
         \end{lstlisting}
 \end{answer}
@@ -351,6 +352,7 @@ Heapsort  & Splits its input into two (or three) other lists. One list's element
 \end{answer}
 
 
+
 \item When under what conditions does Quicksort hit it's worst-case time complexity and why? \\
 \begin{answer}
 When the data is (nearly) sorted and you always pick the first pivot (aka when the chosen pivot only and always reduces the list by itself).
@@ -366,6 +368,7 @@ Quicksort splits its input into two lists based on the value of the pivot.  If t
 	[1,2,3,4]
 	\end{verbatim}
 \end{answer}
+
 
 
 \item How can we prevent Quicksort from hitting it's worst-case time complexity? \\
@@ -569,25 +572,25 @@ public class DorothysHashMap {
 
 
 
-\item Judging from her code, was {\tt DorothysHashMap} intended to use Chaining or Open Addressing to handle collisions? How can you tell?
+\item Judging from her code, was {\tt DorothysHashMap} intended to use Chaining or Open Addressing to handle collisions? How can you tell? \\
 \begin{answer}
 Chaining. You can tell because there is a linked list stored in each index of the ArrayList.
 \end{answer}
 
 
 
-\item Assuming that Dorothy was intending to use English words as keys, is the hashing function she wrote a good one? Why or why not?
+\item Assuming that Dorothy was intending to use English words as keys, is the hashing function she wrote a good one? Why or why not? \\
 \begin{answer}
 No, it uses the length of the input string while most English words are roughly the same length (probably less than 50 characters). We should take advantage of the individual values of the characters in the words, not the number of characters.  
 \end{answer}
 
 
 
-\item Dorothy also wrote the stub for the {\tt get()} method but didn't finish it. Complete the rest of it for her.
-{\tt public int get( String key ) \{ }
+\item Dorothy also wrote the stub for the {\tt get()} method but didn't finish it. Complete the rest of it for her. \\
+{\tt public int get( String key ) \{ } \\
 \begin{answer} 
 	\begin{lstlisting}
-int hashIndex = bad_hash( key );
+	int hashIndex = bad_hash( key );
 	// if key is not in table, return null
 	if ( table.get( hashIndex ) == null ) {
 		return null;
