@@ -520,22 +520,22 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {1};
 				\node [draw, ellipse] at (-1,-1) (2) {2};
-				\node [draw, ellipse] at (1, -1) (5) {5};
-				\node [draw, ellipse] at (-2, -2) (3) {3};
+				\node [draw, ellipse] at (1, -1) (5) {3};
+				\node [draw, ellipse] at (-2, -2) (3) {5};
 				\node [draw, ellipse] at (0, -2) (31) {3};
 
 				\path [draw] (1) -- (2) -- (3);
 				\path [draw] (1) -- (5);
 				\path [draw] (2) -- (31);
 			\end{tikzpicture} &
-			[\underline{1}, \underline{2}, \underline{5}, \underline{3}, \underline{3}, 7, 9] \\
+			[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, 7, 9] \\
 
 
 			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {1};
 				\node [draw, ellipse] at (-2,-1) (2) {2};
-				\node [draw, ellipse] at (2, -1) (5) {5};
-				\node [draw, ellipse] at (-3, -2) (3) {3};
+				\node [draw, ellipse] at (2, -1) (5) {3};
+				\node [draw, ellipse] at (-3, -2) (3) {5};
 				\node [draw, ellipse] at (-1, -2) (31) {3};
 				\node [draw, ellipse] at (1, -2) (7) {7};
 
@@ -544,13 +544,13 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 				\path [draw] (2) -- (31);
 				\path [draw] (5) -- (7);
 			\end{tikzpicture} &
-			[\underline{1}, \underline{2}, \underline{5}, \underline{3}, \underline{3}, \underline{7}, 9] \\
+			[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, 9] \\
 
 			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {1};
 				\node [draw, ellipse] at (-2,-1) (2) {2};
-				\node [draw, ellipse] at (2, -1) (5) {5};
-				\node [draw, ellipse] at (-3, -2) (3) {3};
+				\node [draw, ellipse] at (2, -1) (5) {3};
+				\node [draw, ellipse] at (-3, -2) (3) {5};
 				\node [draw, ellipse] at (-1, -2) (31) {3};
 				\node [draw, ellipse] at (1, -2) (7) {7};
 				\node [draw, ellipse] at (3, -2) (9) {9};
@@ -561,7 +561,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 				\path [draw] (5) -- (7);
 				\path [draw] (5) -- (9);
 			\end{tikzpicture} &
-			[\underline{1}, \underline{2}, \underline{5}, \underline{3}, \underline{3}, \underline{7}, \underline{9}] \\
+			[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, \underline{9}] \\
 			\end{longtable}
 
 		Sort: \\
