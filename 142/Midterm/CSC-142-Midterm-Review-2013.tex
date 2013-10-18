@@ -13,6 +13,7 @@
 \usepackage{tabularx}   % for helping matchtabular (matching questions)
 \usepackage{textcomp}	% So our quotes in code don't look like shit
 \usepackage{longtable}
+\usepackage{multicol}
 
 \lstset{ %
 basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
@@ -29,10 +30,10 @@ columns=fixed
 
 \ifthenelse{\isundefined{\isAnswerKey}}
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{white} \small{Answer:}\large}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{white} \small{Answer:}}{}
 }
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{Answer:}\large}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{Answer:}}{}
 }
 
 % ----- Start matchtabular definition -----
@@ -85,7 +86,6 @@ Any class in the same package as the class in which the variable is defined, as 
 \end{answer}
 
 
-
 \item What is the difference between overriding and overloading methods?  Give a example situation where each should be used. \\
 \begin{answer}
 \textbf{Overriding:} method with the exact same method declaration as a method in a superclass; overwrites and/or extends the functionality of the super() method.
@@ -97,7 +97,6 @@ Any class in the same package as the class in which the variable is defined, as 
 	\end{enumerate}
 Override a method when you want to \textit{replace} the implementation of a method in a superclass.  Overload a method (such as a constructor) when you want to have more than one implementation of a method for different circumstances.
 \end{answer}
-
 
 
 \item Explain the differences between:
@@ -165,7 +164,6 @@ for( int i = 0; i < shapes.size(); i++ ){
 \end{answer}
 
 
-
 \item What is the difference between an abstract class and an interface? Why might you want to use an interface over an abstract class? \\
 \begin{answer}
 Abstract classes allow for default method behavior to be defined, while interfaces allow only method declaration.  Since Java allows a class to extend only a single class but implement many interfaces, interfaces provide some extended capabilities. However, extending an abstract class allows usage of the defined default behaviors. 
@@ -176,6 +174,7 @@ Abstract classes allow for default method behavior to be defined, while interfac
 
 
 \item What gets printed by the following code?
+\begin{multicols}{2}
 \begin{lstlisting}
 public class Class1 {
 	public Class1() {
@@ -226,6 +225,7 @@ public class TestClass {
 	}
 }
 \end{lstlisting}
+\columnbreak
 \begin{answer}
     \begin{verbatim}
 Class1()
@@ -242,6 +242,7 @@ Class3.print2()
 Class1.print2()
     \end{verbatim}
 \end{answer}
+\end{multicols}
 
 
 \newpage
@@ -383,9 +384,6 @@ Selecting a random pivot helps encounter the average case and thus evens out the
 
 To guarantee non-worst-case complexity, pick the pivot using median-of-medians.  You'll learn about that in Analysis of Algorithms.
 \end{answer}
-
-
-\pagebreak
 
 
 \item Using list [3,5,1,3,2,7,9], trace through the following algorithms.  Be sure to identify your pivot(s). \\
@@ -664,6 +662,7 @@ The children are at $2i+1$ and $2i+2$. The parent is at $\lfloor\frac{i-1}{2}\rf
 \section*{Hash Maps}
 
 
+\item
 Dorothy started to write her own implementation of a hash map to store {\tt String}s and {\tt int}s, but before she finished she was carried away by flying monkeys who have a strong dislike for fast lookup times. Before her unfortunate departure she was able to write a {\tt LinkedNode} class which has data members {\tt key, value,} and {\tt next}, as well as the following code:
 \begin{lstlisting}
 import java.util.ArrayList;
