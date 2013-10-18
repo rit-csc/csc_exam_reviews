@@ -472,5 +472,90 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
     		[9, 7, 5, 3, 3, 2, 1] \newline
     \end{answer}
 
+\newpage
+\section*{Hash Maps}
+
+Dorothy started to write her own implementation of a hash map to store {\tt String}s and {\tt int}s, but before she finished she was carried away by flying monkeys who have a strong dislike for fast lookup times. Before her unfortunate departure she was able to write a {\tt LinkedNode} class which has data members {\tt key, value,} and {\tt next}, as well as the following code:
+
+\begin{lstlisting}
+import java.util.ArrayList;
+
+public class DorothysHashMap {
+	private ArrayList<LinkedNode> table;
+	private int capacity;
+    
+	DorothysHashMap() {
+		capacity = 100;
+		table = new ArrayList<LinkedNode>(capacity);
+		for (int i=0; i < table.size(); i++) {
+			table.set(i, null);
+		}
+	}
+    
+	private int badHash( String key ) {
+		return key.length() % capacity;
+	}
+    
+	public void put( String key, int value ) {
+		int hashIndex = badHash( key );
+		if ( table.get( hashIndex ) == null ) {
+			LinkedNode newNode = new LinkedNode( key, value, null );
+			table.set( hashIndex, newNode );
+		}
+		else {
+			LinkedNode current = table.get( hashIndex );
+			while ( current.getNext() != null && !current.getKey().equals( key ) ) {
+				current = current.getNext();
+			}
+			if ( current.getKey().equals( key ) ) {
+				current.setValue( value );
+			}
+			else {
+				LinkedNode newNode = new LinkedNode(key, value, null);
+				current.setNext( newNode );
+			}
+		}
+	}
+}
+\end{lstlisting}
+	
+\item Judging from her code, was {\tt DorothysHashMap} intended to use Chaining or Open Addressing to handle collisions? How can you tell?
+	\begin{answer}
+	Chaining. You can tell because there is a linked list stored in each index of the ArrayList
+	\end{answer}
+
+\item Assuming that Dorothy was intending to use English words as keys, is the hashing function she wrote a good one? Why or why not?
+	\begin{answer}
+	No, it uses the length of the input string while most English words are roughly the same length (probably less than 50 characters). We should take advantage of the individual values of the characters in the words, not the number of characters. 
+	\end{answer}
+
+\item Dorothy also wrote the stub for the {\tt get()} method but didn't finish it. Complete the rest of it for her.
+
+{\tt public int get( String key ) \{ }
+\begin{answer} 
+\begin{lstlisting}
+	int hashIndex = bad_hash( key );
+	// if key is not in table, return null
+	if ( table.get( hashIndex ) == null ) {
+		return null;
+	}
+	LinkedNode current = table.get( hashIndex );
+	while ( current.getNext() != null && !current.getKey().equals( key ) ) {
+		current = current.getNext();
+	}
+	if ( current.getKey().equals( key) ) {
+		return current.getValue();
+	}
+	else {
+		// We looped thru the entire list and didn't find it
+		return null;
+	}
+}
+\end{lstlisting}
+\end{answer}
+
+
+
+
 \end{enumerate}
 \end{document}
