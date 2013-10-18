@@ -569,9 +569,9 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {2};
 				\node [draw, ellipse] at (-2,-1) (2) {3};
-				\node [draw, ellipse] at (2, -1) (5) {5};
-				\node [draw, ellipse] at (-3, -2) (3) {9};
-				\node [draw, ellipse] at (-1, -2) (31) {3};
+				\node [draw, ellipse] at (2, -1) (5) {3};
+				\node [draw, ellipse] at (-3, -2) (3) {5};
+				\node [draw, ellipse] at (-1, -2) (31) {9};
 				\node [draw, ellipse] at (1, -2) (7) {7};
 
 				\path [draw] (1) -- (2) -- (3);
@@ -579,31 +579,31 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 				\path [draw] (2) -- (31);
 				\path [draw] (5) -- (7);
 			\end{tikzpicture} &
-			[\underline{2}, \underline{3}, \underline{5}, \underline{9}, \underline{3}, \underline{7}, 1] \\
+			[\underline{2}, \underline{3}, \underline{3}, \underline{5}, \underline{9}, \underline{7}, 1] \\
 
 			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {3};
-				\node [draw, ellipse] at (-2,-1) (2) {3};
-				\node [draw, ellipse] at (2, -1) (5) {5};
-				\node [draw, ellipse] at (-3, -2) (3) {9};
-				\node [draw, ellipse] at (-1, -2) (31) {7};
+				\node [draw, ellipse] at (-2,-1) (2) {5};
+				\node [draw, ellipse] at (2, -1) (5) {3};
+				\node [draw, ellipse] at (-3, -2) (3) {7};
+				\node [draw, ellipse] at (-1, -2) (31) {9};
 
 				\path [draw] (1) -- (2) -- (3);
 				\path [draw] (1) -- (5);
 				\path [draw] (2) -- (31);
 			\end{tikzpicture} &
-			[\underline{3}, \underline{3}, \underline{5}, \underline{9}, \underline{7}, 2, 1] \\
+			[\underline{3}, \underline{5}, \underline{3}, \underline{7}, \underline{9}, 2, 1] \\
 
 			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {3};
-				\node [draw, ellipse] at (-2,-1) (2) {7};
-				\node [draw, ellipse] at (2, -1) (5) {5};
-				\node [draw, ellipse] at (-3, -2) (3) {9};
+				\node [draw, ellipse] at (-2,-1) (2) {5};
+				\node [draw, ellipse] at (2, -1) (5) {9};
+				\node [draw, ellipse] at (-3, -2) (3) {7};
 
 				\path [draw] (1) -- (2) -- (3);
 				\path [draw] (1) -- (5);
 			\end{tikzpicture} &
-			[\underline{3}, \underline{7}, \underline{5}, \underline{9}, 3, 2, 1] \\
+			[\underline{3}, \underline{5}, \underline{9}, \underline{7}, 3, 2, 1] \\
 
 			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {5};
