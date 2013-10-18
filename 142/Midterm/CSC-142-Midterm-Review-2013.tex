@@ -54,7 +54,9 @@ language=Python
 
 \item Why can we not use {\tt ==} to determine if two strings are equivalent? \\
 \begin{answer}
-{\tt ==} will check to see if two objects are the exact same object. If we want to compare objects by meaning, they'll have to implement the {\tt Comparable} interface, which declares the {\tt equals} method. For strings we could say {\tt ``yes''.equals(``yes'')}.
+{\tt ==} determines if the references to the object are identical, not if the actual contents of the strings are identical.
+To check if the contents of the strings are the same, use the {\tt equals} method, defined in the {\tt Object} class and overridden in the {\tt String} class.
+For example, {\tt "yes".equals("yes")}.
 \end{answer}
 
 
