@@ -123,11 +123,19 @@ Polymorphism: the ability to create an object of more than one type. References 
 EX:
 		\begin{lstlisting}
 ArrayList<Shape> shapes = new ArrayList<Shape>();
-shapes[0] = new Square(1);
-shapes[1] = new Circle(9);
-shapes[2] = new Triangle(4);
+
+// Square with side length of 1
+shapes.add(new Square(1.0));
+
+// Circle with radius of 9
+shapes.add(new Circle(9.0));
+
+// Triangle with base of 4 and height of 5
+shapes.add(new Triangle(4.0, 5.0));
+
+// Outputs the correct area of each shape
 for( int i = 0; i < shapes.size(); i++ ){ 
-   	double area = shapes[i].getArea();
+   	double area = shapes.get(i).getArea();
    	System.out.println("" + area);
 }
         \end{lstlisting}
