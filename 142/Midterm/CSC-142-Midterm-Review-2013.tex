@@ -265,9 +265,11 @@ public class Car implements Vehicle {
 	}
 	public int accelerate(int speed_increase) {
 		speed += speed_increase;
+		return speed;
 	}
 	public int brake(int speed_decrease) {
 		speed -= speed_decrease;
+		return speed;
 	}
 }
 public class Toyota extends Car {
