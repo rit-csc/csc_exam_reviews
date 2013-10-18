@@ -544,7 +544,7 @@ public class DorothysHashMap {
 		capacity = 100;
 		table = new ArrayList<LinkedNode>(capacity);
 		for (int i=0; i < table.size(); i++) {
-			table.set(i, null);
+			table.add(null);
 		}
 	}
     
@@ -591,17 +591,18 @@ No, it uses the length of the input string while most English words are roughly 
 
 
 
-\item Dorothy also wrote the stub for the {\tt get()} method but didn't finish it. Complete the rest of it for her. \\
+\item Dorothy also wrote the stub for the {\tt get()} method but didn't finish it. Complete the rest of it for her. You can return {\tt -1} if the key is not found in the hash map. \\
 {\tt public int get( String key ) \{ } \\
 \begin{answer} 
 	\begin{lstlisting}
-	int hashIndex = bad_hash( key );
-	// if key is not in table, return null
+	int hashIndex = badHash( key );
+	// if key is not in table, return -1
 	if ( table.get( hashIndex ) == null ) {
-		return null;
+		return -1;
 	}
 	LinkedNode current = table.get( hashIndex );
-	while ( current.getNext() != null && !current.getKey().equals( key ) ) {
+	while ( current.getNext() != null 
+		&& !current.getKey().equals( key ) ) {
 		current = current.getNext();
 	}
 	if ( current.getKey().equals( key) ) {
@@ -609,7 +610,7 @@ No, it uses the length of the input string while most English words are roughly 
 	}
 	else {
 		// We looped thru the entire list and didn't find it
-		return null;
+		return -1;
 	}
 }
 	\end{lstlisting}
