@@ -489,14 +489,12 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 		Heapify: \\
 			\begin{longtable}{c l}
 			Tree Heap & Array Heap\\
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) {3};
 			\end{tikzpicture} &
 			[\underline{3}, 5, 1, 3, 2, 7, 9] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (3) {3};
 				\node [draw, ellipse] at (-1,-1) (5) {5};
 
@@ -504,8 +502,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{3}, \underline{5}, 1, 3, 2, 7, 9] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (3) {3};
 				\node [draw, ellipse] at (-1,-1) (5) {5};
 				\node [draw, ellipse] at (1,-1) (31) {3};
@@ -515,8 +512,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{1}, \underline{5}, \underline{3}, 3, 2, 7, 9] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {1};
 				\node [draw, ellipse] at (-1,-1) (3) {3};
 				\node [draw, ellipse] at (1, -1) (31) {3};
@@ -528,8 +524,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			[\underline{1}, \underline{3}, \underline{3}, \underline{5}, 2, 7, 9] \\
 
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {1};
 				\node [draw, ellipse] at (-1,-1) (2) {2};
 				\node [draw, ellipse] at (1, -1) (5) {5};
@@ -543,8 +538,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, 7, 9] \\
 
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {1};
 				\node [draw, ellipse] at (-2,-1) (2) {2};
 				\node [draw, ellipse] at (2, -1) (5) {5};
@@ -559,8 +553,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, 9] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {1};
 				\node [draw, ellipse] at (-2,-1) (2) {2};
 				\node [draw, ellipse] at (2, -1) (5) {5};
@@ -580,8 +573,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 
 		Sort: \\
 			\begin{longtable}{c l}
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {2};
 				\node [draw, ellipse] at (-2,-1) (2) {3};
 				\node [draw, ellipse] at (2, -1) (5) {3};
@@ -596,8 +588,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{2}, \underline{3}, \underline{3}, \underline{5}, \underline{9}, \underline{7}, 1] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {3};
 				\node [draw, ellipse] at (-2,-1) (2) {3};
 				\node [draw, ellipse] at (2, -1) (5) {7};
@@ -610,8 +601,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{3}, \underline{3}, \underline{7}, \underline{5}, \underline{9}, 2, 1] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {3};
 				\node [draw, ellipse] at (-2,-1) (2) {5};
 				\node [draw, ellipse] at (2, -1) (5) {7};
@@ -622,8 +612,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{3}, \underline{5}, \underline{7}, \underline{9}, 3, 2, 1] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {5};
 				\node [draw, ellipse] at (-2,-1) (2) {9};
 				\node [draw, ellipse] at (2, -1) (5) {7};
@@ -633,8 +622,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{5}, \underline{9}, \underline{7}, 3, 3, 2, 1] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {7};
 				\node [draw, ellipse] at (-2,-1) (2) {9};
 
@@ -642,8 +630,7 @@ To guarantee non-worst-case complexity, pick the pivot using median-of-medians. 
 			\end{tikzpicture} &
 			[\underline{7}, \underline{9}, 5, 3, 3, 2, 1] \\
 
-			\vspace{3em}
-			\begin{tikzpicture}[scale=1.2]
+			\begin{tikzpicture}[scale=1]
 				\node [draw, ellipse] at (0,0) (1) {9};
 			\end{tikzpicture} &
 			[\underline{9}, 7, 5, 3, 3, 2, 1] \\
