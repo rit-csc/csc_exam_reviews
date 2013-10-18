@@ -86,23 +86,6 @@ Methods in that class and methods in all of its subclasses.
 
 
 
-\item What is the difference between a class and an object? \\
-\begin{answer}
-A class defines methods and properties---it can be viewed as a template. An object is  an instance of a class. Think of classes as molds and objects as individual things created by those molds.
-\end{answer}
-
-
-
-\item What is the difference between a constant and a normal variable? Give an example of a constant declaration. \\
-\begin{answer}
-A constant may never change during run time (it may be set {\em once}).
-	\begin{lstlisting}[numbers=none]
-public static final int NUM_PEOPLE_WHO_LIKE_JAVA = 0;
-	\end{lstlisting}
-\end{answer}
-
-
-
 \item What is the difference between overriding and overloading methods?  Give a example situation where each should be used. \\
 \begin{answer}
 \textbf{Overriding:} method with the exact same method declaration as a method in a superclass; overwrites and/or extends the functionality of the super() method.
@@ -114,6 +97,40 @@ public static final int NUM_PEOPLE_WHO_LIKE_JAVA = 0;
 	\end{enumerate}
 Override a method when you want to REPLACE the implementation of a method in a superclass.  Overload a method (such as a constructor) when you want to have more than one implementation of a method for different circumstances.
 \end{answer}
+
+
+
+\item Explain the differences between:
+\begin{enumerate}
+	\item class vs object \\
+	\begin{answer}
+		A class defines methods and fields---it can be viewed as a template. An object is an instance of a class. Think of classes as molds and objects as individual things created by those molds.
+	\end{answer}	
+	
+	\item constant vs non-constant field (variable).  Declare a constant varable. \\
+	\begin{answer}
+		A constant field cannot be change during run time (it may be set {\em once}).
+		\begin{lstlisting}[numbers=none]
+public final int NUM_PEOPLE_WHO_LIKE_JAVA = 1;
+		\end{lstlisting}
+	\end{answer}
+	
+	\item constant vs non-constant method.  \\
+	\begin{answer}
+		A constant method cann't be overridden by a subclass.
+	\end{answer}
+
+	\item class vs instance variable.  Declare variables of both types.\\
+	\begin{answer}
+		Class (static) variables are scoped to their class not to an object.  All instances of a class access the same static variable.  Each class instance can only reference it's own instance (non-static) variable.
+		\begin{lstlisting}[numbers=none]
+class Types {
+	public static int im_a_class_var = 1;
+	public int im_an_instance_var = 2;
+}
+		\end{lstlisting}
+	\end{answer}
+\end{enumerate}
 
 
 
@@ -589,7 +606,7 @@ int hashIndex = bad_hash( key );
 
 Note: The following numbers are outdated:
 
-TODO: Generics, ???
+TODO: Generics-make the following code generic, ???
 
 Topics for this exam:
 	- Java basics
@@ -605,9 +622,8 @@ Topics for this exam:
 
 1) == vs .equals()
 2) protected variables
-3) class vs object
-4) constants vs normal vars
-5) overriding vs overloading methods
+3) overriding vs overloading methods
+4) class vs object, constants vs normal, class vs instance
 6) polymorphism
 7) abstract class vs interface
 8) "What gets printed by the following code?" ... branches of classes
