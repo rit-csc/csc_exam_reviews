@@ -769,21 +769,18 @@ class StringContainer
 
 class IntegerContainer
 {
+	ArrayList<Integer> values;
+
+	// Add and other methods are defined correctly here...
+
 	Integer getFirstWhereHolds(IntegerCondition condition)
 	{
-		ArrayList<Integer> values;
-
-		// Add and other methods are defined correctly here...
-
-		Integer getFirstWhereHolds(IntegerCondition condition)
+		for (Integer i : values)
 		{
-			for (Integer i : values)
-			{
-				if (condition.checkInteger(i))
-					return i;
-			}
-			return null;
+			if (condition.checkInteger(i))
+				return i;
 		}
+		return null;
 	}
 }
 \end{lstlisting}
