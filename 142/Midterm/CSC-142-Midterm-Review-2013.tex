@@ -79,11 +79,9 @@ To check if the contents of the strings are the same, use the {\tt equals} metho
 For example, {\tt "yes".equals("yes")}.
 \end{answer}
 
-
-
 \item If an instance variable is declared with {\tt protected} access, who can access it? \\
 \begin{answer}
-Any class in the same package as the class in which the variable is defined.
+Any class in the same package as the class in which the variable is defined, as well as any subclasses of the latter class.
 \end{answer}
 
 
@@ -97,7 +95,7 @@ Any class in the same package as the class in which the variable is defined.
 	\item have a different number of parameters\\ \textbf{OR}
 	\item have parameters of different types
 	\end{enumerate}
-Override a method when you want to REPLACE the implementation of a method in a superclass.  Overload a method (such as a constructor) when you want to have more than one implementation of a method for different circumstances.
+Override a method when you want to \textit{replace} the implementation of a method in a superclass.  Overload a method (such as a constructor) when you want to have more than one implementation of a method for different circumstances.
 \end{answer}
 
 
@@ -109,22 +107,23 @@ Override a method when you want to REPLACE the implementation of a method in a s
 	A class defines methods and fields---it can be viewed as a template. An object is an instance of a class. Think of classes as molds and objects as individual things created by those molds.
 	\end{answer}	
 	
-	\item constant vs non-constant field (variable).  Declare a constant varable. \\
+	\item constant vs non-constant field (variable).  Declare a constant. \\
 	\begin{answer}
-	A constant field cannot be change during run time (it may be set {\em once}).
+	A constant field cannot be changed during run time (it may be set {\em once}).
 		\begin{lstlisting}[numbers=none]
 public final int NUM_PEOPLE_WHO_LIKE_JAVA = 1;
 		\end{lstlisting}
+	Note that marking mutable types \texttt{final} only prevents their replacement.
 	\end{answer}
 	
 	\item constant vs non-constant method.  \\
 	\begin{answer}
-	A constant method cann't be overridden by a subclass.
+	A constant method can't be overridden by a subclass.
 	\end{answer}
 
 	\item class vs instance variable.  Declare variables of both types.\\
 	\begin{answer}
-	Class (static) variables are scoped to their class not to an object.  All instances of a class access the same static variable.  Each class instance can only reference it's own instance (non-static) variable.
+	Class (static) variables are scoped to their class not to an object.  All instances of a class access the same static variable.  Each class instance can only reference its own instance (non-static) variable.
 		\begin{lstlisting}[numbers=none]
 class Types {
 	public static int im_a_class_var = 1;
@@ -298,7 +297,7 @@ public class demolitonDerby {
 		prius.brake(2);
 		prius.factoryRecall();
 		prius.accelerate(impreza.getSpeed());
-		mack.accelerate(5.0);
+		mack.accelerate(5);
 	}
 \end{lstlisting}
 \begin{answer}
@@ -314,7 +313,6 @@ public class demolitonDerby {
     33  	& Can't call super(), this has no superclass.\\
     47  	& {\tt prius} was declared as a {\tt Vehicle}, so we can't call\\
     ~  		& methods that aren't declared in {\tt Vehicle}.\\
-    49  	& FIXME I don't think it's legal to pass a double to an int without casting.
     \end{tabular}
 \end{answer}
 
@@ -351,7 +349,7 @@ Heapsort  & Splits its input into two (or three) other lists. One list's element
 \end{matchtabular}
 \begin{answer}
 	\begin{tabular}{l l}
-	1. Megresort & b\\
+	1. Mergesort & b\\
 	2. Quicksort & c\\
 	3. Heapsort  & a\\
 	\end{tabular}
@@ -359,11 +357,11 @@ Heapsort  & Splits its input into two (or three) other lists. One list's element
 
 
 
-\item When under what conditions does Quicksort hit it's worst-case time complexity and why? \\
+\item When under what conditions does Quicksort hit its worst-case time complexity and why? \\
 \begin{answer}
 When the data is (nearly) sorted and you always pick the first pivot (i.e. when the chosen pivot only and always reduces the list by itself).
 
-Quicksort splits its input into two lists based on the value of the pivot.  If the pivot is either the smallest or the largest element, then one list will have no elements while the others have the rest of the elements. Deminstrated by the following substitution trace:
+Quicksort splits its input into two lists based on the value of the pivot.  If the pivot is either the smallest or the largest element, then one list will have no elements while the others have the rest of the elements. Demonstrated by the following substitution trace:
 	\begin{verbatim}
 	qsort([1,2,3,4])
 	qsort([]) + [1] + qsort([2,3,4])
@@ -377,9 +375,9 @@ Quicksort splits its input into two lists based on the value of the pivot.  If t
 
 
 
-\item How can we prevent Quicksort from hitting it's worst-case time complexity? \\
+\item How can we prevent Quicksort from hitting its worst-case time complexity? \\
 \begin{answer}
-With real-world data, we're more likely to encounter ordered or semi-ordered data than randomised data. This makes it more likely for us run into Quicksort's worst-case time complexity. We run into this bad time complexity if we select pivots which are near the lowest or highest values.
+With real-world data, we're more likely to encounter ordered or semi-ordered data than randomized data. This makes it more likely for us run into Quicksort's worst-case time complexity. We run into this bad time complexity if we select pivots which are near the lowest or highest values.
 
 Selecting a random pivot helps encounter the average case and thus evens out the distribution of ordered and unordered data. Even when we're given sorted data, if we select pivots randomly, we should be able to end up with average time complexity.
 
