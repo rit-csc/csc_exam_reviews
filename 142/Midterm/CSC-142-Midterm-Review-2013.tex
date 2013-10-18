@@ -1,4 +1,5 @@
 % Author: David Larsen <dcl9934@cs.rit.edu>
+% Author: Doug Krofcheck <dpk3062@rit.edu>
 \documentclass[11pt]{article}
 \usepackage{fullpage}
 \usepackage{listings}
@@ -29,7 +30,7 @@ language=Python
     \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{red}}{}
 }
 
-\title{CS-142 Midterm Exam Review}
+\title{CSCI-142 Midterm Exam Review}
 \author{Computer Science Community}
 \date{\today}
 
@@ -41,56 +42,64 @@ language=Python
 
 \begin{document}
 \header
-
 \begin{enumerate}
 
-\item Why can we not use {\tt ==} to determine if two strings are equivalent?
 
-    \begin{answer}
-    {\tt ==} will check to see if two objects are the exact same object. If we
-    want to compare objects by meaning, they'll have to implement the {\tt
-    Comparable} interface, which declares the {\tt equals} method. For strings
-    we could say {\tt ``yes''.equals(``yes'')}.
-    \end{answer}
+\item What are you called by your peers?
+\begin{answer}
+(Student's callsigns/names may vary per student)
+\end{answer}
+
+
+
+\item Why can we not use {\tt ==} to determine if two strings are equivalent?
+\begin{answer}
+{\tt ==} will check to see if two objects are the exact same object. If we want to compare objects by meaning, they'll have to implement the {\tt Comparable} interface, which declares the {\tt equals} method. For strings we could say {\tt ``yes''.equals(``yes'')}.
+\end{answer}
+
+
 
 \item If an instance variable is declared with {\tt protected} access, who can access it?
+\begin{answer}
+Methods in that class and methods in all of its subclasses.
+\end{answer}
 
-    \begin{answer}
-    Methods in that class and methods in all of its subclasses.
-    \end{answer}
+
 
 \item What is the difference between a class and an object?
+\begin{answer}
+A class is a construct that defines methods and properties - it can be viewed as a template. An objects are instances of that class. Think of classes as molds and objects as individual things created by those molds.
+\end{answer}
 
-    \begin{answer}
-    A class is a construct that defines methods and properties - it can be viewed as a template. An objects are instances of that class. Think of classes as molds and objects as individual things created by those molds.
-    \end{answer}
+
 
 \item What is the difference between a constant and a normal variable? Give an example of a constant declaration.
-
-    \begin{answer}
-    A constant may never change during run time (it may be set {\em once}).
-
-		\begin{lstlisting}
+\begin{answer}
+A constant may never change during run time (it may be set {\em once}).
+	\begin{lstlisting}
 public static final int NUM_PEOPLE_WHO_LIKE_JAVA = 0;
-		\end{lstlisting}
-    \end{answer}
+	\end{lstlisting}
+\end{answer}
+
+
 
 \item What is the difference between overriding and overloading methods?  Give a example situation where each should be used.
+\begin{answer}
+Overriding: method with the exact same method declaration as a method in a superclass; overwrites and/or extends the functionality of the super() method
+Overloading: 2 or more methods with the same name and return type that either:
+	\begin{enumerate}
+	\item have a different number of parameters\\ \textbf{OR}
+	\item have parameters of different types
+	\end{enumerate}
+Override a method when you want to REPLACE the implementation of a method in a superclass.  Overload a method (such as a constructor) when you want to have more than one implementation of a method for different circumstances.
+\end{answer}
 
-	\begin{answer}
-	Overriding: method with the exact same method declaration as a method in a superclass; overwrites and/or extends the functionality of the super() method
-	Overloading: 2 or more methods with the same name and return type that either:
-		\begin{enumerate}
-		\item have a different number of parameters\\ \textbf{OR}
-		\item have parameters of different types
-		\end{enumerate}
-	Override a method when you want to REPLACE the implementation of a method in a superclass.  Overload a method (such as a constructor) when you want to have more than one implementation of a method for different circumstances.
-	\end{answer}
+
 
 \item Define polymorphism and explain a situation in which you would use it.
-        \begin{answer}
-        Polymorphism: the ability to create an object of more than one type. References and collections of a super class may hold instances of subclasses. Methods invoked on these objects determine the correct (type specific) behavior at runtime. \\
-        EX: \\
+\begin{answer}
+Polymorphism: the ability to create an object of more than one type. References and collections of a super class may hold instances of subclasses. Methods invoked on these objects determine the correct (type specific) behavior at runtime. \\
+EX: \\
 		\begin{lstlisting}
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 shapes[0] = new Square(1);
@@ -101,14 +110,19 @@ for( int i = 0; i < shapes.size(); i++ ){
    	System.out.println("" + area);
 }
         \end{lstlisting}
-        \end{answer}
+\end{answer}
+
+
 
 \item What is the difference between an abstract class and an interface? Why might you want to use an interface over an abstract class?
-      \begin{answer}
-    Abstract classes allow for default method behavior to be defined, while interfaces allow only method declaration. Since java allows a class to extend only a single class but implement many interfaces, interfaces provide some extended capabilities. However, extending an abstract class allows usage of the defined default behaviors. 
-     \end{answer}
+\begin{answer}
+Abstract classes allow for default method behavior to be defined, while interfaces allow only method declaration.  Since java allows a class to extend only a single class but implement many interfaces, interfaces provide some extended capabilities. However, extending an abstract class allows usage of the defined default behaviors. 
+\end{answer}
+
 
 \newpage
+
+
 \item What gets printed by the following code?
 \begin{lstlisting}
 public class Class1 {
@@ -160,27 +174,28 @@ public class TestClass {
 	}
 }
 \end{lstlisting}
-    
-    \begin{answer}
+\begin{answer}
     \begin{verbatim}
-	Class1()
-	Class2()
-	Class2.print1()
-	Class1.print2()
-	
-	Class1()
-	Class3()
-	Class1()
-	Class2()
-	Class2.print1()
-	Class3.print2()
-	Class1.print2()
+Class1()
+Class2()
+Class2.print1()
+Class1.print2()
+
+Class1()
+Class3()
+Class1()
+Class2()
+Class2.print1()
+Class3.print2()
+Class1.print2()
     \end{verbatim}
-    \end{answer}
-    
+\end{answer}
+
+
 \newpage
-\item Find at least 3 errors related to inheritance and interfaces in the
-      following code:\label{demolition-derby}
+
+
+\item Find at least 3 errors related to inheritance and interfaces in the following code:\label{demolition-derby}
 \begin{lstlisting}
 public interface Vehicle {
 	public int getSpeed();
@@ -233,8 +248,7 @@ public class demolitonDerby {
 		mack.accelerate(5.0);
 	}
 \end{lstlisting}
-
-    \begin{answer}
+\begin{answer}
     \begin{tabular}{r l} % TODO Fix some answers here
     Line \# & Error \\\hline
     14  	& Returns int, should return void\\
@@ -249,86 +263,78 @@ public class demolitonDerby {
     ~  		& methods that aren't declared in {\tt Vehicle}.\\
     49  	& FIXME I don't think it's legal to pass a double to an int without casting.
     \end{tabular}
-    \end{answer}
-
-
-
+\end{answer}
 
 
 \section*{Sorting}
 
-\item Fill in the table for the asymptotic running time of each sorting
-      algorithm.
-      \begin{center}
-      \begin{tabular}{|r|c|c|c|}
-        \hline
-        ~ & Best & Worst & Average \\\hline
-        MergeSort &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        Quicksort &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
-            \begin{answer}$O(n^2)$\end{answer} &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        HeapSort &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
-            \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-      \end{tabular}
-      \end{center}
+
+\item Fill in the table for the asymptotic running time of each sorting algorithm.
+\begin{center}
+	\begin{tabular}{|r|c|c|c|} \hline
+	~ & Best & Worst & Average \\\hline
+	MergeSort &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
+	Quicksort &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+		\begin{answer}$O(n^2)$\end{answer} &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
+	HeapSort &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
+		\begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
+	\end{tabular}
+\end{center}
+
+
 
 \item What sorting algorithm splits its input list into two other lists, one which has element which are all smaller than a value (which is randomly selected) and one which has elements which are all larger than the randomly selected value?
-    \begin{answer}
-    Quicksort.
-    \end{answer}
+\begin{answer}
+Quicksort.
+\end{answer}
 
-\item\label{qsort-worst-case} What kind of data causes Quicksort's worst-case time complexity? You may assume that we always pick the first element as the pivot.
 
-      \begin{answer}
-      Data that is (nearly) sorted or is sorted in reverse order.
-      \end{answer}
 
-\item What causes Quicksort to run so slowly on the input you describe in question \ref{qsort-worst-case}?
-    \begin{answer}
-    Quicksort splits its input into two lists based on the value of the pivot.
-    If the pivot is either the smallest or the largest element, then one list
-    will only have no elements, while the others will have all of the elements
-    but the pivot. We can see this if we perform a substitution trace:
+\item What kind of data causes Quicksort's worst-case time complexity? You may assume that we always pick the first element as the pivot.
+\label{qsort-worst-case}
+\begin{answer}
+Data that is (nearly) sorted or is sorted in reverse order.
+\end{answer}
 
-\begin{verbatim}
-qsort([1,2,3,4])
-qsort([]) + [1] + qsort([2,3,4])
-qsort([]) + [1] + qsort([]) + [2] + qsort([3,4])
-qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
-qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
-qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([])
-[1,2,3,4]
-\end{verbatim}
-    \end{answer}
+\item What causes Quicksort to run so slowly on the input you describe in question \ref{qsort-worst case}?
+\begin{answer}
+Quicksort splits its input into two lists based on the value of the pivot.  If the pivot is either the smallest or the largest element, then one list will only have no elements, while the others will have all of the elements but the pivot. We can see this if we perform a substitution trace:
+	\begin{verbatim}
+	qsort([1,2,3,4])
+	qsort([]) + [1] + qsort([2,3,4])
+	qsort([]) + [1] + qsort([]) + [2] + qsort([3,4])
+	qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
+	qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
+	qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([])
+	[1,2,3,4]
+	\end{verbatim}
+\end{answer}
+
+
 
 \item In Quicksort, why do we select a random pivot value, rather than always pivoting on the first element?
-      \begin{answer}
-      With real-world data, we're more likely to encounter ordered or
-      semi-ordered data than randomised data. This makes it more likely for us
-      run into Quicksort's worst-case time complexity. We run into this bad
-      time complexity if we select pivots which are near the lowest or highest
-      values.
+\begin{answer}
+With real-world data, we're more likely to encounter ordered or semi-ordered data than randomised data. This makes it more likely for us run into Quicksort's worst-case time complexity. We run into this bad time complexity if we select pivots which are near the lowest or highest values.
 
-      Selecting a random value to pivot on helps us encounter the average case
-      evens out the distribution of ordered and unordered data. Even if we're
-      getting in sorted data, if we select pivots randomly, we should be able
-      to end up with average time complexity.
-      \end{answer}
+Selecting a random value to pivot on helps us encounter the average case evens out the distribution of ordered and unordered data. Even if we're getting in sorted data, if we select pivots randomly, we should be able to end up with average time complexity.
+\end{answer}
+
 
 \pagebreak
-\item Show the stages of a Merge sort and a Quicksort on the following list:
-      [3,5,1,3,2,7,9]. Be sure to identify your pivot.
 
-    \begin{answer}
-	Mergesort:\\*
-	\newline
-    \begin{tikzpicture}[scale=1.2]
+
+\item Show the stages of a Merge sort and a Quicksort on the following list: [3,5,1,3,2,7,9]. Be sure to identify your pivot.
+\begin{answer}
+Mergesort:\\*
+\newline
+	\begin{tikzpicture}[scale=1.2]
 	\node [draw,ellipse] at (3.375,3) (head) {3 5 1 3 2 7 9};
 	\node [draw,ellipse] at (1.5,2) (1) {3 5 1 3};
 	\node [draw,ellipse] at (5.25,2) (2) {2 7 9};
@@ -366,9 +372,9 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 	\path [draw] (16) -- (19) -- (17);
 	\path [draw] (18) -- (20) -- (19);
 	\end{tikzpicture}\\*
-	\newline
-	Quicksort (using the first element in the list as a pivot):\\*
-	\newline
+\newline
+Quicksort (using the first element in the list as a pivot):\\*
+\newline
 	\begin{tikzpicture}[scale=1.2]
 	\node [draw] at (1,0) (1) {1};
 	\node [draw] at (2,0) (2) {2};
@@ -414,45 +420,51 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 	\path [draw] (7) -- (21) -- (24) -- (25);
 
 	\end{tikzpicture}
-    \end{answer}
+\end{answer}
+
 
 \section*{Heaps and Heapsort}
 
+
+
 \item For a binary heap containing $n$ elements, what is the maximum number of swaps occurring after an insert operation?
-    \begin{answer}
-        log$_{\textrm{2}}$ (n + 1), rounded down.
-    \end{answer}
+\begin{answer}
+log$_{\textrm{2}}$ (n + 1), rounded down.
+\end{answer}
+
+
 
 \item Given a node in an array-based binary heap at index $i$, where are the indices of both its children? What is the index of its parent?
-    \begin{answer}
-    The children are at $2i+1$ and $2i+2$. The parent is at
-    $\lfloor\frac{i-1}{2}\rfloor$.
+\begin{answer}
+The children are at $2i+1$ and $2i+2$. The parent is at $\lfloor\frac{i-1}{2}\rfloor$.
 
-    \marginpar{\small\em Note that in a 1 indexed array system, the children
-    would be at $2i$ and $2i+1$. The parent would be at
-    $\lfloor\frac{i}{2}\rfloor$.}
-    \end{answer}
+\marginpar{\small\em Note that in a 1 indexed array system, the children would be at $2i$ and $2i+1$.  The parent would be at $\lfloor\frac{i}{2}\rfloor$.}
+\end{answer}
+
+
 
 \item Run a heap sort on the following list: [3,5,1,3,2,7,9], showing the heap at each stage. Be sure to heapify the list first.
-    \begin{answer}
-        Heapify:  \newline
-        	[\underline{3}, 5, 1, 3, 2, 7, 9] \newline
-    		[\underline{3},\underline{5}, 1, 3, 2, 7, 9] \newline
-    		[\underline{1}, \underline{5}, \underline{3}, 3, 2, 7, 9] \newline
-    		[\underline{1}, \underline{3}, \underline{3}, \underline{5}, 2, 7, 9] \newline
-    		[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, 7, 9] \newline
-    		[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, 9] \newline
-    		[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, \underline{9}] \newline 
-    	
-    	Sort: \newline
-    		[\underline{2}, \underline{3}, \underline{3}, \underline{5}, \underline{9}, \underline{7}, 1] \newline
-    		[\underline{3}, \underline{3}, \underline{7}, \underline{5}, \underline{9}, 2, 1] \newline
-    		[\underline{3}, \underline{5}, \underline{7}, \underline{9}, 3, 2, 1] \newline
-    		[\underline{5}, \underline{9}, \underline{7}, 3, 3, 2, 1] \newline
-    		[\underline{7}, \underline{9}, 5, 3, 3, 2, 1] \newline
-    		[\underline{9}, 7, 5, 3, 3, 2, 1] \newline
-    		[9, 7, 5, 3, 3, 2, 1] \newline
-    \end{answer}
+\begin{answer}
+Heapify:  \newline
+	[\underline{3}, 5, 1, 3, 2, 7, 9] \newline
+	[\underline{3},\underline{5}, 1, 3, 2, 7, 9] \newline
+	[\underline{1}, \underline{5}, \underline{3}, 3, 2, 7, 9] \newline
+	[\underline{1}, \underline{3}, \underline{3}, \underline{5}, 2, 7, 9] \newline
+	[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, 7, 9] \newline
+	[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, 9] \newline
+	[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, \underline{7}, \underline{9}] \newline 
+
+Sort: \newline
+	[\underline{2}, \underline{3}, \underline{3}, \underline{5}, \underline{9}, \underline{7}, 1] \newline
+	[\underline{3}, \underline{3}, \underline{7}, \underline{5}, \underline{9}, 2, 1] \newline
+	[\underline{3}, \underline{5}, \underline{7}, \underline{9}, 3, 2, 1] \newline
+	[\underline{5}, \underline{9}, \underline{7}, 3, 3, 2, 1] \newline
+	[\underline{7}, \underline{9}, 5, 3, 3, 2, 1] \newline
+	[\underline{9}, 7, 5, 3, 3, 2, 1] \newline
+	[9, 7, 5, 3, 3, 2, 1] \newline
+\end{answer}
+
+
 
 \end{enumerate}
 \end{document}
