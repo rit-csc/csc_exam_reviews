@@ -1,0 +1,449 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage{needspace}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{framed}
+\usepackage{enumerate}
+\usepackage{csc}
+
+\lstset{ %
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Java
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{white}}{}
+}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{red}}{}
+}
+
+
+\author{Computer Science Community}
+\title{CS-243 Final Exam Review}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document}
+\header
+
+\begin{enumerate}
+
+\item {\bf Nick's Heavy Threads} Nick operates a store in Marketview Mall which
+      has poor lighting, blasts black metal and sells jeans. Only one pair of
+      jeans is available to purchase at a time, though there are more
+      stored in the back. If a size is out that you don't want, you must wait
+      for someone else to purchase the jeans. Nick's only employee, Hank, sits
+      in a chair and stares at people angrily until someone makes a purchase,
+      at which point he replaces the jeans with the same model of a random
+      size. In order to prevent customers' waiting infinitely for an
+      unavailable size, Hank will switch the jeans for a different size pair if
+      no one has bought them after a period of three seconds.
+
+\begin{lstlisting}
+public class NicksHeavyThreads
+{
+    private static int awesomeJeans = 0; // jeans' size [1-5], or 0 when none on display
+    
+    private static int customers = 0; // keep this updated as customers arrive and leave
+    
+    private static MeanWorker hank = new MeanWorker();
+    
+    public static void main( String[] args )
+    {
+        for( int i = 0; i < 10; i++ )
+        {
+            ( new LameCustomer() ).start();
+        }
+        try { Thread.sleep( 1000 ); } // wait one second before introducing Hank
+        catch( InterruptedException pleaseDont ) {}
+        hank.start();
+    }
+    
+    private static class LameCustomer extends Thread
+    {
+        // implementation omitted
+    }
+    
+    private static class MeanWorker extends Thread
+    {
+        // implementation omitted
+    }
+}
+\end{lstlisting}
+
+    \begin{enumerate}
+    
+    \item Complete the implementation of the LameCustomer class; each instance
+          must choose a jeans size and wait for it to be available, update the
+          jeans to indicate that they have been taken, print the message
+          ``Customer: I got my size \emph{size} jeans!" and inform all threads
+          that the jeans selection has changed.  (Hint: Remember to keep an
+          accurate count of how many customers are in the shop at any point.)
+
+\begin{answer}
+\begin{lstlisting}
+static class LameCustomer extends Thread
+{
+    public void run()
+    {
+        synchronized( hank )
+        {
+            customers++;
+            int desiredSize = ( int )
+                ( Math.random() * ( 5 - 1 + 1 ) ) + 1; // pick size
+            while( awesomeJeans != desiredSize ) // wait for pair
+            {
+                try { hank.wait(); }
+                catch( InterruptedException pleaseDont ) {}
+            }
+            System.out.println( "Customer: I got my size "
+                + awesomeJeans + " jeans!" );
+            awesomeJeans = 0; // take the jeans
+            hank.notifyAll(); // inform everyone they are gone
+            customers--;
+        }
+    }
+}
+\end{lstlisting}
+\end{answer}
+
+    \item Now implement the MeanWorker class, which should choose a size and
+          stock a pair of jeans of that size, print the message ``Hank: I
+          grumpily restocked with size \emph{size}," and inform all threads
+          that the selection has changed. It should then wait until someone has
+          taken the jeans or until three seconds have elapsed, whichever comes
+          first. These steps should be repeated until all customers have left
+          the store.
+
+\begin{answer}
+\begin{lstlisting}
+static class MeanWorker extends Thread
+{
+    public synchronized void run()
+    {
+        do
+        {
+            awesomeJeans = ( int )
+                ( Math.random() * ( 5 - 1 + 1 ) ) + 1; // new size
+            System.out.println( "Hank: I grumpily restocked "
+                + "with jeans of size " + awesomeJeans );
+            notifyAll(); // inform the customers of the restocking
+            try { wait( 3000 ); } // let people shop
+            catch( InterruptedException pleaseDont ) {}
+        }
+        while( customers > 0 );
+    }
+}
+\end{lstlisting}
+\end{answer}
+    \end{enumerate}
+
+
+\pagebreak
+\item{\bf $\textrm{B}^+$Trees} A $\textrm{B}^+$Tree is a data structure that
+can be used to map from keys to values. Figure \ref{b-tree} shows a tree that
+maps from {\tt ints} to Strings.
+
+\begin{figure}[h]
+\caption{A partially drawn $\textrm{B}^+$Tree of strings, keyed on {\tt int}s}
+\label{b-tree}
+\center
+\includegraphics[width=5in]{b_plus_tree_dot.pdf}
+\vspace{-1cm}
+\end{figure}
+
+    \begin{enumerate}
+    \item What Java Collections Framework interface should a
+    $\textrm{B}^+$Tree be able to implement?
+
+        \begin{answer}
+        Java.util.Map$<$K,V$>$
+        \end{answer}
+
+    \item We need to implement two different kinds of nodes for the tree. Why
+    do we need to do this? What is different between the two types of nodes?
+
+        \begin{answer}
+        Some nodes (the leaves) point to data values. We also have internal
+        nodes which point to other nodes (both internal nodes and leaves).
+        \end{answer}
+
+    \item We need classes to represent the nodes of the tree. Implement these
+    classes so that they use generic types and all of their members are package
+    private. Don't implement the constructors or any other methods.
+
+\begin{answer}
+\begin{lstlisting}
+public interface BTreeNode<K,V> {}
+
+public class InternalNode<K,V> implements BTreeNode<K,V>
+{
+    K[] keys;
+    Node<K,V>[] children;
+    InternalNode<K,V> next;
+}
+
+public class LeafNode<K,V> implements BTreeNode<K,V>
+{
+    K keys[];
+    V values[];
+    LeafNode<K,V> next;
+}
+\end{lstlisting}
+\end{answer}
+
+    \end{enumerate}
+
+\item What is the output when LookAtDatMagic's main is executed?
+\begin{lstlisting}
+public class HeySteve{
+    public int bananza(int in) throws NewException{
+        if ( in == 7 ){
+            throw new NewException("HeySteve, cut that out!");
+        }
+        return in;
+    }
+}
+
+public class NewException extends Exception{
+    public NewException(String message){
+        super(message);
+    }
+
+}
+           
+public class WakaWaka{
+    public String BeachBash(Object a, Object b) throws NewException{
+        if ( a.equals(b) ){
+            throw new NewException("It's a Beach-bash! WakaWaka!");
+        }
+        return "Da-nanananan";
+    }
+}
+
+public class LookAtDatMagic{
+    public void magic() throws NewException{
+        int maraca = 5;
+        try{
+            HeySteve steve = new HeySteve();
+            maraca = steve.bananza(7);
+        }catch(NewException e){
+            System.out.println(e.getMessage());
+        }finally{
+            WakaWaka waka = new WakaWaka();
+            System.out.println(waka.BeachBash(maraca, 5));
+        }
+    }
+
+    public static void main(String[] args){
+        try{
+            LookAtDatMagic ladm = new LookAtDatMagic();
+            ladm.magic();
+        }catch(NewException e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+\end{lstlisting}
+\begin{answer}
+HeySteve, cut that out!
+
+
+It's a Beach-bash! WakaWaka!
+\end{answer}
+\pagebreak
+\item Briefly describe the difference between classes and objects.
+
+    \begin{answer}
+    A class is a construct which describes the properties and methods of an
+    object. It can be thought of as a mold or template. An object is an 
+    instantiation of a class. That is, a specific item created from the class
+    ``mold".
+    \end{answer}
+
+\item Briefly describe the difference (for objects) between a.equals(b), a==b,
+      a.compareTo(b), and Comparator.compare(a,b).
+
+    \begin{answer}
+    \begin{itemize}
+
+    \item a.equals(b) Compares objects for equality. Automatically defined
+    by Java, but must be overwritten to provide intelligent behavior
+    returns a boolean
+
+    \item a == b  Checks references (if the two objects are the SAME object).
+    Can also be used to check if a is null  
+
+    \item a.compareTo(b) returns an int indicating whether a is less than (-1),
+    equal to(0), or greater than b (+1). Indicates natural ordering 
+
+    \item compare(a,b) returns -1 if a $<$ b, 0 if a $=$ b, +1 if a $>$ b.
+    comp1.equals(comp2) implies that sgn(comp1.compare(o1,
+    o2))==sgn(comp2.compare(o1, o2)) for every object reference o1 and o2.
+
+    \end{itemize}
+    \end{answer}
+
+\item Name the design pattern used in the following snippet of code.
+\begin{lstlisting}
+public class Car
+{
+	private String make;
+	private String model;
+	private int mileage;
+
+	public Car(String make, String model, int mileage)
+	{
+		this.make=make;
+		this.model=model;
+		this.mileage=mileage;
+	}
+	public static Car makeCar(String str)
+	{
+		String arr[] = str.split(" ");
+		return new Car(arr[0], arr[1], Integer.parseInteger(arr[2]));
+	}
+
+	public static void main(String[] args)
+	{
+		Car myCar = Car.makeCar("Toyota Camry 200000");
+	}
+}
+\end{lstlisting}
+
+\begin{answer}
+The \emph{Factory} design pattern is used.
+\vspace{.5in}
+\end{answer}
+\pagebreak
+\item Which Layout Manager do each of the following descriptions describe?
+\begin{enumerate}[(a)]
+
+\item Displays the contained components in a set number of rows and columns,
+      where each row has the same height and each column the same width.
+
+\begin{answer}
+GridLayout
+\vspace{.5in}
+\end{answer}
+
+\item Attempts to display the contained components in a single row but will
+      create a new row if necessary.
+
+\begin{answer}
+FlowLayout
+\vspace{.5in}
+\end{answer}
+
+\item Allows the developer to specify the region (North, South, East, West,
+      Center) of the panel to place the component in.
+
+\begin{answer}
+BorderLayout
+\vspace{.5in}
+\end{answer}
+
+\end{enumerate}
+
+\item 
+    \begin{enumerate} 
+    \item What is the Java Collections Framework?
+
+    \begin{answer}
+        a unified set of interfaces, algorithms and concrete implementaions 
+    provided by Java to support collections of objects.
+    \end{answer}
+
+    \item Assume the follwing line of code is given:
+    \begin{lstlisting}
+        Collection<Integer> t = new ArrayList<Integer>();
+    \end{lstlisting}
+    What then is wrong with the following? Correct any errors:
+    \begin{lstlisting}
+        for( int i = 0; i < 20; i++){
+            t.add(i);
+        }
+        for( int i=0; i <  t.size(); i++ ){
+            System.out.println(t.get(i));
+        }
+    \end{lstlisting}
+
+    \begin{answer}
+    Collection does not support get(i). The better solution 
+    \begin{lstlisting}
+        for( int i = 0; i < 20; i++){
+            t.add(i);
+        }
+        for( Integer i : t ){
+            System.out.println(i);
+        }
+
+    \end{lstlisting}
+    \end{answer}
+
+    \end{enumerate}
+    
+\pagebreak
+\item Given the following class, Write the code necessary for the main to run.
+
+\lstinputlisting{code/ufo/UFO.java}
+
+\begin{answer}
+\lstinputlisting{code/ufo/Probable.java}
+\lstinputlisting{code/ufo/Cow.java}
+\lstinputlisting{code/ufo/Human.java}
+\lstinputlisting{code/ufo/Professor.java}
+\lstinputlisting{code/ufo/RedNeck.java}
+
+\end{answer}
+
+\end{enumerate}
+
+
+
+
+\end{document}
+
+Topics for this exam: (from the ZJB!)
+Oh yeah!  We're moving topics around on the schedule (which won't impact
+the exam, obviously), de-emphasizing some of the design patterns, and
+(the big one) putting in threads.  Still not sure what detail we'll have
+with threads, but about one week's worth.
+
+Here is what will go on the syllabus:
+
+Week #  Schedule
+------  ---------------------------
+1        Intro to Java
+2        Classes (scope and equals)
+3        Interfaces
+4        Inheritance (equals pt2)
+5        JCF, O-O design
+6        Iterators, Comparators, and intro to Swing
+7        Event driven programming
+8        Exceptions, I/O
+9        Threads
+10       Design Patterns
+
