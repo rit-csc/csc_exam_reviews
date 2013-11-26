@@ -98,10 +98,9 @@ def delims_are_balanced(inString):
           completes. 
 
         \begin{answer}
-[once,
-a,
-[],
-[]]
+		\begin{lstlisting}[numbers=none]
+[once, a, [], []]
+		\end{lstlisting}
 
         \end{answer}
 
@@ -109,10 +108,10 @@ a,
 
         \begin{answer}
         The issue is on line 6. This line overwrites the list the element, things are getting overwritten and the contains method will break. Change 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 self.table[self.bad_hash(element)] = element 
 \end{lstlisting} to 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 self.table[self.bad_hash(element)].append(element)
 \end{lstlisting}
 
@@ -121,12 +120,12 @@ self.table[self.bad_hash(element)].append(element)
     \item Draw the table of the properly behaving hash function.
         
         \begin{answer}
-        [['wrestled', 'bear', 'once'],
-        ['I', 'a'],
-        [],
-    []]
+		\begin{lstlisting}[numbers=none]
+[['wrestled', 'bear', 'once'], ['I', 'a'], [], []]
+		\end{lstlisting}
     \end{answer}
 \item Assuming that this hashtable will only be used on strings, is the hashing function being used a good one? Why or why not?
+
     \begin{answer}
         No, it ignores the fact that most english words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
     \end{answer}
