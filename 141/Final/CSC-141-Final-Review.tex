@@ -102,6 +102,41 @@ def delims_are_balanced(inString):
     \end{lstlisting}
     \end{answer}
 
+\item If we wanted to implement a stack as a linked list, what linked-list
+	operations would correspond to push() and pop()?
+
+	\begin{answer}
+	push( stack, element ) $\rightarrow$ insertFront( linked-list, element )\\
+	pop( stack ) $\rightarrow$ removeFront( linked-list )
+	\end{answer}
+	
+\item Write your own stack class using python's built in lists to manage the elements of your stack. \\
+Your stack must provide the following functionality:
+	  \begin{itemize}
+	  \item []push( elm ) - push elm onto the top of the stack
+	  \item []pop() - return the top elm of the stack and remove it from the stack
+	  \item []isEmpty() - is the stack empty()
+	  \item []peek() - which returns the top element of the stack without modifying the stack. 
+	  \item []\_\_str\_\_
+	  \end{itemize}
+	  \begin{answer}
+	  \begin{lstlisting}
+	  class Stack:
+		def __init__(self):
+			self.lst = []
+		def push(self, val ):
+			self.lst.append( val )
+		def pop(self):
+			return self.lst.pop()
+		def peek(self):
+			return self.lst[-1]
+		def isEmpty(self):
+			return (len(self.lst) == 0)
+		def __str__(self):
+			return str(self.lst)
+			  \end{lstlisting}
+	  \end{answer}
+
 \section*{Backtracking}
 
 \item Why is backtracking better suited for solving a Sudoku puzzle than
