@@ -77,15 +77,15 @@ columns=fixed
 +----------+    +----------+    +----------+    +----------+    +-----------------+
 				\end{verbatim} }
 				\end{answer}
-            \item Write some pseudo-code for appending data to the end of a list.
+            \item Write pseudocode to add an element onto the end of a linked list.
 				\begin{answer}
 				\begin{lstlisting}
 def append(value, llist):
-	newend = node()
-	newend.value = value
-	newend.next = None OR sentinel
-	llist.end.next = newend
-	llist.end = newend
+	newend := new node
+	newend.value := value
+	newend.next := None
+	curend := end of llist
+	curend.next := newend
 				\end{lstlisting}
 				\end{answer}
             \pagebreak
