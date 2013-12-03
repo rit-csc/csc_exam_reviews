@@ -1,2 +1,6 @@
 Add queue question to 141 final review.
 Add linked list answers to 141 final review.
+create hashing questions
+create heap questions
+create backtracking question
+add some optimal algorithms questions
