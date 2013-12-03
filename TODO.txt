@@ -1,6 +1,13 @@
 Add queue question to 141 final review.
 Add linked list answers to 141 final review.
-create hashing questions
-create heap questions
-create backtracking question
-add some optimal algorithms questions
+
+Questions that can be grabbed from 242 final review:
+    add hashing questions
+    add heap questions
+    add backtracking question
+    add some optimal algorithms questions
+
+
+LOW PRIORITY:
+    Fix instances of OOP in review to be represented with maker functions and stupid things
+    maybe add some functional stuff to the review?
