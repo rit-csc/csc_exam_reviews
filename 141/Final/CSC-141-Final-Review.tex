@@ -52,7 +52,7 @@ columns=fixed
 \begin{enumerate}
 
 
-    \item Given the linked list: $1 \rightarrow 2 \rightarrow 3$
+    \item You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{next}.
         \begin{enumerate}
             \item 1 points to 2 and 2 points to 3. What does 3 point to?
                 \begin{answer}
@@ -100,8 +100,34 @@ def append(value, llist):
     list of all of the elements which are in the list more than once. (eg.
     $1\rightarrow2\rightarrow2\rightarrow3\rightarrow3\rightarrow3$ would return [2,3,3] )
         \vspace{3in}
+\begin{answer}
+\begin{lstlisting}
+def find_dupes(node):
+	dup = []
+	while node.next != None:
+		if node.value == node.next.value:
+			val = node.value
+			dup.append(val)
+			while node.value == val:
+				node = node.next
+				if node == None:
+					return dup
+		node = node.next
+	return dup
+\end{lstlisting}
+\end{answer}
     \item If your solution to (3) was iterative, write it recursively; if it
     was recursive, write it iteratively.
+\begin{answer}
+\begin{lstlisting}
+def find_dupes(node, dup=[], ignore=False):
+	if node.next == None:
+		return dup
+	if not ignore and node.value == node.next.value:
+		dup.append(node.value)
+	return find_dupes(node.next, dup, node.value == node.next.value)
+\end{lstlisting}
+\end{answer}
         \pagebreak
 
 \section*{Stacks and Queues}
