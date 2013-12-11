@@ -34,7 +34,7 @@ language=Java
 
 
 \author{Computer Science Community}
-\title{CS-243 Final Exam Review}
+\title{CS-143 Final Exam Review}
 \date{\today}
 
 \makeatletter
@@ -92,27 +92,26 @@ public class NicksHeavyThreads
 \end{lstlisting}
 
     \begin{enumerate}
+
+	\pagebreak
     
-    \item Complete the implementation of the LameCustomer class; each instance
+    \item Complete the implementation of the \texttt{LameCustomer} class: Each instance
           must choose a jeans size and wait for it to be available, update the
           jeans to indicate that they have been taken, print the message
           ``Customer: I got my size \emph{size} jeans!" and inform all threads
-          that the jeans selection has changed.  (Hint: Remember to keep an
-          accurate count of how many customers are in the shop at any point.)
+          that the jeans selection has changed. \\
+		  \textit{(Hint: Remember to keep an
+          accurate count of how many customers are in the shop.)}
 
 \begin{answer}
 \begin{lstlisting}
-static class LameCustomer extends Thread
-{
-    public void run()
-    {
-        synchronized( hank )
-        {
+static class LameCustomer extends Thread {
+    public void run() {
+        synchronized( hank ) {
             customers++;
             int desiredSize = ( int )
                 ( Math.random() * ( 5 - 1 + 1 ) ) + 1; // pick size
-            while( awesomeJeans != desiredSize ) // wait for pair
-            {
+            while( awesomeJeans != desiredSize ) { // wait for pair
                 try { hank.wait(); }
                 catch( InterruptedException pleaseDont ) {}
             }
@@ -120,14 +119,14 @@ static class LameCustomer extends Thread
                 + awesomeJeans + " jeans!" );
             awesomeJeans = 0; // take the jeans
             hank.notifyAll(); // inform everyone they are gone
-            customers--;
+            --customers;
         }
     }
 }
 \end{lstlisting}
 \end{answer}
 
-    \item Now implement the MeanWorker class, which should choose a size and
+    \item Now implement the \texttt{MeanWorker} class, which should choose a size and
           stock a pair of jeans of that size, print the message ``Hank: I
           grumpily restocked with size \emph{size}," and inform all threads
           that the selection has changed. It should then wait until someone has
@@ -137,12 +136,9 @@ static class LameCustomer extends Thread
 
 \begin{answer}
 \begin{lstlisting}
-static class MeanWorker extends Thread
-{
-    public synchronized void run()
-    {
-        do
-        {
+static class MeanWorker extends Thread {
+    public synchronized void run() {
+        do {
             awesomeJeans = ( int )
                 ( Math.random() * ( 5 - 1 + 1 ) ) + 1; // new size
             System.out.println( "Hank: I grumpily restocked "
@@ -162,10 +158,10 @@ static class MeanWorker extends Thread
 \pagebreak
 \item{\bf $\textrm{B}^+$Trees} A $\textrm{B}^+$Tree is a data structure that
 can be used to map from keys to values. Figure \ref{b-tree} shows a tree that
-maps from {\tt ints} to Strings.
+maps from {\tt int}s to \texttt{String}s.
 
 \begin{figure}[h]
-\caption{A partially drawn $\textrm{B}^+$Tree of strings, keyed on {\tt int}s}
+\caption{A partially drawn $\textrm{B}^+$Tree of \texttt{String}s, keyed on \texttt{int}s}
 \label{b-tree}
 \center
 \includegraphics[width=5in]{b_plus_tree_dot.pdf}
@@ -177,8 +173,9 @@ maps from {\tt ints} to Strings.
     $\textrm{B}^+$Tree be able to implement?
 
         \begin{answer}
-        Java.util.Map$<$K,V$>$
+        \texttt{Java.util.Map$<$K,V$>$}
         \end{answer}
+		\vspace{0.125in}
 
     \item We need to implement two different kinds of nodes for the tree. Why
     do we need to do this? What is different between the two types of nodes?
@@ -187,6 +184,7 @@ maps from {\tt ints} to Strings.
         Some nodes (the leaves) point to data values. We also have internal
         nodes which point to other nodes (both internal nodes and leaves).
         \end{answer}
+		\vspace{0.125in}
 
     \item We need classes to represent the nodes of the tree. Implement these
     classes so that they use generic types and all of their members are package
@@ -214,7 +212,7 @@ public class LeafNode<K,V> implements BTreeNode<K,V>
 
     \end{enumerate}
 
-\item What is the output when LookAtDatMagic's main is executed?
+\item What is the output when \texttt{LookAtDatMagic}'s main is executed?
 \begin{lstlisting}
 public class HeySteve{
     public int bananza(int in) throws NewException{
@@ -280,28 +278,28 @@ It's a Beach-bash! WakaWaka!
     A class is a construct which describes the properties and methods of an
     object. It can be thought of as a mold or template. An object is an 
     instantiation of a class. That is, a specific item created from the class
-    ``mold".
+    ``mold.''
     \end{answer}
 
-\item Briefly describe the difference (for objects) between a.equals(b), a==b,
-      a.compareTo(b), and Comparator.compare(a,b).
+\item Briefly describe the difference (for objects) between \texttt{a.equals(b)}, \texttt{a==b},
+      \texttt{a.compareTo(b)}, and \texttt{Comparator.compare(a,b)}.
 
     \begin{answer}
     \begin{itemize}
 
-    \item a.equals(b) Compares objects for equality. Automatically defined
-    by Java, but must be overwritten to provide intelligent behavior
-    returns a boolean
+    \item \texttt{a.equals(b)} Compares objects for equality. Class \texttt{Object} provides a default implementation
+	that is overridden for more intelligent behavior.
+    Returns a \texttt{boolean}.
 
-    \item a == b  Checks references (if the two objects are the SAME object).
-    Can also be used to check if a is null  
+    \item \texttt{a == b}  Checks references (if the two objects are the SAME object).
+    Can also be used to check whether \texttt{a} is \texttt{null}.
 
-    \item a.compareTo(b) returns an int indicating whether a is less than (-1),
-    equal to(0), or greater than b (+1). Indicates natural ordering 
+    \item \texttt{a.compareTo(b)} Returns an \texttt{int} indicating whether \texttt{a} is less than (-1),
+    equal to (0), or greater than (+1) \texttt{b}, according to their natural ordering.
 
-    \item compare(a,b) returns -1 if a $<$ b, 0 if a $=$ b, +1 if a $>$ b.
-    comp1.equals(comp2) implies that sgn(comp1.compare(o1,
-    o2))==sgn(comp2.compare(o1, o2)) for every object reference o1 and o2.
+    \item \texttt{compare(a,b)} Returns -1 if a $<$ b, 0 if a $=$ b, +1 if a $>$ b.
+    \texttt{comp1.equals(comp2)} implies that \texttt{sgn(comp1.compare(o1,
+    o2))==sgn(comp2.compare(o1, o2))} for every object reference \texttt{o1} and \texttt{o2}.
 
     \end{itemize}
     \end{answer}
@@ -338,7 +336,7 @@ The \emph{Factory} design pattern is used.
 \vspace{.5in}
 \end{answer}
 \pagebreak
-\item Which Layout Manager do each of the following descriptions describe?
+\item Which layout manager does each of the following descriptions describe?
 \begin{enumerate}[(a)]
 
 \item Displays the contained components in a set number of rows and columns,
@@ -372,8 +370,8 @@ BorderLayout
     \item What is the Java Collections Framework?
 
     \begin{answer}
-        a unified set of interfaces, algorithms and concrete implementaions 
-    provided by Java to support collections of objects.
+        A unified set of interfaces, algorithms and concrete implementaions
+    provided by Java to support collections of objects
     \end{answer}
 
     \item Assume the follwing line of code is given:
@@ -391,7 +389,7 @@ BorderLayout
     \end{lstlisting}
 
     \begin{answer}
-    Collection does not support get(i). The better solution 
+    \texttt{Collection} does not support \texttt{get(i)}. The better solution is:
     \begin{lstlisting}
         for( int i = 0; i < 20; i++){
             t.add(i);
@@ -407,29 +405,4 @@ BorderLayout
 
 \end{enumerate}
 
-
-
-
 \end{document}
-
-Topics for this exam: (from the ZJB!)
-Oh yeah!  We're moving topics around on the schedule (which won't impact
-the exam, obviously), de-emphasizing some of the design patterns, and
-(the big one) putting in threads.  Still not sure what detail we'll have
-with threads, but about one week's worth.
-
-Here is what will go on the syllabus:
-
-Week #  Schedule
-------  ---------------------------
-1        Intro to Java
-2        Classes (scope and equals)
-3        Interfaces
-4        Inheritance (equals pt2)
-5        JCF, O-O design
-6        Iterators, Comparators, and intro to Swing
-7        Event driven programming
-8        Exceptions, I/O
-9        Threads
-10       Design Patterns
-
