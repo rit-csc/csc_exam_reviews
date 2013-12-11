@@ -94,7 +94,7 @@ def append(value, llist):
                   add in a 4. What is a procedure for doing this? (There are
                   many possibilities.) \\
                 \begin{answer}
-				Use some variation of this procedure: Find the preceding element's node (in this case, 3), link its next node to the new node containing 4, then link that new node to what was the following node.
+				Use some variation of this strategy: Find the preceding element's node (in this case, 3), link its next node to the new node containing 4, then link that new node to what was the following node.
 				\end{answer}
 				\vspace{1in}
         \end{enumerate}
@@ -102,7 +102,7 @@ def append(value, llist):
 		\pagebreak
 
     \item Write a Python function, given a sorted linked list, returns a Python
-    list of all of the elements which are in the list more than once. (eg.
+    list of all of the elements which are in the list more than once. (e.g.
     $1\rightarrow2\rightarrow2\rightarrow3\rightarrow3\rightarrow3$ would return [2,3,3] )
 \label{it:dupes}
 \begin{answer}
@@ -137,8 +137,8 @@ def find_dupes(node, dup=[], ignore=False):
         \pagebreak
 
 \section*{Stacks and Queues}
-\item How can you use a stack to determine if an input string has properly
-      balanced parens, brackets and braces. (eg. ``[\{\}]'' is accepted, but
+\item How can you use a stack to determine whether an input string has properly
+      balanced parens, brackets and braces? (e.g. ``[\{\}]'' is accepted, but
       ``(()'' and ``[(])'' are not)?
 
     \begin{answer}
@@ -247,7 +247,7 @@ Your stack must provide the following functionality:
     \item What is wrong with the code? What can we do to make the function behave as Chris expects it to behave?
 
         \begin{answer}
-        The issue is on line 6. This line overwrites the list the element, things are getting overwritten and the contains method will break. Change 
+        The issue is on line 6. Whenever \texttt{bad\_hash()} dictates that an element should be placed in an occupied bucket, that bucket's contents get overwritten! Change 
 \begin{lstlisting}[numbers=none]
 self.table[self.bad_hash(element)] = element 
 \end{lstlisting} to 
@@ -267,7 +267,7 @@ self.table[self.bad_hash(element)].append(element)
 \item Assuming that this hash table will only be used on strings, is the hashing function being used a good one? Why or why not?
 
     \begin{answer}
-        No, it ignores the fact that most english words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
+        No: It ignores the fact that most English words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
     \end{answer}
     \end{enumerate}
 
@@ -487,7 +487,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
     		[9, 7, 5, 3, 3, 2, 1] \newline
     \end{answer}
 
-\item If we have a balanced binary search tree (its height is as small as
+\item If we have a balanced binary search tree (meaning its height is as small as
     possible) containing $n$ nodes:
         \begin{enumerate}
             \item What is its height? \\
@@ -506,7 +506,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
                 \end{answer}
                 \pagebreak
         \end{enumerate}
-    \item Write a function that determines if a given element is in a binary search tree.
+    \item Write a function that determines whether a given element is in a binary search tree.
         \begin{answer}
         \begin{lstlisting}
         class tree:
