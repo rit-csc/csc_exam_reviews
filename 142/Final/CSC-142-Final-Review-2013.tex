@@ -70,7 +70,7 @@ public class NicksHeavyThreads
     
     public static void main( String[] args )
     {
-        for( int i = 0; i < 10; i++ )
+        for( int i = 0; i < 10; ++i )
         {
             ( new LameCustomer() ).start();
         }
@@ -108,7 +108,7 @@ public class NicksHeavyThreads
 static class LameCustomer extends Thread {
     public void run() {
         synchronized( hank ) {
-            customers++;
+            ++customers;
             int desiredSize = ( int )
                 ( Math.random() * ( 5 - 1 + 1 ) ) + 1; // pick size
             while( awesomeJeans != desiredSize ) { // wait for pair
@@ -380,10 +380,10 @@ BorderLayout
     \end{lstlisting}
     What then is wrong with the following? Correct any errors:
     \begin{lstlisting}
-        for( int i = 0; i < 20; i++){
+        for( int i = 0; i < 20; ++i ){
             t.add(i);
         }
-        for( int i=0; i <  t.size(); i++ ){
+        for( int i=0; i <  t.size(); ++i ){
             System.out.println(t.get(i));
         }
     \end{lstlisting}
@@ -391,10 +391,10 @@ BorderLayout
     \begin{answer}
     \texttt{Collection} does not support \texttt{get(i)}. The better solution is:
     \begin{lstlisting}
-        for( int i = 0; i < 20; i++){
+        for( int i = 0; i < 20; ++i ) {
             t.add(i);
         }
-        for( Integer i : t ){
+        for( Integer i : t ) {
             System.out.println(i);
         }
 
