@@ -230,11 +230,11 @@ Your stack must provide the following functionality:
 \pagebreak
 \section*{Hashing and Hash Tables}
 
-\item Chris made a mistake in his hashtable implementation!
+\item Chris made a mistake in his hash table implementation!
 
     \lstinputlisting{code/wonkyhash.py}
     \begin{enumerate}
-    \item Show what the hashtable looks like after the for loop on line 24
+    \item Show what the hash table looks like after the for loop on line 24
           completes. 
 
         \begin{answer}
@@ -264,7 +264,7 @@ self.table[self.bad_hash(element)].append(element)
 [['wrestled', 'bear', 'once'], ['I', 'a'], [], []]
 		\end{lstlisting}
     \end{answer}
-\item Assuming that this hashtable will only be used on strings, is the hashing function being used a good one? Why or why not?
+\item Assuming that this hash table will only be used on strings, is the hashing function being used a good one? Why or why not?
 
     \begin{answer}
         No, it ignores the fact that most english words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
@@ -337,7 +337,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 
       \begin{answer}
       With real-world data, we're more likely to encounter ordered or
-      semi-ordered data than randomised data. This makes it more likely for us
+      semi-ordered data than randomized data. This makes it more likely for us
       run into Quicksort's worst-case time complexity. We run into this bad
       time complexity if we select pivots which are near the lowest or highest
       values.
