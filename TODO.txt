@@ -4,6 +4,7 @@ NOT COMPLETED:
 LOW PRIORITY:
     Fix instances of OOP in review to be represented with maker functions and stupid things
     maybe add some functional stuff to the review?
+	Make 141-final-1b answer use tikz instead of ascii art.
 
 
 COMPLETED:
