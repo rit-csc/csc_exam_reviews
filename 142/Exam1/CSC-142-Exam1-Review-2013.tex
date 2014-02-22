@@ -1,7 +1,7 @@
 % Author: David Larsen <dcl9934@cs.rit.edu>
 % Author: Doug Krofcheck <dpk3062@rit.edu>
 \documentclass[11pt]{article}
-\usepackage{fullpage}   %
+\usepackage[margin=0.7in]{geometry}
 \usepackage{listings}   %
 \usepackage{needspace}  %
 \usepackage{color}      %
@@ -14,6 +14,7 @@
 \usepackage{textcomp}	% So our quotes in code don't look like shit
 \usepackage{longtable}
 \usepackage{multicol}
+\setlength{\columnsep}{12em}
 
 \lstset{ %
 basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
@@ -165,11 +166,7 @@ Abstract classes allow for default method behavior to be defined, while interfac
 \end{answer}
 
 
-\newpage
-
-
 \item What gets printed by the following code?
-\begin{multicols}{2}
 \begin{lstlisting}
 public class Class1 {
 	public Class1() {
@@ -191,7 +188,10 @@ public class Class2 extends Class1 {
 		System.out.println("Class2.print1()");
 	}
 }
-
+\end{lstlisting}
+\textit{(continued...)}
+\pagebreak
+\begin{lstlisting}[firstnumber=21]
 public class Class3 extends Class1{
 	private Class2 class2;
 	public Class3() {
@@ -220,14 +220,17 @@ public class TestClass {
 	}
 }
 \end{lstlisting}
-\columnbreak
 \begin{answer}
+\begin{multicols}{2}
+\hangindent=4em
     \begin{verbatim}
 Class1()
 Class2()
 Class2.print1()
 Class1.print2()
-
+\end{verbatim}
+\columnbreak
+\begin{verbatim}
 Class1()
 Class3()
 Class1()
@@ -236,11 +239,10 @@ Class2.print1()
 Class3.print2()
 Class1.print2()
     \end{verbatim}
-\end{answer}
 \end{multicols}
+\end{answer}
 
-
-\newpage
+\vspace{-24pt}
 
 
 \item Find at least 3 errors related to inheritance and interfaces in the following code:\label{demolition-derby}
@@ -267,6 +269,9 @@ public class Car implements Vehicle {
 		return speed;
 	}
 }
+\end{lstlisting}
+
+\begin{lstlisting}[firstnumber=23]
 public class Toyota extends Car {
 	public long getSpeed(){
 		return speed;
