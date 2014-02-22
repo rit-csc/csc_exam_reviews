@@ -1,9 +1,9 @@
 .PHONY: default
 
 default:
-	$(MAKE) -C Midterm
+	$(MAKE) -C Exam1
 	$(MAKE) -C Final
 
 %:
-	$(MAKE) -C Midterm $@
+	$(MAKE) -C Exam1 $@
 	$(MAKE) -C Final $@
