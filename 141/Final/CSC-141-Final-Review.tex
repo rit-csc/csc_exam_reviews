@@ -137,35 +137,6 @@ def find_dupes(node, dup=[], ignore=False):
         \pagebreak
 
 \section*{Stacks and Queues}
-\item How can you use a stack to determine whether an input string has properly
-      balanced parens, brackets and braces? (e.g. ``[\{\}]'' is accepted, but
-      ``(()'' and ``[(])'' are not)?
-
-    \begin{answer}
-    \begin{lstlisting} 
-def delims_are_balanced(inString):
-    ''' String -> boolean
-    Determines if the input string has balanced delimiters
-    Delimiters are () [] {} and <>  
-    
-    '''
-    delim = {'(': ')', '[': ']', '{': '}', '<': '>'}
-    stack = Stack()
-    for char in inString:
-        if char in delim:
-            stack.push(char)
-        elif char in delim.values():
-            if stack.is_empty():
-                return False
-            if delim[stack.peek()] == char:
-                stack.pop()
-            else:
-                return False
-    return stack.is_empty()
-    \end{lstlisting}
-    \end{answer}
-\vspace{1.5in}
-
 \item If we wanted to implement a stack as a linked list, what linked-list
 	operations would correspond to \texttt{push()} and \texttt{pop()}?
 
