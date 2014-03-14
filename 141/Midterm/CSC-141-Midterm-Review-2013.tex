@@ -503,9 +503,10 @@ def bwMoves(start, target):
 	first=0
 	for index in range(len(start)):
 		if start[index]==target[index]:
-			if first!=index:
-				actions+=1
-			first=index+1
+			if first!=index:	# For each flip, you are going to flip up to (but not including)
+				actions+=1		# the index pointer.  If first==index, you are flipping a set of
+			first=index+1		# zero elements.  There is nothing to flip.
+								# ie:  There were two no-flips in a row.
 	if start[-1]!=target[-1]:
 		actions+=1
 	return actions
