@@ -238,6 +238,9 @@ def sumIt( numbers ):
             \includegraphics[scale=0.4]{3.png}
         \end{itemize}
     \begin{answer}
+
+\vspace{-28pt}
+
     \begin{lstlisting}
        def drawSqaures( length, depth ):
            if depth <= 0:
@@ -310,31 +313,42 @@ def compress( string ):
 \end{answer}
 
 \newpage
-\item How can you use a stack to determine whether an input string has properly
-      balanced parentheses, brackets and braces? (e.g. ``[\{\}]'' is accepted, but
+\item How can you use a stack to determine whether an input string of exclusively
+      parentheses, brackets and braces is properly balanced? (e.g. ``[\{\}]'' is accepted, but
       ``(()'' and ``[(])'' are not)?
-      Assume that you are provided with a Stack class that has push(), pop(), and top() member functions.
+      Assume that you are provided with a Stack class that has push(), pop(), and peek() member functions.
 
     \begin{answer}
     \begin{lstlisting} 
+def closing_match(char):
+	if char == '(':
+		return ')'
+	elif char == '[':
+		return ']'
+	elif char == '{':
+		return '}'
+	elif char == '<':
+		return '>'
+	else:
+		return None
+
 def delims_are_balanced(inString):
     ''' String -> boolean
     Determines if the input string has balanced delimiters
     Delimiters are () [] {} and <>  
     
     '''
-    delim = {'(': ')', '[': ']', '{': '}', '<': '>'}
     stack = Stack()
     for char in inString:
-        if char in delim:
+        if closing_match(char) != None: # a starting grouping symbol
             stack.push(char)
-        elif char in delim.values():
-            if stack.is_empty():
-                return False
-            if delim[stack.peek()] == char:
-                stack.pop()
-            else:
-                return False
+		else:
+			if stack.is_empty():
+				return False
+			elif char == closing_match(stack.peek()):
+				stack.pop()
+			else: # mismatched grouping symbol
+				return False
     return stack.is_empty()
     \end{lstlisting}
     \end{answer}
@@ -503,15 +517,13 @@ def bwMoves(start, target):
 	first=0
 	for index in range(len(start)):
 		if start[index]==target[index]:
-			if first!=index:	# For each flip, you are going to flip up to (but not including)
-				actions+=1		# the index pointer.  If first==index, you are flipping a set of
-			first=index+1		# zero elements.  There is nothing to flip.
-								# ie:  There were two no-flips in a row.
+			if first!=index: # Each flip works up to (but not including)
+				actions+=1	 # the index pointer. If first==index, that's
+			first=index+1	 # 0 elements, so there is nothing to flip.
+							 # (i.e. There were two no-flips in a row.)
 	if start[-1]!=target[-1]:
 		actions+=1
 	return actions
-	
-NOTE: If you encounter flip condition, you want to flip everything AFTER the start pointer.
 \end{lstlisting}
 \end{answer}
 
