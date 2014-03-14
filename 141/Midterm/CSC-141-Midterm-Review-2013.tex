@@ -249,6 +249,8 @@ def sumIt( numbers ):
                drawSqaures( length/2, depth-1 )
                turtle.right( 180 )
                count -= 1
+        
+        NOTE: Solution starts from top-left corner of the main box.
       \end{lstlisting}
      \end{answer}
 
@@ -311,7 +313,7 @@ def compress( string ):
 \item How can you use a stack to determine whether an input string has properly
       balanced parentheses, brackets and braces? (e.g. ``[\{\}]'' is accepted, but
       ``(()'' and ``[(])'' are not)?
-      Assume that you are provided with a Stack class that has push() and pop() member functions.
+      Assume that you are provided with a Stack class that has push(), pop(), and top() member functions.
 
     \begin{answer}
     \begin{lstlisting} 
@@ -507,6 +509,8 @@ def bwMoves(start, target):
 	if start[-1]!=target[-1]:
 		actions+=1
 	return actions
+	
+NOTE: If you encounter flip condition, you want to flip everything AFTER the start pointer.
 \end{lstlisting}
 \end{answer}
 
