@@ -66,6 +66,7 @@ columns=fixed
 
 
 \item Suppose we are talking about the depth-first search (DFS) algorithm.
+Assume nodes are \emph{added} to the data structure in alphabetical order.
 \begin{enumerate}
 \item What underlying data structure does this algorithm use?
 
@@ -75,14 +76,22 @@ A stack.
 
 \item %b
 Given this graph, state the path that the DFS would generate and show the data structure at each step.
-Assume nodes are \emph{added} to the data structure in alphabetical order.
+Node \texttt{A} is the start node \texttt{F} is the desination node.
 
 \begin{answer}
-
+The traversal order is ACEDF.
 \end{answer}
+
+\item %c
+What changes would we need to implement to make use of a breadth-first search (BFS) algorithm?
+
+\begin{answer}
+Use a queue data structure (instead of a stack.)
+\end{answer}
+
 \end{enumerate}
 
-\item Question \\
+\item 
 \begin{answer}
 Answer
 \end{answer}
