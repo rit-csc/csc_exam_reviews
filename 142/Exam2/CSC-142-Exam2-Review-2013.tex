@@ -9,7 +9,7 @@
 \usepackage{graphicx}   %
 \usepackage{csc}        %
 \usepackage{tikz}       %
-\usetikzlibrary{shapes} %
+\usetikzlibrary{shapes, arrows, automata} %
 \usepackage{tabularx}   % for helping matchtabular (matching questions)
 \usepackage{textcomp}	% So our quotes in code don't look like shit
 \usepackage{longtable}
@@ -75,8 +75,18 @@ A stack.
 \end{answer}
 
 \item %b
-Given this graph, state the path that the DFS would generate and show the data structure at each step.
-Node \texttt{A} is the start node \texttt{F} is the desination node.
+Given the following graph, state the path that the DFS would generate and show the data structure at each step.
+Node \texttt{A} is the start node, and \texttt{F} is the desination node.
+
+\begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm,semithick]
+	\node[initial,state] (A) {A};
+	\node[state]        (B) [right of=A] {B};
+	\node[state]        (C) [below right of=A] {C};
+
+	\path   (A) edge node {2} (B)
+				edge node {3} (C)
+			(C) edge node {-2} (B);
+\end{tikzpicture}
 
 \begin{answer}
 The traversal order is ACEDF.
