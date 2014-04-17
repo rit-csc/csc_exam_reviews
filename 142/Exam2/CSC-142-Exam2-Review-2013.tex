@@ -127,6 +127,8 @@ Answer
 
 
 
+
+\newpage
 \item Is there anything wrong with the following exception handler as written? Will this
 code work as intended? 
 \begin{lstlisting}[language=java]
@@ -138,6 +140,23 @@ this.epicFail();
 \end{lstlisting}
 \begin{answer}
 \\ Exception is more broad than ArithmeticException, so the second catch statement is unreachable.  "Catch" statements should filter possible Exception types from specific to broad.
+\end{answer}
+
+
+
+\item What is the Java Collections Framework?
+\begin{answer}
+    a unified set of interfaces, algorithms and concrete implementaions 
+provided by Java to support collections of objects.
+\end{answer}
+
+
+
+
+
+\item Describe the difference between Comparable and Comparator.
+\begin{answer}
+    TODO: answer
 \end{answer}
 
 
@@ -160,46 +179,60 @@ List<String> list = Arrays.asList("a", "o", "d", f", "x");
 
 \item FlowLayout
 \begin{answer}
-The FlowLayout class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the FlowLayout class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. To specify that the row is to aligned either to the left or right, use a FlowLayout constructor that takes an alignment argument. Another constructor of the FlowLayout class specifies how much vertical or horizontal padding is put around the components. \end{answer}
+The FlowLayout class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the FlowLayout class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. \end{answer}
 
 \item BorderLayout
 \begin{answer}
-With a Boarder layout, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the BorderLayout object — just the center, or the center and the bottom. \end{answer}
+With a BorderLayout, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the BorderLayout object — just the center, or the center and the bottom. \end{answer}
 
 \item GridLayout
 \begin{answer}
-A GridLayout object places components in a grid of cells. Each component takes all the available space within its cell, and each cell is exactly the same size. If the GridLayoutDemo window is resized, the GridLayout object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
+A GridLayout object places components in a grid of cells. Each component takes all the available space within its cell, and all cells are exactly the same size. If the GridLayoutDemo window is resized, the GridLayout object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
 \end{enumerate}
 
 
 
 
-\item Discuss the differences between an ArrayList and a LinkedList. Which would be better in each of the following situations?
-
+\item
 \begin{enumerate}
-\item Inserting a random number into a sorted list.
-\item Creating a list that will hold all the players in a game.  The game has a max limit on the amount of players.  
-\item Deleting from near the tail end of the list.
-\item Deleting from the head end of the list.
-\end{enumerate}
+	\item What are the primary differences between an ArrayList and a LinkedList?
+	
+	\begin{answer}
+	LinkedList is implemented as a doubly-linked list.
+	\\ArrayList is implemented as a dynamically resizing array.
+	\\ \\ArrayList allows fast random access, but adding or removing from the middle of the array
+	requires shifting all the elements. LinkedList always has constant-time insertions or removals
+	if accessed through an iterator (thus we already know the insertion/removal point), but getting
+	an element requires traversing the list until we get to the wanted index.
+	
+	\end{answer}
+	
+	\item Which would be better in each of the following situations?
+	\begin{enumerate}
+		\item Inserting a random number into a sorted list.
+		\begin{answer}
+		LinkedList - Constant insertion time (ArrayList will have to adjust index values of all elements after the insertion point).
+		\end{answer}
+		
+		\item Creating a list that will hold all the players in a game.  The game has a max limit on the amount of players. 
+		\begin{answer}
+		ArrayList - You have a fixed limit, so pre-allocate enough space for that amount.
+		\end{answer}
+ 
+		\item Deleting from near the tail end of the list.
+		\begin{answer}
+		ArrayList - Your linked list may have to iterate all the way down, while the ArrayList just jumps to the right spot.
+		\end{answer}
+				
+		\item Deleting from the head end of the list.
+		\begin{answer}
+		LinkedList - Constant time operation, but O(n) for the ArrayList.
+		\end{answer}
+				
+	\end{enumerate}
 
-\begin{answer}
-LinkedList is implemented as a doubly-linked list.
-\\ArrayList is implemented as a dynamically resizing array.
-\\ \\ArrayList allows fast random access, but adding or remove from the middle of the array
-requires shifting all the elements. LinkedList always has constant-time insertions or removals
-if accessed through an iterator (thus we already know the insertion/removal point), but getting
-an element requires traversing the list until we get to the wanted index.
-\\ \\ArrayLists take up a specific block of sequential memory. If the list isn't full the extra
-memory will be wasted. LinkedList take up random segments of memory and require
-forward and backward pointers for each element, but all of it's allocated memory is used.
-\begin{enumerate}
-\item LinkedList - Constant insertion time (ArrayList will have to adjust index values of all elements after the insertion point).
-\item ArrayList - You have a fixed limit, so pre-allocate enough space for that amount.
-\item ArrayList - Your linked list may have to iterate all the way down, while the ArrayList just jumps to the right spot.
-\item LinkedList - Constant time operation, but O(n) for the ArrayList.
-\end{enumerate}
-\end{answer}
+\end{enumerate}  
+
 
 
 \newpage
@@ -267,8 +300,7 @@ public class BasicGUI {
 \begin{answer}
 
 \textbf{checked exceptions} -– Exceptions that a method signature must specify it throws. If a method
-may throw a checked exception then calls to that method must be within a try-catch block. It
-is generally assumed that checked exception represent minor issues and any reasonably robust
+may throw a checked exception, all calls to that method must be within a try-catch block. Checked exceptions should be used exclusively for minor issues, and any reasonably robust
 system should be able to recover from a checked exception. Classic example is IOException.\\
 
 \textbf{runtime exception} -– Not declared in a method signature and not anticipated to be thrown.
@@ -334,27 +366,29 @@ cancelButton.addActionListener(new ActionListener() {
 
 Topics for this exam:
 	- Graphs: DFS/BFS
-		#s
+		# 1, 2
 	- Dijkstra's Shortest Path
-		#s
+		#
 	- Java Collection Framework, Iterators, Comparators
-		#s
+		# 5, 6, 7, 9
 	- Intro. to GUIs (from OO perspective)
-		#s
+		# 12?
 	- Swing
-		#s
+		# 8, 10
 	- Exceptions
-		#s	
+		# 4, 11	
 
 1) DFS problem - example problem, description of underlying data structure.
 2) BFS problem stemming off of material from problem #1 (same graph, also talks about the data struct=queues)
 3) 
 4) Exception - catching
-5) Collections - easy sorting
-6) Swing - layouts
-7) Collection - lists
-8) Swing - full GUI
-9) Exception - types
-10) Anonymous classes, Swing - action listener
+5) define JCF
+6) Comparable vs Comparator
+7) Collections - easy sorting
+8) Swing - layouts
+9) Collection - lists
+10) Swing - full GUI
+11) Exception - types
+12) Anonymous classes, Swing - action listener
 
 
