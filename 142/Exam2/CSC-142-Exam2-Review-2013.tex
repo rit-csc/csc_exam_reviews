@@ -65,8 +65,7 @@ columns=fixed
 \begin{enumerate}
 
 
-\item Suppose we are talking about the depth-first search (DFS) algorithm.
-Assume nodes are \emph{added} to the data structure in alphabetical order.
+\item Suppose we are talking about the depth-first search (DFS) algorithm and nodes are processed in alphabetical order.
 \begin{enumerate}
 \item What underlying data structure does this algorithm use?
 
@@ -76,7 +75,7 @@ A stack.
 
 \item %b
 Given the following graph, state the path that the DFS would generate and show the data structure at each step.
-Node \texttt{A} is the start node, and \texttt{F} is the desination node.
+Node \texttt{A} is the start node, and \texttt{F} is the destination node.
 
 \begin{flushright}
 \begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm,semithick]
@@ -107,10 +106,11 @@ What changes would we need to implement to make use of a breadth-first search (B
 \begin{answer}
 Use a queue data structure (instead of a stack.)
 \end{answer}
-
 \end{enumerate}
 
-\item Now consider a BFS algroithm.
+
+
+\item Now consider a BFS algorithm.
 \begin{enumerate}
 \item Using the graph as described in Question 1, what is the path that a BFS would generate?
 Show the data structure you answered in part (c) at each step.
@@ -128,7 +128,7 @@ Answer
 
 
 \item Is there anything wrong with the following exception handler as written? Will this
-code compile? 
+code work as intended? 
 \begin{lstlisting}[language=java]
 try {
 this.epicFail();
@@ -137,14 +137,12 @@ this.epicFail();
 }
 \end{lstlisting}
 \begin{answer}
-\\ In Java 6: No problem :)
-\\ In Java 7: Compile error!  Exception is more generic than ArithmeticException so the second catch statement is unreachable.
+\\ Exception is more broad than ArithmeticException, so the second catch statement is unreachable.  "Catch" statements should filter possible Exception types from specific to broad.
 \end{answer}
 
 
 
-\item Write code to naturally sort the given list in as few lines as possible. You'll lose half
-of the points if you use a loop. Do not use any numbers (Integers, ints, Double, double,
+\item Write code to naturally sort the given list in as few lines as possible. You should not need a for-loop or any numbers (Integer, int, Double, double,
 BigInteger, etc...).
 \begin{lstlisting}[language=java]
 List<String> list = Arrays.asList("a", "o", "d", f", "x");
@@ -159,12 +157,15 @@ List<String> list = Arrays.asList("a", "o", "d", f", "x");
 \newpage
 \item Describe each of the following layout managers:
 \begin{enumerate}
+
 \item FlowLayout
 \begin{answer}
 The FlowLayout class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the FlowLayout class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. To specify that the row is to aligned either to the left or right, use a FlowLayout constructor that takes an alignment argument. Another constructor of the FlowLayout class specifies how much vertical or horizontal padding is put around the components. \end{answer}
+
 \item BorderLayout
 \begin{answer}
 With a Boarder layout, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the BorderLayout object — just the center, or the center and the bottom. \end{answer}
+
 \item GridLayout
 \begin{answer}
 A GridLayout object places components in a grid of cells. Each component takes all the available space within its cell, and each cell is exactly the same size. If the GridLayoutDemo window is resized, the GridLayout object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
@@ -173,13 +174,15 @@ A GridLayout object places components in a grid of cells. Each component takes a
 
 
 
-\item Discuss the differences between ArrayList and LinkedList. Which list should you prefer in the following situations:
+\item Discuss the differences between an ArrayList and a LinkedList. Which would be better in each of the following situations?
+
 \begin{enumerate}
 \item Inserting a random number into a sorted list.
 \item Creating a list that will hold all the players in a game.  The game has a max limit on the amount of players.  
 \item Deleting from near the tail end of the list.
 \item Deleting from the head end of the list.
 \end{enumerate}
+
 \begin{answer}
 LinkedList is implemented as a doubly-linked list.
 \\ArrayList is implemented as a dynamically resizing array.
@@ -200,7 +203,7 @@ forward and backward pointers for each element, but all of it's allocated memory
 
 
 \newpage
-\item Create a class that constructs and displays the following GUI.  The main buttons don't need to do anything when clicked, but the title bar buttons should function as expected (minimize, maximize, exit).  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, thousands of dollars, JFileChooser, JComponent, JDesktopPane, and an exit on close operation.  The window is 300 by 300 pixels and has a title.  If you're a board, make the Clear button's text red.
+\item Create a class that constructs and displays the following GUI.  The main buttons don't need to do anything when clicked, but the title bar buttons should function as expected (minimize, maximize, exit).  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, JFileChooser, JComponent, JDesktopPane, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
 %right aligned to give students more writing space
 \begin{flushright}
 \includegraphics[scale=0.6]{calculator.png}
@@ -262,6 +265,7 @@ public class BasicGUI {
 
 \item Briefly explain the differences between the three kinds of exceptions: checked exceptions, runtime exceptions, and errors.
 \begin{answer}
+
 \textbf{checked exceptions} -– Exceptions that a method signature must specify it throws. If a method
 may throw a checked exception then calls to that method must be within a try-catch block. It
 is generally assumed that checked exception represent minor issues and any reasonably robust
@@ -278,7 +282,7 @@ ThreadDeath (see java's Error class).
 
 
 
-\item Given the following code snippet, rewrite ControlListener as an anonymous class passed into the addActionListener method calls.  
+\item Given the following code snippet, rewrite ControlListener as an anonymous class passed into the addActionListener() method calls.  
 \begin{lstlisting}[language=java]
 class ControlListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
