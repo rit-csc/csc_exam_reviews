@@ -78,6 +78,7 @@ A stack.
 Given the following graph, state the path that the DFS would generate and show the data structure at each step.
 Node \texttt{A} is the start node, and \texttt{F} is the desination node.
 
+\begin{flushright}
 \begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm,semithick]
 	\node[initial,state] (A) {A};
 	\node[state]        (B) [above right of=A] {B};
@@ -93,8 +94,8 @@ Node \texttt{A} is the start node, and \texttt{F} is the desination node.
 		(C) edge node {} (D)
 		(C) edge node {} (E)
 		(D) edge node {} (F);
-
 \end{tikzpicture}
+\end{flushright}
 
 \begin{answer}
 The traversal order is ACEDF.
@@ -200,9 +201,10 @@ forward and backward pointers for each element, but all of it's allocated memory
 
 \newpage
 \item Create a class that constructs and displays the following GUI.  The main buttons don't need to do anything when clicked, but the title bar buttons should function as expected (minimize, maximize, exit).  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, thousands of dollars, JFileChooser, JComponent, JDesktopPane, and an exit on close operation.  The window is 300 by 300 pixels and has a title.  If you're a board, make the Clear button's text red.
-\begin{center}
+%right aligned to give students more writing space
+\begin{flushright}
 \includegraphics[scale=0.6]{calculator.png}
-\end{center}
+\end{flushright}
 \begin{answer}
 \begin{lstlisting}[language=java]
 import java.awt.BorderLayout; import java.awt.Color;
