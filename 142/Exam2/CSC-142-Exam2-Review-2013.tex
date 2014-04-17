@@ -120,6 +120,7 @@ Answer
 \end{answer}
 
 
+\newpage
 \item Question \\
 \begin{answer}
 Answer
@@ -128,14 +129,15 @@ Answer
 
 
 
-\newpage
 \item Is there anything wrong with the following exception handler as written? Will this
 code work as intended? 
 \begin{lstlisting}[language=java]
 try {
-this.epicFail();
+	this.epicFail();
 } catch (Exception e) {
+	\\
 } catch (ArithmeticException a) {
+	\\
 }
 \end{lstlisting}
 \begin{answer}
@@ -236,20 +238,20 @@ A GridLayout object places components in a grid of cells. Each component takes a
 
 
 \newpage
-\item Create a class that constructs and displays the following GUI.  The main buttons don't need to do anything when clicked, but the title bar buttons should function as expected (minimize, maximize, exit).  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, JFileChooser, JComponent, JDesktopPane, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
-%right aligned to give students more writing space
-\begin{flushright}
+\item Create a class that constructs and displays the following GUI: \\
+\begin{minipage}{0.3\textwidth}
 \includegraphics[scale=0.6]{calculator.png}
-\end{flushright}
+\end{minipage} \hfill
+\hspace{50px}
+%image is right-aligned to give students more writing space
+\begin{minipage}{0.5\textwidth}
+The buttons within the GUI do not need to be functional.  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, JComponent, JDesktopPane, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
+\end{minipage}
+
 \begin{answer}
 \begin{lstlisting}[language=java]
-import java.awt.BorderLayout; import java.awt.Color;
-import java.awt.Container; import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.BoxLayout; import javax.swing.JButton;
-import javax.swing.JFrame; import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.awt.*;
+import javax.swing.*;
 
 public class BasicGUI {
 
@@ -348,6 +350,23 @@ cancelButton.addActionListener(new ActionListener() {
 	}
 });
 \end{lstlisting}
+\end{answer}
+
+
+
+
+\item Why does Dijkstra's algorithm not work correctly on graphs with negative
+      edge weights?
+
+\begin{answer}
+Dijkstra's algorithm doesn't work correctly on graphs with negative edge
+weights due to one of its {\em greedy} behaviors.
+
+When selecting the next node to visit, Dijkstra's algorithm chooses the
+node with the current lowest total value, then {\em finalizes} that value
+forever. If there were another route to that node, which had not yet been
+explored (and contained a net negative weight) Dijkstra's algorithm would
+return a suboptimal path.
 \end{answer}
 
 
