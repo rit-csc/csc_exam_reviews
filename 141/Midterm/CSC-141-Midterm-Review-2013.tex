@@ -21,7 +21,7 @@ language=Python
 
 \ifthenelse{\isundefined{\isAnswerKey}}
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{white}}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny}\color{white}}{}
 }
 {
     \newenvironment{answer}{\large\lstset{basicstyle=\large}\color{red}}{}
@@ -257,6 +257,8 @@ def sumIt( numbers ):
       \end{lstlisting}
      \end{answer}
 
+
+\newpage
 \item
 Connor is a dweeb and loves keeping a count of things.
 You will be writing a tail-recursive function to satisfy his desires.

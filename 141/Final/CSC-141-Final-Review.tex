@@ -28,7 +28,7 @@ columns=fixed
 
 \ifthenelse{\isundefined{\isAnswerKey}}
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{white}}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white}}{}
 }
 {
     \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red}}{}
@@ -134,8 +134,9 @@ def find_dupes(node, dup=[], ignore=False):
 	return find_dupes(node.next, dup, node.value == node.next.value)
 \end{lstlisting}
 \end{answer}
-        \pagebreak
 
+
+\pagebreak
 \section*{Stacks and Queues}
 \item If we wanted to implement a stack as a linked list, what linked-list
 	operations would correspond to \texttt{push()} and \texttt{pop()}?
@@ -146,7 +147,6 @@ def find_dupes(node, dup=[], ignore=False):
 	\end{answer}
 
 	
-\pagebreak
 \item Write your own stack class using python's built in lists to manage the elements of your stack. \\
 Your stack must provide the following functionality:
 	  \begin{itemize}
@@ -175,7 +175,7 @@ Your stack must provide the following functionality:
 	  \end{answer}
 	  \vspace{0.5in}
 
-\item Write the following methods to create a queue in similar fashion to previous question (with a Python  list as the data structure managing elements "under the hood")\\
+\item Write the following methods to create a queue in similar fashion to previous question (with a Python  list as the data structure managing elements "under the hood"):\\
 	enqueue()\\
 	dequeue()
 
@@ -187,16 +187,6 @@ Your stack must provide the following functionality:
 		self.list.pop( 0 )
 	\end{lstlisting}
 	\end{answer}
-	
-
-\section*{Backtracking}
-
-\item Why is backtracking better suited for solving a Sudoku puzzle than
-      using regular brute force?
-
-    \begin{answer}
-    A properly implemented backtracking approach will prune fruitless branches. 
-    \end{answer}
 
 \pagebreak
 \section*{Hashing and Hash Tables}
@@ -515,8 +505,19 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
         print(is_in_tree(5,newTree.head)) -> False
         \end{lstlisting}
         \end{answer}
-        \pagebreak
+        
 
+
+
+
+\section*{Backtracking}
+
+\item Why is backtracking better suited for solving a Sudoku puzzle than
+      using regular brute force?
+
+\begin{answer}
+A properly implemented backtracking approach will prune fruitless branches. 
+\end{answer}
 \end{enumerate}
 
 \end{document}

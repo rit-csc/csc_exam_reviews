@@ -29,7 +29,7 @@ columns=fixed
 
 \ifthenelse{\isundefined{\isAnswerKey}}
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{white}}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white}}{}
 }
 {
     \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red}}{}
@@ -117,8 +117,7 @@ static class LameCustomer extends Thread {
         synchronized( hank ) {
             ++customers;
 			// pick size
-            int desiredSize = ( int )
-                ( Math.random() * ( 5 - 1 + 1 ) ) + 1;
+            int desiredSize = (int) ( Math.random()*(5) ) + 1;
 			// wait for pair
             while( awesomeJeans != desiredSize ) {
                 try { hank.wait(); }
@@ -149,8 +148,7 @@ static class MeanWorker extends Thread {
     public synchronized void run() {
         do {
 			// new size
-            awesomeJeans = ( int )
-                ( Math.random() * ( 5 - 1 + 1 ) ) + 1;
+            awesomeJeans = (int) ( Math.random()*(5) ) + 1;
             System.out.println( "Hank: I grumpily restocked "
                 + "with jeans of size " + awesomeJeans );
             notifyAll(); // inform customers of the restocking
@@ -222,6 +220,8 @@ public class LeafNode<K,V> implements BTreeNode<K,V>
 
     \end{enumerate}
 
+
+\newpage
 \item What is the output when \texttt{LookAtDatMagic}'s main is executed?
 \begin{lstlisting}
 public class HeySteve{
