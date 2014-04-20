@@ -14,6 +14,7 @@
 \usepackage{textcomp}	% So our quotes in code don't look like shit
 \usepackage{longtable}
 \usepackage{multicol}
+\usepackage{tabu}
 \setlength{\columnsep}{12em}
 
 \lstset{ %
@@ -35,6 +36,14 @@ columns=fixed
 }
 {
     \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{Answer:}}{}
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{white}} #1}
+}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{red}} #1}
 }
 
 % ----- Start matchtabular definition -----
@@ -109,7 +118,6 @@ Use a queue data structure (instead of a stack.)
 \end{enumerate}
 
 
-
 \item Now consider a BFS algorithm.
 \begin{enumerate}
 \item Using the graph as described in Question 1, what is the path that a BFS would generate?
@@ -118,6 +126,20 @@ Show the data structure you answered in part (c) at each step.
 \begin{answer}
 Answer
 \end{answer}
+
+
+\item
+Using the following graph, perform Dijkstra's algorithm to find the shortest path between C and E. \\
+\includegraphics[height=150px]{graph} \\
+\def\arraystretch{1.65}
+\begin{tabu}{| c | c | c | c | c | c |}
+\hline
+Finalized & A & B & C & D & E \\
+\hline
+-- & ($\infty$, None) & ($\infty$, None) & (0, None) & ($\infty$, None) & ($\infty$, None) \\
+\answerrow{this & is & a & test & answer & row} \\
+\hline
+\end{tabu}
 
 
 \newpage
