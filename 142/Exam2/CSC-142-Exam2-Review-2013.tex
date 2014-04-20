@@ -132,12 +132,17 @@ Answer
 Using the following graph, perform Dijkstra's algorithm to find the shortest path between C and E. \\
 \includegraphics[height=150px]{graph} \\
 \def\arraystretch{1.65}
-\begin{tabu}{| c | c | c | c | c | c |}
+\begin{tabu}{| c | c | c | c | c | c | c |}
 \hline
-Finalized & A & B & C & D & E \\
+Finalized & A & B & C & D & E & F\\
 \hline
--- & ($\infty$, None) & ($\infty$, None) & (0, None) & ($\infty$, None) & ($\infty$, None) \\
-\answerrow{this & is & a & test & answer & row} \\
+-- & ($\infty$, None) & ($\infty$, None) & \textbf{(0, None)} & ($\infty$, None) & ($\infty$, None) & ($\infty$, None) \\
+\answerrow{C & \textbf{(4, C)} & ($\infty$, None) & (0, None) & ($\infty$, None) & ($\infty$, None) & \textbf{(6, C)}} \\
+\answerrow{A & (4, C) & \textbf{(6, A)} & (0, None) & \textbf{(11, A)} & ($\infty$, None) & (6, C)} \\
+\answerrow{F & (4, C) & (6, A) & (0, None) & \textbf{(7, F)} & \textbf{(12, F)} & (6, C)} \\
+\answerrow{B & (4, C) & (6, A) & (0, None) & (7, F) & \textbf{(11, B)} & (6, C)} \\
+\answerrow{D & (4, C) & (6, A) & (0, None) & (7, F) & (11, B) & (6, C)} \\
+\answerrow{E & (4, C) & (6, A) & (0, None) & (7, F) & (11, B) & (6, C)} \\
 \hline
 \end{tabu}
 
