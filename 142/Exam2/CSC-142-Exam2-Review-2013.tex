@@ -336,17 +336,19 @@ A GridLayout object places components in a grid of cells. Each component takes a
 
 \newpage
 \item Create a class that constructs and displays the following GUI: \\
+%image is right-aligned to give students more writing space
+\begin{minipage}{0.5\textwidth}
+\vspace{-48pt}
+The buttons within the GUI do not need to be functional.  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, JComponent, JDesktopPane, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
+\end{minipage}
+\hspace{50px}
 \begin{minipage}{0.3\textwidth}
 \includegraphics[scale=0.6]{calculator.png}
 \end{minipage} \hfill
-\hspace{50px}
-%image is right-aligned to give students more writing space
-\begin{minipage}{0.5\textwidth}
-The buttons within the GUI do not need to be functional.  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, JComponent, JDesktopPane, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
-\end{minipage}
 
+\vspace{-48pt}
 \begin{answer}
-\begin{lstlisting}[language=java]
+\begin{lstlisting}[language=java,basicstyle=\small]
 import java.awt.*;
 import javax.swing.*;
 
@@ -372,7 +374,6 @@ public class BasicGUI {
 		bottom.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		bottom.add(new JButton("Calculate"));
 		JButton clearButton = new JButton("Clear");
-		clearButton.setForeground(Color.red);
 		bottom.add(clearButton);
 		
 		Container pane = frame.getContentPane();
