@@ -32,10 +32,10 @@ columns=fixed
 
 \ifthenelse{\isundefined{\isAnswerKey}}
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white} \small{Answer:}}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white} }{}
 }
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{Answer:}}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} }{}
 }
 
 \ifthenelse{\isundefined{\isAnswerKey}}
@@ -202,7 +202,7 @@ try {
 }
 \end{lstlisting}
 \begin{answer}
-\\ Exception is more broad than ArithmeticException, so the second catch statement is unreachable.  "Catch" statements should filter possible Exception types from specific to broad.
+Exception is more broad than ArithmeticException, so the second catch statement is unreachable.  "Catch" statements should filter possible Exception types from specific to broad.
 \end{answer}
 
 
@@ -230,7 +230,7 @@ BigInteger, etc...).
 List<String> list = Arrays.asList("a", "o", "d", f", "x");
 \end{lstlisting}
 \begin{answer}
-\\Collections.sort(list);
+Collections.sort(list);
 \\//or
 \\TreeSet\textless String\textgreater  sorted = new TreeSet\textless String\textgreater (list);
 \end{answer}
