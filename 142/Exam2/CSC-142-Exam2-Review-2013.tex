@@ -223,7 +223,7 @@ Exception is more broad than ArithmeticException, so the second catch statement 
 
 
 
-\item What is the Java Collections Framework?
+\item What is the Java Collections Framework? \\
 \begin{answer}
     a unified set of interfaces, algorithms and concrete implementaions 
 provided by Java to support collections of objects.
@@ -233,9 +233,14 @@ provided by Java to support collections of objects.
 
 
 
-\item Describe the difference between Comparable and Comparator.
+\item Describe the difference between \texttt{Comparable} and \texttt{Comparator}. \\
 \begin{answer}
-    TODO: answer
+Both are interfaces.
+\texttt{Comparable} specifies a method called \texttt{compareTo()} that takes one argument: the object to compare with the one on which the method was called.
+\texttt{Comparator} specifies a method called \texttt{compareTo()} that instead takes two arguments and compares those objects.
+
+Making a class implement the \texttt{Comparable} interface establishes a canonical ordering for instances of that type.
+In contrast, one usually starts a new, empty class when inheriting from \texttt{Comparator}; implementing several such functors for a particular class allows you to sort objects of that type using different criteria.
 \end{answer}
 
 
