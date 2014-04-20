@@ -140,7 +140,7 @@ D E \\
 E F \\
 F \\
 
-The traversal order is ABCDEF
+The traversal order is ABCDEF; the \textbf{correct path} is ABDF.
 \end{answer}
 
 
@@ -196,15 +196,13 @@ Finalized & A & B & C & D & E & F\\
 \hline
 \end{tabu}
 
-
 \newpage
 \item Explain the Model-View-Control design pattern. \\
 \begin{answer}
-TODO: Answer
+The Model handles the data. The View handles the UI. The Controller handles the communication between the Model and the View, and handles the primary logic of the program.
+MVC is the abstraction of this concept, and namely the idea behind the seperation and split into these 3 components. From Wikipedia:
+Model-View-Controller (MVC) is a design pattern for implementing user interfaces. It divides a given software application into three interconnected parts, so as to separate internal representations of information from the ways that information is presented to or accepted from the user. The central component, the model, consists of application data, business rules, logic and functions. A view can be any output representation of information, such as a chart or a diagram. Multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants. The third part, the controller, accepts input and converts it to commands for the model or view.
 \end{answer}
-
-
-
 
 \item Is there anything wrong with the following exception handler as written? Will this
 code work as intended? 
