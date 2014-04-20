@@ -128,6 +128,40 @@ Answer
 \end{answer}
 
 
+\item When is a vertex's sum weight finalized in Dijkstra's algorithm?
+
+    \begin{answer}
+    A vertex's sum weight is final after it has updated the tentative distances
+    of all of its neighbors. As part of being finalized, it's moved from the
+    unvisited set to the visited set.
+    \end{answer}
+
+
+\item What role does the priority queue play in finding the shortest path?
+      When do we use it?
+
+    \begin{answer}
+    The priority queue is used to select the next vertex to visit. We want to
+    visit the node which currently has the lowest tentative distance from the
+    start, so we use a priority queue which always returns the lowest element.
+    \end{answer}
+
+
+\item Why does Dijkstra's algorithm not work correctly on graphs with negative
+      edge weights?
+
+\begin{answer}
+Dijkstra's algorithm doesn't work correctly on graphs with negative edge
+weights due to one of its {\em greedy} behaviors.
+
+When selecting the next node to visit, Dijkstra's algorithm chooses the
+node with the current lowest total value, then {\em finalizes} that value
+forever. If there were another route to that node, which had not yet been
+explored (and contained a net negative weight) Dijkstra's algorithm would
+return a suboptimal path.
+\end{answer}
+
+
 \item
 Using the following graph, perform Dijkstra's algorithm to find the shortest path between C and E. \\
 \includegraphics[height=150px]{graph} \\
@@ -381,20 +415,6 @@ cancelButton.addActionListener(new ActionListener() {
 
 
 
-
-\item Why does Dijkstra's algorithm not work correctly on graphs with negative
-      edge weights?
-
-\begin{answer}
-Dijkstra's algorithm doesn't work correctly on graphs with negative edge
-weights due to one of its {\em greedy} behaviors.
-
-When selecting the next node to visit, Dijkstra's algorithm chooses the
-node with the current lowest total value, then {\em finalizes} that value
-forever. If there were another route to that node, which had not yet been
-explored (and contained a net negative weight) Dijkstra's algorithm would
-return a suboptimal path.
-\end{answer}
 
 
 
