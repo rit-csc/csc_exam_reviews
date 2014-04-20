@@ -86,7 +86,20 @@ A stack.
 Given the following graph, state the path that the DFS would generate and show the data structure at each step.
 Node \texttt{A} is the start node, and \texttt{F} is the destination node.
 
-\begin{flushright}
+\begin{minipage}{0.35\textwidth}
+\vspace{-136pt}
+\begin{answer}
+$\leftarrow$ top of stack \\
+A \\
+C B \\
+E D B \\
+D B \\
+F B \\
+B \\
+
+The traversal order is ACEDF.
+\end{answer}
+\end{minipage}
 \begin{tikzpicture}[shorten >=1pt,auto,node distance=2.8cm,semithick]
 	\node[initial,state] (A) {A};
 	\node[state]        (B) [above right of=A] {B};
@@ -103,11 +116,6 @@ Node \texttt{A} is the start node, and \texttt{F} is the destination node.
 		(C) edge node {} (E)
 		(D) edge node {} (F);
 \end{tikzpicture}
-\end{flushright}
-
-\begin{answer}
-The traversal order is ACEDF.
-\end{answer}
 
 \item %c
 What changes would we need to implement to make use of a breadth-first search (BFS) algorithm?
