@@ -83,7 +83,7 @@ A stack.
 \end{answer}
 
 \item %b
-Given the following graph, state the path that the DFS would generate and show the data structure at each step.
+Given the following graph, state the DFS traversal order and show the data structure at each step.
 Node \texttt{A} is the start node, and \texttt{F} is the destination node.
 
 \begin{minipage}{0.35\textwidth}
@@ -118,19 +118,27 @@ The traversal order is ACEDF.
 \end{tikzpicture}
 
 \item %c
-What changes would we need to implement to make use of a breadth-first search (BFS) algorithm?
+What path from \texttt{A} to \texttt{F} does the DFS algorithm return?
 
 \begin{answer}
-Use a queue data structure (instead of a stack.)
+ACDF 
 \end{answer}
+
 \end{enumerate}
 
 
 \item Now consider a BFS algorithm.
 \begin{enumerate}
-\item Using the graph as described in Question 1, what is the path that a BFS would generate?
-Show the data structure you answered in part (c) at each step.
-\end{enumerate}
+\item
+What changes would need to be made to a DFS implementation to turn it into a breadth-first search (BFS)?
+
+\begin{answer}
+Use a queue data structure (instead of a stack).
+\end{answer}
+
+\item
+Using the graph as described in Question 1, what is the BFS traversal order?
+Show the data structure at each step. \\
 \begin{answer}
 $\leftarrow$ front of queue \\
 A \\
@@ -142,6 +150,15 @@ F \\
 
 The traversal order is ABCDEF; the \textbf{correct path} is ABDF.
 \end{answer}
+
+\item
+What path from \texttt{A} to \texttt{F} results from the BFS algorithm?
+
+\begin{answer}
+ABDF
+\end{answer}
+
+\end{enumerate}
 
 
 \item When is a vertex's sum weight finalized in Dijkstra's algorithm?
