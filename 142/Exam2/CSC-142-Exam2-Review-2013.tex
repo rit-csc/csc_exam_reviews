@@ -252,7 +252,7 @@ try {
 }
 \end{lstlisting}
 \begin{answer}
-Exception is more broad than ArithmeticException, so the second catch statement is unreachable.  ``Catch'' statements should filter possible Exception types from specific to broad.
+\texttt{Exception} is more broad than \texttt{ArithmeticException}, so the second \texttt{catch} statement is unreachable.  \texttt{catch} statements should filter possible \texttt{Exception} types from specific to broad.
 \end{answer}
 
 
@@ -271,23 +271,25 @@ provided by Java to support collections of objects.
 \begin{answer}
 Both are interfaces.
 \texttt{Comparable} specifies a method called \texttt{compareTo()} that takes one argument: the object to compare with the one on which the method was called.
-\texttt{Comparator} specifies a method called \texttt{compareTo()} that instead takes two arguments and compares those objects.
+\texttt{Comparator} specifies a method called \texttt{compareTo()} that instead takes two arguments and compares those objects to each other.
 
-Making a class implement the \texttt{Comparable} interface establishes a canonical ordering for instances of that type.
-In contrast, one usually starts a new, empty class when inheriting from \texttt{Comparator}; implementing several such functors for a particular class allows you to sort objects of that type using different criteria.
+Making an existing class implement the \texttt{Comparable} interface establishes a canonical ordering for instances of that type.
+In contrast, one usually starts a new, empty class when inheriting from \texttt{Comparator}; implementing several such functors for a particular class allows you to sort objects of that type based on different criteria.
 \end{answer}
 
 
 
-\item Write code to naturally sort the given list in as few lines as possible. You should not need a for-loop or any numbers (Integer, int, Double, double,
-BigInteger, etc...).
-\begin{lstlisting}[language=java]
+\item Write code to naturally sort the given list in as few lines as possible. You should not need to write a loop or use any numbers (\texttt{Integer}, \texttt{int}, \texttt{Double}, \texttt{double},
+\texttt{BigInteger}, etc...).
+\begin{verbatim}
 List<String> list = Arrays.asList("a", "o", "d", f", "x");
-\end{lstlisting}
+\end{verbatim}
 \begin{answer}
+\begin{verbatim}
 Collections.sort(list);
-\\//or
-\\TreeSet\textless String\textgreater  sorted = new TreeSet\textless String\textgreater (list);
+//or
+TreeSet<String> sorted = new TreeSet<String>(list);
+\end{verbatim}
 \end{answer}
 
 
@@ -295,29 +297,29 @@ Collections.sort(list);
 \item Describe each of the following layout managers:
 \begin{enumerate}
 
-\item FlowLayout
+\item \texttt{FlowLayout}
 \begin{answer}
-The FlowLayout class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the FlowLayout class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. \end{answer}
+The \texttt{FlowLayout} class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the \texttt{FlowLayout} class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. \end{answer}
 
-\item BorderLayout
+\item \texttt{BorderLayout}
 \begin{answer}
-With a BorderLayout, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the BorderLayout object — just the center, or the center and the bottom. \end{answer}
+With a \texttt{BorderLayout}, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the \texttt{BorderLayout} object: for instance, it might place widgets in only the center and the bottom. \end{answer}
 
-\item GridLayout
+\item \texttt{GridLayout}
 \begin{answer}
-A GridLayout object places components in a grid of cells. Each component takes all the available space within its cell, and all cells are exactly the same size. If the GridLayoutDemo window is resized, the GridLayout object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
+A \texttt{GridLayout} object places components in a grid of cells. Each component takes all the available space within its cell, and all cells are exactly the same size. If the containing window is resized, the \texttt{GridLayout} object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
 \end{enumerate}
 
 
 \item
 \begin{enumerate}
-	\item What are the primary differences between an ArrayList and a LinkedList?
+	\item What are the primary differences between an \texttt{ArrayList} and a \texttt{LinkedList}?
 	
 	\begin{answer}
-	LinkedList is implemented as a doubly-linked list.
-	\\ArrayList is implemented as a dynamically resizing array.
-	\\ \\ArrayList allows fast random access, but adding or removing from the middle of the array
-	requires shifting all the elements. LinkedList always has constant-time insertions or removals
+	\texttt{LinkedList} is implemented as a doubly-linked list.
+	\\\texttt{ArrayList} is implemented as a dynamically resizing array.
+	\\ \\\texttt{ArrayList} allows fast random access, but adding or removing from the middle of the array
+	requires shifting all the elements. \texttt{LinkedList} always has constant-time insertions or removals
 	if accessed through an iterator (thus we already know the insertion/removal point), but getting
 	an element requires traversing the list until we get to the wanted index.
 	
@@ -327,22 +329,22 @@ A GridLayout object places components in a grid of cells. Each component takes a
 	\begin{enumerate}
 		\item Inserting a random number into a sorted list.
 		\begin{answer}
-		LinkedList - Constant insertion time (ArrayList will have to adjust index values of all elements after the insertion point).
+		\texttt{LinkedList} --- Constant insertion time (\texttt{ArrayList} would have to move all elements after the insertion point).
 		\end{answer}
 		
-		\item Creating a list that will hold all the players in a game.  The game has a max limit on the amount of players. 
+		\item Creating a list that will hold all the players in a game.  The game has a max limit on the number of players.
 		\begin{answer}
-		ArrayList - You have a fixed limit, so pre-allocate enough space for that amount.
+		\texttt{ArrayList} --- You have a fixed limit, so pre-allocate enough space for them all.
 		\end{answer}
  
 		\item Deleting from near the tail end of the list.
 		\begin{answer}
-		ArrayList - Your linked list may have to iterate all the way down, while the ArrayList just jumps to the right spot.
+		\texttt{ArrayList} --- Your linked list may have to iterate all the way down, while the \texttt{ArrayList} just jumps to the right spot.
 		\end{answer}
 				
 		\item Deleting from the head end of the list.
 		\begin{answer}
-		LinkedList - Constant time operation, but O(n) for the ArrayList.
+		\texttt{LinkedList} --- Constant time operation, but O($n$) for the \texttt{ArrayList}.
 		\end{answer}
 				
 	\end{enumerate}
@@ -356,7 +358,7 @@ A GridLayout object places components in a grid of cells. Each component takes a
 %image is right-aligned to give students more writing space
 \begin{minipage}{0.5\textwidth}
 \vspace{-48pt}
-The buttons within the GUI do not need to be functional.  You may or may not need the following: JTextField, JButton, BorderLayout, BoxLayout, FlowLayout.LEFT, JFrame, JComponent, JDesktopPane, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
+The buttons within the GUI do not need to be functional.  You may or may not need the following: \texttt{JTextField}, \texttt{JButton}, \texttt{BorderLayout}, \texttt{BoxLayout}, \texttt{FlowLayout.LEFT}, \texttt{JFrame}, \texttt{JComponent}, \texttt{JDesktopPane}, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
 \end{minipage}
 \hspace{50px}
 \begin{minipage}{0.3\textwidth}
@@ -417,21 +419,21 @@ public class BasicGUI {
 \begin{answer}
 
 \textbf{checked exceptions} -– Exceptions that a method signature must specify it throws. If a method
-may throw a checked exception, all calls to that method must be within a try-catch block. Checked exceptions should be used exclusively for minor issues, and any reasonably robust
-system should be able to recover from a checked exception. Classic example is IOException.\\
+may throw a checked exception, all calls to that method must be within a \texttt{try}-\texttt{catch} block. Checked exceptions should be used exclusively for foreseeable runtime mistakes, and any reasonably robust
+system should be able to recover from one. Classic example is \texttt{IOException}.\\
 
 \textbf{runtime exception} -– Not declared in a method signature and not anticipated to be thrown.
-Usually represents a major software issue and often causes the program to crash. Classic
-examples are NullPointerException and ArrayIndexOutOfBoundsException.\\
+Usually arise due to software bugs and often cause the program to crash. Classic
+examples are \texttt{NullPointerException} and \texttt{ArrayIndexOutOfBoundsException}.\\
 
 \textbf{errors} -– Represent a serious issue outside of the control of the programmer (hard drive
-failure, not enough memory, device issue). Examples are IOError, VirtualMachineError and
-ThreadDeath (see java's Error class).
+failure, not enough memory, device issue). Examples are \texttt{IOError}, \texttt{VirtualMachineError} and
+\texttt{ThreadDeath} (see Java's \texttt{Error} class).
 \end{answer}
 
 
 
-\item Given the following code snippet, rewrite ControlListener as an anonymous class passed into the addActionListener() method calls.  
+\item Given the following code snippet, rewrite \texttt{ControlListener} as an anonymous class passed into the \texttt{addActionListener()} method calls.
 \begin{lstlisting}[language=java]
 class ControlListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
@@ -478,15 +480,15 @@ Iterators support checking if a next object exists using \texttt{hasNext()}, ret
 For example, a list consisting of \texttt{Person} objects should be traversed with an \texttt{Iterator<Person>}, an iterator that deals in \texttt{Person}s.
 \end{answer}
 \begin{enumerate}
-	\item To make your collection class Iterable, you would (circle one):\\
-	\texttt{implement the interface, Iteratable} OR \texttt{implement the interface, Iterator}\\
+	\item To make your collection class iterable, you would (circle one):\\
+	\textbf{implement the \texttt{Iterable} interface} OR \textbf{implement the \texttt{Iterator} interface}\\
 	\begin{answer}
-		\texttt{implement the interface, Iteratable} (the first one)
+		\textbf{implement the \texttt{Iteratable} interface} (the first one)
 	\end{answer}
-	\item To make an Iterator for your Iterable collection class, you would (circle one):\\
-	\texttt{implement the interface, Iteratable} OR \texttt{implement the interface, Iterator}\\
+	\item To make an iterator for your iterable collection class, you would (circle one):\\
+	\textbf{implement the \texttt{Iteratable} interface} OR \textbf{implement the \texttt{Iterator} interface}\\
 	\begin{answer}
-	\texttt{implement the interface, Iterator} (the second one)
+	\textbf{implement the \texttt{Iterator} interface} (the second one)
 	\end{answer}
 	\item Rewrite the following code snippets to use an Iterator.
 	\begin{lstlisting}[language=java]
