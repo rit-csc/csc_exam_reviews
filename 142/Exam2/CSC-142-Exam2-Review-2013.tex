@@ -127,7 +127,7 @@ ACDF
 \end{enumerate}
 
 
-\item Now consider a BFS algorithm.
+\item Now consider a BFS algorithm, again populating data structures in alphabetical order.
 \begin{enumerate}
 \item
 What changes would need to be made to a DFS implementation to turn it into a breadth-first search (BFS)?
@@ -176,7 +176,7 @@ ABDF
     \begin{answer}
     The priority queue is used to select the next vertex to visit. We want to
     visit the node which currently has the lowest tentative distance from the
-    start, so we use a priority queue which always returns the lowest element.
+    start, so we use a priority queue that always returns the lowest element.
     \end{answer}
 
 
@@ -232,11 +232,12 @@ No. The algorithm could yield its result as soon as the destination node has bee
 \end{enumerate}
 
 \newpage
-\item Explain the Model-View-Control design pattern. \\
+\item Explain the Model-View-Controller design pattern. \\
 \begin{answer}
-The Model handles the data. The View handles the UI. The Controller handles the communication between the Model and the View, and handles the primary logic of the program.
-MVC is the abstraction of this concept, and namely the idea behind the seperation and split into these 3 components. From Wikipedia:
-Model-View-Controller (MVC) is a design pattern for implementing user interfaces. It divides a given software application into three interconnected parts, so as to separate internal representations of information from the ways that information is presented to or accepted from the user. The central component, the model, consists of application data, business rules, logic and functions. A view can be any output representation of information, such as a chart or a diagram. Multiple views of the same information are possible, such as a bar chart for management and a tabular view for accountants. The third part, the controller, accepts input and converts it to commands for the model or view.
+MVC is a way of dividing responsibility within a project's code to prevent it from growing intertwined to the point of unmaintainability.
+The model is the portion of the code that manages storing, representing, and manipulating the data.
+The controller is the module that accepts user input and prepares it for use by the model.
+The view describes the appearance of the user interface.
 \end{answer}
 
 \item Is there anything wrong with the following exception handler as written? Will this
