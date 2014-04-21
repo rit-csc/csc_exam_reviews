@@ -148,7 +148,7 @@ D E \\
 E F \\
 F \\
 
-The traversal order is ABCDEF; the \textbf{correct path} is ABDF.
+The traversal order is ABCDEF.
 \end{answer}
 
 \item
@@ -196,8 +196,11 @@ return a suboptimal path.
 
 
 \item
-Using the following graph, perform Dijkstra's algorithm to find the shortest path between C and E. \\
-\includegraphics[height=150px]{graph} \\
+Consider the following graph. \\
+\includegraphics[height=150px]{graph}
+\begin{enumerate}
+\item
+Perform Dijkstra's algorithm to find the shortest path between C and E. \\
 \def\arraystretch{1.65}
 \begin{tabu}{| c | c | c | c | c | c | c |}
 \hline
@@ -211,7 +214,22 @@ Finalized & A & B & C & D & E & F\\
 \answerrow{D & (4, C) & (6, A) & (0, None) & (7, F) & (11, B) & (6, C)} \\
 \answerrow{E & (4, C) & (6, A) & (0, None) & (7, F) & (11, B) & (6, C)} \\
 \hline
-\end{tabu}
+\end{tabu} \\
+
+\begin{answer}
+The shortest path is CABE with a total cost of 11.
+To reconstruct this solution, we start with the destination node, then move on to its recorded optimal predecessor.
+We repeat the process until we reach the starting node.
+(Note that this isn't the only possible table.)
+\end{answer}
+
+\item
+Did you need to use every row of the above table? Why or why not?
+
+\begin{answer}
+No. The algorithm could yield its result as soon as the destination node has been finalized, because it will never change its response after this point.
+\end{answer}
+\end{enumerate}
 
 \newpage
 \item Explain the Model-View-Control design pattern. \\
