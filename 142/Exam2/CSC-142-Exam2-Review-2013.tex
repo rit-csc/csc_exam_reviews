@@ -471,9 +471,13 @@ cancelButton.addActionListener(new ActionListener() {
 \newpage
 
 \item Briefly explain what an \texttt{Iterator} is, and why you would want
-to make something Iterable. Why and how would you make an Iterator \emph{general}? \\ \\
+to make something \texttt{Iterable}. How do you specialize an iterator to return objects of the specific type desired? \\ \\
 \begin{answer}
-An iterator lets us iterate or loop over an object, by visiting any/every element or member of the object in succession. Iterators may check if a next object exists using \texttt{hasNext()}, return the next element in the iteration via \texttt{next()}, and also remove the last object in the collection that was returned gusing \texttt{remove()}. \\ \\ The second part of this question is partially a trick question. Iterators are inherently generic, in that you must specify a type. This is done by [ ... Iterator$<$E$>$ ], where E will be the generic type parameter. For example, if we are dealing with an array list consisting of \texttt{Person} objects, the iterator for the aforementioned array list should consequently deal in \texttt{Person}s.
+An iterator lets us iterate or loop over a collection by visiting every one of its elements or members in succession.
+Iterators support checking if a next object exists using \texttt{hasNext()}, returning the next element in the iteration via \texttt{next()}, and removing the last object that was returned using \texttt{remove()}.
+
+\texttt{Iterator} is a generic interface, so you must specify a generic type parameter when you implement it.
+For example, a list consisting of \texttt{Person} objects should be traversed with an \texttt{Iterator<Person>}, an iterator that deals in \texttt{Person}s.
 \end{answer}
 \begin{enumerate}
 	\item To make your collection class Iterable, you would (circle one):\\
