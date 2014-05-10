@@ -99,42 +99,6 @@ def append(value, llist):
 				\vspace{1in}
         \end{enumerate}
 
-		\pagebreak
-
-    \item Write a Python function, given a sorted linked list, returns a Python
-    list of all of the elements which are in the list more than once. (e.g.
-    $1\rightarrow2\rightarrow2\rightarrow3\rightarrow3\rightarrow3$ would return [2,3,3] )
-\label{it:dupes}
-\begin{answer}
-\begin{lstlisting}
-def find_dupes(node):
-	dup = []
-	while node.next != None:
-		if node.value == node.next.value:
-			val = node.value
-			dup.append(val)
-			while node.value == val:
-				node = node.next
-				if node == None:
-					return dup
-		node = node.next
-	return dup
-\end{lstlisting}
-\end{answer}
-        \vspace{1.5in}
-    \item If your solution to (\ref{it:dupes}) was iterative, write it recursively; if it
-    was recursive, write it iteratively.
-\begin{answer}
-\begin{lstlisting}
-def find_dupes(node, dup=[], ignore=False):
-	if node.next == None:
-		return dup
-	if not ignore and node.value == node.next.value:
-		dup.append(node.value)
-	return find_dupes(node.next, dup, node.value == node.next.value)
-\end{lstlisting}
-\end{answer}
-
 
 \pagebreak
 \section*{Stacks and Queues}
