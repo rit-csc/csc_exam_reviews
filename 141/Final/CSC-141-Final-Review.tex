@@ -434,44 +434,46 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
                 \end{answer}
                 \pagebreak
         \end{enumerate}
-    \item Write a function that determines whether a given element is in a binary search tree.
-        \begin{answer}
-        \begin{lstlisting}
-        class tree:
-          __slots__=('head','size')
-  
-          def __init__(self,head,size):
-            self.head = head
-            self.size = size
+    \item Write a binary tree class and a function that determines whether one contains a given element.
+		\begin{answer}
+		\begin{lstlisting}
+	class Tree:
+		__slots__ = ('head', 'size')
 
-  
-        class treeNode:
-          __slots__=('data','left','right')
-    
-          def __init__(self,data,left,right):
-            self.data = data
-            self.left = left
-            self.right = right
+	class TreeNode:
+		__slots__ = ('data', 'left', 'right')
 
+	def mkTree(head, size):
+		tree = Tree()
+		tree.head = head
+		tree.size = size
+		return tree
 
-        def is_in_tree(element, head):
-          if head == None:
-            return False
-          elif head.data == element:
-            return True
-          elif head.data < element:
-            return is_in_tree(element,head.right)
-          elif head.data > element:
-            return is_in_tree(element,head.left)
+	def mkTreeNode(data, left, right):
+		tree = Tree()
+		tree.data = data
+		tree.left = left
+		tree.right = right
+		return tree
 
-        newTree = tree(treeNode(3,treeNode(1,None,None), \
-                                treeNode(4,None,None)),3)
-        print(is_in_tree(1,newTree.head)) -> True
-        print(is_in_tree(3,newTree.head)) -> True
-        print(is_in_tree(4,newTree.head)) -> True
-        print(is_in_tree(5,newTree.head)) -> False
-        \end{lstlisting}
-        \end{answer}
+	def is_in_tree(head, element):
+		 if head == None:
+			return False
+		lif head.data == element:
+			return True
+		lif head.data < element:
+			return is_in_tree(head.right, element)
+		lif head.data > element:
+			return is_in_tree(head.left, element)
+
+	newTree = mkTree(3, mkTreeNode(3, mkTreeNode(1, None, None),
+			mkTreeNode(4, None, None)))
+	print(is_in_tree(newTree.head, 1)) # -> True
+	print(is_in_tree(newTree.head, 3)) # -> True
+	print(is_in_tree(newTree.head, 4)) # -> True
+	print(is_in_tree(newTree.head, 5)) # -> False
+		\end{lstlisting}
+		\end{answer}
         
 
 
