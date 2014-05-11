@@ -223,7 +223,20 @@ Given the following description, design the relevant class(es) to represent the 
 	\end{lstlisting}
 	\end{answer}
 	\normalsize
+	
+	
+	
+	
+	\section*{Backtracking}
+	
+	\item Why is backtracking better suited for solving a Sudoku puzzle than
+	      using regular brute force?
+	
+	\begin{answer}
+	A properly implemented backtracking approach will prune fruitless branches. 
+	\end{answer}
 
+\newpage
 \section*{Sorting}
 
 \item Fill in the table for the asymptotic running time of each sorting
@@ -248,8 +261,8 @@ Given the following description, design the relevant class(es) to represent the 
       \end{center}
 
 \item What sorting algorithm splits its input list into two other lists, one
-      which has element which are all smaller than a value (which is randomly
-      selected) and one which has elements which are all larger than the
+      which has all elements that are smaller than a value (which is randomly
+      selected) and one which has elements that are larger than the
       randomly selected value?
 
     \begin{answer}
@@ -272,7 +285,6 @@ Given the following description, design the relevant class(es) to represent the 
     If the pivot is either the smallest or the largest element, then one list
     will only have no elements, while the others will have all of the elements
     but the pivot. We can see this if we perform a substitution trace:
-
 \begin{verbatim}
 qsort([1,2,3,4])
 qsort([]) + [1] + qsort([2,3,4])
@@ -299,8 +311,8 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       getting in sorted data, if we select pivots randomly, we should be able
       to end up with average time complexity.
       \end{answer}
-
-\pagebreak
+      
+\newpage
 \item Show the stages of a merge sort and a Quicksort on the following list:
       [3,5,1,3,2,7,9]. Be sure to identify your pivot.
 
@@ -506,16 +518,6 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 [1,4,9,16,25,69,|420|,1337]
 [1,4,9,16,25,|69|,420,1337]
 \end{lstlisting}
-\end{answer}
-
-
-\section*{Backtracking}
-
-\item Why is backtracking better suited for solving a Sudoku puzzle than
-      using regular brute force?
-
-\begin{answer}
-A properly implemented backtracking approach will prune fruitless branches. 
 \end{answer}
 
 \end{enumerate}
