@@ -198,7 +198,7 @@ boolean hasPathToRec(Graph g, int start, int goal, ArrayList<Integer> visited) {
 \begin{lstlisting}
 	if( start == goal ){
 		return true;
-	}else{
+	} else {
 		for( int n : g.getNeighbors(start) ){
 			if( ! visited.contains(n) ){
 				visited.add(n);
@@ -207,9 +207,9 @@ boolean hasPathToRec(Graph g, int start, int goal, ArrayList<Integer> visited) {
 		}
 		return false;
 	}
+}
 \end{lstlisting}
 \end{answer}
-\}
 		            
 		\item
 			Rewrite your algorithm to be iterative instead. \\
@@ -235,10 +235,9 @@ boolean hasPathToIter(Graph g, int start, int goal, ArrayList<Integer> visited) 
 		}
 	}
 	return false;
-
+}
 \end{lstlisting}
 \end{answer}
-\}
 	\end{enumerate}
             
           
