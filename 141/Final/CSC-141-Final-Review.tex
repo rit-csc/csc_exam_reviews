@@ -205,6 +205,7 @@ self.table[self.bad_hash(element)].append(element)
 \item 
 Given the following description, design the relevant class(es) to represent the appropriate information in a program. Richard is an accountant at a hotel company. Write one or more classes and maker functions to describe the following: a Hotel, and descriptions of its name and location (both strings,) and its Rooms. Rooms should also be described by their price, capacity, and number (all integers.)
 
+	\small
 	\begin{answer}
 	\begin{lstlisting}
 	class Hotel:
@@ -225,6 +226,7 @@ Given the following description, design the relevant class(es) to represent the 
 		return room
 	\end{lstlisting}
 	\end{answer}
+	\normalsize
 
 \section*{Sorting}
 
@@ -234,15 +236,15 @@ Given the following description, design the relevant class(es) to represent the 
       \begin{tabular}{|r|c|c|c|}
         \hline
         ~ & Best & Worst & Average \\\hline
-        merge sort &
+        Merge Sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        Quicksort &
+        QuickSort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n^2)$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        heap sort &
+        Heap Sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
@@ -255,7 +257,7 @@ Given the following description, design the relevant class(es) to represent the 
       randomly selected value?
 
     \begin{answer}
-    Quicksort.
+    QuickSort.
     \end{answer}
 
 \item\label{qsort-worst-case} What kind of data causes Quicksort's worst-case
@@ -263,7 +265,7 @@ Given the following description, design the relevant class(es) to represent the 
       the pivot.
 
       \begin{answer}
-      Data that is (nearly) sorted or is sorted in reverse order.
+      Data that is (nearly) sorted or is (nearly) sorted in reverse order.
       \end{answer}
 
 \item What causes Quicksort to run so slowly on the input you describe in
@@ -287,7 +289,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
     \end{answer}
 
 \item In Quicksort, why should we select a random pivot value, rather than always
-      pivoting on the first element?
+      pivoting on, for example, the first or last element?
 
       \begin{answer}
       With real-world data, we're more likely to encounter ordered or
