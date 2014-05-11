@@ -51,7 +51,26 @@ columns=fixed
 
 \begin{enumerate}
 
-\item {\bf Nick's Heavy Threads:} Nick operates a store in Marketview Mall which
+\item {\bf The Life of Nick:} % critical sections
+    Nick, an aspiring entrepreneur, trained for 7 years in the jungles of Zimbabwe.
+    Nick's training was overseen by a group of trainers. His stages of learning were 
+    fueled by the following process:
+    \begin{verbatim}
+    public class Nick {
+        private int experience = 0 ;
+        public void train ( ) {
+            this.experience += 1 ;
+        }
+    }\end{verbatim}Imagine instructors are threads in Java. What are some problems
+    we may encounter if Nick is having multiple people train him at the same time?
+    How might we remedy the aforementioned issues?
+
+    \begin{answer}
+    The train function, and specifically its incrementation, is non-atomic, meaning the value of Nick's 
+    \texttt{experience} variable will be undefined after multiple threads attempt to call the function concurrently.  One solution would be to synchronize on \texttt{Nick} to ensure only one thread at a time executes within the critical section.
+    \end{answer}
+
+\item {\bf Nick's Heavy Threads:} Nick now operates a store in Marketview Mall which
       has poor lighting, blasts black metal and sells jeans. Only one pair of
       jeans is available to purchase at a time, though there are more
       stored in the back. If a size is out that you don't want, you must wait
@@ -88,12 +107,12 @@ public class NicksHeavyThreads
     
     private static class LameCustomer extends Thread
     {
-        // implementation omitted
+        // ( implementation omitted )
     }
     
     private static class MeanWorker extends Thread
     {
-        // implementation omitted
+        // ( implementation omitted )
     }
 }
 \end{lstlisting}
@@ -101,7 +120,7 @@ public class NicksHeavyThreads
     \begin{enumerate}
 
 	\pagebreak
-    
+
     \item Complete the implementation of the \texttt{LameCustomer} class: Each instance
           must choose a jeans size and wait for it to be available, update the
           jeans to indicate that they have been taken, print the message
