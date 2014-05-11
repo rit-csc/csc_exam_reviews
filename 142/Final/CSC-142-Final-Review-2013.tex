@@ -386,9 +386,10 @@ It's a Beach-bash! WakaWaka!
 
     \item \texttt{a.compareTo(b)} Returns an \texttt{int} indicating whether \texttt{a} is less than (-1),
     equal to (0), or greater than (+1) \texttt{b}, according to their natural ordering.
+	Specified by the \texttt{Comparable} interface.
 
-    \item \texttt{compare(a,b)} Returns -1 if a $<$ b, 0 if a $=$ b, +1 if a $>$ b.
-    \texttt{comp1.equals(comp2)} implies that \texttt{sgn(comp1.compare(o1,
+    \item \texttt{compare(a,b)} Returns a negative a $<$ b, 0 if a $=$ b, a positive if a $>$ b. \\
+    \texttt{comp1.equals(comp2)} implies that \\ \texttt{sgn(comp1.compare(o1,
     o2))==sgn(comp2.compare(o1, o2))} for every object reference \texttt{o1} and \texttt{o2}.
 
     \end{itemize}
