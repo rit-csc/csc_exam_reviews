@@ -525,44 +525,48 @@ In addition, since the \texttt{Human} variables are able to be added into a coll
 
 \end{enumerate}
 
-\section*{Networking}
-\item What does TCP stands for? Where and why do we use TCP?
+\item \textbf{Networking} 
+	\begin{enumerate}
+		\item What does TCP stands for? Where and why do we use TCP?
+		
+		\begin{answer}
+		Transmission Control Protocol. We use TCP in Telephone Connection because TCP guarantees packet delivery and thus can be considered "lossless and reliable".
+		\end{answer}
+		
+		\item What does UDP stands for? When and where do we use UDP?
+		
+		\begin{answer}
+		User Datagram Protocol. We use UDP when we are managing a tremendous amount of state (ex: weather data, video transmission).
+		\end{answer}
+		
+		\item Which one does a stream socket use for data transmission? TCP (or) UDP?
+		
+		\begin{answer}
+		TCP. 
+		\end{answer}
+		
+		\item Which one does a datagram socket use for data transmission? TCP (or) UDP?
+		
+		\begin{answer}
+		UDP
+		\end{answer}
+		
+		\item What is a datagram?
+		
+		\begin{answer}
+		independent, self-contained message sent over the network with no guarantees
+		\end{answer}
+		
+		\item What is a socket?
+		
+		\begin{answer}
+		The endpoints of logical connections between two hosts, which can be used to send and receive data.
+		\end{answer}
+	
+	\end{enumerate}
 
-\begin{answer}
-Transmission Control Protocol. We use TCP in Telephone Connection because TCP guarantees packet delivery and thus can be considered "lossless and reliable".
-\end{answer}
 
-\item What does UDP stands for? When and where do we use UDP?
-
-\begin{answer}
-User Datagram Protocol. We use UDP when we are managing a tremendous amount of state (ex: weather data, video transmission).
-\end{answer}
-
-\item Which one does a stream socket use for data transmission? TCP (or) UDP?
-
-\begin{answer}
-TCP. 
-\end{answer}
-
-\item Which one does a datagram socket use for data transmission? TCP (or) UDP?
-
-\begin{answer}
-UDP
-\end{answer}
-
-\item What is a datagram?
-
-\begin{answer}
-independent, self-contained message sent over the network with no guarantees
-\end{answer}
-
-\item What is a socket?
-
-\begin{answer}
-The endpoints of logical connections between two hosts, which can be used to send and receive data.
-\end{answer}
-
-% Networking
+\newpage
 \item
 	Find at least 3 errors in the following code:
 
