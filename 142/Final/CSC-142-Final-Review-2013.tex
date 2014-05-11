@@ -626,11 +626,11 @@ conn.close();
 	\begin{answer}
 		\begin{enumerate}
 		\item
+			Server: client never initialized, use pubServer.accept().
+		\item
 			Server: Missing client.close().
 		\item
-			Server: client never initialized, use pubServer.accept().	
-		\item
-			Client: Need a PrintWriter writer; writer = new PrintWriter(conn.getOutputStream(), true); writer.println(args[2]); insteand of System.out.println(args[2]);
+			Client: Need a PrintWriter writer; writer = new PrintWriter(conn.getOutputStream(), true); writer.println(args[2]); instead of System.out.println(args[2]);
 		\end{enumerate}
 	\end{answer}
 
