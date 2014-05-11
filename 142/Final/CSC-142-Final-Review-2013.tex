@@ -500,6 +500,74 @@ In addition, since the \texttt{Human} variables are able to be added into a coll
 
 \end{enumerate}
 
+% Networking
+\item
+	Find at least 3 errors in the following code:
+
+	Server: Echoes one line of data sent to it
+
+	\begin{lstlisting}
+ServerSocket pubServer = new ServerSocket(0);
+System.out.println(pubServer.getLocalPort());
+Socket client;
+BufferedReader reader = null;
+try {
+	reader = new BufferedReader(
+		new InputStreamReader(client.getInputStream()));
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+String response = null;
+try {
+	response = reader.readLine();
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+System.out.println(response);
+
+pubServer.close();
+	\end{lstlisting}
+
+	Client: Sends a line of text to a server: server address, port, text
+
+	\begin{lstlisting}
+InetAddress server = null;
+try {
+	server = InetAddress.getByName(args[0]);
+} catch (UnknownHostException e) {
+	System.out.println("Unknown host");
+}
+int port = Integer.parseInt(args[1]);
+
+Socket conn = null;
+try {
+	conn = new Socket(server, port);
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+try {
+	System.out.println(args[2]);
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+conn.close();
+	\end{lstlisting}
+
+	\begin{answer}
+		\begin{enumerate}
+		\item
+			Server: Missing client.close().
+		\item
+			Server: client never initialized, use pubServer.accept().	
+		\item
+			Client: Need a PrintWriter writer; writer = new PrintWriter(conn.getOutputStream(), true); writer.println(args[2]); insteand of System.out.println(args[2]);
+		\end{enumerate}
+	\end{answer}
+
 \end{enumerate}
 
 \end{document}
