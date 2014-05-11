@@ -199,11 +199,11 @@ self.table[self.bad_hash(element)].append(element)
 
 \item 
 Given the following description, design the relevant class(es) to represent the appropriate information in a program. Richard is an accountant at a hotel company. Write one or more classes and maker functions to describe the following: a Hotel, and descriptions of its name and location (both strings,) and its Rooms. Rooms should also be described by their price, capacity, and number (all integers.)
+	% see "classes_example.py"
 
 	\small
 	\begin{answer}
 	\begin{lstlisting}
-	# see "classes_example.py"
 	class Hotel:
 		__slots__ = ("name", "rooms", "location")
 	def mkHotel(name, rooms, location):
