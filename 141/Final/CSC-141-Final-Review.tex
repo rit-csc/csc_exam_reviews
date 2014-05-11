@@ -84,7 +84,7 @@ columns=fixed
 def append(value, linked_list):
 	newend = new node
 	newend.value = value
-	newend.next = None
+	newend.next = None # (or SENTINEL)
 	curend = end node of linked_list
 	curend.next = newend
 				\end{lstlisting}
@@ -199,6 +199,32 @@ self.table[self.bad_hash(element)].append(element)
     \end{answer}
     \end{enumerate}
 
+
+\section*{Classes}
+
+\item 
+Given the following description, design the relevant class(es) to represent the appropriate information in a program. Richard is an accountant at a hotel company. Write one or more classes and maker functions to describe the following: a Hotel, and descriptions of its name and location (both strings,) and its Rooms. Rooms should also be described by their price, capacity, and number (all integers.)
+
+	\begin{answer}
+	\begin{lstlisting}
+	class Hotel:
+		__slots__ = ("name", "rooms", "location")
+	def mkHotel(name, rooms, location):
+		hotel = Hotel()
+		hotel.name = name
+		hotel.rooms = rooms # rooms = list containing Room objs
+		hotel.location = location
+		return hotel
+	class Room:
+		__slots__=("number", "capacity", "price")
+	def mkRoom(number, capacity, price):
+		room = Room()
+		room.number = number
+		room.capacity = capacity
+		room.price = price
+		return room
+	\end{lstlisting}
+	\end{answer}
 
 \section*{Sorting}
 
