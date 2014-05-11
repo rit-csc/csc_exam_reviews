@@ -12,7 +12,6 @@
 \usepackage{framed}
 \usepackage{csc}
 \usepackage{textcomp}
-\usepackage{multicol}
 
 \lstset{ %
 basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
@@ -48,53 +47,8 @@ columns=fixed
 \begin{document}
 \header
 
+% TODO (TOFU) copy in Chris's marvelous mixture from the old 241 Final
 \begin{enumerate}
-
-\section*{Recursion}
-\item Below is a function that, given a lower bound \textit{i}, upper bound \textit{n}, and function from integers to integers \textit{f}, computes $\sum\limits_{k=i}^n f(k)$.
-\begin{lstlisting}
-	def series_sum(i, n, f):
-		if(i == n):
-			return f(n)
-		return f(i) + series_sum(i + 1, n, f)
-\end{lstlisting}
-\begin{enumerate}
-\item Invoke the function to compute $\sum\limits_{k=1}^5 k^2$.
-\begin{answer}
-\begin{multicols}{3}
-\begin{verbatim}
-	series_sum(1, 5, lambda x: x**2)
-\end{verbatim}
-\columnbreak
-\hspace{80pt} OR
-\columnbreak
-\begin{verbatim}
-	def square(x): return x**2
-	series_sum(1, 5, square)
-\end{verbatim}
-\end{multicols}
-\end{answer}
-
-\item Rewrite the \texttt{series\_sum} function to be tail recursive.
-\begin{answer}
-\begin{lstlisting}
-	def series_sum(i, n, f, s):
-		if(i == n):
-			return s + f(n)
-		return 
-	return series_sum(i + 1, n, f, s + f(i))
-\end{lstlisting}
-\end{answer}
-
-\item What is the advantage of the new implementation? \\
-\begin{answer}
-Tail recursive functions make no additional calculations after the execution of the recursive call completes; thus, they do not necessitate the preservation of stack frames belonging to intermediate recursive invocations.
-Provided the language implementation supports sufficient optimization, there is no more runtime memory overhead for calling a tail recursive function that makes 100 recursive calls as compared to one that makes none at all.
-The true benefit becomes apparent when the recursion depth becomes much deeper: a tail recursive function can handle a recursion depth in the millions, which would cause a non--tail recursive one to overflow the stack.
-\end{answer}
-\begin{answer}
-\end{answer}
-\end{enumerate}
 
 \section*{Linked Lists}
     \item You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{next}.
@@ -291,15 +245,15 @@ Given the following description, design the relevant class(es) to represent the 
       \begin{tabular}{|r|c|c|c|}
         \hline
         ~ & Best & Worst & Average \\\hline
-        Merge sort &
+        Merge Sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        Quicksort &
+        QuickSort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n^2)$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        Heap sort &
+        Heap Sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
@@ -480,7 +434,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
     \begin{answer}
         Heapify:  \newline
         	[\underline{3}, 5, 1, 3, 2, 7, 9] \newline
-    		[\underline{3}, \underline{5}, 1, 3, 2, 7, 9] \newline
+    		[\underline{3},\underline{5}, 1, 3, 2, 7, 9] \newline
     		[\underline{1}, \underline{5}, \underline{3}, 3, 2, 7, 9] \newline
     		[\underline{1}, \underline{3}, \underline{3}, \underline{5}, 2, 7, 9] \newline
     		[\underline{1}, \underline{2}, \underline{3}, \underline{5}, \underline{3}, 7, 9] \newline
@@ -497,8 +451,6 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
     		[9, 7, 5, 3, 3, 2, 1] \newline
     \end{answer}
 
-\section*{Binary Search Trees}
-
 \item If we have a balanced binary search tree (meaning its height is as small as
     possible) containing $n$ nodes:
         \begin{enumerate}
@@ -511,7 +463,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
                 \begin{answer}
                 $\log_2(n)$
                 \end{answer}
-            \item What's the worst case search time for an unbalanced search
+            \item What's the worst case search time for an (unbalanced) search
             tree? \\
                 \begin{answer}
                 $n$
@@ -543,11 +495,11 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 	def is_in_tree(head, element):
 		 if head == None:
 			return False
-		lif head.data == element:
+		elif head.data == element:
 			return True
-		lif head.data < element:
+		elif head.data < element:
 			return is_in_tree(head.right, element)
-		lif head.data > element:
+		elif head.data > element:
 			return is_in_tree(head.left, element)
 
 	newTree = mkTree(3, mkTreeNode(3, mkTreeNode(1, None, None),
