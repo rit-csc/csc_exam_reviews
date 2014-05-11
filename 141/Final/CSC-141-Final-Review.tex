@@ -34,7 +34,6 @@ columns=fixed
     \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red}}{}
 }
 
-
 \author{Computer Science Community}
 \title{CS-141 Final Exam Review}
 \date{\today}
@@ -50,7 +49,6 @@ columns=fixed
 
 % TODO (TOFU) copy in Chris's marvelous mixture from the old 241 Final
 \begin{enumerate}
-
 
 \section*{Linked Lists}
     \item You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{next}.
@@ -99,7 +97,6 @@ def append(value, linked_list):
 				\vspace{1in}
         \end{enumerate}
 
-
 \pagebreak
 \section*{Stacks and Queues}
 \item If we wanted to implement a stack as a linked list, what linked-list
@@ -110,7 +107,6 @@ def append(value, linked_list):
 	\texttt{pop( stack )} $\rightarrow$ \texttt{removeFront( linked-list )}
 	\end{answer}
 
-	
 \item It is possible to implement both stacks and queues using only simple Python lists.
 \begin{enumerate}
 \item Write the following functions that implement stack functionality atop a Python list. \\
@@ -198,7 +194,6 @@ self.table[self.bad_hash(element)].append(element)
         No: It ignores the fact that most English words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
     \end{answer}
     \end{enumerate}
-
 
 \section*{Classes}
 
@@ -502,10 +497,6 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 	print(is_in_tree(newTree.head, 5)) # -> False
 		\end{lstlisting}
 		\end{answer}
-        
-
-
-
 
 \section*{Backtracking}
 
@@ -515,7 +506,6 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 \begin{answer}
 A properly implemented backtracking approach will prune fruitless branches. 
 \end{answer}
-
 
 \section*{Searching}
 
