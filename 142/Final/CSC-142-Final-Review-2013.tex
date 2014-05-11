@@ -191,7 +191,7 @@ static class MeanWorker extends Thread {
             Assume you are provided with a "Graph" class with a getNeighbors( int vertex ) method, which returns an ArrayList\textless Integer\textgreater representing the numbers corresponding to neighboring vertices. Assume "visited" is an ArrayList keeping track of all visited vertices. \\
 			(Note: your algorithm should return a boolean value, not an actual path!)
 \begin{verbatim}
-boolean hasPathToRec(Graph g, int start, int goal, ArrayList<Integer> visited) {
+boolean hasPathToRec(Graph g, int start, int goal, Set<Integer> visited) {
 \end{verbatim}
 			
 \begin{answer}
@@ -215,7 +215,7 @@ boolean hasPathToRec(Graph g, int start, int goal, ArrayList<Integer> visited) {
 			Rewrite your algorithm to be iterative instead. \\
 			(Hint: what data structure do you need to use if you no longer have recursion?)
 \begin{verbatim}
-boolean hasPathToIter(Graph g, int start, int goal, ArrayList<Integer> visited) {
+boolean hasPathToIter(Graph g, int start, int goal, Set<Integer> visited) {
 \end{verbatim}	
 			
 \begin{answer}
