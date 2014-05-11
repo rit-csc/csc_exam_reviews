@@ -34,7 +34,6 @@ columns=fixed
     \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red}}{}
 }
 
-
 \author{Computer Science Community}
 \title{CS-141 Final Exam Review}
 \date{\today}
@@ -50,7 +49,6 @@ columns=fixed
 
 % TODO (TOFU) copy in Chris's marvelous mixture from the old 241 Final
 \begin{enumerate}
-
 
 \section*{Linked Lists}
     \item You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{next}.
@@ -84,7 +82,7 @@ columns=fixed
 def append(value, linked_list):
 	newend = new node
 	newend.value = value
-	newend.next = None
+	newend.next = None # (or SENTINEL)
 	curend = end node of linked_list
 	curend.next = newend
 				\end{lstlisting}
@@ -99,7 +97,6 @@ def append(value, linked_list):
 				\vspace{1in}
         \end{enumerate}
 
-
 \pagebreak
 \section*{Stacks and Queues}
 \item If we wanted to implement a stack as a linked list, what linked-list
@@ -110,7 +107,6 @@ def append(value, linked_list):
 	\texttt{pop( stack )} $\rightarrow$ \texttt{removeFront( linked-list )}
 	\end{answer}
 
-	
 \item It is possible to implement both stacks and queues using only simple Python lists.
 \begin{enumerate}
 \item Write the following functions that implement stack functionality atop a Python list. \\
@@ -199,6 +195,34 @@ self.table[self.bad_hash(element)].append(element)
     \end{answer}
     \end{enumerate}
 
+\section*{Classes}
+
+\item 
+Given the following description, design the relevant class(es) to represent the appropriate information in a program. Richard is an accountant at a hotel company. Write one or more classes and maker functions to describe the following: a Hotel, and descriptions of its name and location (both strings,) and its Rooms. Rooms should also be described by their price, capacity, and number (all integers.)
+
+	\small
+	\begin{answer}
+	\begin{lstlisting}
+	# see "classes_example.py"
+	class Hotel:
+		__slots__ = ("name", "rooms", "location")
+	def mkHotel(name, rooms, location):
+		hotel = Hotel()
+		hotel.name = name
+		hotel.rooms = rooms # rooms = list containing Room objs
+		hotel.location = location
+		return hotel
+	class Room:
+		__slots__=("number", "capacity", "price")
+	def mkRoom(number, capacity, price):
+		room = Room()
+		room.number = number
+		room.capacity = capacity
+		room.price = price
+		return room
+	\end{lstlisting}
+	\end{answer}
+	\normalsize
 
 \section*{Sorting}
 
@@ -208,15 +232,15 @@ self.table[self.bad_hash(element)].append(element)
       \begin{tabular}{|r|c|c|c|}
         \hline
         ~ & Best & Worst & Average \\\hline
-        MergeSort &
+        Merge Sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        Quicksort &
+        QuickSort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n^2)$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        HeapSort &
+        Heap Sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
@@ -229,7 +253,7 @@ self.table[self.bad_hash(element)].append(element)
       randomly selected value?
 
     \begin{answer}
-    Quicksort.
+    QuickSort.
     \end{answer}
 
 \item\label{qsort-worst-case} What kind of data causes Quicksort's worst-case
@@ -237,7 +261,7 @@ self.table[self.bad_hash(element)].append(element)
       the pivot.
 
       \begin{answer}
-      Data that is (nearly) sorted or is sorted in reverse order.
+      Data that is (nearly) sorted or is (nearly) sorted in reverse order.
       \end{answer}
 
 \item What causes Quicksort to run so slowly on the input you describe in
@@ -261,7 +285,7 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
     \end{answer}
 
 \item In Quicksort, why should we select a random pivot value, rather than always
-      pivoting on the first element?
+      pivoting on, for example, the first or last element?
 
       \begin{answer}
       With real-world data, we're more likely to encounter ordered or
@@ -277,33 +301,33 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       \end{answer}
 
 \pagebreak
-\item Show the stages of a Merge sort and a Quicksort on the following list:
+\item Show the stages of a merge sort and a Quicksort on the following list:
       [3,5,1,3,2,7,9]. Be sure to identify your pivot.
 
     \begin{answer}
-	Mergesort:\\*
+	merge sort:\\*
 	\newline
     \begin{tikzpicture}[scale=1.2]
 	\node [draw,ellipse] at (3.375,3) (head) {3 5 1 3 2 7 9};
-	\node [draw,ellipse] at (1.5,2) (1) {3 5 1 3};
-	\node [draw,ellipse] at (5.25,2) (2) {2 7 9};
-	\node [draw,ellipse] at (.5,1) (3) {3 5};
-	\node [draw,ellipse] at (2.5,1) (4) {1 3};
-	\node [draw,ellipse] at (4.5,1) (5) {2 7};
-	\node [draw,ellipse] at (6,1) (6) {9};
+	\node [draw,ellipse] at (1.5,2) (1) {3 1 2 9};
+	\node [draw,ellipse] at (5.25,2) (2) {5 3 7};
+	\node [draw,ellipse] at (.5,1) (3) {3 2};
+	\node [draw,ellipse] at (2.5,1) (4) {1 9};
+	\node [draw,ellipse] at (4.5,1) (5) {5 7};
+	\node [draw,ellipse] at (6,1) (6) {3};
 	\node [draw,ellipse] at (0,0) (7) {3};
-	\node [draw,ellipse] at (1,0) (8) {5};
+	\node [draw,ellipse] at (1,0) (8) {2};
 	\node [draw,ellipse] at (2,0) (9) {1};
-	\node [draw,ellipse] at (3,0) (10) {3};
-	\node [draw,ellipse] at (4,0) (11) {2};
+	\node [draw,ellipse] at (3,0) (10) {9};
+	\node [draw,ellipse] at (4,0) (11) {5};
 	\node [draw,ellipse] at (5,0) (12) {7};
-	\node [draw,ellipse] at (6,0) (13) {9};
-	\node [draw,ellipse] at (.5,-1) (14) {3 5};
-	\node [draw,ellipse] at (2.5,-1) (15) {1 3};
-	\node [draw,ellipse] at (4.5,-1) (16) {2 7};
-	\node [draw,ellipse] at (6,-1) (17) {9};
-	\node [draw,ellipse] at (1.5, -2) (18) {1 3 3 5};
-	\node [draw,ellipse] at (5.25, -2) (19) {2 7 9};
+	\node [draw,ellipse] at (6,0) (13) {3};
+	\node [draw,ellipse] at (.5,-1) (14) {2 3};
+	\node [draw,ellipse] at (2.5,-1) (15) {1 9};
+	\node [draw,ellipse] at (4.5,-1) (16) {5 7};
+	\node [draw,ellipse] at (6,-1) (17) {3};
+	\node [draw,ellipse] at (1.5, -2) (18) {1 2 3 9};
+	\node [draw,ellipse] at (5.25, -2) (19) {3 5 7};
 	\node [draw,ellipse] at (3.375,-3) (20) {1 2 3 3 5 7 9};
 
 	\path [draw] (1) -- (head) -- (2);
@@ -432,9 +456,9 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
                 \begin{answer}
                 $n$
                 \end{answer}
-                \pagebreak
         \end{enumerate}
-    \item Write a binary tree class and a function that determines whether one contains a given element.
+\pagebreak
+\item Write a binary tree class and a function that determines whether one contains a given element.
 		\begin{answer}
 		\begin{lstlisting}
 	class Tree:
@@ -474,9 +498,15 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 	print(is_in_tree(newTree.head, 5)) # -> False
 		\end{lstlisting}
 		\end{answer}
-        
 
-
+\item Given the sorted list [1, 4, 9, 16, 25, 69, 420, 1337], write out the steps that a binary search would take to find the number 69.
+\begin{answer}
+\begin{lstlisting}
+[1,4,9,16,|25|,69,420,1337]
+[1,4,9,16,25,69,|420|,1337]
+[1,4,9,16,25,|69|,420,1337]
+\end{lstlisting}
+\end{answer}
 
 
 \section*{Backtracking}
@@ -487,6 +517,6 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 \begin{answer}
 A properly implemented backtracking approach will prune fruitless branches. 
 \end{answer}
-\end{enumerate}
 
+\end{enumerate}
 \end{document}

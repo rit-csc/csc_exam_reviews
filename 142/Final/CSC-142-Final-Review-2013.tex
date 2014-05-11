@@ -51,7 +51,7 @@ columns=fixed
 
 \begin{enumerate}
 
-\item {\bf Nick's Heavy Threads} Nick operates a store in Marketview Mall which
+\item {\bf Nick's Heavy Threads:} Nick operates a store in Marketview Mall which
       has poor lighting, blasts black metal and sells jeans. Only one pair of
       jeans is available to purchase at a time, though there are more
       stored in the back. If a size is out that you don't want, you must wait
@@ -161,6 +161,64 @@ static class MeanWorker extends Thread {
 \end{lstlisting}
 \end{answer}
     \end{enumerate}
+    
+\newpage
+\item \textbf{Searching a Graph}
+	\begin{enumerate}
+		\item
+			Write a recursive algorithm that (given a graph, start vertex, and goal vertex),
+			determines whether or not there is a path to the goal vertex. \\
+			Assume you are provided with a "Graph" class with a getNeighbors( int vertex ) method, which returns an ArrayList<Integer> representing the numbers corresponding to neighboring vertices. \\
+			Assume "visited" is a Collection keeping track of all visited vertices. \\
+			(Note: your algorithm should return a boolean value, not an actual path!)
+			
+			def hasPathToRec( Graph g, int start, int goal, HashMap\textless Integer, boolean\textgreater visited )\{
+\begin{answer}
+\begin{lstlisting}
+	if( start == goal ){
+		return true;
+	}else{
+		for( int n : g.getNeighbors( start ) ){
+			if( ! visited.contains( n ) ){
+				visited.add( n );
+				return hasPathToRec( g, n, goal, visited );
+			}
+		}
+		return false;
+	}
+\end{lstlisting}
+\end{answer}
+\}
+		            
+		\item
+			Rewrite your algorithm to be iterative instead. \\
+			(Hint: what data structure do you need to use if you no longer have recursion?)
+					
+			def hasPathToIter( Graph g, int start, int goal, HashMap\textless Integer, boolean\textgreater visited )\{
+\begin{answer}
+\begin{lstlisting}
+	Stack<Integer> theStack = new Stack<Integer>();
+	theStack.push( start );
+	while( ! theStack.empty() ){
+		int curr = theStack.pop();
+		if( curr == goal ){
+			return true;
+		}
+		visited.add( curr );
+		for( int n : g.getNeighbors( curr ) ){
+			if( ! theStack.contains( n ) ){
+				theStack.push( n );
+			}
+		}
+	}
+	return false;
+
+\end{lstlisting}
+\end{answer}
+\}
+	\end{enumerate}
+            
+          
 
 
 \pagebreak
@@ -477,6 +535,74 @@ the endpoints of logical connections between two hosts and can be used to send a
 \end{answer}
 
 \end{enumerate}
+
+% Networking
+\item
+	Find at least 3 errors in the following code:
+
+	Server: Echoes one line of data sent to it
+
+	\begin{lstlisting}
+ServerSocket pubServer = new ServerSocket(0);
+System.out.println(pubServer.getLocalPort());
+Socket client;
+BufferedReader reader = null;
+try {
+	reader = new BufferedReader(
+		new InputStreamReader(client.getInputStream()));
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+String response = null;
+try {
+	response = reader.readLine();
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+System.out.println(response);
+
+pubServer.close();
+	\end{lstlisting}
+
+	Client: Sends a line of text to a server: server address, port, text
+
+	\begin{lstlisting}
+InetAddress server = null;
+try {
+	server = InetAddress.getByName(args[0]);
+} catch (UnknownHostException e) {
+	System.out.println("Unknown host");
+}
+int port = Integer.parseInt(args[1]);
+
+Socket conn = null;
+try {
+	conn = new Socket(server, port);
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+try {
+	System.out.println(args[2]);
+} catch (IOException e) {
+	System.out.println("IOException: " + e.getMessage());
+}
+
+conn.close();
+	\end{lstlisting}
+
+	\begin{answer}
+		\begin{enumerate}
+		\item
+			Server: Missing client.close().
+		\item
+			Server: client never initialized, use pubServer.accept().	
+		\item
+			Client: Need a PrintWriter writer; writer = new PrintWriter(conn.getOutputStream(), true); writer.println(args[2]); insteand of System.out.println(args[2]);
+		\end{enumerate}
+	\end{answer}
 
 \end{enumerate}
 
