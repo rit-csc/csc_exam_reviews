@@ -456,9 +456,9 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
                 \begin{answer}
                 $n$
                 \end{answer}
-                \pagebreak
         \end{enumerate}
-    \item Write a binary tree class and a function that determines whether one contains a given element.
+\pagebreak
+\item Write a binary tree class and a function that determines whether one contains a given element.
 		\begin{answer}
 		\begin{lstlisting}
 	class Tree:
@@ -499,6 +499,16 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 		\end{lstlisting}
 		\end{answer}
 
+\item Given the sorted list [1, 4, 9, 16, 25, 69, 420, 1337], write out the steps that a binary search would take to find the number 69.
+\begin{answer}
+\begin{lstlisting}
+[1,4,9,16,|25|,69,420,1337]
+[1,4,9,16,25,69,|420|,1337]
+[1,4,9,16,25,|69|,420,1337]
+\end{lstlisting}
+\end{answer}
+
+
 \section*{Backtracking}
 
 \item Why is backtracking better suited for solving a Sudoku puzzle than
@@ -508,21 +518,5 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 A properly implemented backtracking approach will prune fruitless branches. 
 \end{answer}
 
-\section*{Searching}
-
-\item Given the sorted list [1, 4, 9, 16, 25, 69, 420, 1337], write out the steps that a binary search would take to find the number 69.
-
-\begin{answer}
-\begin{lstlisting}
-[1,4,9,16,|25|,69,420,1337]
-[1,4,9,16,25,69,|420|,1337]
-[1,4,9,16,25,|69|,420,1337]
-\end{lstlisting}
-\end{answer}
-
-\item What is the complexity of a binary search? \\
-\begin{answer}
-O(log(n)).
-\end{answer}
 \end{enumerate}
 \end{document}
