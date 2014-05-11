@@ -12,6 +12,7 @@
 \usepackage{framed}
 \usepackage{csc}
 \usepackage{textcomp}
+\usepackage{multicol}
 
 \lstset{ %
 basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
@@ -47,8 +48,53 @@ columns=fixed
 \begin{document}
 \header
 
-% TODO (TOFU) copy in Chris's marvelous mixture from the old 241 Final
 \begin{enumerate}
+
+\section*{Recursion}
+\item Below is a function that, given a lower bound \textit{i}, upper bound \textit{n}, and function from integers to integers \textit{f}, computes $\sum\limits_{k=i}^n f(k)$.
+\begin{lstlisting}
+	def series_sum(i, n, f):
+		if(i == n):
+			return f(n)
+		return f(i) + series_sum(i + 1, n, f)
+\end{lstlisting}
+\begin{enumerate}
+\item Invoke the function to compute $\sum\limits_{k=1}^5 k^2$.
+\begin{answer}
+\begin{multicols}{3}
+\begin{verbatim}
+	series_sum(1, 5, lambda x: x**2)
+\end{verbatim}
+\columnbreak
+\hspace{80pt} OR
+\columnbreak
+\begin{verbatim}
+	def square(x): return x**2
+	series_sum(1, 5, square)
+\end{verbatim}
+\end{multicols}
+\end{answer}
+
+\item Rewrite the \texttt{series\_sum} function to be tail recursive.
+\begin{answer}
+\begin{lstlisting}
+	def series_sum(i, n, f, s):
+		if(i == n):
+			return s + f(n)
+		return 
+	return series_sum(i + 1, n, f, s + f(i))
+\end{lstlisting}
+\end{answer}
+
+\item What is the advantage of the new implementation? \\
+\begin{answer}
+Tail recursive functions make no additional calculations after the execution of the recursive call completes; thus, they do not necessitate the preservation of stack frames belonging to intermediate recursive invocations.
+Provided the language implementation supports sufficient optimization, there is no more runtime memory overhead for calling a tail recursive function that makes 100 recursive calls as compared to one that makes none at all.
+The true benefit becomes apparent when the recursion depth becomes much deeper: a tail recursive function can handle a recursion depth in the millions, which would cause a non--tail recursive one to overflow the stack.
+\end{answer}
+\begin{answer}
+\end{answer}
+\end{enumerate}
 
 \section*{Linked Lists}
     \item You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{next}.
@@ -199,11 +245,11 @@ self.table[self.bad_hash(element)].append(element)
 
 \item 
 Given the following description, design the relevant class(es) to represent the appropriate information in a program. Richard is an accountant at a hotel company. Write one or more classes and maker functions to describe the following: a Hotel, and descriptions of its name and location (both strings,) and its Rooms. Rooms should also be described by their price, capacity, and number (all integers.)
+	% see "classes_example.py"
 
 	\small
 	\begin{answer}
 	\begin{lstlisting}
-	# see "classes_example.py"
 	class Hotel:
 		__slots__ = ("name", "rooms", "location")
 	def mkHotel(name, rooms, location):
@@ -223,7 +269,20 @@ Given the following description, design the relevant class(es) to represent the 
 	\end{lstlisting}
 	\end{answer}
 	\normalsize
+	
+	
+	
+	
+	\section*{Backtracking}
+	
+	\item Why is backtracking better suited for solving a Sudoku puzzle than
+	      using regular brute force?
+	
+	\begin{answer}
+	A properly implemented backtracking approach will prune fruitless branches. 
+	\end{answer}
 
+\newpage
 \section*{Sorting}
 
 \item Fill in the table for the asymptotic running time of each sorting
@@ -232,15 +291,15 @@ Given the following description, design the relevant class(es) to represent the 
       \begin{tabular}{|r|c|c|c|}
         \hline
         ~ & Best & Worst & Average \\\hline
-        Merge Sort &
+        Merge sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        QuickSort &
+        Quicksort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n^2)$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
-        Heap Sort &
+        Heap sort &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} &
             \begin{answer}$O(n*\textrm{log}(n))$\end{answer} \\\hline
@@ -248,8 +307,8 @@ Given the following description, design the relevant class(es) to represent the 
       \end{center}
 
 \item What sorting algorithm splits its input list into two other lists, one
-      which has element which are all smaller than a value (which is randomly
-      selected) and one which has elements which are all larger than the
+      which has all elements that are smaller than a value (which is randomly
+      selected) and one which has elements that are larger than the
       randomly selected value?
 
     \begin{answer}
@@ -272,7 +331,6 @@ Given the following description, design the relevant class(es) to represent the 
     If the pivot is either the smallest or the largest element, then one list
     will only have no elements, while the others will have all of the elements
     but the pivot. We can see this if we perform a substitution trace:
-
 \begin{verbatim}
 qsort([1,2,3,4])
 qsort([]) + [1] + qsort([2,3,4])
@@ -299,8 +357,8 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
       getting in sorted data, if we select pivots randomly, we should be able
       to end up with average time complexity.
       \end{answer}
-
-\pagebreak
+      
+\newpage
 \item Show the stages of a merge sort and a Quicksort on the following list:
       [3,5,1,3,2,7,9]. Be sure to identify your pivot.
 
@@ -506,16 +564,6 @@ qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([]
 [1,4,9,16,25,69,|420|,1337]
 [1,4,9,16,25,|69|,420,1337]
 \end{lstlisting}
-\end{answer}
-
-
-\section*{Backtracking}
-
-\item Why is backtracking better suited for solving a Sudoku puzzle than
-      using regular brute force?
-
-\begin{answer}
-A properly implemented backtracking approach will prune fruitless branches. 
 \end{answer}
 
 \end{enumerate}

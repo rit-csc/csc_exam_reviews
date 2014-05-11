@@ -187,20 +187,22 @@ static class MeanWorker extends Thread {
 		\item
 			Write a recursive algorithm that (given a graph, start vertex, and goal vertex),
 			determines whether or not there is a path to the goal vertex. \\
-			Assume you are provided with a "Graph" class with a getNeighbors( int vertex ) method, which returns an ArrayList<Integer> representing the numbers corresponding to neighboring vertices. \\
-			Assume "visited" is a Collection keeping track of all visited vertices. \\
+			Assume you are provided with a "Graph" class with a getNeighbors( int vertex ) method, which returns an ArrayList\textless Integer\textgreater representing the numbers corresponding to neighboring vertices. \\
+			Assume "visited" is an ArrayList keeping track of all visited vertices. \\
 			(Note: your algorithm should return a boolean value, not an actual path!)
+\begin{verbatim}
+boolean hasPathToRec(Graph g, int start, int goal, ArrayList<Integer> visited) {
+\end{verbatim}
 			
-			def hasPathToRec( Graph g, int start, int goal, HashMap\textless Integer, boolean\textgreater visited )\{
 \begin{answer}
 \begin{lstlisting}
 	if( start == goal ){
 		return true;
 	}else{
-		for( int n : g.getNeighbors( start ) ){
-			if( ! visited.contains( n ) ){
-				visited.add( n );
-				return hasPathToRec( g, n, goal, visited );
+		for( int n : g.getNeighbors(start) ){
+			if( ! visited.contains(n) ){
+				visited.add(n);
+				return hasPathToRec(g, n, goal, visited);
 			}
 		}
 		return false;
@@ -212,21 +214,23 @@ static class MeanWorker extends Thread {
 		\item
 			Rewrite your algorithm to be iterative instead. \\
 			(Hint: what data structure do you need to use if you no longer have recursion?)
-					
-			def hasPathToIter( Graph g, int start, int goal, HashMap\textless Integer, boolean\textgreater visited )\{
+\begin{verbatim}
+boolean hasPathToIter(Graph g, int start, int goal, ArrayList<Integer> visited) {
+\end{verbatim}	
+			
 \begin{answer}
 \begin{lstlisting}
 	Stack<Integer> theStack = new Stack<Integer>();
-	theStack.push( start );
+	theStack.push(start);
 	while( ! theStack.empty() ){
 		int curr = theStack.pop();
 		if( curr == goal ){
 			return true;
 		}
-		visited.add( curr );
-		for( int n : g.getNeighbors( curr ) ){
-			if( ! theStack.contains( n ) ){
-				theStack.push( n );
+		visited.add(curr);
+		for( int n : g.getNeighbors(curr) ){
+			if( ! theStack.contains(n) ){
+				theStack.push(n);
 			}
 		}
 	}
@@ -515,6 +519,42 @@ BorderLayout
 No!
 Since \texttt{Redneck} and \texttt{Professor} objects are stored in variables of type \texttt{Human} they must extend the \texttt{Human} class.
 In addition, since the \texttt{Human} variables are able to be added into a collection of \texttt{Probable} objects, the \texttt{Human} class must implement \texttt{Probable}, which will carry down into the \texttt{Redneck} and \texttt{Professor} classes.
+\end{answer}
+
+\item What does TCP stands for? Where and why do we use TCP?
+
+\begin{answer}
+Transmission Control Protocol. We use TCP in Telephone Connection because TCP guarantees packet delivery and thus can be considered "lossless and reliable".
+\end{answer}
+
+\item What does UDP stands for? When and where do we use UDP?
+
+\begin{answer}
+User Datagram Protocol. We use UDP when you are managin a tremendous amount of state (esp weather data, video transmission) 
+\end{answer}
+
+\item Which one does Stream socket use for data transmission? TCP (or) UDP?
+
+\begin{answer}
+TCP. 
+\end{answer}
+
+\item Which one does Datagram socket use for data transmission? TCP (or) UDP?
+
+\begin{answer}
+UDP
+\end{answer}
+
+\item What is datagram?
+
+\begin{answer}
+independent, self-contained message sent over the network with no guarantees.
+\end{answer}
+
+\item What is socket?
+
+\begin{answer}
+the endpoints of logical connections between two hosts and can be used to send and receive data.
 \end{answer}
 
 \end{enumerate}
