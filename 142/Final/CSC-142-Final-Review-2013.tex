@@ -54,7 +54,7 @@ columns=fixed
 \item {\bf The Life of Nick:} % critical sections
     Nick, an aspiring entrepreneur, trained for 7 years in the jungles of Zimbabwe.
     Nick's training was overseen by a group of trainers. His stages of learning were 
-    fueled by the following process:
+    fueled by the following process:\\
     \begin{verbatim}
     public class Nick {
         private int experience = 0 ;
@@ -67,7 +67,7 @@ columns=fixed
 
     \begin{answer}
     The train function, and specifically its incrementation, is non-atomic, meaning the value of Nick's 
-    \texttt{experience} variable will be undefined after multiple threads attempt to call the function concurrently.  One solution would be to synchronize on \texttt{Nick} to ensure only one thread at a time executes within the critical section.
+    \texttt{experience} variable will be undefined after multiple threads attempt to call the function concurrently.  One solution would be to synchronize on \texttt{Nick} to ensure only one thread at a time executes within the critical section.\\
     \end{answer}
 
 \item {\bf Nick's Heavy Threads:} Nick now operates a store in Marketview Mall which
@@ -495,13 +495,13 @@ BorderLayout
     \end{enumerate}
     
 \pagebreak
-\item Use the following code in this question.
+\item Use the following code to answer the questions listed on the next page.
 
 \lstinputlisting{code/ufo/UFO.java}
 
 \pagebreak
 \begin{enumerate}
-\item Why should \texttt{Probable} be an interface and not a class or an abstract class?
+\item Why should \texttt{Probable} be an interface, rather than a class or an abstract class?
 
 \begin{answer}
 \texttt{Probable} needs to define that certain actions can be performed on \texttt{Probable} objects, but does not need to define what those actions should do.
