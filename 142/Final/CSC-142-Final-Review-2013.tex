@@ -70,6 +70,9 @@ columns=fixed
     \texttt{experience} variable will be undefined after multiple threads attempt to call the function concurrently.  One solution would be to synchronize on \texttt{Nick} to ensure only one thread at a time executes within the critical section.\\
     \end{answer}
 
+% TODO fix the formatting of the first two pages, it's pretty messed up with the new
+% question before Nick's Heavy Threads
+
 \item {\bf Nick's Heavy Threads:} Nick now operates a store in Marketview Mall which
       has poor lighting, blasts black metal and sells jeans. Only one pair of
       jeans is available to purchase at a time, though there are more
@@ -116,6 +119,7 @@ public class NicksHeavyThreads
     }
 }
 \end{lstlisting}
+(You may answer the questions in the space allotted here or on the following page.)
 
     \begin{enumerate}
 
@@ -516,12 +520,9 @@ BorderLayout
 \item Should the \texttt{Redneck} and \texttt{Professor} classes implement \texttt{Probable} directly?
 
 \begin{answer}
-No!
-Since \texttt{Redneck} and \texttt{Professor} objects are stored in variables of type \texttt{Human} they must extend the \texttt{Human} class.
+No! Since \texttt{Redneck} and \texttt{Professor} objects are stored in variables of type \texttt{Human}, they must extend the \texttt{Human} class.
 In addition, since the \texttt{Human} variables are able to be added into a collection of \texttt{Probable} objects, the \texttt{Human} class must implement \texttt{Probable}, which will carry down into the \texttt{Redneck} and \texttt{Professor} classes.
 \end{answer}
-
-%\end{enumerate}
 
 \end{enumerate}
 
@@ -530,7 +531,7 @@ In addition, since the \texttt{Human} variables are able to be added into a coll
 		\item What does TCP stands for? Where and why do we use TCP?
 		
 		\begin{answer}
-		Transmission Control Protocol. We use TCP in Telephone Connection because TCP guarantees packet delivery and thus can be considered "lossless and reliable".
+		TCP stands for Transmission Control Protocol. We use TCP in Telephone Connection because TCP guarantees packet delivery and thus can be considered "lossless and reliable".
 		\end{answer}
 		
 		\item What does UDP stands for? When and where do we use UDP?
@@ -548,19 +549,19 @@ In addition, since the \texttt{Human} variables are able to be added into a coll
 		\item Which one does a datagram socket use for data transmission? TCP (or) UDP?
 		
 		\begin{answer}
-		UDP
+		UDP.
 		\end{answer}
 		
 		\item What is a datagram?
 		
 		\begin{answer}
-		independent, self-contained message sent over the network with no guarantees
+		A datagram is an independent, self-contained message sent over the network with no guarantees. % TODO: wording?
 		\end{answer}
 		
 		\item What is a socket?
 		
 		\begin{answer}
-		The endpoints of logical connections between two hosts, which can be used to send and receive data.
+		A socket refers to the endpoints of logical connections between two hosts, which can be used to send and receive data.
 		\end{answer}
 	
 	\end{enumerate}
@@ -568,7 +569,7 @@ In addition, since the \texttt{Human} variables are able to be added into a coll
 
 \newpage
 \item
-	Find at least 3 errors in the following code:
+	Find at least 3 (total) errors in the following code:
 
 	Server: Echoes one line of data sent to it
 
