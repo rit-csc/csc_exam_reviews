@@ -70,18 +70,18 @@ columns=fixed
 	\end{answer}
 
 \item {\bf The Life of Nick:} % critical sections
-    Nick, an aspiring entrepreneur, trained for 7 years in the jungles of Zimbabwe.
-    Nick's training was overseen by a group of trainers. His stages of learning were 
-    fueled by the following process:\\
-    \begin{verbatim}
+    Nick, an aspiring entrepreneur, trained for 7 grueling years in the jungles of Zimbabwe.
+    Nick's preparation was overseen by a group of trainers. His stages of learning were
+    fueled by the following process:
+    \begin{lstlisting}[numbers=none]
     public class Nick {
         private int experience = 0 ;
         public void train ( ) {
             this.experience += 1 ;
         }
-    }\end{verbatim}Imagine instructors are threads in Java. What are some problems
+    }\end{lstlisting}Imagine instructors are threads in Java. What are some problems
     we may encounter if Nick is having multiple people train him at the same time?
-    How might we remedy the aforementioned issues?
+    How might we remedy these issues?
 
     \begin{answer}
     The train function, and specifically its incrementation, is non-atomic, meaning the value of Nick's 
@@ -212,8 +212,8 @@ static class MeanWorker extends Thread {
 			Write a recursive algorithm that (given a graph, start vertex, and goal vertex),
 			determines whether or not there is a path to the goal vertex.
 
-            Assume you are provided with a "Graph" class with a getNeighbors( int vertex ) method, which returns an ArrayList\textless Integer\textgreater representing the numbers corresponding to neighboring vertices. Assume "visited" is an ArrayList keeping track of all visited vertices. \\
-			(Note: your algorithm should return a boolean value, not an actual path!)
+            Assume you are provided with a \texttt{Graph} class with a \texttt{getNeighbors( int vertex )} method, which returns an \texttt{ArrayList\textless Integer\textgreater} representing the numbers corresponding to neighboring vertices. Assume \texttt{visited} is an \texttt{ArrayList} keeping track of all visited vertices. \\
+			(Note: Your algorithm should return a Boolean value, not an actual path!)
 \begin{verbatim}
 boolean hasPathToRec(Graph g, int start, int goal, Set<Integer> visited) {
 \end{verbatim}
@@ -237,7 +237,7 @@ boolean hasPathToRec(Graph g, int start, int goal, Set<Integer> visited) {
 		            
 		\item
 			Rewrite your algorithm to be iterative instead. \\
-			(Hint: what data structure do you need to use if you no longer have recursion?)
+			(Hint: What data structure do you need to use if you no longer have recursion?)
 \begin{verbatim}
 boolean hasPathToIter(Graph g, int start, int goal, Set<Integer> visited) {
 \end{verbatim}	
@@ -548,13 +548,13 @@ In addition, since the \texttt{Human} variables are able to be added into a coll
 
 \item \textbf{Networking} 
 	\begin{enumerate}
-		\item What does TCP stands for? Where and why do we use TCP?
+		\item What does TCP stand for? Where and why do we use TCP?
 		
 		\begin{answer}
 		TCP stands for Transmission Control Protocol. We use TCP in Telephone Connection because TCP guarantees packet delivery and thus can be considered "lossless and reliable".
 		\end{answer}
 		
-		\item What does UDP stands for? When and where do we use UDP?
+		\item What does UDP stand for? When and where do we use UDP?
 		
 		\begin{answer}
 		User Datagram Protocol. We use UDP when we are managing a tremendous amount of state (ex: weather data, video transmission).
