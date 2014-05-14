@@ -50,6 +50,31 @@ columns=fixed
 \header
 
 \begin{enumerate}
+\item Which layout manager does each of the following descriptions describe?
+\begin{enumerate}[(a)]
+
+\item Displays the contained components in a set number of rows and columns,
+      where each row has the same height and each column the same width.
+\begin{answer}
+GridLayout
+\end{answer}
+
+\vspace{6pt}
+\item Attempts to display the contained components in a single row but will
+      create a new row if necessary.
+\begin{answer}
+FlowLayout
+\end{answer}
+
+\vspace{6pt}
+\item Allows the developer to specify the region (North, South, East, West,
+      Center) of the panel to place the component in.
+\begin{answer}
+BorderLayout
+\end{answer}
+
+\end{enumerate}
+
 \item Rick owns a positively popular pizza place conveniently located just off of campus.
 	Originally, he made all the pizzas himself, but rising campus food prices are making demand skyrocket.
 	Luckily, the college students are as desperate for money as they are for food, a situation from which Rick, being a pragmatic individual, finds he can benefit.
@@ -88,9 +113,7 @@ columns=fixed
     \texttt{experience} variable will be undefined after multiple threads attempt to call the function concurrently.  One solution would be to synchronize on \texttt{Nick} to ensure only one thread at a time executes within the critical section.\\
     \end{answer}
 
-% TODO fix the formatting of the first two pages, it's pretty messed up with the new
-% question before Nick's Heavy Threads
-\newpage
+\pagebreak
 \item {\bf Nick's Heavy Threads:} Nick now operates a store in Marketview Mall which
       has poor lighting, blasts black metal and sells jeans. Only one pair of
       jeans is available to purchase at a time, though there are more
@@ -395,6 +418,7 @@ It's a Beach-bash! WakaWaka!
     ``mold.''
     \end{answer}
 
+\vspace{32pt}
 \item Briefly describe the difference (for objects) between \texttt{a.equals(b)}, \texttt{a==b},
       \texttt{a.compareTo(b)}, and \texttt{Comparator.compare(a,b)}.
 
@@ -418,67 +442,6 @@ It's a Beach-bash! WakaWaka!
 
     \end{itemize}
     \end{answer}
-
-\item Name the design pattern used in the following snippet of code.
-\begin{lstlisting}
-public class Car
-{
-	private String make;
-	private String model;
-	private int mileage;
-
-	private Car(String make, String model, int mileage)
-	{
-		this.make=make;
-		this.model=model;
-		this.mileage=mileage;
-	}
-	public static Car makeCar(String str)
-	{
-		String arr[] = str.split(" ");
-		return new Car(arr[0], arr[1], Integer.parseInteger(arr[2]));
-	}
-
-	public static void main(String[] args)
-	{
-		Car myCar = Car.makeCar("Toyota Camry 200000");
-	}
-}
-\end{lstlisting}
-
-\begin{answer}
-The \emph{Factory} design pattern is used.
-\vspace{.5in}
-\end{answer}
-\pagebreak
-\item Which layout manager does each of the following descriptions describe?
-\begin{enumerate}[(a)]
-
-\item Displays the contained components in a set number of rows and columns,
-      where each row has the same height and each column the same width.
-
-\begin{answer}
-GridLayout
-\vspace{.5in}
-\end{answer}
-
-\item Attempts to display the contained components in a single row but will
-      create a new row if necessary.
-
-\begin{answer}
-FlowLayout
-\vspace{.5in}
-\end{answer}
-
-\item Allows the developer to specify the region (North, South, East, West,
-      Center) of the panel to place the component in.
-
-\begin{answer}
-BorderLayout
-\vspace{.5in}
-\end{answer}
-
-\end{enumerate}
 
 \item 
     \begin{enumerate} 
@@ -655,6 +618,37 @@ conn.close();
 		\end{enumerate}
 	\end{answer}
 
+\item Name the design pattern used in the following snippet of code.
+\begin{lstlisting}
+public class Car
+{
+	private String make;
+	private String model;
+	private int mileage;
+
+	private Car(String make, String model, int mileage)
+	{
+		this.make=make;
+		this.model=model;
+		this.mileage=mileage;
+	}
+	public static Car makeCar(String str)
+	{
+		String arr[] = str.split(" ");
+		return new Car(arr[0], arr[1], Integer.parseInteger(arr[2]));
+	}
+
+	public static void main(String[] args)
+	{
+		Car myCar = Car.makeCar("Toyota Camry 200000");
+	}
+}
+\end{lstlisting}
+
+\begin{answer}
+The \emph{Factory} design pattern is used.
+\vspace{.5in}
+\end{answer}
 \end{enumerate}
 
 \end{document}
