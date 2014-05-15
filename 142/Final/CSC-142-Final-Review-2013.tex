@@ -610,7 +610,11 @@ conn.close();
 	\begin{answer}
 		\begin{enumerate}
 		\item
+			Server: reader is not always instantiated!
+		\item
 			Server: client never initialized, use pubServer.accept().
+		\item
+			Server: pubserver.close() should be in a try-catch block.
 		\item
 			Server: Missing client.close().
 		\item
