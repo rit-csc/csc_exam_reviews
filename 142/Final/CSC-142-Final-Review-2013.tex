@@ -276,7 +276,7 @@ boolean hasPathToIter(Graph g, int start, int goal, Set<Integer> visited) {
 		}
 		visited.add(curr);
 		for( int n : g.getNeighbors(curr) ){
-			if( ! theStack.contains(n) ) {
+			if( ! visited.contains(n) ) {
 				theStack.push(n);
 			}
 		}
