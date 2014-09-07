@@ -7,7 +7,7 @@
 \usepackage{color}      %
 \usepackage{ifthen}     % 
 \usepackage{graphicx}   %
-\usepackage{csc}        %
+\usepackage{../../includes/csc}        %
 \usepackage{tikz}       %
 \usetikzlibrary{shapes} %
 \usepackage{tabularx}   % for helping matchtabular (matching questions)
@@ -97,6 +97,7 @@ answer.
 \item \textbf{Variables and Basic Data Types}
 
 List the 7 basic data types in C (not including the unsigned variants).
+
 \begin{answer}
 char, short, int, long, long long, float, double
 \end{answer}
@@ -133,7 +134,23 @@ char, short, int, long, long long, float, double
 
 \item \textbf{CPP}
 
+What does the value of \texttt{i} equal?
+\begin{verbatim}
+#define THING1 40
+#define THING2 32
+
+#if THING1 < THING2
+#define THING3 5
+#elif THING2 < THING1
+#define THING3 6
+#else
+#define THING3 7
+#endif
+
+int i = THING3;
+\end{verbatim}
 \begin{answer}
+6
 \end{answer}
 
 
