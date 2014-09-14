@@ -1,0 +1,45 @@
+You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{next}.
+        \begin{enumerate}
+            \item 1 points to 2 and 2 points to 3. What does 3 point to? \\
+                \begin{answer}
+				The implementer may cause the 3 node to point to either \texttt{None} or a sentinel node.
+				\end{answer}
+            \item Draw out the linked list structure and add a 5 to the end.
+				\begin{answer}
+				\leftmargin=0em
+				\itemindent=0em
+				{ \small
+				\begin{verbatim}
++----------+    +----------+    +----------+    +------------+
+| value: 1 |    | value: 2 |    | value: 3 |    | value: 5   |
+| next: ------->| next: ------->| next: ------->| next: None |
++----------+    +----------+    +----------+    +------------+
+				\end{verbatim}
+				\textit{OR}
+				\begin{verbatim}
++----------+    +----------+    +----------+    +----------+    +-----------------+
+| value: 1 |    | value: 2 |    | value: 3 |    | value: 5 |    | value: SENTINEL |
+| next: ------->| next: ------->| next: ------->| next: ------->|                 |
++----------+    +----------+    +----------+    +----------+    +-----------------+
+				\end{verbatim} }
+				\end{answer}
+            \item Write pseudocode to add an element onto the end of a linked list.
+				\begin{answer}
+				\begin{lstlisting}
+def append(value, linked_list):
+	newend = new node
+	newend.value = value
+	newend.next = None # (or SENTINEL)
+	curend = end node of linked_list
+	curend.next = newend
+				\end{lstlisting}
+				\end{answer}
+				\vspace{1in}
+            \item Looking at the list from (b), you notice that we forgot to
+                  add in a 4. What is a procedure for doing this? (There are
+                  many possibilities.) \\
+                \begin{answer}
+				Use some variation of this strategy: Find the preceding element's node (in this case, 3), link its next node to the new node containing 4, then link that new node to what was the following node.
+				\end{answer}
+				\vspace{1in}
+        \end{enumerate}

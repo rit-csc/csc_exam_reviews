@@ -1,0 +1,17 @@
+What causes Quicksort to run so slowly on the input you describe in question \ref{qsort-worst-case}?
+
+    \begin{answer}
+    Quicksort splits its input into two lists based on the value of the pivot.
+    If the pivot is either the smallest or the largest element, then one list
+    will only have no elements, while the others will have all of the elements
+    but the pivot. We can see this if we perform a substitution trace:
+\begin{verbatim}
+qsort([1,2,3,4])
+qsort([]) + [1] + qsort([2,3,4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([3,4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([4])
+qsort([]) + [1] + qsort([]) + [2] + qsort([]) + [3] + qsort([]) + [4] + qsort([])
+[1,2,3,4]
+\end{verbatim}
+    \end{answer}

@@ -1,0 +1,40 @@
+Write a binary tree class and a function that determines whether one contains a given element.
+		\begin{answer}
+		\begin{lstlisting}
+	class Tree:
+		__slots__ = ('head', 'size')
+
+	class TreeNode:
+		__slots__ = ('data', 'left', 'right')
+
+	def mkTree(head, size):
+		tree = Tree()
+		tree.head = head
+		tree.size = size
+		return tree
+
+	def mkTreeNode(data, left, right):
+		tree = Tree()
+		tree.data = data
+		tree.left = left
+		tree.right = right
+		return tree
+
+	def is_in_tree(head, element):
+		 if head == None:
+			return False
+		elif head.data == element:
+			return True
+		elif head.data < element:
+			return is_in_tree(head.right, element)
+		elif head.data > element:
+			return is_in_tree(head.left, element)
+
+	newTree = mkTree(3, mkTreeNode(3, mkTreeNode(1, None, None),
+			mkTreeNode(4, None, None)))
+	print(is_in_tree(newTree.head, 1)) # -> True
+	print(is_in_tree(newTree.head, 3)) # -> True
+	print(is_in_tree(newTree.head, 4)) # -> True
+	print(is_in_tree(newTree.head, 5)) # -> False
+		\end{lstlisting}
+		\end{answer}

@@ -1,0 +1,87 @@
+Show the stages of a merge sort and a quicksort on the following list:
+      [3,5,1,3,2,7,9]. Be sure to identify your pivot.
+
+    \begin{answer}
+	merge sort:\\*
+	\newline
+    \begin{tikzpicture}[scale=1.2]
+	\node [draw,ellipse] at (3.375,3) (head) {3 5 1 3 2 7 9};
+	\node [draw,ellipse] at (1.5,2) (1) {3 1 2 9};
+	\node [draw,ellipse] at (5.25,2) (2) {5 3 7};
+	\node [draw,ellipse] at (.5,1) (3) {3 2};
+	\node [draw,ellipse] at (2.5,1) (4) {1 9};
+	\node [draw,ellipse] at (4.5,1) (5) {5 7};
+	\node [draw,ellipse] at (6,1) (6) {3};
+	\node [draw,ellipse] at (0,0) (7) {3};
+	\node [draw,ellipse] at (1,0) (8) {2};
+	\node [draw,ellipse] at (2,0) (9) {1};
+	\node [draw,ellipse] at (3,0) (10) {9};
+	\node [draw,ellipse] at (4,0) (11) {5};
+	\node [draw,ellipse] at (5,0) (12) {7};
+	\node [draw,ellipse] at (6,0) (13) {3};
+	\node [draw,ellipse] at (.5,-1) (14) {2 3};
+	\node [draw,ellipse] at (2.5,-1) (15) {1 9};
+	\node [draw,ellipse] at (4.5,-1) (16) {5 7};
+	\node [draw,ellipse] at (6,-1) (17) {3};
+	\node [draw,ellipse] at (1.5, -2) (18) {1 2 3 9};
+	\node [draw,ellipse] at (5.25, -2) (19) {3 5 7};
+	\node [draw,ellipse] at (3.375,-3) (20) {1 2 3 3 5 7 9};
+
+	\path [draw] (1) -- (head) -- (2);
+	\path [draw] (3) -- (1) -- (4);
+	\path [draw] (5) -- (2) -- (6);
+	\path [draw] (7) -- (3) -- (8);
+	\path [draw] (9) -- (4) -- (10);
+	\path [draw] (11) -- (5) -- (12);
+	\path [draw] (13) -- (6);
+	\path [draw] (7) -- (14) -- (8);
+	\path [draw] (9) -- (15) -- (10);
+	\path [draw] (11) -- (16) -- (12);
+	\path [draw] (13) -- (17);
+	\path [draw] (14) -- (18) -- (15);
+	\path [draw] (16) -- (19) -- (17);
+	\path [draw] (18) -- (20) -- (19);
+	\end{tikzpicture}\\*
+	\newline
+	Quicksort (using the first element in the list as a pivot):\\*
+	\newline
+	\begin{tikzpicture}[scale=1.2]
+	\node [draw] at (4,0) (4) {3, 3};
+	\node [draw] at (7,0) (5) {5};
+	\node [draw] at (8,0) (6) {7};
+	\node [draw,ellipse] at (9,0) (7) {9};
+	\node [draw] at (1,1) (8) {1};
+	\node [draw, ellipse] at (2,1) (9) {2};
+	\node [draw] at (4,1) (10) {3, 3};
+	\node [draw] at (7,1) (11) {5};
+	\node [draw,ellipse] at (8,1) (12) {7 9};
+	\node [draw, ellipse] at (1,2) (13) {1 2};
+	\node [draw] at (4,2) (14) {3, 3};
+	\node [draw,ellipse] at (7,2) (15) {5 7 9};
+	\node [draw,ellipse] at (4,3) (16) {3 5 1 3 2 7 9};
+	\node [draw] at (4, -1) (19) {3, 3};
+	\node [draw] at (7,-1) (20) {5};
+	\node [draw, ellipse] at (8,-1) (21) {7 9};
+	\node [draw, ellipse] at (1,0) (22) {1 2};
+	\node [draw] at (4,-2) (23) {3, 3};
+	\node [draw, ellipse] at (7,-2) (24) {5 7 9};
+	\node [draw, ellipse] at (4,-3) (25) {1 2 3 3 5 7 9};
+
+	\path [draw] (8) -- (13);
+	\path [draw] (8) -- (22);
+	\path [draw] (9) -- (22);
+	\path [draw] (9) -- (13);
+	\path [draw] (4) -- (10) -- (14) -- (16);
+	\path [draw] (5) -- (11) -- (15);
+	\path [draw] (6) -- (12);
+	\path [draw] (7) -- (12) -- (15) -- (16);
+	\path [draw] (13) -- (16);
+
+	\path [draw] (22) -- (25);
+	\path [draw] (4) -- (19) -- (23) -- (25);
+	\path [draw] (5) -- (20) -- (24);
+	\path [draw] (6) -- (21);
+	\path [draw] (7) -- (21) -- (24) -- (25);
+
+	\end{tikzpicture}
+    \end{answer}
