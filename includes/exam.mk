@@ -18,6 +18,8 @@ INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	pdflatex $< $INCLUDEPATH/questions/*.tex
 	pdflatex $< $INCLUDEPATH/questions/*.tex
 
+	make clean
+
 clean:
 	rm -f *.aux *.log *.dvi
 
