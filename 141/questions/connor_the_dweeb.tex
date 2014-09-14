@@ -1,0 +1,28 @@
+Connor is a dweeb and loves keeping a count of things.
+You will be writing a tail-recursive function to satisfy his desires.
+\begin{enumerate}
+
+\item
+\label{tailrecursive}
+Write a tail recursive function \texttt{coRec}, which takes a string and a character and returns the number of times the character appears in the string. \\
+For example, \texttt{coRec("Eric is enjoying the weather.", 'i')} should return \texttt{3}. \\
+Do not use the \texttt{len()} function.
+\begin{answer}
+\begin{lstlisting}
+def coRec(string,char,counter=0):
+    if(string==''):
+        return counter
+    if(strHead(string)==char):
+        return coRec(strTail(string),char,counter+1)
+    else:
+        return coRec(strTail(string),char,counter)
+\end{lstlisting}
+\end{answer}
+
+\item
+What is the complexity of the functions you wrote for \ref{tailrecursive}?
+\begin{answer}
+
+It runs in O(N) time. \\
+\end{answer}
+\end{enumerate}

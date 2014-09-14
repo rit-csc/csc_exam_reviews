@@ -1,0 +1,24 @@
+Write a function which performs a basic string compression, which uses counts of repeated characters. For example 
+the string $abbbccccaaa$ would be compressed to: $a1b3c4a3$. \\
+ \emph{Assume a function \texttt{len( str )} which returns the length of a string is provided. \\
+      assume a function \texttt{int( str )} which, given a string representation of an integer, returns its integer value. \\
+      Assume a function \texttt{str( int )} which, given an integer, returns the string representation of this integer, is provided. }
+
+\begin{answer}
+\begin{lstlisting}
+def compress( string ):
+    new = ''
+    curChar = string[0]
+    count = 0
+    for char in string:
+        if char == curChar:
+            count += 1
+        else:
+            new = new + curChar + str(count)
+            curChar = char
+            count = 1 
+
+    new = new + curChar + str(count)
+    return new
+\end{lstlisting}
+\end{answer}

@@ -1,0 +1,37 @@
+Write a function that takes in a string representation of a number and returns the sum
+        of all of digits in the string. \\For example sum( '11111' ) returns 5. \\
+        \emph{Assume a function \texttt{len( str )} that returns the length of a string is provided. \\
+         Further assume there's a function \texttt{int( str )} which, given a string representation of an integer, returns its integer value.}
+
+        \begin{enumerate}
+            \item Recursively. 
+\begin{answer}
+\begin{lstlisting}
+def sumRec( numbers ):
+    if len( numbers ) == 0:
+        return 0
+    else:
+        return int(numbers[0]) + sumRec( numbers[1:] )
+\end{lstlisting}
+\end{answer}
+
+            \item Iteratively
+\begin{answer}
+\begin{lstlisting}
+def sumIt( numbers ):
+    total = 0
+    while numbers != '':
+        total += int( numbers[0] )
+        numbers = numbers[1:]
+    return total
+\end{lstlisting}
+\end{answer}
+            \item How would you test this function?
+                \begin{answer}
+                \begin{itemize}
+                    \item Empty string 
+                    \item String length = 1
+                    \item string length $>$ 1
+                \end{itemize}
+                \end{answer}
+\end{enumerate}

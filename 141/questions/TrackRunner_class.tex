@@ -1,0 +1,50 @@
+For the sake of this question, you find yourself to be the head programmer under Kim Jong Un's glorious rein.
+It also just so happens that a nation-wide track meet is being held today. Thus, the glorious leader has demanded that
+you write a program to keep track of information relating to all track runners present at the event.
+
+\begin{enumerate}
+\item Write a class named \texttt{TrackRunner} to keep track of all runners competing.
+You will need to store their \texttt{name}, \texttt{age}, and \texttt{fastestTime}.
+\begin{answer}
+\begin{lstlisting}
+class TrackRunner:
+    __slots__=('name','age','fastestTime')
+
+\end{lstlisting}
+\end{answer}
+
+\item Now write a function to make an individual TrackRunner object.
+\begin{answer}
+\begin{lstlisting}
+def makeRunner(r_name,r_age,r_fastestTime):
+    runner = TrackRunner()
+    runner.name = r_name
+    runner.age = r_age
+    runner.fastestTime = r_fastestTime
+    return runner
+\end{lstlisting}
+\end{answer}
+
+\item The glorious leader has decided that, on this day, no runner named \texttt{Joe} may win
+gold. Given a list of \texttt{TrackRunner} objects, write the function \texttt{aWinnerIsYou(r)} that finds the runner in the list \texttt{r} with the fastest time who's name is not Joe. 
+Then print the runner's name, age and time.
+\begin{lstlisting}
+
+\end{lstlisting}
+\begin{answer}
+\begin{lstlisting}
+def aWinnerIsYou(r):
+    best = None
+    for i in range(len(r)):
+        if r[i].name != 'Joe':
+            if best == None:
+                best = r[i]
+            elif best.fastestTime > r[i].fastestTime:
+                best = r[i]
+    return best
+
+best = aWinnerIsYou(runnersLst)
+print(best.name, best.age, best.fastestTime)
+\end{lstlisting}
+\end{answer}
+\end{enumerate}

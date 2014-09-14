@@ -1,0 +1,63 @@
+Define a function that takes an input string and rotates the sequence
+        of letters in each word by n. For example: shift\_left(``DEADBEEF'', 3)
+        will produce the output string ``DBEEFDEA''. \\ shift\_left("Giant Robot", 4) will produce "t RobotGian"\\ 
+        shift\_left("X", 5) will produce "X" \\You should be able to
+        shift a string by a value greater than the length of the
+        string\footnote{The \% operator, which finds the remainder of a
+        division operation will be useful here.}.\\ 
+        \emph{Assume a function \texttt{len( str )} which returns the length of a string is provided.}
+
+
+    \begin{enumerate}
+        \item Design: Give brief description on how your function should
+            accomplish this.
+
+            \begin{answer}
+            Our implementation will grab the first part of the new string by
+            slicing all characters at an index after the offset. The second
+            part of the string will be all of the characters up to the offset
+            point. We will then concatenate the two strings.
+
+            Making it possible for the offset to be greater than the length of
+            the string can be accomplished by making {\tt offset = offset mod
+            len(string)}
+            \end{answer}
+
+        \item Testing: Provide 3 test cases, using specific values for the input
+            string and amount of shifting and what the expected output should be
+            for each.
+
+            \begin{answer}
+                shift\_left(``'', 5) should return ""\\
+                shift\_left(``A'',5) should return "A"\\
+                shift\_left(``ABADCAFE'',300) == shift\_left("ABADCAFE",4)\\
+                shift\_left(``FOO'', 1) should return "OOF"
+            \end{answer}
+
+        \item Implement the function in Python.
+
+\begin{answer}
+\begin{lstlisting}
+def shift_left(string, offset):
+    if len(string) == 0:
+        return string
+    else:
+        offset = offset % len(string)
+        first = string[offset:]
+        last = string[:offset]
+        return first + last
+\end{lstlisting}
+\end{answer}
+
+        \item Implement the function {\tt shift\_right()}, which rotates letters
+            in the opposite direction.
+
+\begin{answer}
+\begin{lstlisting}
+def shift_right(string, offset):
+    return shift_left(string, -offset)
+\end{lstlisting}
+\vspace{0.5in}
+\end{answer}
+
+    \end{enumerate}

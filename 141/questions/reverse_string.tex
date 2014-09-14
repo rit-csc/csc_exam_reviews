@@ -1,0 +1,13 @@
+\label{reverse()} Write a recursive function that reverses a string (e.g. ``Don't
+        get sick'' yields ``kcis teg t'noD'').
+
+\begin{answer}
+\begin{lstlisting}
+def reverse( string ):
+    if string == '' :
+        return string
+    else:
+        return reverse( string[1:] ) + string[0]
+\end{lstlisting}
+Other solutions are possible.
+\end{answer}
