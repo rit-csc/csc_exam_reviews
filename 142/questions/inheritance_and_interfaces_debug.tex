@@ -1,0 +1,68 @@
+Find at least 3 errors related to inheritance and interfaces in the following code:\label{demolition-derby}
+\begin{lstlisting}
+public interface Vehicle {
+	public int getSpeed();
+	public void accelerate(int speed_inc);
+	public void brake(int speed_dec);
+}
+public class Car implements Vehicle {
+	private int speed;
+	public Car(int initialSpeed){
+		this.speed = initialSpeed;
+	}
+	public int getSpeed(){
+		return speed;
+	}
+	public int accelerate(int speed_inc) {
+		speed += speed_inc;
+		return speed;
+	}
+	public int brake(int speed_dec) {
+		speed -= speed_dec;
+		return speed;
+	}
+}
+
+public class Toyota extends Car {
+	public long getSpeed(){
+		return speed;
+	}
+}
+public class Truck implements Vehicle {
+	public void accelerate(int speed_inc) {
+		super.accelerate(speed_inc/2);
+	}
+	public void brake(int speed_dec) {
+		super.brake(speed_dec/2);
+	}
+}
+public class demolitonDerby {
+	public static void main(String[] args) {
+		Vechicle	prius, mack, impreza;
+		prius = new Toyota();
+		mack = new Truck();
+		impreza = new Car();
+		
+		impreza.accelerate(5);
+		prius.brake(2);
+		prius.accelerate(impreza.getSpeed());
+		mack.accelerate(5);
+	}
+}
+\end{lstlisting}
+
+\begin{answer}
+    \begin{tabular}{r l} % TODO Fix some answers here
+    Line \# & Error \\\hline
+    14  	& Returns int, should return void\\
+    18  	& Returns int, should return void\\
+    24  	& getSpeed()'s return type ({\tt long}) differs from Car or Vehicle.\\
+    25  	& speed is private.\\
+    27		& Calling brake() on Toyotas will call the superclass's brake()\\
+    32  	& Truck implements vehicle, but does not have getSpeed()\\
+    34  	& Can't call super(), this has no superclass.\\
+    37  	& Can't call super(), this has no superclass.\\
+    49  	& {\tt prius} was declared as a {\tt Vehicle}, so we can't call\\
+    ~  		& methods that aren't declared in {\tt Vehicle}.\\
+    \end{tabular}
+\end{answer}

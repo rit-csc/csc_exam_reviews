@@ -1,0 +1,57 @@
+Convert the following code to use generics.
+\begin{lstlisting}
+interface StringCondition {
+	boolean checkString(String s);
+}
+
+interface IntegerCondition {
+	boolean checkInteger(Integer i);
+}
+
+class StringContainer {
+	ArrayList<String> values;
+	
+	// Add and other methods are defined correctly here...
+
+	String getFirstWhereHolds(StringCondition condition) {
+		for (String s : values) {
+			if (condition.checkString(s))
+				return s;
+		}
+		return null;
+	}
+}
+
+class IntegerContainer {
+	ArrayList<Integer> values;
+
+	// Add and other methods are defined correctly here...
+
+	Integer getFirstWhereHolds(IntegerCondition condition) {
+		for (Integer i : values) {
+			if (condition.checkInteger(i))
+				return i;
+		}
+		return null;
+	}
+}
+\end{lstlisting}
+
+\begin{answer}
+\begin{lstlisting}
+interface Condition<E> {
+	boolean check(E value);
+}
+
+public class Container<E> {
+	ArrayList<E> values;
+	E getFirstWhereHolds(Condition<E> condition){
+		for (E v : values) {
+			if (condition.check(v))
+				return v;
+		}
+		return null;
+	}
+}
+\end{lstlisting}
+\end{answer}
