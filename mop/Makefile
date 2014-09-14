@@ -1,9 +1,1 @@
-.PHONY: default
-
-default:
-	$(MAKE) -C Exam1
-
-
-%:
-	$(MAKE) -C Exam1 $@
-
+include ../includes/exam.mk
