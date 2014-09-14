@@ -1,0 +1,73 @@
+What gets printed by the following code?
+\begin{lstlisting}
+public class Class1 {
+	public Class1() {
+		System.out.println( "Class1()" );
+	}
+	public void print1() {
+		System.out.println( "Class1.print1()" );
+	}
+	public void print2() {
+		System.out.println("Class1.print2()" );
+	}
+}
+
+public class Class2 extends Class1 {
+	public Class2() {
+		System.out.println( "Class2()" );
+	}
+	public void print1() {
+		System.out.println("Class2.print1()");
+	}
+}
+
+public class Class3 extends Class1{
+	private Class2 class2;
+	public Class3() {
+		System.out.println( "Class3()" );
+		class2 = new Class2();
+	}
+	public void print1() {
+		class2.print1();
+	}
+	public void print2(){
+		System.out.println("Class3.print2()");
+		super.print2();
+	}
+}
+
+public class TestClass {
+	public static void main( String[] args ) {
+		Class1 c1 = new Class2();
+		c1.print1();
+		c1.print2();
+		System.out.println();
+		Class1 c2 = new Class3();
+		c2.print1();
+		c2.print2();
+	}
+}
+\end{lstlisting}
+\begin{answer}
+\begin{multicols}{2}
+\hangindent=4em
+    \begin{verbatim}
+Class1()
+Class2()
+Class2.print1()
+Class1.print2()
+\end{verbatim}
+\columnbreak
+\begin{verbatim}
+Class1()
+Class3()
+Class1()
+Class2()
+Class2.print1()
+Class3.print2()
+Class1.print2()
+    \end{verbatim}
+\end{multicols}
+\end{answer}
+
+\vspace{-24pt}

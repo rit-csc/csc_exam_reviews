@@ -1,0 +1,110 @@
+% Author: David Larsen <dcl9934@cs.rit.edu>
+% Author: Doug Krofcheck <dpk3062@rit.edu>
+\documentclass[11pt]{article}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{listings}   %
+\usepackage{needspace}  %
+\usepackage{color}      %
+\usepackage{ifthen}     % 
+\usepackage{graphicx}   %
+\usepackage{csc}        %
+\usepackage{tikz}       %
+\usetikzlibrary{shapes} %
+\usepackage{tabularx}   % for helping matchtabular (matching questions)
+\usepackage{textcomp}	% So our quotes in code don't look like shit
+\usepackage{longtable}
+\usepackage{multicol}
+\setlength{\columnsep}{12em}
+
+\lstset{ %
+basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Java,
+upquote=true,
+columns=fixed
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white} \small{Answer:}}{}
+}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{Answer:}}{}
+}
+
+% ----- Start matchtabular definition -----
+\newcounter{matchleft}
+\newcounter{matchright}
+\newenvironment{matchtabular}{%
+  \setcounter{matchleft}{0}%
+  \setcounter{matchright}{0}%
+  \tabularx{\textwidth}{%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchleft}\arabic{matchleft}.}}X%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchright}\alph{matchright})}}X% 
+    }%
+}{\endtabularx}
+% ----- End matchtabular definition -----
+
+\title{CSCI-142 Exam 1 Review}
+\author{Computer Science Community}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document}
+\header
+\begin{enumerate}
+
+
+	\item \input{questions/string_equality.tex}
+	
+	\item \input{questions/protected_vars.tex}
+	
+	\item \input{questions/overriding_vs_overloading.tex}
+	
+	\item \input{questions/differences.tex}
+	
+	\item \input{questions/polymorphism_ex.tex}
+	
+	\item \input{questions/abstract_class_vs_interface.tex}
+
+\newpage
+	\item \input{questions/inheritance_ex.tex}
+
+\newpage
+	\item \input{questions/inheritance_and_interfaces_debug.tex}
+
+\newpage
+	\item \input{questions/convert_to_generics.tex}
+
+\end{enumerate}
+\end{document}
+
+Note: The following numbers are outdated:
+
+TODO: Eric had a good example during the last review session for the question about polymorphism, which is currently pretty dry. It was about animals trampling people, and maybe we should rework the question to include it.
+
+Topics for this exam:
+	- Java basics
+		1, 2, 3, 4
+	- Classes
+	- Inheritance (interfaces & subclasses)
+		5?, 6, 7, 8, 9
+
+1) == vs .equals()
+2) protected variables
+3) overriding vs overloading methods
+4) class vs object, constants vs normal, class vs instance, open vs chaining
+6) polymorphism
+7) abstract class vs interface
+8) "What gets printed by the following code?" ... branches of classes
+9) Given code of inheritance/interfaces, find errors.
