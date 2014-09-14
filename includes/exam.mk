@@ -7,15 +7,16 @@ default: $(shell ls *.tex | sed 's/^\(.*\)\.tex$$/\1.pdf/')
 export TEXINPUTS := $(TEXINPUTS):$(INCLUDEPATH)
 
 INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
-	     $(INCLUDEPATH)/csc.sty
+	     $(INCLUDEPATH)/csc.sty\
+	     questions/*
 
 %-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
 	pdflatex $<
 	pdflatex $<
 
 %.pdf: %.tex $(INCLUDEDEPS)
-	pdflatex $<
-	pdflatex $<
+	pdflatex $< $INCLUDEPATH/questions/*.tex
+	pdflatex $< $INCLUDEPATH/questions/*.tex
 
 clean:
 	rm -f *.aux *.log *.dvi
