@@ -1,0 +1,25 @@
+Reimplement the following function using an \texttt{Iterator} instead of a \texttt{for}-each loop.
+\begin{lstlisting}[language=java]
+public static Integer sum ( ArrayList<Integer> lst ) {
+	Integer total = 0 ;
+	for( Integer elem : lst ) {
+		total = total + elem ;
+	}
+	return total ;
+}
+\end{lstlisting}
+\begin{answer}
+\begin{lstlisting}[language=java]
+public static Integer sum (ArrayList<Integer> lst){
+	Integer total=0;
+	for(Iterator<Integer> iter=lst.iterator();iter.hasNext();){
+		Integer cur_val=iter.next(); 
+		total=total+cur_val;
+	}
+	return total;
+}
+\end{lstlisting}
+\end{answer}
+
+
+\vspace{24pt}

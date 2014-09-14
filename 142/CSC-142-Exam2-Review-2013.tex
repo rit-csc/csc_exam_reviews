@@ -1,0 +1,153 @@
+% Author: David Larsen <dcl9934@cs.rit.edu>
+% Author: Doug Krofcheck <dpk3062@rit.edu>
+\documentclass[11pt]{article}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{listings}   %
+\usepackage{needspace}  %
+\usepackage{color}      %
+\usepackage{ifthen}     % 
+\usepackage{graphicx}   %
+\usepackage{csc}        %
+\usepackage{tikz}       %
+\usetikzlibrary{shapes, arrows, automata} %
+\usepackage{tabularx}   % for helping matchtabular (matching questions)
+\usepackage{textcomp}	% So our quotes in code don't look like shit
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{tabu}
+\setlength{\columnsep}{12em}
+
+\lstset{ %
+basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Java,
+upquote=true,
+columns=fixed
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white} }{}
+}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} }{}
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{white}} #1}
+}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{red}} #1}
+}
+
+% ----- Start matchtabular definition -----
+\newcounter{matchleft}
+\newcounter{matchright}
+\newenvironment{matchtabular}{%
+  \setcounter{matchleft}{0}%
+  \setcounter{matchright}{0}%
+  \tabularx{\textwidth}{%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchleft}\arabic{matchleft}.}}X%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchright}\alph{matchright})}}X% 
+    }%
+}{\endtabularx}
+% ----- End matchtabular definition -----
+
+\title{CSCI-142 Exam 2 Review}
+\author{Computer Science Community}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document}
+\header
+\begin{enumerate}
+
+\item \input{questions/dfs_ex.tex}
+
+\item \input{questions/bfs_ex.tex}
+
+\item \input{questions/dijkstra_vertex_finalized_when.tex}
+
+\item \input{questions/dijkstra_priority_queue.tex}
+
+\item \input{questions/dijkstra_neg_edge_weights.tex}
+
+\item \input{questions/dijkstra_ex.tex}
+
+\newpage
+\item \input{questions/jcf_def.tex}
+
+\item \input{questions/array_vs_linked_list_defs.tex}
+
+\item \input{questions/array_vs_linked_list_exs.tex}
+
+\item \input{questions/collections_dot_sort.tex}
+
+\item \input{questions/comparable_vs_comparator.tex}
+
+\newpage
+\item \input{questions/iterator_vs_iterable.tex}
+
+\item \input{questions/convert_to_iterator.tex}
+
+\item \input{questions/mvc_def.tex}
+
+\newpage
+\item \input{questions/layout_manager_defs.tex}
+
+\item \input{questions/convert_to_anon_class.tex}
+
+\newpage
+\item \input{questions/calculator_gui_ex.tex}
+
+\newpage
+\item \input{questions/exception_types.tex}
+
+\item \input{questions/exception_handler_debug.tex}
+
+
+
+
+\end{enumerate}
+\end{document}
+
+Topics for this exam:
+	- Graphs: DFS/BFS
+		# 1, 2
+	- Dijkstra's Shortest Path
+		# 13
+	- Java Collection Framework, Iterators, Comparators
+		# 5, 6, 7, 9
+	- Intro. to GUIs (from OO perspective)
+		# 3, 12?
+	- Swing
+		# 8, 10
+	- Exceptions
+		# 4, 11	
+
+1) DFS problem - example problem, description of underlying data structure.
+2) BFS problem stemming off of material from problem #1 (same graph, also talks about the data struct=queues)
+3) MVC Design Pattern
+4) Exception - catching
+5) define JCF
+6) Comparable vs Comparator
+7) Collections - easy sorting
+8) Swing - layouts
+9) Collection - lists
+10) Swing - full GUI
+11) Exception - types
+12) Anonymous classes, Swing - action listener
+13) Dijkstra, effect of negative edge weight(s)
+
+

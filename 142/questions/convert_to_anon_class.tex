@@ -1,0 +1,35 @@
+Given the following code snippet, rewrite \texttt{ControlListener} as an anonymous class passed into the \texttt{addActionListener()} method calls.
+\begin{lstlisting}[language=java]
+class ControlListener implements ActionListener{
+	public void actionPerformed(ActionEvent e) {
+		if((JButton)e.getSource()).getText().equals("ok")) {
+			System.exit(0);
+		} else {
+			log.debug("User pressed cancel.");
+		}
+	}
+}
+
+ControlListener cListener = new ControlListener();
+JButton okButton = new JButton("ok");
+JButton cancelButton = new JButton("cancel");
+okButton.addActionListener(cListener);
+cancelButton.addActionListener(cListener);
+\end{lstlisting}
+\begin{answer}
+\begin{lstlisting}[language=java]
+JButton okButton = new JButton("ok");
+okButton.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+		System.exit(0);
+	}
+});
+
+JButton cancelButton = new JButton("cancel");
+cancelButton.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+		log.debug("User pressed cancel.");
+	}
+});
+\end{lstlisting}
+\end{answer}

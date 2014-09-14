@@ -1,0 +1,26 @@
+In each of the following situations, would it be better to use array-backed storage or a singly linked list?
+\begin{enumerate}
+	\item Inserting a random number into a sorted list.
+	\begin{answer}
+	Linked list --- Constant insertion time, whereas an array would necessitate moving all elements after the insertion point.
+	\end{answer}
+	
+	\item Creating a list that will hold all the players in a game.  The game has a max limit on the number of players.
+	\begin{answer}
+	Array abstraction --- You have a fixed limit, so pre-allocate enough space for them all.
+	\end{answer}
+
+	\item Deleting the last element from the list.
+	\begin{answer}
+	Array abstraction --- Your linked list would have to iterate all the way down, whereas the array structure can simply change its apparent size.
+	\end{answer}
+			
+	\item Deleting from the head end of the list.
+	\begin{answer}
+	Linked list --- Constant time operation, versus O($n$) for the array-backed container.
+	\end{answer}
+\end{enumerate}  
+
+
+
+\vspace{24pt}

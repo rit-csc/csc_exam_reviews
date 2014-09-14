@@ -1,0 +1,32 @@
+Now consider a BFS algorithm, again populating data structures in alphabetical order.
+\begin{enumerate}
+\item
+What changes would need to be made to a DFS implementation to turn it into a breadth-first search (BFS)?
+
+\begin{answer}
+Use a queue data structure (instead of a stack).
+\end{answer}
+
+\item
+Using the graph as described in Question 1, what is the BFS traversal order?
+Show the data structure at each step. \\
+\begin{answer}
+$\leftarrow$ front of queue \\
+A \\
+B C \\
+C D \\
+D E \\
+E F \\
+F \\
+
+The traversal order is ABCDEF.
+\end{answer}
+
+\item
+What path from \texttt{A} to \texttt{F} results from the BFS algorithm?
+
+\begin{answer}
+ABDF
+\end{answer}
+
+\end{enumerate}

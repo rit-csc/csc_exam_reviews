@@ -1,0 +1,18 @@
+Briefly explain the differences between the three kinds of exceptions: checked exceptions, runtime exceptions, and errors.
+\begin{answer}
+
+\textbf{checked exceptions} -– Exceptions that a method signature must specify it throws. If a method
+may throw a checked exception, all calls to that method must be within a \texttt{try}-\texttt{catch} block. Checked exceptions should be used exclusively for foreseeable runtime mistakes, and any reasonably robust
+system should be able to recover from one. Classic example is \texttt{IOException}.\\
+
+\textbf{runtime exception} -– Not declared in a method signature and not anticipated to be thrown.
+Usually arise due to software bugs and often cause the program to crash. Classic
+examples are \texttt{NullPointerException} and \texttt{ArrayIndexOutOfBoundsException}.\\
+
+\textbf{errors} -– Represent a serious issue outside of the control of the programmer (hard drive
+failure, not enough memory, device issue). Examples are \texttt{IOError}, \texttt{VirtualMachineError} and
+\texttt{ThreadDeath} (see Java's \texttt{Error} class).
+\end{answer}
+
+
+\vspace{48pt}
