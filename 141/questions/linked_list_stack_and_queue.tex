@@ -1,0 +1,51 @@
+If we wanted to implement a stack as a linked list, what linked-list
+	operations would correspond to \texttt{push()} and \texttt{pop()}?
+
+	\begin{answer}
+	\texttt{push( stack, element )} $\rightarrow$ \texttt{insertFront( linked-list, element )} \\
+	\texttt{pop( stack )} $\rightarrow$ \texttt{removeFront( linked-list )}
+	\end{answer}
+
+\item It is possible to implement both stacks and queues using only simple Python lists.
+\begin{enumerate}
+\item Write the following functions that implement stack functionality atop a Python list. \\
+Your stack must provide the following functionality:
+	  \begin{itemize}
+	  \item []\texttt{push(lst, elm)} --- Push \texttt{elm} onto the top of the stack
+	  \item []\texttt{pop(lst)} --- Return the top element of the stack and remove it from the stack
+	  \item []\texttt{isEmpty(lst)} --- Return whether the stack is empty
+	  \item []\texttt{peek(lst)} --- Return the top element of the stack without modifying the stack 
+	  \end{itemize}
+	  \begin{answer}
+	  \begin{lstlisting}
+	def push(lst, val):
+		lst.append(val)
+	def pop(lst):
+		return lst.pop()
+	def peek(lst):
+		return lst[-1]
+	def isEmpty(lst):
+		return (len(lst) == 0)
+	  \end{lstlisting}
+	  \end{answer}
+
+\item Write the following methods to create a queue in similar fashion to previous question (with a Python list as the data structure managing elements "under the hood"):
+	\begin{itemize}
+	\item []\texttt{enqueue(lst, val)}
+	\item []\texttt{dequeue(lst)}
+	\end{itemize}
+
+	\begin{answer}
+	 \begin{lstlisting}
+	def enqueue(lst, val):
+		lst.append(val)
+	def dequeue(lst):
+		list.pop(0)
+	\end{lstlisting}
+	\end{answer}
+
+\item Which of the data structures you implemented is more efficient and why? Give a better way to implement the slower structure, and discuss how this would change the time complexity of its operations. \\
+\begin{answer}
+Because the queue must be able to modify both ends of the list, it pays an O(n) cost to remove the beginning element during each dequeue operation. This could be reduced to O(1) by using a linked list instead of a Python list.
+\end{answer}
+\end{enumerate}

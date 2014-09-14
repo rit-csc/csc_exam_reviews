@@ -1,0 +1,15 @@
+In Quicksort, why should we select a random pivot value, rather than always
+      pivoting on, for example, the first or last element?
+
+      \begin{answer}
+      With real-world data, we're more likely to encounter ordered or
+      semi-ordered data than randomized data. This makes it more likely for us
+      run into Quicksort's worst-case time complexity. We run into this bad
+      time complexity if we select pivots which are near the lowest or highest
+      values.
+
+      Selecting a random value to pivot on helps us encounter the average case
+      evens out the distribution of ordered and unordered data. Even if we're
+      getting in sorted data, if we select pivots randomly, we should be able
+      to end up with average time complexity.
+      \end{answer}
