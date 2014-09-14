@@ -1,0 +1,33 @@
+\begin{verbatim}
+#include <stdio.h>
+
+int main(void) {
+    int numbers[] = { 3, 6, 4, 5, 14, 9 };
+    int sum, i = 0;
+    double average;
+    for (; i < 6; ++i) {
+        sum += numbers[i];
+    }
+    average = sum / 6;
+    printf("%f", average);
+    return 0;
+}
+\end{verbatim}
+
+There are two issues in the code above. What are they?
+
+\begin{answer}
+\begin{enumerate}
+\item \verb{sum} is not initialized to 0, so \verb{sum} does not contain the actual sum of the numbers in the array.
+\item Because \verb{sum} and \verb{6} are both of type \verb{int}, integer division is performed, and \verb{average} does not contain the expected average, but the floor of the average. Change that line of code to one of the following:
+\begin{verbatim}
+average = sum / 6.0;
+\end{verbatim}
+\begin{verbatim}
+average = (double)sum / 6;
+\end{verbatim}
+\begin{verbatim}
+average = sum / (double)6.0;
+\end{verbatim}
+\end{enumerate}
+\end{answer}
