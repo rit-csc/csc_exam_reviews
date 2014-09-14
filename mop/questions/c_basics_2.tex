@@ -1,0 +1,28 @@
+\begin{verbatim}
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+    int number = atoi(argv[1]);
+    int found;
+    do {
+        int i;
+        found = 1;
+        --number;
+        for (i = 2; i < number; ++i) {
+            if (number % i) {
+                found = 0;
+                break;
+            }
+        }
+    } while (!found);
+    printf("%d", number);
+    return 0;
+}
+\end{verbatim}
+
+What does this program do? Step through the execution of \verb{./a.out 22}.
+
+\begin{answer}
+This program finds the largest prime number less than the first command line argument.
+
+\end{answer}
