@@ -1,0 +1,20 @@
+\textbf{CPP}
+
+What is the value of \texttt{i}?
+\begin{verbatim}
+#define THING1 40
+#define THING2 32
+
+#if THING1 < THING2
+#define THING3 5
+#elif THING2 < THING1
+#define THING3 6
+#else
+#define THING3 7
+#endif
+
+int i = THING3;
+\end{verbatim}
+\begin{answer}
+6
+\end{answer}
