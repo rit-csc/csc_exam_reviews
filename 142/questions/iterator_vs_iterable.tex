@@ -1,0 +1,24 @@
+Briefly explain what an \texttt{Iterator} is, and why you would want
+to make something \texttt{Iterable}. How do you specialize an iterator to return objects of the specific type desired? \\ \\
+\begin{answer}
+An iterator lets us iterate or loop over a collection by visiting every one of its elements or members in succession.
+Iterators support checking if a next object exists using \texttt{hasNext()}, returning the next element in the iteration via \texttt{next()}, and removing the last object that was returned using \texttt{remove()}.
+
+\texttt{Iterator} is a generic interface, so you must specify a generic type parameter when you implement it.
+For example, a list consisting of \texttt{Person} objects should be traversed with an \texttt{Iterator<Person>}, an iterator that deals in \texttt{Person}s.
+\end{answer}
+\begin{enumerate}
+	\item To make your collection class iterable, you would (circle one):\\
+	\textbf{implement the \texttt{Iterable} interface} OR \textbf{implement the \texttt{Iterator} interface}\\
+	\begin{answer}
+		\textbf{implement the \texttt{Iteratable} interface} (the first one)
+	\end{answer}
+	\item To make an iterator for your iterable collection class, you would (circle one):\\
+	\textbf{implement the \texttt{Iteratable} interface} OR \textbf{implement the \texttt{Iterator} interface}\\
+	\begin{answer}
+	\textbf{implement the \texttt{Iterator} interface} (the second one)
+	\end{answer}
+\end{enumerate}
+
+
+\vspace{24pt}

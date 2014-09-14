@@ -1,0 +1,12 @@
+What are the primary differences between an \texttt{ArrayList} and a \texttt{LinkedList}?
+
+\begin{answer}
+\texttt{LinkedList} is implemented as a doubly-linked list.
+\\\texttt{ArrayList} is implemented as a dynamically resizing array.
+\\ \\\texttt{ArrayList} allows fast random access, but adding or removing from the middle of the array
+requires shifting all the elements. \texttt{LinkedList} always has constant-time insertions or removals
+if accessed through an iterator (thus we already know the insertion/removal point), but getting
+an element requires traversing the list until we get to the wanted index.
+\end{answer}
+	
+\vspace{24pt}

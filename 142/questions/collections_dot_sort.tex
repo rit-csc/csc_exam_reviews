@@ -1,0 +1,12 @@
+Write code to naturally sort the given list in as few lines as possible. You should not need to write a loop or use any numbers (\texttt{Integer}, \texttt{int}, \texttt{Double}, \texttt{double},
+\texttt{BigInteger}, etc...).
+\begin{verbatim}
+List<String> list = Arrays.asList("a", "o", "d", f", "x");
+\end{verbatim}
+\begin{answer}
+\begin{verbatim}
+Collections.sort(list);
+//or
+TreeSet<String> sorted = new TreeSet<String>(list);
+\end{verbatim}
+\end{answer}
