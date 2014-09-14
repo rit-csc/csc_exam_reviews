@@ -1,0 +1,18 @@
+Rick owns a positively popular pizza place conveniently located just off of campus.
+	Originally, he made all the pizzas himself, but rising campus food prices are making demand skyrocket.
+	Luckily, the college students are as desperate for money as they are for food, a situation from which Rick, being a pragmatic individual, finds he can benefit.
+	Drawing from the exploitable labor pool, Rick turns his already-hot kitchen into a sweat shop, ordering his workers like so:
+	\begin{lstlisting}[numbers=none]
+	for ( PizzaSlave student : laborPool ) {
+		new Thread(student) . run();
+	}
+	\end{lstlisting}
+	Sensing an early retirement, Rick promotes his first hire from slave to manager, rewarding him with slightly higher---but still illegal---pay.
+	(Despite these perks and the envy of his peers, the manager is just like everyone else.)
+	Alas, when Rick returns a few days later, he is so displeased with what he sees that he fires the manager on the spot.
+	What made Rick so angry, and what should he have done differently to prevent its happening?
+
+	\begin{answer}
+	In his haste to make a profit, Rick mistakenly called the \texttt{Thread} class's \texttt{run()} method, which caused his manager to run synchronously and make pizzas while everyone else stood around waiting.
+	Rick should instead have called \texttt{start()}, which would have whipped all of his workers into shape at roughly the same time.
+	\end{answer}

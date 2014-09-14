@@ -1,0 +1,31 @@
+Name the design pattern used in the following snippet of code.
+\begin{lstlisting}
+public class Car
+{
+	private String make;
+	private String model;
+	private int mileage;
+
+	private Car(String make, String model, int mileage)
+	{
+		this.make=make;
+		this.model=model;
+		this.mileage=mileage;
+	}
+	public static Car makeCar(String str)
+	{
+		String arr[] = str.split(" ");
+		return new Car(arr[0], arr[1], Integer.parseInteger(arr[2]));
+	}
+
+	public static void main(String[] args)
+	{
+		Car myCar = Car.makeCar("Toyota Camry 200000");
+	}
+}
+\end{lstlisting}
+
+\begin{answer}
+The \emph{Factory} design pattern is used.
+\vspace{.5in}
+\end{answer}

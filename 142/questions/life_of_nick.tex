@@ -1,0 +1,17 @@
+Nick, an aspiring entrepreneur, trained for 7 grueling years in the jungles of Zimbabwe.
+    Nick's preparation was overseen by a group of trainers. His stages of learning were
+    fueled by the following process:
+    \begin{lstlisting}[numbers=none]
+    public class Nick {
+        private int experience = 0 ;
+        public void train ( ) {
+            this.experience += 1 ;
+        }
+    }\end{lstlisting}Imagine instructors are threads in Java. What are some problems
+    we may encounter if Nick is having multiple people train him at the same time?
+    How might we remedy these issues?
+
+    \begin{answer}
+    The train function, and specifically its incrementation, is non-atomic, meaning the value of Nick's 
+    \texttt{experience} variable will be undefined after multiple threads attempt to call the function concurrently.  One solution would be to synchronize on \texttt{Nick} to ensure only one thread at a time executes within the critical section.\\
+    \end{answer}

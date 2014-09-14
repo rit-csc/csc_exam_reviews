@@ -1,0 +1,113 @@
+Nick now operates a store in Marketview Mall which
+      has poor lighting, blasts black metal and sells jeans. Only one pair of
+      jeans is available to purchase at a time, though there are more
+      stored in the back. If a size is out that you don't want, you must wait
+      for someone else to purchase the jeans. Nick's only employee, Hank, sits
+      in a chair and stares at people angrily until someone makes a purchase,
+      at which point he replaces the jeans with the same model of a random
+      size. In order to prevent customers' waiting infinitely for an
+      unavailable size, Hank will switch the jeans for a different size pair if
+      no one has bought them after a period of three seconds.
+
+\begin{lstlisting}
+public class NicksHeavyThreads
+{
+	// jeans' size [1-5], or 0 when none on display
+    private static int awesomeJeans = 0;
+    
+	// keep this updated as customers arrive and leave
+    private static int customers = 0;
+    
+    private static MeanWorker hank = new MeanWorker();
+    
+    public static void main( String[] args )
+    {
+        for( int i = 0; i < 10; ++i )
+        {
+            ( new LameCustomer() ).start();
+        }
+
+		// wait one second before introducing Hank
+        try { Thread.sleep( 1000 ); }
+        catch( InterruptedException pleaseDont ) {}
+        hank.start();
+    }
+    
+    private static class LameCustomer extends Thread
+    {
+        // ( implementation omitted )
+    }
+    
+    private static class MeanWorker extends Thread
+    {
+        // ( implementation omitted )
+    }
+}
+\end{lstlisting}
+\scriptsize
+(Questions may be found on the next page. You may answer them in the space allotted here, or on the following page.)
+\normalsize
+
+    \begin{enumerate}
+
+	\pagebreak
+
+    \item Complete the implementation of the \texttt{LameCustomer} class: Each instance
+          must choose a jeans size and wait for it to be available, update the
+          jeans to indicate that they have been taken, print the message
+          ``Customer: I got my size \emph{size} jeans!" and inform all threads
+          that the jeans selection has changed. \\
+		  \textit{(Hint: Remember to keep an
+          accurate count of how many customers are in the shop.)}
+
+\begin{answer}
+\begin{lstlisting}
+static class LameCustomer extends Thread {
+    public void run() {
+        synchronized( hank ) {
+            ++customers;
+			// pick size
+            int desiredSize = (int) ( Math.random()*(5) ) + 1;
+			// wait for pair
+            while( awesomeJeans != desiredSize ) {
+                try { hank.wait(); }
+                catch( InterruptedException pleaseDont ) {}
+            }
+            System.out.println( "Customer: I got my size "
+                + awesomeJeans + " jeans!" );
+            awesomeJeans = 0; // take the jeans
+            hank.notifyAll(); // inform everyone they are gone
+            --customers;
+        }
+    }
+}
+\end{lstlisting}
+\end{answer}
+
+    \item Now implement the \texttt{MeanWorker} class, which should choose a size and
+          stock a pair of jeans of that size, print the message ``Hank: I
+          grumpily restocked with size \emph{size}," and inform all threads
+          that the selection has changed. It should then wait until someone has
+          taken the jeans or until three seconds have elapsed, whichever comes
+          first. These steps should be repeated until all customers have left
+          the store.
+
+\begin{answer}
+\begin{lstlisting}
+static class MeanWorker extends Thread {
+    public synchronized void run() {
+        do {
+			// new size
+            awesomeJeans = (int) ( Math.random()*(5) ) + 1;
+            System.out.println( "Hank: I grumpily restocked "
+                + "with jeans of size " + awesomeJeans );
+            notifyAll(); // inform customers of the restocking
+            try { wait( 3000 ); } // let people shop
+            catch( InterruptedException pleaseDont ) {}
+        }
+        while( customers > 0 );
+    }
+}
+\end{lstlisting}
+\end{answer}
+    \end{enumerate}

@@ -1,0 +1,26 @@
+Use the following code to answer the questions listed on the next page.
+
+\lstinputlisting{other/code/ufo/UFO.java}
+
+\pagebreak
+\begin{enumerate}
+\item Why should \texttt{Probable} be an interface, rather than a class or an abstract class?
+
+\begin{answer}
+\texttt{Probable} needs to define that certain actions can be performed on \texttt{Probable} objects, but does not need to define what those actions should do.
+\end{answer}
+
+\item Write the \texttt{Probable} interface.
+
+\begin{answer}
+\lstinputlisting{other/code/ufo/Probable.java}
+\end{answer}
+
+\item Should the \texttt{Redneck} and \texttt{Professor} classes implement \texttt{Probable} directly?
+
+\begin{answer}
+No! Since \texttt{Redneck} and \texttt{Professor} objects are stored in variables of type \texttt{Human}, they must extend the \texttt{Human} class.
+In addition, since the \texttt{Human} variables are able to be added into a collection of \texttt{Probable} objects, the \texttt{Human} class must implement \texttt{Probable}, which will carry down into the \texttt{Redneck} and \texttt{Professor} classes.
+\end{answer}
+
+\end{enumerate}

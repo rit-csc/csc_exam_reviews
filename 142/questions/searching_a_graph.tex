@@ -1,0 +1,57 @@
+\textbf{Searching a Graph}
+	\begin{enumerate}
+		\item
+			Write a recursive algorithm that (given a graph, start vertex, and goal vertex),
+			determines whether or not there is a path to the goal vertex.
+
+            Assume you are provided with a \texttt{Graph} class with a \texttt{getNeighbors( int vertex )} method, which returns a \texttt{Set\textless Integer\textgreater} representing the numbers corresponding to neighboring vertices. Assume \texttt{visited} is a \texttt{Set} keeping track of all visited vertices. \\
+			(Note: Your algorithm should return a Boolean value, not an actual path!)
+\begin{verbatim}
+boolean hasPathToRec(Graph g, int start, int goal, Set<Integer> visited) {
+\end{verbatim}
+			
+\begin{answer}
+\begin{lstlisting}
+	if( start == goal ){
+		return true;
+	} else {
+		for( int n : g.getNeighbors(start) ){
+			if( ! visited.contains(n) ){
+				visited.add(n);
+				return hasPathToRec(g, n, goal, visited);
+			}
+		}
+		return false;
+	}
+}
+\end{lstlisting}
+\end{answer}
+		            
+		\item
+			Rewrite your algorithm to be iterative instead. \\
+			(Hint: What data structure do you need to use if you no longer have recursion?)
+\begin{verbatim}
+boolean hasPathToIter(Graph g, int start, int goal, Set<Integer> visited) {
+\end{verbatim}	
+			
+\begin{answer}
+\begin{lstlisting}
+	Stack<Integer> theStack = new Stack<Integer>();
+	theStack.push(start);
+	while( ! theStack.empty() ){
+		int curr = theStack.pop();
+		if( curr == goal ){
+			return true;
+		}
+		visited.add(curr);
+		for( int n : g.getNeighbors(curr) ){
+			if( ! visited.contains(n) ) {
+				theStack.push(n);
+			}
+		}
+	}
+	return false;
+}
+\end{lstlisting}
+\end{answer}
+	\end{enumerate}
