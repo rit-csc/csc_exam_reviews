@@ -1,3 +1,5 @@
+\textbf{Control Structures and Operators}
+
 \begin{verbatim}
 #include <stdio.h>
 
@@ -9,7 +11,7 @@ int main(int argc, char* argv[]) {
         found = 1;
         --number;
         for (i = 2; i < number; ++i) {
-            if (number % i) {
+            if (!(number % i)) {
                 found = 0;
                 break;
             }
@@ -20,9 +22,50 @@ int main(int argc, char* argv[]) {
 }
 \end{verbatim}
 
-What does this program do? Step through the execution of \texttt{./a.out 22}.
+
+
+What does this program do? What is the output of \texttt{./a.out 10}? Step through the program execution if it helps.
 
 \begin{answer}
-This program finds the largest prime number less than the first command line argument.
+This program finds the largest prime number less than the first command line argument. \texttt{./a.out 10} sets \texttt{number} to 10. The first iteration of the do-while loop decrements \texttt{number} to 9, then the for loop tests all integers between 2 and 8 inclusive for one that divides into 9 evenly. It finds that \texttt{9 \% 3} equals 0, so \texttt{!(9 \% 3)} equals 1. Since 1 is not equal to 0, it enters the if statement and breaks out of the for loop. It continues the do-while loop, decrements \texttt{number} to 8, and finds 2 divides into 8 evenly. \texttt{number} is then decremented to 7, and all integers from 2 to 6 inclusive are tested to check if they divide into 7 evenly. None of them do (because 7 is prime), so the if statement isn't executed. \texttt{found} is now 1 at this point, making \texttt{!found} equal 0, which stops the loop, and 7 is then printed.
+\end{answer}
 
+
+
+How is it that we can write \texttt{if (!(number \% i))} instead of \texttt{if (number \% i == 0)}?
+
+\begin{answer}
+If statements in C check whether their condition is not equal to 0, rather than if they are equal to a dedicated "true" value. If \texttt{number \% i} is 0 (that is, \texttt{number} is a multiple of \texttt{i}), then \texttt{!(number \% i)} will equal 1, which is not equal to 0, so the if condition will be satisfied. Comparison operators all produce 0 or 1, so here, \texttt{number \% i == 0} would evaluate to \texttt{0 == 0}, which evaluates to 1.
+\end{answer}
+
+
+
+Rewrite the code using while loops in place of the do-while loop and the for loop.
+
+\begin{answer}
+\begin{verbatim}
+#include <stdio.h>
+
+int main(int argc, char* argv[]) {
+    int number = atoi(argv[1]);
+    int found = 0;
+    while (!found) {
+        int i; 
+        found = 1;
+        --number;
+        i = 1; // Start one below the desired initial value, as i will be immediately incremented.
+        while (i < number) {
+            ++i;
+            if (!(number % i)) {
+                found = 0;
+                break;
+            }
+        }
+    }
+    printf("%d", number);
+    return 0;
+}
+\end{verbatim}
+
+Note that we place the increment statement at the top of the loop body because if the loop body contained a \texttt{continue} statement, the increment statement will always be executed, unlike if the increment statement were placed at the bottom. Because this code does not include a \texttt{continue} statement, initializing \texttt{i} to 2 and placing the increment statement at the bottom of the loop body will also produce the correct behavior.
 \end{answer}
