@@ -32,7 +32,7 @@ This program finds the largest prime number less than the first command line arg
 
 
 
-\item Why can write \texttt{if (!(number \% i))} instead of \texttt{if (number \% i == 0)}? (These statements are equivalent.)
+\item Why can we write \texttt{if (!(number \% i))} instead of \texttt{if (number \% i == 0)}? (These statements are equivalent.)
 
 \begin{answer}
 If statements in C check whether their condition is not equal to 0, rather than if they are equal to a dedicated "true" value. If \texttt{number \% i} is 0 (that is, \texttt{number} is a multiple of \texttt{i}), then \texttt{!(number \% i)} will equal 1, which is not equal to 0, so the if condition will be satisfied. Comparison operators all produce 0 or 1, so here, \texttt{number \% i == 0} would evaluate to \texttt{0 == 0}, which evaluates to 1.
