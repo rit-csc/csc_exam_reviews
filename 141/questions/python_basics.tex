@@ -1,0 +1,69 @@
+Python basics
+\begin{enumerate}
+\item The programming language Python (circle the best answer):\\
+\begin{enumerate}
+\item is primarily a scripting language...	\hspace{40mm}True / False\\
+\item is Object-Oriented...\hspace{65mm}True / False\\
+\item features static typing...\hspace{61mm}True / False\\
+\end{enumerate}
+\begin{answer}
+T, T, F
+\end{answer}
+\\
+\item Write an iterative function to print out all numbers from 1 to \emph{n} and then return the sum.
+
+\begin{answer}
+\begin{lstlisting}
+def foo(n):
+	total = 0
+	for num in range(1,n+1):
+		print(num)
+		total+=num
+	return total
+\end{lstlisting}
+\end{answer}
+
+\item Re-write the function above using recursion. Is your answer tail recursive?
+
+\begin{answer}
+The answer described below \emph{is} tail recursive.
+\begin{lstlisting}
+def foo_rec(limit, num=1, total=0):
+	if num > limit:
+		return total
+	print(num)
+	total+=num
+	num+=1
+	return foo_rec(limit, num, total)
+\end{lstlisting}
+\end{answer}
+
+\item How would you test the two functions you've written above? Explain test cases you would want to analyze.
+
+\begin{answer}
+\begin{itemize}
+\item Extraneous cases: n=None, n is not an integer
+\item Base cases: n=0, n=1
+\item General case: n $>$ 1
+\end{itemize}
+Since the functions described above are fruitful (have return values,) we can write test cases if we know what
+value we should expect before we run the function. This could either be hard-coded or use a separate algorithm/formula
+to assert the validity of our functions' results.\\
+\begin{lstlisting}
+def test_foo_functions(n):
+	# below suggests the formula for the sum 1+2+...+(n-1)+n
+	expected = ( n * ( n + 1 ) ) // 2
+	foo_iter_result = foo(n)
+	if foo_iter_result != expected:
+		print("iterative foo function produced an incorrect result!")
+	foo_rec_result = foo_rec(n)
+	if foo_rec_result != expected:
+		print("recursive foo function produced an incorrect result!")
+\end{lstlisting}
+\end{answer}
+
+\end{enumerate}
+
+
+
+
