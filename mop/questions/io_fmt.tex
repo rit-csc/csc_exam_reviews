@@ -1,0 +1,17 @@
+\begin{verbatim}
+#include <stdio.h>
+
+int main(void) {
+	const int BUF_SIZE = 256;
+    char buf[BUF_SIZE];
+    while (fgets(buf, BUF_SIZE, stdin)) {
+        printf(buf);
+    }
+}
+\end{verbatim}
+
+There is a problem with the code as written that will manifest itself for certain user input. Explain what this issue is and how to solve it.
+
+\begin{answer}
+If the user enters a string with a \texttt{\%} character, \texttt{printf} will try to interpret this string as a format string, which will fail as there are no other arguments to \texttt{printf} for it to format. To solve this issue, replace \texttt{printf(buf);} with \texttt{printf("\%s", buf);}.
+\end{answer}
