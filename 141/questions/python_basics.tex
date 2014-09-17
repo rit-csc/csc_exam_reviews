@@ -1,15 +1,20 @@
 Python basics
 \begin{enumerate}
+
 \item The programming language Python (circle the best answer):\\
-\begin{enumerate}
-\item is primarily a scripting language...	\hspace{40mm}\textbf{True / False}\\
-\item supports the Object-Oriented paradigm...\hspace{30mm}\textbf{True / False}\\
-\item features static typing...\hspace{61mm}\textbf{True / False}\\
-\end{enumerate}
+	\begin{enumerate}
+		\item is primarily a scripting language...
+								\hspace{42mm}\textbf{True / False}\\
+		\item supports the Object-Oriented paradigm...
+								\hspace{30mm}\textbf{True / False}\\
+		\item features static typing...
+								\hspace{61mm}\textbf{True / False}\\
+	\end{enumerate}
 \begin{answer}
 T, T, F
 \end{answer}
-\\
+
+
 \item Write an iterative function to print out all numbers from 1 to \emph{n} and then return the sum.
 
 \begin{answer}
@@ -23,10 +28,11 @@ def foo(n):
 \end{lstlisting}
 \end{answer}
 
-\item Re-write the function above using recursion. Is your answer tail recursive?
+\item Re-write the function above using recursion. Is your answer tail recursive?  How do you know?
 
 \begin{answer}
-The answer described below \emph{is} tail recursive.
+The answer described below \emph{is} tail recursive because no additional information must be stored on the stack for each recursive call.
+.
 \begin{lstlisting}
 def foo_rec(limit, num=1, total=0):
 	if num > limit:
@@ -36,6 +42,8 @@ def foo_rec(limit, num=1, total=0):
 	num+=1
 	return foo_rec(limit, num, total)
 \end{lstlisting}
+
+However, if the line with the return statement included adding 1 to the return value (i.e., \texttt{return $1 +$ rec\_func$()$}), all of those \texttt{+1}s for the recursive calls would have to be stored on the stack, which would make the function \emph{not} tail recursive.
 \end{answer}
 
 \item How would you test the two functions you've written above? Explain test cases you would want to analyze.
@@ -43,12 +51,12 @@ def foo_rec(limit, num=1, total=0):
 \begin{answer}
 \begin{itemize}
 \item Extraneous cases: n=None, n is not an integer
-\item Base cases: n=0, n=1
-\item General case: n $>$ 1
+\item Base cases: $n=0$, $n=1$
+\item General case: $n > 1$
 \end{itemize}
-Since the functions described above are fruitful (have return values,) we can write test cases if we know what
-value we should expect before we run the function. This could either be hard-coded or use a separate algorithm/formula
-to assert the validity of our functions' results.\\
+Since the functions described above are fruitful (have return values), we can write test cases if we know what
+value we should expect before we run the function. This can be done with hard-coded values or using a separate algorithm/formula
+to assert the validity of our function's return values.\\
 \begin{lstlisting}
 def test_foo_functions(n):
 	# below suggests the formula for the sum 1+2+...+(n-1)+n
