@@ -1,0 +1,22 @@
+What is the issue with the code below? What is the result of the issue?
+
+\begin{lstlisting}
+int i, x;
+int arr[10];
+for (i=0; i < 10; ++i)
+{
+	scanf("%d", &x); // Reads a number from stdin and stores it in x
+	arr[i] = x;
+}
+
+for (i=10; i >= 0; --i)
+{
+	printf("%d\n", arr[i]);
+}
+\end{lstlisting}
+\begin{answer}
+The second for loop starts at 10, not 9.
+\texttt{arr[10]} is out of bounds, but since C doesn't check for this the behavior is undefined.
+It might not actually crash at run time, it might just get whatever happens to be in memory at that location.
+\emph{Scary}.
+\end{answer}
