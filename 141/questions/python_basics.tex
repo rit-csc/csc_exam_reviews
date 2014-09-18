@@ -1,25 +1,25 @@
 Python basics
 \begin{enumerate}
 
-\item The programming language Python (circle the best answer):\\
+\item The programming language Python (circle the best answer):
 	\begin{enumerate}
 		\item is primarily a scripting language...
-								\hspace{42mm}\textbf{True / False}\\
+								\hspace{42mm}\textbf{True / False}
+								\hspace{10mm}\begin{answer} T \end{answer}
 		\item supports the Object-Oriented paradigm...
-								\hspace{30mm}\textbf{True / False}\\
+								\hspace{29mm}\textbf{True / False}
+								\hspace{10mm}\begin{answer} T \end{answer}
 		\item features static typing...
-								\hspace{61mm}\textbf{True / False}\\
+								\hspace{61mm}\textbf{True / False}
+								\hspace{10mm}\begin{answer} F \end{answer}
 	\end{enumerate}
-\begin{answer}
-T, T, F
-\end{answer}
 
 
-\item Write an iterative function to print out all numbers from 1 to \emph{n} and then return the sum.
+\item Write an iterative function to print out all numbers from 1 to \emph{n} and return the sum.
 
 \begin{answer}
 \begin{lstlisting}
-def foo(n):
+def foo_iter(n):
 	total = 0
 	for num in range(1,n+1):
 		print(num)
@@ -28,7 +28,7 @@ def foo(n):
 \end{lstlisting}
 \end{answer}
 
-\item Re-write the function above using recursion. Is your answer tail recursive?  How do you know?
+\item Re-write the function above using recursion. Is your answer tail recursive?  Why?
 
 \begin{answer}
 The answer described below \emph{is} tail recursive because no additional information must be stored on the stack for each recursive call.
@@ -42,11 +42,9 @@ def foo_rec(limit, num=1, total=0):
 	num+=1
 	return foo_rec(limit, num, total)
 \end{lstlisting}
-
-However, if the line with the return statement included adding 1 to the return value (i.e., \texttt{return $1 +$ rec\_func$()$}), all of those \texttt{+1}s for the recursive calls would have to be stored on the stack, which would make the function \emph{not} tail recursive.
 \end{answer}
 
-\item How would you test the two functions you've written above? Explain test cases you would want to analyze.
+\item How would you test the two functions you've written above? Explain test cases you would want to analyze, and write a function to run the tests.
 
 \begin{answer}
 \begin{itemize}
@@ -54,18 +52,15 @@ However, if the line with the return statement included adding 1 to the return v
 \item Base cases: $n=0$, $n=1$
 \item General case: $n > 1$
 \end{itemize}
-Since the functions described above are fruitful (have return values), we can write test cases if we know what
-value we should expect before we run the function. This can be done with hard-coded values or using a separate algorithm/formula
-to assert the validity of our function's return values.\\
+The above functions are fruitful (have return values), so we can write test cases using the expected outputs. This can be done with hard-coded values or using a separate algorithm
+to assert the validity of our function's return values.
 \begin{lstlisting}
 def test_foo_functions(n):
 	# below suggests the formula for the sum 1+2+...+(n-1)+n
 	expected = ( n * ( n + 1 ) ) // 2
-	foo_iter_result = foo(n)
-	if foo_iter_result != expected:
+	if foo_iter(n) != expected:
 		print("iterative foo function produced an incorrect result!")
-	foo_rec_result = foo_rec(n)
-	if foo_rec_result != expected:
+	if foo_rec(n) != expected:
 		print("recursive foo function produced an incorrect result!")
 \end{lstlisting}
 \end{answer}
