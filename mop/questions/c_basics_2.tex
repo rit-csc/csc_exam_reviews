@@ -4,7 +4,7 @@ Examine the following program:
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-    int number = atoi(argv[1]);
+    int number = atoi(argv[1]);      // atoi parses int from str
     int found;
     do {
         int i;
@@ -47,7 +47,7 @@ If statements in C check whether their condition is not equal to 0, rather than 
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-    int number = atoi(argv[1]);
+    int number = atoi(argv[1]);      // atoi parses int from str
     int found = 0;
     while (!found) {
         int i; 
