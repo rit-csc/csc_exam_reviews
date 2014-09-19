@@ -1,0 +1,67 @@
+\begin{enumerate}
+\item What does the following function do?
+
+\begin{lstlisting}
+int foo(int n, int arr[n], int **bestp)
+{
+	int *start;
+	int *end;
+	int best = 0;
+	*bestp = arr;
+	
+	for (start = arr; start < arr + n; ++start)
+	{
+		for (end = start; end < arr + n && *end == *start; ++end);
+		if ((end - start) > best)
+		{
+			best = (end - start);
+			*bestp = start;
+		}
+		start = end - 1;
+	}
+	
+	return best;
+}
+\end{lstlisting}
+
+\begin{answer}
+Finds the longest sequence of identical integers in the given array.
+Returns the length of the sequence and stores the pointer to the start of the sequence in \texttt{bestp}.
+\end{answer}
+
+\item Given the following code in \texttt{main}, write the code to call our \texttt{foo} function above.
+Also write the code to output the result.
+\begin{lstlisting}
+int main(int argc, char **argv)
+{
+	int n, i;
+	int arr[] = {1, 1, 1, 2, 2, 2, 5, 5, 5, 5};
+
+	// Write your code here
+
+	return 0;
+}
+\end{lstlisting}
+
+\begin{answer}
+\begin{lstlisting}
+int main(int argc, char **argv)
+{
+	int n = 10;
+	int arr[] = {1, 1, 1, 2, 2, 2, 5, 5, 5, 5};
+
+	int *res = NULL;
+
+	int i;
+	n = foo(n, arr, &res);
+
+	for (i=0;i<n;++i)
+	{
+		printf("%d, ", res[i]);
+	}
+	puts("");
+	return 0;
+}
+\end{lstlisting}
+\end{answer}
+\end{enumerate}
