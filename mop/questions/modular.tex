@@ -5,13 +5,15 @@ For each of the following snippets of code, state whether the snipper should be 
 \begin{tabular}{p{.25in}p{4.5in} p{2in}}
 \item
 &
-\begin{lstlisting}
+{
+\begin{lstlisting}[numbers=none]
 struct Point
 {
 	double x;
 	double y;
 }
 \end{lstlisting}
+}
 &
 \begin{answer}
 Header
@@ -19,7 +21,8 @@ Header
 \\
 \item
 &
-\begin{lstlisting}
+{
+\begin{lstlisting}[numbers=none]
 int main(int argc, char **argv)
 {
 	x = run_some_function();
@@ -27,6 +30,7 @@ int main(int argc, char **argv)
 	return 0;
 }
 \end{lstlisting}
+}
 &
 \begin{answer}
 Source
@@ -34,7 +38,8 @@ Source
 \\
 \item
 &
-\begin{lstlisting}
+{
+\begin{lstlisting}[numbers=none]
 int do_something_and_return(int x, int y)
 {
 	if (y != 0)
@@ -43,6 +48,7 @@ int do_something_and_return(int x, int y)
 		return x*y;
 }
 \end{lstlisting}
+}
 &
 \begin{answer}
 Source
@@ -50,10 +56,12 @@ Source
 \\
 \item
 &
-\begin{lstlisting}
+{
+\begin{lstlisting}[numbers=none]
 int do_something_and_return(int x, int y);
 void do_something(int x, int y);
 \end{lstlisting}
+}
 &
 \begin{answer}
 Header
