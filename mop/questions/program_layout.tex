@@ -1,13 +1,34 @@
-Label the sections of the program in memory
+Label the sections of the program in memory and describe what is stored in each.
 
-\includegraphics[width=50mm]{other/programstructure.png}
+\begin{minipage}{0.2\textwidth}
+	%\vspace{-48pt}
+	\includegraphics[width=35mm]{other/programstructure.png}
+\end{minipage}
+%\hspace{50px}
+\begin{minipage}{0.7\textwidth}
+	\begin{answer}
 
-\begin{answer}
-red: text
+	\texttt{text} -- machine language version of the source code
 
-yellow: data
+	\bigskip \medskip
 
-green: heap
+	\texttt{data} -- global variables
 
-blue: stack
-\end{answer}
+	\bigskip \medskip
+
+	\texttt{heap} -- dynamically allocated storage during program execution
+
+	\bigskip \medskip
+
+	(extra space for the heap and stack to use as needed)
+
+	\bigskip \medskip
+
+	\texttt{stack} -- local variables and the function-calling sequence
+
+	\end{answer}
+\end{minipage} \hfill
+
+
+
+
