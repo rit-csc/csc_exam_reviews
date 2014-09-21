@@ -8,24 +8,20 @@
 \item What does the following function do?
 
 \begin{lstlisting}
-int foo(int n, int *arr, int **bestp)
-{
+int foo(int n, int *arr, int **bestp) {
 	int *start;
 	int *end;
 	int best = 0;
 	*bestp = arr;
 	
-	for (start = arr; start < arr + n; ++start)
-	{
+	for (start = arr; start < arr + n; ++start)	{
 		for (end = start; end < arr + n && *end == *start; ++end);
-		if ((end - start) > best)
-		{
+		if ((end - start) > best) {
 			best = (end - start);
 			*bestp = start;
 		}
 		start = end - 1;
 	}
-	
 	return best;
 }
 \end{lstlisting}
@@ -49,26 +45,21 @@ end $\rightarrow$ start
 bestp $\rightarrow$ arr
 \end{answer}
 
-\item Given the following code in \texttt{main}, write the code to call our \texttt{foo} function above.
-Also write the code to output the result.
+\vspace{20px}
+
+\item Given the following code in \texttt{main}, write code that calls our \texttt{foo} function from above
+and prints the result.
 \begin{lstlisting}[numbers=none]
 int main(int argc, char **argv)
 {
 	int n, i;
 	int arr[] = {1, 1, 1, 2, 2, 2, 5, 5, 5, 5};
 
-	// Write your code here
-
-	return 0;
-}
+	// Write your code here.
 \end{lstlisting}
-\begin{answer}
-\begin{lstlisting}[basicstyle=\tiny]
-int main(int argc, char **argv)
-{
-	int n = 10;
-	int arr[] = {1, 1, 1, 2, 2, 2, 5, 5, 5, 5};
 
+\begin{answer}
+\begin{lstlisting}[numbers=none]
 	int *res = NULL;
 
 	int i;
@@ -78,9 +69,15 @@ int main(int argc, char **argv)
 	{
 		printf("%d, ", res[i]);
 	}
+	
 	puts("");
+\end{lstlisting}
+\end{answer}
+
+\begin{lstlisting}[numbers=none]
+
 	return 0;
 }
 \end{lstlisting}
-\end{answer}
+
 \end{enumerate}
