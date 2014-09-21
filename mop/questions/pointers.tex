@@ -35,6 +35,20 @@ Finds the longest sequence of identical integers in the given array.
 Returns the length of the sequence and stores the pointer to the start of the sequence in \texttt{bestp}.
 \end{answer}
 
+\item Make a memory map of \texttt{foo}. Use the first value set to each variable in the map.
+
+\begin{answer}
+Stack: n, arr, bestp, start, end, best
+
+Heap: *arr (size n), *bestp (size int)
+
+start \rightarrow arr
+
+end \rightarrow start
+
+bestp \rightarrow arr
+\end{answer}
+
 \item Given the following code in \texttt{main}, write the code to call our \texttt{foo} function above.
 Also write the code to output the result.
 \begin{lstlisting}[numbers=none]
