@@ -16,25 +16,28 @@ clean:
 
 \begin{enumerate}
 \item
-Ralph has an imaginary friend, Jill, who never shows up to help him when the other children are bullying him.
-Fed up with her lack of support, he finally asks why she never provides any assistance.
-After a lengthy attempt at explaining the difficulty of getting others to acknowledge her arguments, Jill becomes sick of his unabated pleas for help and implores him, ``Why don't you make me?''
+Ralph has an imaginary friend, Jill, who never defends him when the other children bully him.
+Frustrated, he finally asks why she never provides any assistance.
+Eventually, Jill becomes sick of his unabated pleas for help and implores him, ``Why don't you make me?''
 Always one to take things literally, Ralph pops open his favorite Bourne-compatible shell and types: \texttt{make me}.
 However, he is confronted with the message: \texttt{make:\ 'me' is up to date}.
-Explain the meaning of this message, being sure to state which (if any) of the relevant files are now located in Ralph's directory and to discuss what numeric values Make compared before outputting this message.
+Explain the meaning of this message, being sure to state which (if any) of the relevant files are now located in Ralph's directory and to discuss what numeric values \texttt{Make} compared before outputting this message.
 
 \begin{answer}
-This output indicates that Make did not need to rebuild the \texttt{me} executable.
-In order to come to this conclusion, it noticed that the files \texttt{me.o} and \texttt{me} both existed already, and that the modification timestamp of \texttt{me.o} was earlier than that of \texttt{me}.
+This output indicates that \texttt{Make} did not need to rebuild the \texttt{me} executable because:
+\begin{itemize}
+	\item the files \texttt{me.o} and \texttt{me} both existed already
+	\item and the modification timestamp of \texttt{me.o} was earlier than that of \texttt{me}.
+\end{itemize}
 After the command completes, both files are still present in Ralph's directory.
 The astute reader will note that, whatever her claim, Jill was already in existence throughout their discussion, and may be tempted to postulate that her inaction results not from her lack of being, but rather because she is not such a good friend after all.
 \end{answer}
 
 \item
-Ralph approaches Jill a second time and informs her that he has, in fact, made her help him, and expects more assistance in the future.
-This time, his contentious companion tells him to get real.
+Ralph approaches Jill a second time and informs her that he has made her help him and expects more assistance in the future.
+This time, Jill tells him to "get real".
 Fortunately, Ralph remembers he has recently implemented a small library providing several useful functions for working with reals, as well as a calculator program to test it out.
-More than ready to work on a simpler problem, he steps away from his imaginary friend for a moment and types: \texttt{make calc}.
+More than ready to work on a simpler problem, he steps away for a moment and types: \texttt{make calc}.
 Assuming that he had previously run \texttt{make clean}, list the exact sequence of commands that are executed as a result of this new invocation.
 
 \begin{answer}
