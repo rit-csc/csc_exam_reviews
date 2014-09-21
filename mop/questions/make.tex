@@ -1,7 +1,17 @@
 Consider the following makefile:
 \begin{lstlisting}
+CFLAGS := -std=c99 -Wall -Wextra
 me: me.o
-	$(CC) $(LDFLAGS) -o $@ $< $(LDLIBS)
+    $(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
+calc: calc.o real.o
+	$(CC) $(LDFLAGS) -o $@ $^ $(LDLIBS)
+calc.o: calc.c
+	$(CC) $(CFLAGS) -c $<
+real.o: real.c
+	$(CC) $(CFLAGS) -c $<
+.PHONY: clean
+clean:
+	$(RM) me calc *.o
 \end{lstlisting}
 
 \begin{enumerate}
@@ -18,5 +28,19 @@ This output indicates that Make did not need to rebuild the \texttt{me} executab
 In order to come to this conclusion, it noticed that the files \texttt{me.o} and \texttt{me} both existed already, and that the modification timestamp of \texttt{me.o} was earlier than that of \texttt{me}.
 After the command completes, both files are still present in Ralph's directory.
 The astute reader will note that, whatever her claim, Jill was already in existence throughout their discussion, and may be tempted to postulate that her inaction results not from her lack of being, but rather because she is not such a good friend after all.
+\end{answer}
+
+\item
+Ralph approaches Jill a second time and informs her that he has, in fact, made her help him, and expects more assistance in the future.
+This time, his contentious companion tells him to get real.
+Fortunately, Ralph remembers he has recently implemented a small library providing several useful functions for working with reals, as well as a calculator program to test it out.
+More than ready to work on a simpler problem, he steps away from his imaginary friend for a moment and types: \texttt{make calc}.
+Assuming that he had previously run \texttt{make clean}, list the exact sequence of commands that are executed as a result of this new invocation.
+
+\begin{answer}
+Because the \texttt{clean} target eliminated all the object files and executables, Make will decide it needs to rebuild everything: \\
+\texttt{\$ cc -std=c99 -Wall -Wextra -c calc.c} \\
+\texttt{\$ cc -std=c99 -Wall -Wextra -c real.c} \\
+\texttt{\$ cc -o calc calc.o real.o}
 \end{answer}
 \end{enumerate}
