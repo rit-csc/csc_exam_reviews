@@ -1,0 +1,22 @@
+Consider the following makefile:
+\begin{lstlisting}
+me: me.o
+	$(CC) $(LDFLAGS) -o $@ $< $(LDLIBS)
+\end{lstlisting}
+
+\begin{enumerate}
+\item
+Ralph has an imaginary friend, Jill, who never shows up to help him when the other children are bullying him.
+Fed up with her lack of support, he finally asks why she never provides any assistance.
+After a lengthy attempt at explaining the difficulty of getting others to acknowledge her arguments, Jill becomes sick of his unabated pleas for help and implores him, ``Why don't you make me?''
+Always one to take things literally, Ralph pops open his favorite Bourne-compatible shell and types: \texttt{make me}.
+However, he is confronted with the message: \texttt{make:\ 'me' is up to date}.
+Explain the meaning of this message, being sure to state which (if any) of the relevant files are now located in Ralph's directory and to discuss what numeric values Make compared before outputting this message.
+
+\begin{answer}
+This output indicates that Make did not need to rebuild the \texttt{me} executable.
+In order to come to this conclusion, it noticed that the files \texttt{me.o} and \texttt{me} both existed already, and that the modification timestamp of \texttt{me.o} was earlier than that of \texttt{me}.
+After the command completes, both files are still present in Ralph's directory.
+The astute reader will note that, whatever her claim, Jill was already in existence throughout their discussion, and may be tempted to postulate that her inaction results not from her lack of being, but rather because she is not such a good friend after all.
+\end{answer}
+\end{enumerate}
