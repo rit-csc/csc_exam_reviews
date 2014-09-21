@@ -18,7 +18,7 @@ int main(void) {
 
 \begin{answer}
 \begin{enumerate}
-\item \texttt{sum} is not initialized to 0, so \texttt{sum} does not contain the actual sum of the numbers in the array.
+\item \texttt{sum} is not initialized, so its value is unspecified at the beginning of the loop. If it doesn't happen to start at 0, the total will be incorrect at the end of the program.
 \item Because \texttt{sum} and \texttt{6} are both of type \texttt{int}, integer division is performed, and \texttt{average} does not contain the expected average, but the floor of the average. Change that line of code to one of the following:
 \begin{verbatim}
 average = sum / 6.0;
