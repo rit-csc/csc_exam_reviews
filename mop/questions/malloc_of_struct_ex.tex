@@ -10,7 +10,7 @@ struct Point {
 
 What (specifically) happens when the following command is executed?
 
-\hspace{15mm} \texttt{struct Point *newPoint = malloc( sizeof(struct Point) );}
+\hspace{15mm} \texttt{struct Point *newPoint = (struct Point *) malloc( sizeof(struct Point) );}
 
 \begin{answer}
 The \texttt{malloc} command allocates space in memory for the entire \texttt{Point} struct.
@@ -29,7 +29,7 @@ typedef struct {
 
 What (specifically) happens when the following command is executed?
 
-\hspace{15mm} \texttt{Triangle *tri = malloc( sizeof(Triangle) );}
+\hspace{15mm} \texttt{Triangle *tri = (Triangle *) malloc( sizeof(Triangle) );}
 
 \begin{answer}
 The same thing happens, but now we need to know the size of \texttt{Triangle} from the last question.
