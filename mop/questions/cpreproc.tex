@@ -1,7 +1,8 @@
-Given the following, what is the final value of \texttt{i}?
+Given the following, what is output of this program?
 \begin{verbatim}
 #define THING1 40
 #define THING2 32
+#define THING4 i
 
 #if THING1 < THING2
 #define THING3 5
@@ -11,7 +12,10 @@ Given the following, what is the final value of \texttt{i}?
 #define THING3 7
 #endif
 
-int i = THING3;
+int main() {
+    int THING4 = THING3;
+    printf("%d", i);
+}
 \end{verbatim}
 \begin{answer}
 6

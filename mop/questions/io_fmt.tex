@@ -4,11 +4,11 @@ There is a problem with the following code as written that will manifest itself 
 #include <stdio.h>
 
 int main(void) {
-	const int BUF_SIZE = 256;
-    char buf[BUF_SIZE];
-    while (fgets(buf, BUF_SIZE, stdin)) {
-        printf(buf);
-    }
+        const int BUF_SIZE = 256;
+        char buf[BUF_SIZE];
+        while (fgets(buf, BUF_SIZE, stdin)) {
+                printf(buf);
+        }
 }
 \end{verbatim}
 
