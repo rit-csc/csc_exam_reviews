@@ -13,5 +13,5 @@ int main(void) {
 \end{verbatim}
 
 \begin{answer}
-If the user enters a string with a \texttt{\%} character, \texttt{printf} will try to interpret this string as a format string, which will fail as there are no other arguments to \texttt{printf} for it to format. To solve this issue, replace \texttt{printf(buf);} with \texttt{printf("\%s", buf);}.
+If the user enters a string with a \texttt{\%} character, \texttt{printf} will try to interpret this string as a format string, which will not work as intended and will cause undefined behavior, as there are no other arguments to \texttt{printf} for it to format. To solve this issue, replace \texttt{printf(buf);} with \texttt{printf("\%s", buf);}.
 \end{answer}
