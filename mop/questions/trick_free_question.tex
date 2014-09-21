@@ -9,9 +9,9 @@ int main(int argc, char **argv)
 	int *y = NULL;
 	int *z = NULL;
 
-	x = malloc(sizeof(int) * 10);
-	y = malloc(20);
-	x = malloc(sizeof(char) * 50);
+	x = (int *) malloc(sizeof(int) * 10);
+	y = (int *) malloc(20);
+	x = (int *) malloc(sizeof(char) * 50);
 
 	free(x);
 	free(y);
