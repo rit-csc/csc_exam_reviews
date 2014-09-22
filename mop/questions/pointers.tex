@@ -61,8 +61,8 @@ int main(int argc, char **argv)
 \begin{answer}
 \begin{lstlisting}[numbers=none]
 	int *res = NULL;
+	n = sizeof(arr) / sizeof(arr[0]);
 
-	int i;
 	n = foo(n, arr, &res);
 
 	for (i=0;i<n;++i)
