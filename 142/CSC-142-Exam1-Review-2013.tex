@@ -31,10 +31,10 @@ columns=fixed
 
 \ifthenelse{\isundefined{\isAnswerKey}}
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white} \small{Answer:}}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white} \small{}}{}
 }
 {
-    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{Answer:}}{}
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red} \small{}}{}
 }
 
 % ----- Start matchtabular definition -----
@@ -73,9 +73,17 @@ columns=fixed
 	
 	\item \input{questions/differences.tex}
 	
+\newpage
 	\item \input{questions/polymorphism_ex.tex}
-	
+	\vspace{.5in}
+
 	\item \input{questions/abstract_class_vs_interface.tex}
+	\vspace{.25in}
+
+	\item \input{questions/comparable_vs_comparator.tex}
+	\vspace{.25in}
+
+	\item \input{questions/jcf_def.tex}
 
 \newpage
 	\item \input{questions/inheritance_ex.tex}
@@ -94,17 +102,9 @@ Note: The following numbers are outdated:
 TODO: Eric had a good example during the last review session for the question about polymorphism, which is currently pretty dry. It was about animals trampling people, and maybe we should rework the question to include it.
 
 Topics for this exam:
-	- Java basics
-		1, 2, 3, 4
+	- Intro to Java, O-O basics
 	- Classes
-	- Inheritance (interfaces & subclasses)
-		5?, 6, 7, 8, 9
-
-1) == vs .equals()
-2) protected variables
-3) overriding vs overloading methods
-4) class vs object, constants vs normal, class vs instance, open vs chaining
-6) polymorphism
-7) abstract class vs interface
-8) "What gets printed by the following code?" ... branches of classes
-9) Given code of inheritance/interfaces, find errors.
+	- Interfaces
+	- Inheritance
+	- Java Collection Framework
+	- Comparable vs Comparator
