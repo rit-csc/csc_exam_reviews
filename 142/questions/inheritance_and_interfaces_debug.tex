@@ -62,13 +62,11 @@ public class demolitonDerby {
     Line \# & Error \\\hline
     14  	& Returns int, should return void\\
     18  	& Returns int, should return void\\
-    24  	& getSpeed()'s return type ({\tt long}) differs from Car or Vehicle.\\
-    25  	& speed is private.\\
-    27		& Calling brake() on Toyotas will call the superclass's brake()\\
-    32  	& Truck implements vehicle, but does not have getSpeed()\\
+    25  	& getSpeed()'s return type ({\tt long}) differs from Car or Vehicle.\\
+    26  	& speed is private.\\
+    27		& Calling brake() on Toyotas will call the superclass's brake() (method is not overridden)\\
+    29  	& Truck implements vehicle, but does not have getSpeed()\\
+    31  	& Can't call super(), this has no superclass.\\
     34  	& Can't call super(), this has no superclass.\\
-    37  	& Can't call super(), this has no superclass.\\
-    49  	& {\tt prius} was declared as a {\tt Vehicle}, so we can't call\\
-    ~  		& methods that aren't declared in {\tt Vehicle}.\\
     \end{tabular}
 \end{answer}
