@@ -14,14 +14,14 @@ public final int NUM_PEOPLE_WHO_LIKE_JAVA = 1;
 	Note that marking mutable types \texttt{final} only prevents their replacement.
 	\end{answer}
 	
-	\item constant vs non-constant method.  \\
+	\item final vs non-final method.  \\
 	\begin{answer}
-	A constant method can't be overridden by a subclass.
+	A final method can't be overridden by a subclass.
 	\end{answer}
 
 	\item class vs instance variable.  Declare variables of both types.\\
 	\begin{answer}
-	Class (static) variables are scoped to their class not to an object.  All instances of a class access the same static variable.  Each class instance can only reference its own instance (non-static) variable.
+	Class (static) variables are scoped to their class not to an object.  All instances of a class access the same static variable.  However, instance (non-static) variables are unique to each instance.
 		\begin{lstlisting}[numbers=none]
 class Types {
 	public static int im_a_class_var = 1;
