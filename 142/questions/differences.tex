@@ -11,7 +11,7 @@ Explain the differences between:
 		\begin{lstlisting}[numbers=none]
 public final int NUM_PEOPLE_WHO_LIKE_JAVA = 1;
 		\end{lstlisting}
-	Note that marking mutable types \texttt{final} only prevents their replacement.
+	Note that marking mutable types {\tt final} only prevents them from being reassigned, but they can still call methods that mutate themselves, such as setters.
 	\end{answer}
 	
 	\item final vs non-final method.  \\
