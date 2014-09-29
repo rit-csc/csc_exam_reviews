@@ -4,5 +4,5 @@ Both are interfaces.
 \texttt{Comparable} specifies a method called \texttt{compareTo()} that takes one argument: the object to compare with the one on which the method was called.
 \texttt{Comparator} specifies a method called \texttt{compareTo()} that instead takes two arguments and compares those objects to each other.
 
-\texttt{Comparator}s are classes whose sole purpose is to define an comparing mechanism for a particular type. There can be multiple \texttt{Comparator}s for a type, if that type has multiple ways it can be compared. If there is a single natural way to compare the instances (i.e. objects) of a particular class, that class can implement the \texttt{Comparable} interface and define the comparison itself. This removes the need to store and pass the comparison mechanism separate from the objects it's comparing.
+Classes implementing \texttt{Comparator} are classes whose sole purpose is to define a comparing mechanism for a particular type. There can be multiple \texttt{Comparator}s for a type, if that type has multiple ways to be compared. If there is a single natural way to compare instances of a particular class, that class can implement the \texttt{Comparable} interface and define the comparison itself. This removes the need to store and pass the comparison mechanism separate from the objects it is comparing.
 \end{answer}
