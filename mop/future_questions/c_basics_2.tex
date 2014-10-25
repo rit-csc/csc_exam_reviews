@@ -27,7 +27,16 @@ int main(int argc, char* argv[]) {
 \item What does this program do? What is the output of \texttt{./a.out 10}? Step through the program execution if it helps.
 
 \begin{answer}
-This program finds the largest prime number less than the first command line argument. \texttt{./a.out 10} sets \texttt{number} to 10. The first iteration of the do-while loop decrements \texttt{number} to 9, then the for loop tests all integers between 2 and 8 inclusive for one that divides into 9 evenly. It finds that \texttt{9 \% 3} equals 0, so \texttt{!(9 \% 3)} equals 1. Since 1 is not equal to 0, it enters the if statement and breaks out of the for loop. It continues the do-while loop, decrements \texttt{number} to 8, and finds 2 divides into 8 evenly. \texttt{number} is then decremented to 7, and all integers from 2 to 6 inclusive are tested to check if they divide into 7 evenly. None of them do (because 7 is prime), so the if statement isn't executed. \texttt{found} is now 1 at this point, making \texttt{!found} equal 0, which stops the loop, and 7 is then printed.
+This program finds the largest prime number less than the first command line argument.
+
+\texttt{./a.out 10} sets \texttt{number} = 10.
+
+For each iteration of the do-while loop, \texttt{number} is decremented,
+then the for-loop tests all integers between 2 and \texttt{number-1} inclusive for something that divides evenly into \texttt{number}.
+If such a value exists, it sets \texttt{found} = 0 and breaks out of the for-loop.
+Now \texttt{!found} evaluates to false, so it breaks out of the do-while loop, prints the answer, and returns.
+
+For input 10, the answer 7 is printed.
 \end{answer}
 
 
