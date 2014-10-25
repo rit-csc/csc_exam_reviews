@@ -1,0 +1,40 @@
+Write a program that searches a file for a provided number on \texttt{stdin}.
+Print out any errors on \texttt{stderr}.
+Example:
+
+\begin{lstlisting}
+$ fileSearch file.txt
+> 234
+found: 234
+\end{lstlisting}
+
+\begin{answer}
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[]) {
+	if(argc != 2) {
+		fprintf(stderr, "Usage: fileSearch <filename>");
+		exit(EXIT_FAILURE);
+	}
+	FILE* handle = fopen(argv[1], "r");
+	if(!handle) {
+		perror("fopen failed:");
+		exit(EXIT_FAILURE);
+	}
+	int input = 0;
+	scanf("\%d", \&input);
+	int check = 0;
+	while(fscanf(handle, "\%d", \&check) != EOF) {
+		if(check == input) {
+			printf("found: \%d", input);
+			exit(EXIT_SUCCESS);
+		}
+	}
+	fclose(handle);
+	printf("\%d not found", input);
+	return EXIT_SUCCESS;
+}
+\end{lstlisting}
+\end{answer}
