@@ -1,0 +1,77 @@
+% Author: CSC Officers
+\documentclass[11pt]{article}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{listings}   %
+\usepackage{needspace}  %
+\usepackage{color}      %
+\usepackage{ifthen}     % 
+\usepackage{graphicx}   %
+\usepackage{../includes/csc}        %
+\usepackage{tikz}       %
+\usetikzlibrary{shapes} %
+\usepackage{tabularx}   % for helping matchtabular (matching questions)
+\usepackage{textcomp}	% So our quotes in code don't look like shit
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+\setlength{\columnsep}{12em}
+
+\lstset{ %
+basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=C,
+upquote=true,
+columns=fixed
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white}}{}
+}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\large\ttfamily}\color{red}}{}
+}
+
+% ----- Start matchtabular definition -----
+\newcounter{matchleft}
+\newcounter{matchright}
+\newenvironment{matchtabular}{%
+  \setcounter{matchleft}{0}%
+  \setcounter{matchright}{0}%
+  \tabularx{\textwidth}{%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchleft}\arabic{matchleft}.}}X%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchright}\alph{matchright})}}X% 
+    }%
+}{\endtabularx}
+% ----- End matchtabular definition -----
+
+\title{CSCI-243 Exam 1 Review}
+\author{Computer Science Community}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document}
+	\header 
+
+	\begin{enumerate}
+		%----QUESTIONS GO HERE-------
+	\end{enumerate}
+\end{document}
+
+Topics for this exam:
+	Pointers/Memory Management
+		-malloc - correct allocation size
+		-free - checking for memory leaks
+	File I/O
+	Abstract Data Types
