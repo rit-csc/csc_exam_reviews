@@ -1,5 +1,4 @@
-Abstract Data Types
-\begin{enumerate}
+
 \item Generally speaking, ADTs are easier to define and work with in procedural languages like C, as opposed to object-oriented languages like Java or C\#. (\textbf{True} or \textbf{False}). Explain your answer.
 
 \begin{answer} 
@@ -12,4 +11,22 @@ Abstract Data Types
 Primitive data types are supported by the language itself, as opposed to ones that are built from a combination of other objects (\emph{structured}), and ones that are extensions to the language (\emph{user-defined}). Examples include: \texttt{int}, \texttt{float}, \texttt{char}, \texttt{double}, \texttt{void}.
 \end{answer}
 
-\end{enumerate}
+\item Write a program that defines the structure of a queue:
+\begin{itemize} {\small
+	\item The queue ADT is described by its size (an unsigned int) and a pointer to the head/front of the queue.
+	\item The queue is made up of nodes, which are each described by their value (any data type), and a pointer to the next node in the queue, or null if it is the last node in the queue.
+	\item The queue's size describes the number of nodes present within the queue.
+	\item The queue will support the following operations:}
+	\begin{itemize} {\tiny
+		\item A function which returns an int (0 or 1) representing whether or not the queue is empty, \texttt{int isEmpty(QueueADT q)}.
+		\item A function which adds a new node onto the end of the queue, \texttt{void enqueue(QueueADT q, Node n)}.
+		\item A function which removes the first node in the queue and returns it, \texttt{Node dequeue(QueueADT q)}.
+		\item A function which returns an unsigned int representing the size of the queue, \texttt{unsigned int size(QueueADT q)}.}
+	\end{itemize}
+\end{itemize}
+
+\begin{answer}
+yolloooooo
+\end{answer}
+
+
