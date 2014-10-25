@@ -1,0 +1,21 @@
+Consider the following statement in a larger program:
+
+\begin{lstlisting}
+int* x = (int*) malloc(20); //create an array of 20 ints
+\end{lstlisting}
+
+After testing the program, you determine that the value of x[5], x[6], ... , x[19] keeps changing unexpectedly.
+\begin{enumerate}
+\item
+Why is this?
+
+\item
+What should the statement actually be?
+
+\end{enumerate}
+
+\begin{answer}
+Since ints are usually 4 bytes long, the malloc statement only creates an array of 5 ints (20/4 = 5).
+The argument to malloc is how many bytes to allocate, not how many of each element there should be.
+A proper (and portable) statement should be \texttt{int* x = (int*) malloc(sizeof(int)*20);}
+\end{answer}
