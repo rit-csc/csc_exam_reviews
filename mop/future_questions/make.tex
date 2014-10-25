@@ -16,9 +16,8 @@ clean:
 
 \begin{enumerate}
 \item
-Ralph has an imaginary friend, Jill, who never defends him when the other children bully him.
-Frustrated, he finally asks why she never provides any assistance.
-Eventually, Jill becomes sick of his unabated pleas for help and implores him, ``Why don't you make me?''
+Ralph's only friend, Jill, never defends him when the other children bully him.
+Eventually, Jill becomes sick of his constant pleas for assistance and shouts, ``Why don't you make me?''
 Always one to take things literally, Ralph pops open his favorite Bourne-compatible shell and types: \texttt{make me}.
 However, he is confronted with the message: \texttt{make:\ 'me' is up to date}.
 Explain the meaning of this message, being sure to state which (if any) of the relevant files are now located in Ralph's directory and to discuss what numeric values \texttt{Make} compared before outputting this message.
@@ -34,11 +33,10 @@ The astute reader will note that, whatever her claim, Jill was already in existe
 \end{answer}
 
 \item
-Ralph approaches Jill a second time and informs her that he has made her help him and expects more assistance in the future.
-This time, Jill tells him to "get real".
-Fortunately, Ralph remembers he has recently implemented a small library providing several useful functions for working with reals, as well as a calculator program to test it out.
-More than ready to work on a simpler problem, he steps away for a moment and types: \texttt{make calc}.
-Assuming that he had previously run \texttt{make clean}, list the exact sequence of commands that are executed as a result of this new invocation.
+Ralph is childishly proud of himself, but Jill just tells him to "get real".
+Fortunately, Ralph has recently implemented a library providing functions for working with reals, as well as a calculator program to test the functionality.
+Ready to win another trivial victory, Ralph types \texttt{make clean} and then \texttt{make calc}.
+List the exact sequence of commands that are executed as a result of this new invocation.
 
 \begin{answer}
 Because the \texttt{clean} target eliminated all the object files and executables, Make will decide it needs to rebuild everything: \\
