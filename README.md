@@ -41,11 +41,5 @@ And that's it!
 
 
 ### Setting up a new exam
-There are a few important things that you need to do when setting up a new exam:
-
-1. Create the answer file, which defines ```\isAnswerKey``` and imports the exam.
-2. Create the regular exam file, with a prelude that defines the answer environment.
-
-Your best bet is to look for commit messages that mention setting up the
-'skeleton' for an exam for an idea of the minimal setup needed.
-
+Use the new-exam.sh script with arguments: Class name, Exam Name.
+The new template will be in the <Class name> directory.
