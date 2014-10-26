@@ -26,9 +26,15 @@ No, it runs and terminates normally.
 \texttt{free} will not do anything if the pointer passed to it is \texttt{NULL}.
 \end{answer}
 
-\item Does the above program have a memory leak? If so, where?
+\item What tool can you use to find memory leaks? What options would you use?
 
 \begin{answer}
-Yes, the first call to \texttt{malloc} is never freed.
+\texttt{valgrind --leak-check=full <program name>}
+\end{answer}
+
+\item What output would you get from part b?
+
+\begin{answer}
+Something like 40 bytes lost.
 \end{answer}
 \end{enumerate}
