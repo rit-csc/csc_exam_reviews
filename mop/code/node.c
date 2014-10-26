@@ -6,13 +6,13 @@ typedef struct Node
 {
 	void* data;
 	struct Node* next;
-} Node;
+} *Node;
 
 #define _NODE_IMPL_
 
-Node* createNode(void* data)
+Node createNode(void* data)
 {
-	Node* n = (Node*)malloc(sizeof(Node));
+	Node n = (Node)malloc(sizeof(struct Node));
 	n->data = data;
 	n->next = '\0';
 	return n;
