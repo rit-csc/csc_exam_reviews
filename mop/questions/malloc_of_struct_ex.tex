@@ -14,7 +14,7 @@ What (specifically) happens when the following command is executed?
 
 \begin{answer}
 The \texttt{malloc} command allocates space in memory for the entire \texttt{Point} struct.
-Given the known sizes of \texttt{char} and \texttt{double} (x and y respectively), exactly x+2y bytes are set aside in memory.
+Given the known sizes of \texttt{char} and \texttt{double} (x and y respectively), enough space to hold one \texttt{char} and two \texttt{double}s are set aside in memory.
 Then the memory address of the newly-allocated space is returned and assigned to the \texttt{struct Point*}.
 \end{answer}
 
@@ -34,7 +34,7 @@ What (specifically) happens when the following command is executed?
 \begin{answer}
 The same thing happens, but now we need to know the size of \texttt{Triangle} from the last question.
 Based on the definitions provided, this means allocating exactly enough space for three \texttt{Point} structs.
-Because the size of a \texttt{Point} struct is \texttt{X} bits, that means exactly \texttt{3X} bits will be allocated in memory.
+If the size of a \texttt{Point} struct is \texttt{X} bits, then exactly \texttt{3X} bits will be allocated in memory.
 Then the memory address is returned as before.
 \end{answer}
 \end{enumerate}
