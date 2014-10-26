@@ -7,9 +7,10 @@
 The signature of \texttt{getline} is \texttt{ssize\_t getline(char** lineptr, size\_t* n, FILE* stream)}. If \texttt{*lineptr} is \texttt{NULL} and \texttt{*n} is 0, then \texttt{getline} will dynamically allocate a C string containing the next line of \texttt{stream} (including the new line character), and set \texttt{*lineptr} to this C string, and \texttt{*n} to the size of this new stream. It returns the size of the string read. If the \texttt{*lineptr} given to the function is not \texttt{NULL}, then it expects \texttt{*n} to be the length of \texttt{*lineptr}, and it will attempt to use \texttt{*lineptr} to hold the next line if it can fit, otherwise it will use \texttt{realloc} to allocate enough space for it to fit. This program does not use \texttt{getline} correctly, and causes a type error when compiling. See the answer of the next question for how to fix this problem.
 \end{answer}
 
+\newpage
 \item Rewrite the code so that it outputs the data using binary streams instead.
 \end{enumerate}
 
 \begin{answer}
-\lstinputlisting{code/getline_binary_io_correct.c}
+\lstinputlisting[basicstyle=\small]{code/getline_binary_io_correct.c}
 \end{answer}

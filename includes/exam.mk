@@ -8,7 +8,8 @@ export TEXINPUTS := $(TEXINPUTS):$(INCLUDEPATH)
 
 INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	     $(INCLUDEPATH)/csc.sty\
-	     questions/*
+	     questions/*\
+	     code/*
 
 %-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
 	pdflatex $<

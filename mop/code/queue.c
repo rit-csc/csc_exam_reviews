@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -54,15 +53,4 @@ unsigned int size(QueueADT q)
 {
 	assert(q != NULL);
 	return q->size;
-}
-
-// for testing -- queue *should* be compiled into an object file
-int main()
-{
-	QueueADT myQueue = createQueue();
-	enqueue(myQueue, (void*)123);
-	printf("dequeued: %d\n", (int)dequeue(myQueue));
-	printf("trying to dequeue (should fail)...\n");
-	dequeue(myQueue);
-	return EXIT_SUCCESS;
 }

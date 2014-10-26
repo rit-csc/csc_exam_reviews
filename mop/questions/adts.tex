@@ -11,22 +11,23 @@ Generally speaking, ADTs are easier to define and work with in procedural langua
 Primitive data types are supported by the language itself, as opposed to ones that are built from a combination of other objects (\emph{structured}), and ones that are extensions to the language (\emph{user-defined}). Examples include: \texttt{int}, \texttt{float}, \texttt{char}, \texttt{double}, \texttt{void}.
 \end{answer}
 
+\newpage
 \item Write a program that defines the structure of a queue:
 \begin{itemize} {\small
-	\item The queue ADT is described by its size (an unsigned int) and a pointer to the head/front of the queue.
-	\item The queue is made up of nodes, which are each described by their value (any data type), and a pointer to the next node in the queue, or null if it is the last node in the queue.
-	\item The queue's size describes the number of nodes present within the queue.
+	\item The queue ADT is described by its size (an \texttt{unsigned int}) and an array representing the queue's contents.
+	\item The queue is built on an array of a specified size (think \texttt{\#define}), the elements of which are each described by their value (any data type).
+	\item The queue's size describes the number of occupied indices in the array; in other words, the number of elements present within the queue.
 	\item The queue will support the following operations:}
 	\begin{itemize} {\scriptsize
-		\item A function which returns an int (0 or 1) representing whether or not the queue is empty, \texttt{int isEmpty(QueueADT q)}.
-		\item A function which adds a new node onto the end of the queue, \texttt{void enqueue(QueueADT q, Node n)}.
-		\item A function which removes the first node in the queue and returns it, \texttt{Node* dequeue(QueueADT q)}.
-		\item A function which returns an unsigned int representing the size of the queue, \texttt{unsigned int size(QueueADT q)}.}
+		\item A function which returns an \texttt{int} representing whether or not the queue is empty, \texttt{int isEmpty(QueueADT q)}.
+		\item A function which adds a new element (new data) onto the end of the queue, \texttt{void enqueue(QueueADT q, void* data)}.
+		\item A function which removes the first element in the queue and returns it, \texttt{void* dequeue(QueueADT q)}.
+		\item A function which returns an \texttt{unsigned int} representing the size of the queue, \texttt{unsigned int size(QueueADT q)}.}
 	\end{itemize}
 \end{itemize}
 
 \begin{answer}
-	\lstinputlisting{code/queue.c}
+	\lstinputlisting[basicstyle=\scriptsize]{code/queue.c}
 \end{answer}
 
 
