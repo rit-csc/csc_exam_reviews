@@ -10,11 +10,17 @@ else
 CODEINC := $(echo 'code/*')
 endif
 
+ifeq ($(ls -1 code/ | wc -l),0)
+QUESTINC := ''
+else
+QUESTINC := $(echo 'questions/*')
+endif
+
 export TEXINPUTS := $(TEXINPUTS):$(INCLUDEPATH)
 
 INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	     $(INCLUDEPATH)/csc.sty\
-	     questions/*\
+	     $(QUESTINC)\
 	     $(CODEINC)
 
 %-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
