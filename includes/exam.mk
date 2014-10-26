@@ -28,7 +28,7 @@ INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	make clean
 
 clean:
-	rm -f *.aux *.log *.dvi *.o
+	rm -f *.aux *.log *.dvi *.o *.pyc
 
 realclean: clean
-	rm -f *.dvi *.pdf *.o
+	rm -f *.dvi *.pdf *.o *.pyc
