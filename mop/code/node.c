@@ -9,7 +9,6 @@ typedef struct Node
 } Node;
 
 #define _NODE_IMPL_
-#include "node.h"
 
 Node* createNode(void* data)
 {
@@ -17,12 +16,5 @@ Node* createNode(void* data)
 	n->data = data;
 	n->next = '\0';
 	return n;
-}
-
-int main()
-{
-	Node* n = createNode((void*)123);
-	printf("%d\n", (int)(n->data));
-	return 0;
 }
 
