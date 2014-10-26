@@ -18,3 +18,7 @@ Node createNode(void* data)
 	return n;
 }
 
+Node getNext(Node n)
+{
+	return n->next;
+}

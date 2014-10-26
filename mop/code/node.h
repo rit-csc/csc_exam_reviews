@@ -3,5 +3,5 @@
 typedef struct { } *Node;
 #endif
 
-Node* createNode(void* data);
-
+Node createNode(void* data);
+Node getNext(Node n);

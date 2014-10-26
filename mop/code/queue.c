@@ -7,7 +7,7 @@
 typedef struct queue
 {
 	unsigned int size;
-	Node* front;
+	Node front;
 } *QueueADT;
 
 int isEmpty(QueueADT q)
@@ -22,13 +22,13 @@ void enqueue(QueueADT q, Node n)
 	return;
 }
 
-Node* dequeue(QueueADT q)
+Node dequeue(QueueADT q)
 {
 	assert(q->size > 0);
 	q->size--;
 	/* free node */
-	Node* ret = q->front;
-	q->front = q->front->next;
+	Node ret = q->front;
+	q->front = getNext(q->front);
 	return ret;
 }
 
