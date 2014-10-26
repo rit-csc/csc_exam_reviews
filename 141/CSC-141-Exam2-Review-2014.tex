@@ -5,8 +5,15 @@
 \usepackage{needspace}
 \usepackage{color}
 \usepackage{ifthen}
-\usepackage{graphicx}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata,shapes}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{framed}
 \usepackage{csc}
+\usepackage{textcomp}
+\usepackage{multicol}
 
 \lstset{ %
 basicstyle=\footnotesize,       % the size of the fonts that are used for the code
@@ -42,10 +49,58 @@ language=Python
 
 \begin{enumerate}
 
+\section*{Recursion}
+	\item \input{questions/series_sum_recursion.tex}
 
-% Content
-	\item Nothing yet.
+\pagebreak
+\section*{Linked Lists}
+    \item \input{questions/linked_list.tex}
 
+\pagebreak
+\section*{Stacks and Queues}
+	\item \input{questions/linked_list_stack_and_queue.tex}
+
+\pagebreak
+\section*{Hashing and Hash Tables}
+	\item \input{questions/wonky_hash_table.tex}
+
+\section*{Classes}
+	\item \input{questions/hotel_class_ex.tex}
+	
+\section*{Backtracking}
+	\item \input{questions/backtracking.tex}
+
+\newpage
+\section*{Sorting}
+	\item \input{questions/sorting_run_times.tex}
+
+	\item \input{questions/def_of_quicksort.tex}
+
+	\item \label{qsort-worst-case} \input{questions/quicksort_worst_case_when.tex}
+
+	\item \input{questions/quicksort_worst_case_why.tex}
+
+	\item \input{questions/quicksort_random_pivot.tex}
+      
+\newpage
+	\item \input{questions/quicksort_and_mergesort_example.tex}
+
+\section*{Heaps and Heapsort}
+	\item \input{questions/binary_heap_max_swaps.tex}
+
+	\item \input{questions/binary_heap_index_vals.tex}
+
+	\item \input{questions/heapsort_trace.tex}
+
+\section*{Binary Search Trees}
+
+	\item \input{questions/bst_concepts.tex}
+	
+\pagebreak
+	\item \input{questions/binary_tree_class.tex}
+
+	\item \input{questions/binary_search_trace.tex}
 
 \end{enumerate}
+
 \end{document}
