@@ -1,45 +1,56 @@
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-#include "node.h"
+
+#define QUEUE_SZ 10
 
 typedef struct queue
 {
 	unsigned int size;
-	Node front;
+	void *contents[ QUEUE_SZ ];
 } *QueueADT;
 
+/* create, malloc and return a new queue */
+QueueADT createQueue(void)
+{
+	QueueADT q = (QueueADT)malloc(sizeof(struct queue));
+	return q;
+}
+
+/* return whether or not the queue is empty based on its size */
 int isEmpty(QueueADT q)
 {
 	assert(q != NULL);
 	return ( q->size == 0 );
 }
 
-void enqueue(QueueADT q, Node n)
+/* push element onto end of the queue */
+void enqueue(QueueADT q, void *data)
 {
-	// TODO
+	assert( q->size  <= QUEUE_SZ ); assert( q != NULL );
+	q->contents[q->size++] = data;
 	return;
 }
 
-Node dequeue(QueueADT q)
+/* remove and return the data of the first element of the queue */
+void* dequeue(QueueADT q)
 {
 	assert(q->size > 0);
+	void* ret = q->contents[0];
 	q->size--;
-	/* free node */
-	Node ret = q->front;
-	q->front = getNext(q->front);
+	short int i = 0;
+	while ( i < q->size )
+	{
+		q->contents[(i+1)] = q->contents[i];
+		// handle memory here (free malloc'd space, etc.)
+		++i;
+	}
 	return ret;
 }
 
+/* return the size of the queue */
 unsigned int size(QueueADT q)
 {
 	assert(q != NULL);
 	return q->size;
-}
-
-// for testing, should be removed in final build
-int main()
-{
-	return EXIT_SUCCESS;
 }

@@ -8,7 +8,8 @@ export TEXINPUTS := $(TEXINPUTS):$(INCLUDEPATH)
 
 INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	     $(INCLUDEPATH)/csc.sty\
-	     questions/*
+	     questions/*\
+	     code/*
 
 %-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
 	pdflatex $<
@@ -21,7 +22,7 @@ INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	make clean
 
 clean:
-	rm -f *.aux *.log *.dvi
+	rm -f *.aux *.log *.dvi *.o
 
 realclean: clean
-	rm -f *.dvi *.pdf
+	rm -f *.dvi *.pdf *.o
