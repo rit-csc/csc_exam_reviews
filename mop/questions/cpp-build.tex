@@ -1,0 +1,24 @@
+Consider the following program:
+
+\lstinputlisting{code/cpp_build.c}
+
+\begin{enumerate}
+	\item What flag would you use to enable the Windows specific build?
+
+	\begin{answer}
+		\texttt{-DWINDOWS}
+		This causes \texttt{WINDOWS} to be \texttt{\#define}d at compile time.
+	\end{answer}
+
+	\item Why is this useful?
+
+	\begin{answer}
+		You can use the same source for building on multiple platforms.
+	\end{answer}
+
+	\item Why is the macro useful?
+
+	\begin{answer}
+		It condenses a long function call into a simple call with standard arguments.
+	\end{answer}
+\end{enumerate}
