@@ -4,12 +4,18 @@ INCLUDEPATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
 default: $(shell ls *.tex | sed 's/^\(.*\)\.tex$$/\1.pdf/')
 
+ifeq ($(ls -1 code/ | wc -l),0)
+CODEINC := ''
+else
+CODEINC := $(echo 'code/*')
+endif
+
 export TEXINPUTS := $(TEXINPUTS):$(INCLUDEPATH)
 
 INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	     $(INCLUDEPATH)/csc.sty\
 	     questions/*\
-	     code/*
+	     $(CODEINC)
 
 %-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
 	pdflatex $<
