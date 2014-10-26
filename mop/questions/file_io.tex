@@ -24,9 +24,9 @@ int main(int argc, char* argv[]) {
 		exit(EXIT_FAILURE);
 	}
 	int input = 0;
-	scanf("\%d", \&input);
+	scanf("\%d", &input);
 	int check = 0;
-	while(fscanf(handle, "\%d", \&check) != EOF) {
+	while(fscanf(handle, "\%d", &check) != EOF) {
 		if(check == input) {
 			printf("found: \%d", input);
 			exit(EXIT_SUCCESS);

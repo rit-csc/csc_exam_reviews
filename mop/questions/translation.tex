@@ -1,0 +1,17 @@
+\begin{enumerate}
+	\item List the four main steps in the {\it program} translation process.
+	\begin{enumerate}
+		\item \begin{answer}Compiler: Translates C code into assembly code.\end{answer}\\ \\
+		\item \begin{answer}Assembler: Translates assembly code into a {\it relocatable object module}, which are in machine language.\end{answer}\\
+		\item \begin{answer}Linker: Combines object modules and static libraries (archives) into a single load module, which is also in machine language.\end{answer}\\
+		\item \begin{answer}Loader: Part of OS. Links a load module with dynamic link libraries (shared libraries), if applicable, and runs the program.\end{answer}\\
+	\end{enumerate}
+
+	\item List the four phases of {\it source code} translation, which make up the compilation step of program translation.
+	\begin{enumerate}
+		\item \begin{answer}Lexical analysis (scanner): Translates source code text into a sequence of tokens.\end{answer}\\ \\
+		\item \begin{answer}Syntax analysis (parser): Validates tokens to see if they are legal with respect to the language's grammar.\end{answer}\\
+		\item \begin{answer}Semantic analysis: Checks and determines the meaning of token sequences and produces output in an intermediate language.\end{answer}\\
+		\item \begin{answer}Code generation: Translates the intermediate output into assembly language, to be processed by the assembler.\end{answer}\\
+	\end{enumerate}
+\end{enumerate}
