@@ -1,10 +1,10 @@
 Consider the following statement in a larger program:
 
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 int* x = (int*) malloc(20); //create an array of 20 ints
 \end{lstlisting}
 
-After testing the program, you determine that the value of x[5], x[6], ... , x[19] keeps changing unexpectedly.
+After testing the program, you notice that the values of $x[5]$, $x[6]$, $\cdots$, $x[19]$ keep changing unexpectedly.
 \begin{enumerate}
 \item
 Why is this?
@@ -15,8 +15,10 @@ What should the statement actually be?
 \end{enumerate}
 
 \begin{answer}
-Since ints are usually 4 bytes long, the malloc statement only creates an array of 5 ints (20/4 = 5).
-The argument to malloc is how many bytes to allocate, not how many of each element there should be.
-A proper (and portable) statement should be \texttt{int* x = (int*) malloc(sizeof(int)*20);}
+The argument to \texttt{malloc} should be the number of bytes to allocate, not the number of elements.
+Since ints are usually 4 bytes long, the array only has enough room to hold 5 ints (20/4 = 5).
+
+A proper (and portable) statement should be:
+\texttt{int* x = (int*) malloc(sizeof(int)*20);}
 \end{answer}
 \newpage

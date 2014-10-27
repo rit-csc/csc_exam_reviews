@@ -34,9 +34,9 @@ No, it runs and terminates normally.
 \texttt{valgrind --leak-check=full <program name>}
 \end{answer}
 
-\item What output would you get from part b?
+\item What output would you get from part b?  Is there a memory leak? (If so, where?)
 
 \begin{answer}
-Something like 40 bytes lost.
+Something similar to "40 bytes lost". Yes, the first call to \texttt{malloc} is never freed.
 \end{answer}
 \end{enumerate}
