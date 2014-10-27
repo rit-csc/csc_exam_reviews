@@ -9,7 +9,7 @@ int main(void) {
 		perror("fopen failed for inputfile:");
 		exit(EXIT_FAILURE);
 	}
-	int numchars = 0;
+	ssize_t numchars = 0;
 	char* line = NULL;
 	FILE* outputfile = fopen("output.txt", "wb");
 	if(!outputfile) {
@@ -17,7 +17,7 @@ int main(void) {
 		fclose(inputfile);
 		exit(EXIT_FAILURE);
 	}
-	int n = 0;
+	size_t n = 0;
 	while((numchars = getline(&line, &n, inputfile)) != -1) {
 		int towrite[1] = { numchars };
 		if(fwrite((void*)towrite, sizeof(int), 1, outputfile) != 1) {
@@ -26,10 +26,9 @@ int main(void) {
 			fclose(outputfile);
 			exit(EXIT_FAILURE);
 		}
-		n = 0;
-		free(line);
-		line = NULL;
 	}
+	free(line);
+	fflush(outputfile);
 	fclose(inputfile);
 	fclose(outputfile);
 	return EXIT_SUCCESS;
