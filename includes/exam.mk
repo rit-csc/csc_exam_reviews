@@ -10,7 +10,7 @@ else
 CODEINC := $(echo 'code/*')
 endif
 
-ifeq ($(ls -1 code/ | wc -l),0)
+ifeq ($(ls -1 questions/ | wc -l),0)
 QUESTINC := ''
 else
 QUESTINC := $(echo 'questions/*')
