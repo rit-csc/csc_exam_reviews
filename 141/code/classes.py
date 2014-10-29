@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 class Hotel :
-	__slots__=("number", "capacity", "price")
+	__slots__=("name", "rooms", "location")
 
 def mkHotel(name, rooms , location ):
 	hotel = Hotel()
