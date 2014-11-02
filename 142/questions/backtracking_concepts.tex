@@ -1,0 +1,34 @@
+\begin{enumerate}
+\item What are the four core components of any backtracking \texttt{solve} function?
+
+\begin{answer}
+\texttt{isGoal()}, \texttt{getSuccessors()}, \texttt{isValid()}, recursive call(s) to \texttt{solve()}
+\end{answer}
+
+\item Write a generic \texttt{solve()} function for a given configuration, which returns either the solution configuration or \texttt{null} (if no solution exists):
+\vspace{.25in}
+\begin{lstlisting}[numbers=none]
+public Configuration solve(Configuration config) {
+\end{lstlisting}
+\begin{answer}
+\begin{lstlisting}[numbers=none]
+	if(config.isGoal()){
+		return config;
+	}else{
+		for(Configuration child : config.getSuccessors()){
+			if(child.isValid()){
+				Configuration ans = solve(child);
+				if(ans != null)
+					return ans;
+			}
+		}
+		// implicit backtracking happens here
+	}
+	return null;
+	
+\end{lstlisting}
+\end{answer}
+\begin{lstlisting}[numbers=none]
+}
+\end{lstlisting}
+\end{enumerate}
