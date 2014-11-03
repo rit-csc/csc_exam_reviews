@@ -1,6 +1,6 @@
 Is there anything wrong with the following exception handler as written? Will this
 code work as intended? 
-\begin{lstlisting}[language=java]
+\begin{lstlisting}[language=java,numbers=none]
 try {
 	this.epicFail();
 } catch (Exception e) {
@@ -10,5 +10,8 @@ try {
 }
 \end{lstlisting}
 \begin{answer}
-\texttt{Exception} is more broad than \texttt{ArithmeticException}, so the second \texttt{catch} statement is unreachable.  \texttt{catch} statements should filter possible \texttt{Exception} types from specific to broad.
+\texttt{Exception} is more broad than \texttt{ArithmeticException},
+so the second \texttt{catch} statement is unreachable.
+The \texttt{catch} statements should filter possible exception types
+from \textit{most} specific to \textit{least} specific.
 \end{answer}
