@@ -36,7 +36,7 @@ void* dequeue(QueueADT q) {
 	q->size--;
 	short int i = 0;
 	while ( i < q->size ) {
-		q->contents[(i+1)] = q->contents[i];
+		q->contents[i] = q->contents[i+1];
 		++i;
 	}
 	return ret;
