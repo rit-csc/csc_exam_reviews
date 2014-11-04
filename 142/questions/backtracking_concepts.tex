@@ -4,10 +4,20 @@ Consider a simple backtracking algorithm.
 \item What are the four core components of any backtracking \texttt{solve} function?
 
 \begin{answer}
-\texttt{isGoal()}, \texttt{getSuccessors()}, \texttt{isValid()}, recursive call(s) to \texttt{solve()}
+\begin{enumerate}
+\item
+Checking if the current state is the solution - \texttt{isGoal()}, 
+\item
+Getting the next possible state - \texttt{getSuccessors()}, 
+\item
+Checking if the next state is valid - \texttt{isValid()}, 
+\item
+Calling solve on the new valid state - \texttt{solve()}
+\end{enumerate}
 \end{answer}
 
-\item Write a generic \texttt{solve()} function for a given configuration, which returns either the solution configuration or \texttt{null} (if no solution exists):
+\item Write a generic \texttt{solve()} function for a given configuration, which returns either the solution configuration or \texttt{null} (if no solution exists): \\
+(\textit{Hint: make up a function name for each of the parts above, if necessary})
 \vspace{.25in}
 \begin{lstlisting}[numbers=none]
 public Configuration solve(Configuration config) {
