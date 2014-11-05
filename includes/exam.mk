@@ -4,16 +4,16 @@ INCLUDEPATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
 default: $(shell ls *.tex | sed 's/^\(.*\)\.tex$$/\1.pdf/')
 
-ifeq ($(ls -1 code/ | wc -l),0)
+ifeq ($(shell ls -1 code/ | wc -l),0)
 CODEINC := ''
 else
-CODEINC := $(echo 'code/*')
+CODEINC := $(shell ls -d code/*)
 endif
 
-ifeq ($(ls -1 questions/ | wc -l),0)
+ifeq ($(shell ls -1 questions/ | wc -l),0)
 QUESTINC := ''
 else
-QUESTINC := $(echo 'questions/*')
+QUESTINC := $(shell ls -d questions/*)
 endif
 
 export TEXINPUTS := $(TEXINPUTS):$(INCLUDEPATH)
@@ -28,8 +28,8 @@ INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 	pdflatex $<
 
 %.pdf: %.tex $(INCLUDEDEPS)
-	pdflatex $< $INCLUDEPATH/questions/*.tex
-	pdflatex $< $INCLUDEPATH/questions/*.tex
+	pdflatex $< 
+	pdflatex $< 
 
 	make clean
 
