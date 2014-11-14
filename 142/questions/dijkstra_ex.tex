@@ -26,9 +26,11 @@ We repeat the process until we reach the starting node.
 \end{answer}
 
 \item
-Did you need to use every row of the above table? Why or why not?
+In general, when using Dijkstra's algorithm to find the shortest path between nodes,
+do you need to use every row of the table? Why or why not?
 
 \begin{answer}
-No. The algorithm could yield its result as soon as the destination node has been finalized, because it will never change its response after this point.
+No. The algorithm is finished as soon as the destination node has been finalized;
+Dijkstra's is a greedy algorithm so it will never change decisions once they are made.
 \end{answer}
 \end{enumerate}
