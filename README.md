@@ -43,3 +43,6 @@ And that's it!
 ### Setting up a new exam
 Use the [new-exam.sh script](new-exam.sh) with arguments: Class name, Exam Name.
 The new template will be in the <Class name> directory.
+
+### License
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
