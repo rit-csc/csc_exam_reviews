@@ -1,4 +1,6 @@
-Write a binary tree class and a function that determines whether one contains a given element.
+\begin{enumerate}
+
+\item Write a binary tree class and a function that determines whether one contains a given element.
 \begin{answer}
 \begin{lstlisting}
 	class Tree:
@@ -29,7 +31,12 @@ Write a binary tree class and a function that determines whether one contains a 
 			return is_in_tree(head.right, element)
 		elif head.data > element:
 			return is_in_tree(head.left, element)
+\end{lstlisting}
+\end{answer}
 
+\item Give an example of how you could test your code.
+\begin{answer}
+\begin{lstlisting}
 	newTree = mkTree(3, mkTreeNode(3, mkTreeNode(1, None, None),
 			mkTreeNode(4, None, None)))
 	print(is_in_tree(newTree.head, 1)) # -> True
@@ -38,3 +45,5 @@ Write a binary tree class and a function that determines whether one contains a 
 	print(is_in_tree(newTree.head, 5)) # -> False
 \end{lstlisting}
 \end{answer}
+
+\end{enumerate}

@@ -1,10 +1,10 @@
-How can you use a stack to determine whether an input string of exclusively
-      parentheses, brackets and braces is properly balanced? (e.g. ``[\{\}]'' is accepted, but
-      ``(()'' and ``[(])'' are not)?
-      Assume that you are provided with a Stack class that has push(), pop(), and peek() member functions.
+How can you use a stack to check if an input string
+of exclusively parentheses, brackets, and braces is properly balanced?
+(e.g. ``[\{\}]'' is accepted, but ``(()'' and ``[(])'' are not.)\\
+Assume that you are provided with a \texttt{Stack} class that has \texttt{push()}, \texttt{pop()}, and \texttt{peek()} member functions.
 
-    \begin{answer}
-    \begin{lstlisting} 
+\begin{answer}
+\begin{lstlisting}
 def closing_match(char):
 	if char == '(':
 		return ')'
@@ -19,8 +19,8 @@ def closing_match(char):
 
 def delims_are_balanced(inString):
     ''' String -> boolean
-    Determines if the input string has balanced delimiters
-    Delimiters are () [] {} and <>  
+    Determines if the input string has balanced delimiters.
+    Delimiters are () [] {} and <>.
     
     '''
     stack = Stack()
@@ -35,5 +35,5 @@ def delims_are_balanced(inString):
 			else: # mismatched grouping symbol
 				return False
     return stack.is_empty()
-    \end{lstlisting}
-    \end{answer}
+\end{lstlisting}
+\end{answer}
