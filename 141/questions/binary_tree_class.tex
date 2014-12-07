@@ -1,6 +1,6 @@
 Write a binary tree class and a function that determines whether one contains a given element.
-		\begin{answer}
-		\begin{lstlisting}
+\begin{answer}
+\begin{lstlisting}
 	class Tree:
 		__slots__ = ('head', 'size')
 
@@ -21,7 +21,7 @@ Write a binary tree class and a function that determines whether one contains a 
 		return tree
 
 	def is_in_tree(head, element):
-		 if head == None:
+		if head == None:
 			return False
 		elif head.data == element:
 			return True
@@ -36,5 +36,5 @@ Write a binary tree class and a function that determines whether one contains a 
 	print(is_in_tree(newTree.head, 3)) # -> True
 	print(is_in_tree(newTree.head, 4)) # -> True
 	print(is_in_tree(newTree.head, 5)) # -> False
-		\end{lstlisting}
-		\end{answer}
+\end{lstlisting}
+\end{answer}
