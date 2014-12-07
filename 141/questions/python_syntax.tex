@@ -1,10 +1,9 @@
-Python syntax\\
-\emph{Although most people in the CS field will be somewhat forgiving when it comes to coding by hand,
-you should still be reasonably familiar with the syntax of your language of choice.}
+Although most people in the CS field will be somewhat forgiving when it comes to coding by hand,
+you should still be reasonably familiar with the syntax of your language of choice.
 
 \begin{enumerate}
 \item Identify and fix the line(s) that have invalid syntax in the following code:\\
-\emph{If the fix for a certain line isn't clear, an explanation of why the line is wrong is sufficient. For this question, assume that one line being incorrect doesn't affect the validity of other lines which may depend on it, where applicable.}
+\emph{If you are unsure about a specific line, just write a brief explanation of the error. Assume that incorrect lines do not affect the validity of other lines which may depend on them.}
 \begin{lstlisting}
 include math
 
@@ -28,15 +27,16 @@ for element in myList:
 for p in range(0, myList.len()-1):
 	print(myList[p])
 \end{lstlisting}
+
 \begin{answer}
 \begin{description}
-	\item[1] The idea here is correct, but the line should read "\texttt{import math}", or, alternatively, "\texttt{from math import *}"
-	\item[3] Python is a dynamically-typed language (as discussed in an earlier question). You cannot specify a variable's type in this manner.
-	\item[8] This is valid syntax in Python 2.x. In Python 3.x, '\texttt{print}' is a function rather than a statement, thus you need parenthesis to specify arguments to the \texttt{print} function.
-	\item[10] Like line 3, you cannot specify that a function argument is of a certain type, just that the function argument has a name associated with it.
+
+	\item[1] This line should read "\texttt{import math}", or, alternatively, "\texttt{from math import *}".
+	\item[3] Python is a dynamically-typed language, so you cannot specify a variable's type in this manner.
+	\item[8] In Python 3, '\texttt{print}' is a function (rather than a statement), so you need to use parenthesis around the text to print.
+	\item[10] Like line 3, you cannot specify the type of a formal parameter in a dynamically-typed language.
 	\item[20] You want to use the built-in Python statement \texttt{len()} like this:\\
 	 "\texttt{for p in range(0, len(myList)-1):}".
-
 
 \end{description}
 \end{answer}
@@ -45,9 +45,9 @@ for p in range(0, myList.len()-1):
 \texttt{import\hspace{10mm}in\hspace{10mm}from\hspace{10mm}class\hspace{10mm}define\hspace{10mm}int\hspace{10mm}str\hspace{10mm}String}\\
 \texttt{True\hspace{9mm}false\hspace{9mm}where\hspace{9mm}while\hspace{9mm}or\hspace{9mm}not\hspace{9mm}isinstance\hspace{9mm}new}\\
 \texttt{print\hspace{13mm}range\hspace{13mm}float\hspace{13mm}char\hspace{13mm}bool\hspace{13mm}xor\hspace{13mm}sum}\\
-\\
+
 \begin{answer}
-All of them except \texttt{define, String, false, where, new, xor, char}
+All of these are valid, except \texttt{define, String, false, where, new, xor, char}.
 \end{answer}
 \end{enumerate}
 
