@@ -1,6 +1,6 @@
 Python syntax\\
-\emph{While most in the CS field will give a fair amount of leeway when it comes to coding by hand,
-you nevertheless must have a reasonable level of familiarity with the language's syntax.}
+\emph{Although most people in the CS field will be somewhat forgiving when it comes to coding by hand,
+you should still be reasonably familiar with the syntax of your language of choice.}
 
 \begin{enumerate}
 \item Identify and fix the line(s) that have invalid syntax in the following code:\\
@@ -30,9 +30,9 @@ for p in range(0, myList.len()-1):
 \end{lstlisting}
 \begin{answer}
 \begin{description}
-	\item[1] The idea here is correct, but the line should read "import math", or, alternatively, "from math import *"
-	\item[3] Python is a dynamically-typed language (as discussed in an earlier question.) You cannot specify a variable's type in this manner.
-	\item[8] This is valid syntax in Python 2.x. In Python 3.x, 'print' is a function rather than a statement, thus you need parenthesis to specify arguments to the \texttt{print} function.
+	\item[1] The idea here is correct, but the line should read "\texttt{import math}", or, alternatively, "\texttt{from math import *}"
+	\item[3] Python is a dynamically-typed language (as discussed in an earlier question). You cannot specify a variable's type in this manner.
+	\item[8] This is valid syntax in Python 2.x. In Python 3.x, '\texttt{print}' is a function rather than a statement, thus you need parenthesis to specify arguments to the \texttt{print} function.
 	\item[10] Like line 3, you cannot specify that a function argument is of a certain type, just that the function argument has a name associated with it.
 	\item[20] You want to use the built-in Python statement \texttt{len()} like this:\\
 	 "\texttt{for p in range(0, len(myList)-1):}".
