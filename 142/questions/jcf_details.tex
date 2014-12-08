@@ -1,36 +1,26 @@
-\begin{enumerate} 
-    \item What is the Java Collections Framework?
+Assume the following line of code is given:
+\begin{lstlisting}[numbers=none]
+	Collection<Integer> t = new ArrayList<Integer>();
+\end{lstlisting}
 
-    \begin{answer}
-        A unified set of interfaces, algorithms and concrete implementations
-    provided by Java to support collections of objects
-    \end{answer}
+What then is wrong with the following? Correct any errors:
+\begin{lstlisting}[numbers=none]
+	for( int i = 0; i < 20; ++i ){
+		t.add(i);
+       }
+       for( int i=0; i <  t.size(); ++i ){
+		System.out.println(t.get(i));
+       }
+\end{lstlisting}
 
-    \item Assume the following line of code is given:
-    \begin{lstlisting}
-        Collection<Integer> t = new ArrayList<Integer>();
-    \end{lstlisting}
-    What then is wrong with the following? Correct any errors:
-    \begin{lstlisting}
-        for( int i = 0; i < 20; ++i ){
-            t.add(i);
-        }
-        for( int i=0; i <  t.size(); ++i ){
-            System.out.println(t.get(i));
-        }
-    \end{lstlisting}
-
-    \begin{answer}
-    \texttt{Collection} does not support \texttt{get(i)}. The better solution is:
-    \begin{lstlisting}
-        for( int i = 0; i < 20; ++i ) {
-            t.add(i);
-        }
-        for( Integer i : t ) {
-            System.out.println(i);
-        }
-
-    \end{lstlisting}
-    \end{answer}
-
-    \end{enumerate}
+\begin{answer}
+\texttt{Collection} does not support \texttt{get(i)}. The better solution is:
+\begin{lstlisting}[numbers=none]
+	for( int i = 0; i < 20; ++i ) {
+		t.add(i);
+       }
+       for( Integer i : t ) {
+		System.out.println(i);
+       }
+\end{lstlisting}
+\end{answer}
