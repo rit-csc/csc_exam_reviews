@@ -8,7 +8,13 @@ You create a file named \texttt{sliding.txt} with the following contents (there 
 >>>>v
 \end{verbatim}
 
-However, your no-good friend sneakily changes one of the lines to \begin{verbatim}^<<<<\end{verbatim} and you don't know which line it is. Write a program that fixes the file, but only writes 5 characters (it can read the whole file, however). Do not worry about error handling. (\textit{Hint:} You can use the \texttt{strstr} function in \texttt{<string.h>}, which takes two strings, searches for the second string inside the first, and returns the \texttt{char*} location within the first string where the second string was found. You may also need pointer arithmetic.)
+However, your no-good friend sneakily changes one of the lines to \begin{verbatim}^<<<<\end{verbatim}
+and you don't know which line it is.
+Write a program that fixes the file, but only writes 5 characters (it can read the whole file, however).
+Do not worry about error handling.
+(\textit{Hint:} You can use the \texttt{strstr} function in \texttt{<string.h>},
+which takes two strings, searches for the second string inside the first, and returns the \texttt{char*} location within the first string where the second string was found.
+You may also need pointer arithmetic.)
 
 \begin{answer}
 \lstinputlisting{code/os_io_sliding_tiles.c}

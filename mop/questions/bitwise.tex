@@ -9,7 +9,13 @@ struct player {
 };
 \end{verbatim}
 
-However, you need to store these players as 8 bit \texttt{unsigned char} values. You decide to store \texttt{level} in the lowest 4 bits of the \texttt{unsigned char}, \texttt{class} in the next 2 bits, \texttt{gender} in the next bit, and \texttt{alive} in the highest bit. Write a function that takes a \texttt{player} struct and returns its \texttt{unsigned char} representation under the aformentioned rules.
+However, you need to store these players as 8 bit \texttt{unsigned char} values.
+You decide to store \texttt{level} in the lowest 4 bits of the \texttt{unsigned char},
+\texttt{class} in the next 2 bits,
+\texttt{gender} in the next bit,
+and \texttt{alive} in the highest bit.
+Write a function that takes a \texttt{player} struct and
+returns its \texttt{unsigned char} representation under the aforementioned rules.
 
 \begin{verbatim}
 unsigned char serializePlayer(struct player player1) {
