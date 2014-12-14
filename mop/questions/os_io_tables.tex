@@ -1,0 +1,5 @@
+Explain the relationship between the FD table, the open file table, and the I-node table. Which tables are in user space (a.k.a. private kernel space) and which are in system space (a.k.a. shared kernel space).
+
+\begin{answer}
+Each process has its own FD table, which are indexed by the file descriptors returned by functions like \texttt{open}. Among other things, they hold a file pointer which refers to an entry in the open file table. The open file table is shared by all processes and holds data about all currently open files. A new entry is created in the open file table each time \texttt{open} is called by a C program, even if that same file is currently open in another process. The data it holds includes the current offset, as well as a pointer to an entry in the I-node table. The I-node table is also shared by all processes, but it has exactly one entry for each file in the filesystem, regardless if that file is open or not; the data stored in the table includes things like file permissions. The FD table is in user space, while the open file table and the I-node table are in system space.
+\end{answer}

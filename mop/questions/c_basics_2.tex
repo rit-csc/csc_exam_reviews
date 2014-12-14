@@ -33,8 +33,8 @@ This program finds the largest prime number less than the first command line arg
 
 For each iteration of the do-while loop, \texttt{number} is decremented,
 then the for-loop tests all integers between 2 and \texttt{number-1} inclusive for something that divides evenly into \texttt{number}.
-If such a value exists, it sets \texttt{found} = 0 and breaks out of the for-loop.
-Now \texttt{!found} evaluates to false, so it breaks out of the do-while loop, prints the answer, and returns.
+If such a value exists, it sets \texttt{found} = 0 and breaks out of the for-loop, but continues through the outer do-while loop.
+Otherwise \texttt{found} is still set to 1, which means \texttt{!found} is 0, so it breaks out of the do-while loop, prints the answer, and returns.
 
 For input 10, the answer 7 is printed.
 \end{answer}

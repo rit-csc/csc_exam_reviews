@@ -1,0 +1,30 @@
+Suppose we have the following bit field representing a player in an role-playing game.
+
+\begin{verbatim}
+struct player {
+    unsigned int alive:1;
+    unsigned int gender:1;
+    unsigned int class:2;
+    unsigned int level:4;
+};
+\end{verbatim}
+
+However, you need to store these players as 8 bit \texttt{unsigned char} values. You decide to store \texttt{level} in the lowest 4 bits of the \texttt{unsigned char}, \texttt{class} in the next 2 bits, \texttt{gender} in the next bit, and \texttt{alive} in the highest bit. Write a function that takes a \texttt{player} struct and returns its \texttt{unsigned char} representation under the aformentioned rules.
+
+\begin{verbatim}
+unsigned char serializePlayer(struct player player1) {
+\end{verbatim}
+\begin{answer}
+\begin{verbatim}
+    // can also do a single return and `or` the values in one expression
+    unsigned char data = 0;
+    data |= player1.level;
+    data |= player1.class << 4;
+    data |= player1.gender << 6; // 4 + 2
+    data |= player1.alive << 7; // 4 + 2 + 1
+    return data;
+\end{verbatim}
+\end{answer}
+\begin{verbatim}
+}
+\end{verbatim}

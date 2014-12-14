@@ -1,0 +1,81 @@
+\begin{enumerate}
+
+\item Define a union, \texttt{typedef}ed to the name \texttt{printableData}, that can hold any of: an seven-character long string, a \texttt{double}, or an \texttt{int}.
+
+\begin{answer}
+\begin{verbatim}
+typedef union {
+    char stringData[8]; // 8 = 7 + NUL character
+    double doubleData;
+    int intData;
+} printableData;
+\end{verbatim}
+\end{answer}
+
+\item An idiom found in some C programs is the \textit{tagged union}. (Tagged unions are also commonly used in functional programming.)
+
+\begin{verbatim}
+typedef unsigned char tag_t;
+
+// could also use an enum
+const tag_t STRING_TAG = 0;
+const tag_t DOUBLE_TAG = 1;
+const tag_t INT_TAG = 2;
+
+typedef struct {
+    printableData data;
+    tag_t tag;
+} taggedData;
+\end{verbatim}
+
+In addition to the actual data, the tagged union stores a tag whose value corresponds to the type of data being stored. Because of this, we can tell which of the three types of values are being stored in the \texttt{data} field.\\
+Write a function that takes an array of \texttt{taggedData} and prints out the data each element holds, each on its own line. Also take a \texttt{count} parameter. Assume all necessary headers have been included. (\textit{Hint:} Use a series of \texttt{if}/\texttt{else if} statements to properly print each type of data that can be stored.)
+
+\begin{answer}
+\begin{verbatim}
+void printAll(taggedData* mixedArray, int count) {
+    int i;
+    for(i = 0; i < count; ++i) {
+        if(mixedArray[i].tag == STRING_TAG) {
+            printf("%s\n", mixedArray[i].data.stringData);
+        } else if(mixedArray[i].tag == DOUBLE_TAG) {
+            printf("%f\n", mixedArray[i].data.doubleData);
+        } else if(mixedArray[i].tag == INT_TAG) {
+            printf("%d\n", mixedArray[i].data.intData);
+        }
+    }
+}
+\end{verbatim}
+\end{answer}
+\newpage
+\item Suppose that we want to be able to process this data in other ways besides just printing to standard out. We can use function pointers to write a more generic \texttt{processAll} function. Suppose the following struct is defined:
+
+\begin{verbatim}
+typedef struct {
+    void (*processString)(char*);
+    void (*processDouble)(double);
+    void (*processInt)(int);
+} processingFunctions;
+\end{verbatim}
+
+Define a \texttt{processAll} function that takes an array of \texttt{taggedData}, a \texttt{count} parameter, and a \texttt{processingFunctions} value, and uses the functions pointed to by the struct to process each element of the array, rather than using \texttt{printf} as was used in the \texttt{printAll} function.
+
+\begin{answer}
+\begin{verbatim}
+void processAll(taggedData* mixedArray, int count, processingFunctions procs) {
+    int i;
+    for(i = 0; i < count; ++i) {
+        if(mixedArray[i].tag == STRING_TAG) {
+            (*procs.processString)(mixedArray[i].data.stringData);
+        } else if(mixedArray[i].tag == DOUBLE_TAG) {
+            (*procs.processDouble)(mixedArray[i].data.doubleData);
+        } else if(mixedArray[i].tag == INT_TAG) {
+            (*procs.processInt)(mixedArray[i].data.intData);
+        }
+    }
+}
+\end{verbatim}
+\end{answer}
+\end{enumerate}
+
+% http://ideone.com/l4z5kP
