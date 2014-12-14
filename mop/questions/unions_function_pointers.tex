@@ -12,7 +12,7 @@ typedef union {
 \end{verbatim}
 \end{answer}
 
-\item An idiom found in some C programs is the \textit{tagged union}. (Tagged unions are also commonly used in functional programming.)
+\item An idiom found in some C programs is the \textit{tagged union}.
 
 \begin{verbatim}
 typedef unsigned char tag_t;
@@ -47,7 +47,7 @@ void printAll(taggedData* mixedArray, int count) {
 }
 \end{verbatim}
 \end{answer}
-\newpage
+
 \item Suppose that we want to be able to process this data in other ways besides just printing to standard out. We can use function pointers to write a more generic \texttt{processAll} function. Suppose the following struct is defined:
 
 \begin{verbatim}
