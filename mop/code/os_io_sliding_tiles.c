@@ -3,10 +3,10 @@
 #include <string.h>
 
 int main(void) {
-    char buffer[32];
+    char buffer[30]; // number of characters in file + 1
     int fd = open("sliding.txt", O_RDWR);
-    read(fd, buffer, 31);
-    buffer[31] = '\0'; // for use in string functions
+    read(fd, buffer, 29);
+    buffer[29] = '\0'; // for use in string functions
     char* modifiedLocation = strstr(buffer, "^<<<<");
     int offset = modifiedLocation - buffer;
     lseek(fd, offset, SEEK_SET);
