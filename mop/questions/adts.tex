@@ -1,32 +1,5 @@
-
 Generally speaking, ADTs are easier to define and work with in procedural languages like C, as opposed to object-oriented languages like Java or C\#. (\textbf{True} or \textbf{False}). Explain your answer.
 
 \begin{answer} 
 \textbf{False}. C lacks object-oriented features that streamline the creation and use of ADTs in the language. C doesn't have access modifiers (e.g., \texttt{private} or \texttt{protected}), so hiding the underlying implementations is tougher, and will often involve the use of pointers.
 \end{answer}
-
-\item What is a \emph{primitive data type}? Provide 3 examples of primitive data types in C.
-
-\begin{answer}
-Primitive data types are supported by the language itself, as opposed to ones that are built from a combination of other objects (\emph{structured}), and ones that are extensions to the language (\emph{user-defined}). Examples include: \texttt{int}, \texttt{float}, \texttt{char}, \texttt{double}, \texttt{void}.
-\end{answer}
-
-\item Write a program that defines the structure of a queue:
-\begin{itemize} {\small
-	\item The queue ADT is described by its size (an \texttt{unsigned int}) and an array representing the queue's contents.
-	\item The queue is built on an array of a specified size (think \texttt{\#define}), the elements of which are each described by their value (any data type).
-	\item The queue's size describes the number of occupied indices in the array; in other words, the number of elements present within the queue.
-	\item The queue will support the following operations:}
-	\begin{itemize} {\scriptsize
-		\item A function which returns an \texttt{int} representing whether or not the queue is empty, \texttt{int isEmpty(QueueADT q)}.
-		\item A function which adds a new element (new data) onto the end of the queue, \texttt{void enqueue(QueueADT q, void* data)}.
-		\item A function which removes the first element in the queue and returns it, \texttt{void* dequeue(QueueADT q)}.
-		\item A function which returns an \texttt{unsigned int} representing the size of the queue, \texttt{unsigned int size(QueueADT q)}.}
-	\end{itemize}
-\end{itemize}
-
-\begin{answer}
-	\lstinputlisting[basicstyle=\scriptsize]{code/queue.c}
-\end{answer}
-
-
