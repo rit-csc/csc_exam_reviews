@@ -1,7 +1,8 @@
 #!/usr/bin/python
+from rit_object import *
 
-class Hotel :
-	__slots__=("name", "rooms", "location")
+class Hotel(rit_object) :
+	_slots=("name", "rooms", "location")
 
 def mkHotel(name, rooms , location ):
 	hotel = Hotel()
@@ -10,8 +11,8 @@ def mkHotel(name, rooms , location ):
 	hotel.location = location
 	return hotel 
 
-class Room:
-	__slots__=("number" , "capacity" , "price")
+class Room(rit_object):
+	_slots=("number" , "capacity" , "price")
 
 def mkRoom(number, capacity, price):
 	room = Room()
