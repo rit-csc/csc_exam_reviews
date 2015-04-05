@@ -1,18 +1,24 @@
 Describe each of the following layout managers:
 \begin{enumerate}
 
-\item \texttt{FlowLayout}
+\item \texttt{FlowPane}
 \begin{answer}
-The \texttt{FlowLayout} class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the \texttt{FlowLayout} class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. \end{answer}
+The \texttt{FlowPane} class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the \texttt{FlowPane} class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. \end{answer}
 
-\item \texttt{BorderLayout}
+\item \texttt{BorderPane}
 \begin{answer}
-With a \texttt{BorderLayout}, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the \texttt{BorderLayout} object: for instance, it might place widgets in only the center and the bottom. \end{answer}
+With a \texttt{BorderPane}, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the \texttt{BorderPane} object: for instance, it might place widgets in only the center and the bottom. \end{answer}
 
-\item \texttt{GridLayout}
+\item \texttt{GridPane}
 \begin{answer}
-A \texttt{GridLayout} object places components in a grid of cells. Each component takes all the available space within its cell, and all cells are exactly the same size. If the containing window is resized, the \texttt{GridLayout} object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
+A \texttt{GridPane} object places components in a grid of cells. Each component takes all the available space within its cell, and all cells are exactly the same size. If the containing window is resized, the \texttt{GridPane} object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
+
+\item \texttt{HBox and VBox}
+\begin{answer}
+An \texttt{HBox} places its components horizonally left-to-right.
+A \texttt{VBox} is like an \texttt{HBox} except that it adds components vertically top-to-bottom.
+\end{answer}
+
 \end{enumerate}
-
 
 \vspace{24pt}
