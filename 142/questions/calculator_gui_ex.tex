@@ -2,7 +2,7 @@ Create a class that constructs and displays the following GUI: \\
 %image is right-aligned to give students more writing space
 \begin{minipage}{0.5\textwidth}
 \vspace{-48pt}
-The buttons within the GUI do not need to be functional.  You may or may not need the following: \texttt{JTextField}, \texttt{JButton}, \texttt{BorderLayout}, \texttt{BoxLayout}, \texttt{FlowLayout.LEFT}, \texttt{JFrame}, \texttt{JComponent}, \texttt{JDesktopPane}, and an exit-on-close operation.  The window should be 300 by 300 pixels and have a title.
+The buttons within the GUI do not need to be functional.  You may or may not need the following: \texttt{Scene}, \texttt{BorderPane}, \texttt{FlowPane}, \texttt{HBox}, \texttt{TextField}, \texttt{Button}. The window should fit to all of the components and have a title.
 \end{minipage}
 \hspace{50px}
 \begin{minipage}{0.3\textwidth}
@@ -11,48 +11,62 @@ The buttons within the GUI do not need to be functional.  You may or may not nee
 
 \vspace{-48pt}
 \begin{answer}
-\begin{lstlisting}[language=java,basicstyle=\small]
-import java.awt.*;
-import javax.swing.*;
+\begin{lstlisting}[language=java,basicstyle=\scriptsize]
+public class KidsCalc extends Application {
+    private final static int BUTTON_WIDTH = 80;
+    private final static int BUTTON_HEIGHT = 50;
+    private final static int MIN_WIDTH = BUTTON_WIDTH*3;
 
-public class BasicGUI {
+    public void start(Stage primaryStage) throws Exception {
+        Scene scene = new Scene(this.makeMainPane());
+        primaryStage.setTitle("Kid's Calculator");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
-	public BasicGUI() {
-		JFrame frame = new JFrame("Kid's Calculator");
-		frame.setLayout(new BorderLayout());
-		
-		JPanel top = new JPanel();
-		top.setLayout(new BoxLayout(top, BoxLayout.LINE_AXIS));
-		top.add(new JTextField());
-		
-		JPanel center = new JPanel();
-		center.setLayout(new GridLayout(4,3));
-		for(int i = 0; i < 10; ++i) {
-			center.add(new JButton(Integer.toString(i)));
-		}
-		center.add(new JButton("-"));
-		center.add(new JButton("+"));
-		
-		JPanel bottom = new JPanel();
-		bottom.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		bottom.add(new JButton("Calculate"));
-		JButton clearButton = new JButton("Clear");
-		bottom.add(clearButton);
-		
-		Container pane = frame.getContentPane();
-		pane.add(top, BorderLayout.NORTH);
-		pane.add(center, BorderLayout.CENTER);
-		pane.add(bottom, BorderLayout.SOUTH);
-		
-		frame.pack();
-		frame.setSize(300, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		BasicGUI gui = new BasicGUI();
-	}
+    private Parent makeMainPane() {
+        BorderPane bp = new BorderPane();	//BORDER PANE LAYOUT
+        bp.setPrefWidth(MIN_WIDTH);
+        bp.setTop(makeTopArea()); 		//TOP
+        bp.setCenter(makeCenterArea());	//CENTER
+        bp.setBottom(makeBottomArea());	//BOTTOM
+        return bp;
+    }
+
+    private Node makeTopArea(){
+        TextField t = new TextField("0");
+        t.setEditable(false);
+        return t;
+    }
+
+    private Node makeCenterArea(){
+        FlowPane flow = new FlowPane();
+        flow.setMinWidth(MIN_WIDTH);
+        
+        for(int i = 0; i<10; i++){	// buttons 0 - 9
+            Button b = new Button(String.valueOf(i));
+            b.setPrefSize(BUTTON_WIDTH,BUTTON_HEIGHT);
+            flow.getChildren().add(b);
+        }
+        
+        Button minus = new Button("-"); 
+        minus.setPrefSize(BUTTON_WIDTH,BUTTON_HEIGHT);
+        flow.getChildren().add(minus);
+        Button plus = new Button("+");
+        plus.setPrefSize(BUTTON_WIDTH, BUTTON_HEIGHT);
+        flow.getChildren().add(plus);
+        return flow;
+    }
+
+    private Node makeBottomArea(){
+        HBox bottom = new HBox(8);				//HBox for bottom row
+        bottom.setAlignment(Pos.CENTER_RIGHT);
+        Button calculate = new Button("Calculate");	//calculate button
+        bottom.getChildren().add(calculate);
+        Button clear = new Button("Clear");			//clear button
+        bottom.getChildren().add(clear);
+        return bottom;
+    }
 }
 \end{lstlisting}
 \end{answer}
