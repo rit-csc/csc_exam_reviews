@@ -3,15 +3,15 @@ Describe each of the following layout managers:
 
 \item \texttt{FlowPane}
 \begin{answer}
-The \texttt{FlowPane} class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the \texttt{FlowPane} class uses multiple rows. If the container is wider than necessary for a row of components, the row is, by default, centered horizontally within the container. \end{answer}
+The \texttt{FlowPane} class puts components in a row, sized at their preferred size. If the horizontal space in the container is too small to put all the components in one row, the \texttt{FlowPane} class uses multiple rows. If the container is wider than necessary for a row of components, elements in the row will be flushed left by default. \end{answer}
 
 \item \texttt{BorderPane}
 \begin{answer}
-With a \texttt{BorderPane}, if the window is enlarged, the center area gets as much of the available space as possible. The other areas expand only as much as necessary to fill all available space. Often a container uses only one or two of the areas of the \texttt{BorderPane} object: for instance, it might place widgets in only the center and the bottom. \end{answer}
+\texttt{BorderPanes} allow you to specify the positional location to place new elements into the pane, including top, center, bottom, left, and right. You can specify where to put elements by \texttt{paneName.set[Position](Node value)}. Elements that are placed in the scene will retain their size if there is enough space.\end{answer}
 
 \item \texttt{GridPane}
 \begin{answer}
-A \texttt{GridPane} object places components in a grid of cells. Each component takes all the available space within its cell, and all cells are exactly the same size. If the containing window is resized, the \texttt{GridPane} object changes the cell size so that the cells are as large as possible, given the space available to the container.\end{answer}
+A \texttt{GridPane} places components in a grid of cells. The largest component in any given row or column dictates the size of that row or column, meaning if all your components are the same size, all the grid cells in the pane will be the same size.\end{answer} 
 
 \item \texttt{HBox and VBox}
 \begin{answer}
