@@ -38,14 +38,15 @@ boolean hasPathToIter(Graph g, int start, int goal, Set<Integer> visited) {
 \begin{lstlisting}
 	Stack<Integer> theStack = new Stack<Integer>();
 	theStack.push(start);
+	visited.add(start);
 	while( ! theStack.empty() ){
 		int curr = theStack.pop();
 		if( curr == goal ){
 			return true;
 		}
-		visited.add(curr);
 		for( int n : g.getNeighbors(curr) ){
 			if( ! visited.contains(n) ) {
+				visited.add(n);
 				theStack.push(n);
 			}
 		}
