@@ -18,7 +18,8 @@ boolean hasPathToRec(Graph g, int start, int goal, Set<Integer> visited) {
 		for( int n : g.getNeighbors(start) ){
 			if( ! visited.contains(n) ){
 				visited.add(n);
-				return hasPathToRec(g, n, goal, visited);
+				if ( hasPathToRec(g, n, goal, visited) )
+					return true;
 			}
 		}
 		return false;
