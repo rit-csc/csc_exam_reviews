@@ -26,15 +26,23 @@ INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 %-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
 	pdflatex $<
 	pdflatex $<
+	mv *.pdf out/pdf/answers
+	mv *.log out/log/
+	mv *.aux out/aux/
 
 %.pdf: %.tex $(INCLUDEDEPS)
 	pdflatex $< 
 	pdflatex $< 
-
-	make clean
+	mv *.pdf out/pdf/blanks
+	mv *.log out/log/
+	mv *.aux out/aux/
 
 clean:
-	rm -f *.aux *.log *.dvi *.o *.pyc
+	rm -f out/log/* out/aux/*
+	rm -f out/*/*.dvi
 
 realclean: clean
-	rm -f *.dvi *.pdf *.o *.pyc
+	rm -f out/*/*/*
+	rm -f out/pdf/*.pdf
+	# rm *.pyc, *.o, *.class?
+
