@@ -1,6 +1,6 @@
 CSC Exam Reviews
 ================
-This is a collection of practice exams for some of the intro-level Computer Science classes at RIT, developed with :heart: by the [Computer Science Community](csc.cs.rit.edu).
+This is a collection of practice exams for some of the intro-level Computer Science classes at RIT, developed with :heart: by the [Computer Science Community](https://csc.cs.rit.edu).
 
 Right now, this includes:
 
