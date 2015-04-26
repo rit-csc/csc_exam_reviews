@@ -1,26 +1,24 @@
 Assume the following line of code is given:
 \begin{lstlisting}[numbers=none]
-	Collection<Integer> t = new ArrayList<Integer>();
+	Collection<Integer> t = new ArrayList<>();
 \end{lstlisting}
 
-What then is wrong with the following? Correct any errors:
+What, then, is wrong with the following? Correct any errors: \\
+(\textit{Hint: there are no syntax errors.})
 \begin{lstlisting}[numbers=none]
-	for( int i = 0; i < 20; ++i ){
+	for( int i = 0; i < 20; ++i )
 		t.add(i);
-       }
-       for( int i=0; i <  t.size(); ++i ){
+	for( int i=0; i < t.size(); ++i )
 		System.out.println(t.get(i));
-       }
 \end{lstlisting}
 
 \begin{answer}
 \texttt{Collection} does not support \texttt{get(i)}. The better solution is:
 \begin{lstlisting}[numbers=none]
-	for( int i = 0; i < 20; ++i ) {
+	for( int i = 0; i < 20; ++i )
 		t.add(i);
-       }
-       for( Integer i : t ) {
+	for( Integer i : t )
 		System.out.println(i);
-       }
 \end{lstlisting}
 \end{answer}
+

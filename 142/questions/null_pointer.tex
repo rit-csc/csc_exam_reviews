@@ -1,0 +1,24 @@
+\textbf{NullPointerExceptions}
+\begin{enumerate}
+	\item Briefly describe what a \texttt{NullPointerException} is.\\
+	\begin{answer}
+		A \texttt{NullPointerException} occurs (is thrown) when an application attempts to make use of \texttt{null} where an \texttt{Object} was required. In other words, the exception will occur if you make use of a reference as if it were a \texttt{Object}, but it is actually \texttt{null}; the error occurs because \texttt{Object}s have functionality that \texttt{null} does not.
+	\end{answer}
+	\item Provide a short code example that will throw a \texttt{NullPointerException} \textit{without explicity writing "\texttt{null}" in your snippet}, explain why the exception will occur, and, finally, explain how you would fix the problem.
+	\begin{answer}
+		\begin{lstlisting}[numbers=none]
+	ArrayList<Integer> myList;
+	for ( int i = 0 ; i < 20 ; i++ )
+		myList.add(i);
+		\end{lstlisting}
+		Above, we \textit{instantiate} \texttt{myList}, but we don't actually give it a value. This is not a syntax error; Java will recognize the list as a valid symbol for use in the rest of your code, but it will set its value to \texttt{null}, since we didn't \textit{initialize} the variable. Since \texttt{myList} is still \texttt{null} by the time we reach the inside of the \texttt{for} loop, the line that is executed would effectively read "\texttt{\textit{null}.add(0)}", which is clearly invalid.
+		We may remedy this situation by \texttt{initializing} our list, as follows:
+		\begin{lstlisting}[numbers=none]
+	ArrayList<Integer> myList = new ArrayList<>(); // java8 type inference ftw!
+		\end{lstlisting}
+	\end{answer}
+	\item What is the most common mistake programmers make that lead to \texttt{NullPointerException}s?\\
+	\begin{answer}
+		The most common mistake that programmers make which causes \texttt{NullPointerException}s is the one we have exemplified above - forgetting to initialize your objects before you use them.
+	\end{answer}
+\end{enumerate}
