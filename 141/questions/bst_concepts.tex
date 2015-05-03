@@ -1,18 +1,44 @@
-If we have a balanced binary search tree (meaning its height is as small as
-    possible) containing $n$ nodes:
-        \begin{enumerate}
-            \item What is its height? \\
-                \begin{answer}
-                $\log_2(n)$
-                \end{answer}
-            \item How much time would it take to traverse to any of the leaf
-            nodes of this tree. \\
-                \begin{answer}
-                $\log_2(n)$
-                \end{answer}
-            \item What's the worst case search time for an unbalanced search
-            tree? \\
-                \begin{answer}
-                $n$
-                \end{answer}
-        \end{enumerate}
+\begin{enumerate}
+	\item If we have a \textbf{balanced} binary search tree containing $n$ nodes:
+		\begin{enumerate}
+		    \item What is its height? \\
+			\begin{answer}
+				$\log_2(n)$
+			\end{answer}
+		    \item How much time would it take to traverse to any of the leaf nodes of this tree? \\
+			\begin{answer}
+				$\log_2(n)$
+			\end{answer}
+		    \item What's the worst case search time for an unbalanced search tree? \\
+			\begin{answer}
+				$n$
+			\end{answer}
+		\end{enumerate}
+	\item How many leaves are in a \textbf{complete} BST containing $n$ nodes? \\
+		\begin{answer}
+			$\floor*{(n+1)/2}$
+		\end{answer}
+	\item In terms of runtime efficiency, what is the worst possible configuration (e.g. arrangement of nodes and their children) of a binary search tree? Sketch a small example of what such a configuration looks like. \\
+		\begin{answer}
+			A perfectly \textit{imbalanced} tree, in which all nodes have one or 0 children. \\
+
+				\begin{tikzpicture}
+					\node [draw,ellipse] at (5, 0) (head) {1};
+					\node [draw,ellipse] at (7, -.5) (2) {2};
+					\node [draw,ellipse] at (9, -1) (3) {3};
+					\node [draw,ellipse] at (11, -1.5) (4) {4};
+					\node [draw,ellipse] at (13, -2) (5) {5};
+					
+					\path [draw] (head) -- (2);
+					\path [draw] (2) -- (3);
+					\path [draw] (3) -- (4);
+					\path [draw] (4) -- (5);
+				\end{tikzpicture}
+			
+			
+		\end{answer}
+	\item Based on your answer above, what data structure is such a BST reminiscent of? \\
+		\begin{answer}
+			A perfectly imbalanced tree as described above operates like a \textbf{linked list}.
+		\end{answer}
+\end{enumerate}
