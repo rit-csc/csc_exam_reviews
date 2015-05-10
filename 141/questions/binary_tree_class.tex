@@ -3,24 +3,21 @@
 \item Write a binary tree class and a function that determines whether one contains a given element.
 \begin{answer}
 \begin{lstlisting}
-	class Tree:
+	from rit_object import *
+
+	class Tree(rit_object):
 		__slots__ = ('head', 'size')
+		_types      = ('TreeNode', int)
 
 	class TreeNode:
 		__slots__ = ('data', 'left', 'right')
+		_types      = (object, 'TreeNode', 'TreeNode')
 
 	def mkTree(head, size):
-		tree = Tree()
-		tree.head = head
-		tree.size = size
-		return tree
+		return Tree(head,size)
 
 	def mkTreeNode(data, left, right):
-		tree = Tree()
-		tree.data = data
-		tree.left = left
-		tree.right = right
-		return tree
+		return TreeNode(data,left,right)
 
 	def is_in_tree(head, element):
 		if head == None:
