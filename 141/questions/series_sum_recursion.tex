@@ -31,7 +31,7 @@ Below is a function that, given a lower bound \textit{i}, upper bound \textit{n}
 \item Rewrite the \texttt{series\_sum} function to be tail recursive.
 \begin{answer}
 \begin{lstlisting}
-	def series_sum(i, n, f, s):
+	def series_sum(i, n, f, s=0):
 		if(i == n):
 			return s + f(n)
 		return series_sum(i + 1, n, f, s + f(i))
