@@ -11,7 +11,8 @@ Briefly describe the difference (for objects) between \texttt{a.equals(b)}, \tex
 equal to (0), or greater than (+1) \texttt{b}, according to their natural ordering. Specified by the \texttt{Comparable} interface.
 
 \item \texttt{compare(a,b)} Returns a negative a $<$ b, 0 if a $=$ b, a positive if a $>$ b. \\
-\texttt{comp1.equals(comp2)} implies that \\ \texttt{sgn(comp1.compare(o1,o2))==sgn(comp2.compare(o1, o2))} for every object reference \texttt{o1} and \texttt{o2}.
+With two \texttt{Comparator} objects, \texttt{comp1} and \texttt{comp2},
+\texttt{comp1.equals(comp2)} implies that \texttt{sgn(comp1.compare(o1,o2))==sgn(comp2.compare(o1, o2))} for every object reference \texttt{o1} and \texttt{o2}.
 
 \end{itemize}
 \end{answer}

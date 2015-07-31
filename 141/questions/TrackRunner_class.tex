@@ -7,8 +7,10 @@ you write a program to keep track of information relating to all track runners p
 You will need to store their \texttt{name}, \texttt{age}, and \texttt{fastestTime}.
 \begin{answer}
 \begin{lstlisting}
-class TrackRunner:
+from rit_object import *
+class TrackRunner(rit_object):
     __slots__=('name','age','fastestTime')
+    _types     =(object,int,int)
 
 \end{lstlisting}
 \end{answer}
@@ -17,11 +19,7 @@ class TrackRunner:
 \begin{answer}
 \begin{lstlisting}
 def makeRunner(r_name,r_age,r_fastestTime):
-    runner = TrackRunner()
-    runner.name = r_name
-    runner.age = r_age
-    runner.fastestTime = r_fastestTime
-    return runner
+    return TrackRunner(r_name, r_age, r_fastestTime)
 \end{lstlisting}
 \end{answer}
 
