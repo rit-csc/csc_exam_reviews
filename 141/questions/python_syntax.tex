@@ -8,20 +8,14 @@ you should still be comfortable with the syntax of your language of choice.
 include math
 
 int a = 0
-b = 0;
+b = 0
 
 def function(int arg):
 	return (arg + 2)
 
+c = "hello"
 sum = b + math.sqrt(c)
 total = a + (b ** 0.5)
-
-myList = [1, 2, 3, 4, 5]
-for element in myList:
-	print(element)
-
-for p in range(0, myList.len()-1):
-	print(myList[p])
 \end{lstlisting}
 
 \begin{answer}
@@ -30,8 +24,7 @@ for p in range(0, myList.len()-1):
 	\item[1] This line should read "\texttt{import math}", or, alternatively, "\texttt{from math import *}".
 	\item[3] Python is a dynamically-typed language, so you cannot specify a variable's type in this manner.
 	\item[6] Like line 3, you cannot specify the type of a formal parameter in a dynamically-typed language.
-	\item[16] You want to use the built-in Python statement \texttt{len()} like this:\\
-	 "\texttt{for p in range(0, len(myList)-1):}".
+	\item[10] This line will cause a runtime error because \texttt{sqrt} tries to perform mathematical operations on a string, which is invalid.
 
 \end{description}
 \end{answer}
