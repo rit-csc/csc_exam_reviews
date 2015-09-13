@@ -7,12 +7,12 @@ strHead() returns the first character in the string and strTail() returns the re
 \item
 \label{tailrecursive}
 Write a tail recursive function \texttt{coRec}, which takes a string and a character and returns the number of times the character appears in the string. \\
-For example, \texttt{coRec("Eric is enjoying the weather.", 'i')} should return \texttt{3}. \\
+For example, \texttt{coRec("Eric is enjoying the weather.", "i")} should return \texttt{3}. \\
 Do not use the \texttt{len()} function.
 \begin{answer}
 \begin{lstlisting}
 def coRec(string,char,counter=0):
-    if(string==''):
+    if(string==""):
         return counter
     if(strHead(string)==char):
         return coRec(strTail(string),char,counter+1)
