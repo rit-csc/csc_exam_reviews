@@ -1,5 +1,5 @@
 Write a function that takes in a string representation of a number and returns the sum
-        of all of digits in the string. For example, \texttt{sum( '11111' )} returns 5. \\
+        of all of digits in the string. For example, \texttt{sum( '11235' )} returns 12. \\
         \emph{Assume a function \texttt{len( str )} that returns the length of a string is provided. \\
          Further, assume there is a function \texttt{int( str )} which, given a string representation of an integer, returns its integer value.}
 
@@ -7,22 +7,21 @@ Write a function that takes in a string representation of a number and returns t
             \item Recursively. 
 \begin{answer}
 \begin{lstlisting}
-def sumRec( numbers ):
-    if len( numbers ) == 0:
+def sumRec( numberStr ):
+    if len( numberStr ) == 0:
         return 0
     else:
-        return int(numbers[0]) + sumRec( numbers[1:] )
+        return int(numberStr[0]) + sumRec( numberStr[1:] )
 \end{lstlisting}
 \end{answer}
 
             \item Iteratively
 \begin{answer}
 \begin{lstlisting}
-def sumIt( numbers ):
+def sumIt( numberStr ):
     total = 0
-    while numbers != '':
-        total += int( numbers[0] )
-        numbers = numbers[1:]
+    for c in numberStr:
+        total += int( c )
     return total
 \end{lstlisting}
 Other solutions are possible.
