@@ -6,7 +6,8 @@ Perform a substitution trace on \texttt{reverse('Doge')}.
 reverse('Doge')	=	reverse('oge') + 'D'
 				=	reverse('ge') + 'o' + 'D'
 				=	reverse('e') + 'g' + 'o' + 'D'
-				=	'e' + 'g' + 'o' + 'D'
+				=	reverse('') + 'e' + 'g' + 'o' + 'D'
+				=	'' + 'e' + 'g' + 'o' + 'D'
 				=	'egoD'
 \end{lstlisting}
 \end{answer}
