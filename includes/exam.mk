@@ -26,6 +26,9 @@ INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 %-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
 	pdflatex $<
 	pdflatex $<
+	mkdir -p out/pdf/answers
+	mkdir -p out/log
+	mkdir -p out/aux
 	mv *.pdf out/pdf/answers
 	mv *.log out/log/
 	mv *.aux out/aux/
@@ -33,6 +36,9 @@ INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
 %.pdf: %.tex $(INCLUDEDEPS)
 	pdflatex $< 
 	pdflatex $< 
+	mkdir -p out/pdf/blanks
+	mkdir -p out/log
+	mkdir -p out/aux
 	mv *.pdf out/pdf/blanks
 	mv *.log out/log/
 	mv *.aux out/aux/
