@@ -5,4 +5,5 @@ Both are interfaces.
 \texttt{Comparator} specifies a method called \texttt{compare()} that instead takes two arguments and compares those objects to each other.
 
 Classes implementing \texttt{Comparator} are classes whose sole purpose is to define a comparing mechanism for a particular type. There can be multiple \texttt{Comparator}s for a type, if that type has multiple ways to be compared. If there is a single natural way to compare instances of a particular class, that class can implement the \texttt{Comparable} interface and define the comparison itself. This removes the need to store and pass the comparison mechanism separate from the objects it is comparing.
+A Comparator can also override a class's natural ordering.
 \end{answer}
