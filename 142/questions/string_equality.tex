@@ -5,7 +5,7 @@ public boolean checkString(String a, String b) {
 }
 \end{lstlisting}
 \begin{answer}
-Given the two strings $a$ and $b$, {\tt checkString} returns {\tt true} if both string objects have the same memory address.  That means they are both references to the same thing.  The function does not check to see if the two strings have the same string value.  It is possible for two different strings to have the same value (``hellos'') but with different memory addresses.  
+Given the two strings $a$ and $b$, {\tt checkString} returns {\tt true} if both string objects have the same memory address.  That means they are both references to the same thing.  The function does not check to see if the two strings have the same sequence of characters.  It is possible for two different strings to have the same value (``hellos'') but with different memory addresses.  
 
 By default, Object's {\tt equals} method compares memory addresses, but it can be extended by subclasses to check the objects' attributes.  In Java, it is not possible to override how {\tt ==} works.
 

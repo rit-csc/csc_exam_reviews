@@ -1,6 +1,7 @@
 Define polymorphism and explain a situation in which you would use it. \\
 \begin{answer}
 Polymorphism: when objects of various types define a common interface of operations (in other words, objects of different subclasses appear and act as a shared superclass). References to and collections of a super class may hold instances of subclasses. Methods invoked on these objects determine the correct (type-specific) behavior at runtime. That is, an object instantiated from a subclass will use the subclass's implementation of a method, even if it is stored in a reference to its superclass.
+This allows different subclasses to be plugged in and used by superclass variable.
 
 Example:
 
