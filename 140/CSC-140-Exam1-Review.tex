@@ -9,7 +9,7 @@
 \usepackage{graphicx}   %
 \usepackage{csc}        %
 \usepackage{tikz}       %
-\usetikzlibrary{shapes} %
+\usetikzlibrary{shapes, arrows, automata} %
 \usepackage{tabularx}   % for helping matchtabular (matching questions)
 \usepackage{textcomp}	% So our quotes in code don't look like shit
 \usepackage{longtable}
@@ -50,7 +50,7 @@ columns=fixed
 }{\endtabularx}
 % ----- End matchtabular definition -----
 
-\title{CSCI-142 Exam 1 Review}
+\title{CSCI-140 Midterm Review}
 \author{Computer Science Community}
 \date{\today}
 
@@ -64,29 +64,41 @@ columns=fixed
 \header
 \begin{enumerate}
 
-	\item \input{questions/string_equality.tex}
+	\item \input{questions/array_vs_linked_list_exs.tex}
 	
-	\item \input{questions/protected_vars.tex}
+	\item \input{questions/bfs_ex.tex}
 	
-	\item \input{questions/overriding_vs_overloading.tex}
+	\item \input{questions/collections_dot_sort.tex}
 	
-	\item \input{questions/differences.tex}
-	
-	\item \input{questions/polymorphism_ex.tex}
-
-	\item \input{questions/abstract_class_vs_interface.tex}
-
-	\item \input{questions/comparable_vs_comparator.tex}
-
-	\item \input{questions/jcf_def.tex}
-
-	\item \input{questions/inheritance_ex.tex}
-
-\newpage
-	\item \input{questions/inheritance_and_interfaces_debug.tex}
-
-\newpage
 	\item \input{questions/convert_to_generics.tex}
+	
+	\item \input{questions/convert_to_iterator.tex}
+
+	\item \input{questions/dfs_ex.tex}
+
+	\item \input{questions/equality_and_comparable_and_comparator.tex}
+
+	\item \input{questions/exception_handler_debug.tex}
+
+	\item \input{questions/exception_types.tex}
+
+	\item \input{questions/iterator_vs_iterable.tex}
+
+	\item \input{questions/jcf_details.tex}
+	
+	\item \input{questions/searching_a_graph.tex}
+	
+	\item \input{questions/quicksort_and_mergesort_example.tex}
+
+	\item \input{questions/sorting_run_times.tex}
+
+	\item \input{questions/quicksort_worst_case_when.tex}
+
+	\item \input{questions/quicksort_worst_case_why.tex}
+
+%add a streams question
+%too long?
+%needs reordered
 
 \end{enumerate}
 \end{document}
