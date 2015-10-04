@@ -1,9 +1,10 @@
-Briefly describe the difference (for objects) between \texttt{a.equals(b)}, \texttt{a==b}, \texttt{a.compareTo(b)}, and \texttt{Comparator.compare(a,b)}.
+Briefly describe the difference (for objects) between \texttt{a.equals(b)}, \texttt{a==b}, \texttt{a.compareTo(b)},\\ and \texttt{Comparator.compare(a,b)}.
 
 \begin{answer}
 \begin{itemize}
 
-\item \texttt{a.equals(b)} Compares objects for equality. Class \texttt{Object} provides a default implementation (to be precise, it is \texttt{==} by default) that can be overwritten for more desirable behavior. Returns a \texttt{boolean}.
+\item \texttt{a.equals(b)} Compares objects for equality. 
+Class \texttt{Object} provides a default implementation (to be precise, it is \texttt{==} by default) that can be overridden for behavior necessary for a certain class. Returns a \texttt{boolean}.
 
 \item \texttt{a == b}  Checks \textit{memory locations} (if the two objects are the SAME object, as defined by whether or not \texttt{a} and \texttt{b} point to the same spot in memory). Can also be used to check whether \texttt{a} is \texttt{null}. Also returns a \texttt{boolean}.
 
@@ -12,7 +13,7 @@ equal to (0), or greater than (+1) \texttt{b}, according to their natural orderi
 
 \item \texttt{compare(a,b)} Returns a negative a $<$ b, 0 if a $=$ b, a positive if a $>$ b. \\
 With two \texttt{Comparator} objects, \texttt{comp1} and \texttt{comp2},
-\texttt{comp1.equals(comp2)} implies that \texttt{sgn(comp1.compare(o1,o2))==sgn(comp2.compare(o1, o2))} for every object reference \texttt{o1} and \texttt{o2}.
+\texttt{comp1.equals(comp2)} implies that \\ \texttt{sgn(comp1.compare(o1,o2))==sgn(comp2.compare(o1, o2))} for every object reference \texttt{o1} and \texttt{o2}.
 
 \end{itemize}
 \end{answer}
