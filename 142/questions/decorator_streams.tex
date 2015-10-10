@@ -5,7 +5,8 @@ Assume the containing method throws all IOExceptions and DecodeStream is impleme
 \begin{answer}
 \begin{lstlisting}[language=java]
 String line;
-DecodeStream in = new DecodeStream( new BufferedReader( new FileReader( "secret.txt" ) ) );
+DecodeStream in = new DecodeStream( new BufferedReader( 
+new FileReader( "secret.txt" ) ) );
 while( ( line = in.readLine() ) != null ) {
 	System.out.println( line );
 }
