@@ -11,7 +11,7 @@ boolean hasPathToRec(Graph g, int start, int goal, Set<Integer> visited) {
 \end{verbatim}
 			
 \begin{answer}
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 	if( start == goal ){
 		return true;
 	} else {
@@ -24,9 +24,12 @@ boolean hasPathToRec(Graph g, int start, int goal, Set<Integer> visited) {
 		}
 		return false;
 	}
-}
 \end{lstlisting}
 \end{answer}
+
+\begin{verbatim}
+}
+\end{verbatim}
 		            
 		\item
 			Rewrite your algorithm to be iterative instead. \\
@@ -36,7 +39,7 @@ boolean hasPathToIter(Graph g, int start, int goal, Set<Integer> visited) {
 \end{verbatim}	
 			
 \begin{answer}
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 	Stack<Integer> theStack = new Stack<Integer>();
 	theStack.push(start);
 	visited.add(start);
@@ -53,7 +56,10 @@ boolean hasPathToIter(Graph g, int start, int goal, Set<Integer> visited) {
 		}
 	}
 	return false;
-}
 \end{lstlisting}
 \end{answer}
+
+\begin{verbatim}
+}
+\end{verbatim}
 	\end{enumerate}
