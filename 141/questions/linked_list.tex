@@ -41,13 +41,15 @@ You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume 
 				\end{answer}
             \item Write pseudocode to add an element onto the end of a linked list.
 				\begin{answer}
-				\begin{lstlisting}
-def append(value, linked_list):
-	newend = new node
-	newend.value = value
-	newend.next = None # (or SENTINEL)
-	curend = end node of linked_list
-	curend.next = newend
+				\begin{lstlisting}[numbers=none]
+def append(linked_list, value):
+	newEnd = new node
+	newEnd.value = value
+	newEnd.next = None # (or SENTINEL)
+	cur = linked_list.head
+	while cur is not end of linked_list:
+		cur = cur.next
+	cur.next = newend
 				\end{lstlisting}
 				\end{answer}
 				\vspace{1in}
