@@ -6,29 +6,28 @@
 
 Chris made a mistake in his hash table implementation!
 
-    \lstinputlisting{other/code/wonkyhash.py}
+    \lstinputlisting{code/wonkyhash.py}
+
     \begin{enumerate}
-    \item Show what the hash table looks like after the for loop on line 24
+    \item Show what the hash table looks like after the for loop on line 26
           completes. 
 
         \begin{answer}
 		\begin{lstlisting}[numbers=none]
 [once, a, [], []]
 		\end{lstlisting}
-
         \end{answer}
 
     \item What is wrong with the code? What can we do to make the function behave as Chris expects it to behave?
 
         \begin{answer}
-        The issue is on line 6. Whenever \texttt{bad\_hash()} dictates that an element should be placed in an occupied bucket, that bucket's contents get overwritten! Change 
+        The issue is on line 12. Whenever \texttt{bad\_hash()} dictates that an element should be placed in an occupied bucket, that bucket's contents get overwritten! Change 
 \begin{lstlisting}[numbers=none]
-self.table[self.bad_hash(element)] = element 
+wonkyHashTable.table[hash] = element
 \end{lstlisting} to 
 \begin{lstlisting}[numbers=none]
-self.table[self.bad_hash(element)].append(element)
+wonkyHashTable.table[hash].append(element)
 \end{lstlisting}
-
         \end{answer}
 
     \item Draw the table of the properly behaving hash function.
