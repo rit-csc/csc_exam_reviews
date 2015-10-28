@@ -1,0 +1,49 @@
+%
+% NOTE: This question is meant to take up one full page
+%	and includes all necessary spacing.
+%
+
+
+Chris made a mistake in his hash table implementation!
+
+    \lstinputlisting{code/wonkyhash_openaddressing.py}
+
+    \begin{enumerate}
+    \item Show what the hash table looks like after the for loop on line 23
+          completes.
+
+        \begin{answer}
+		\begin{lstlisting}[numbers=none]
+[None, 'a', None, 'wrestled', 'once']
+		\end{lstlisting}
+        \end{answer}
+
+    \item What is wrong with the code? What can we do to make the function behave as Chris expects it to behave?
+
+        \begin{answer}
+        The issue is on line 12. Whenever \texttt{bad\_hash()} dictates that an element should be placed in an occupied bucket, that bucket's contents get overwritten! Change 
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily]
+wonkyHashTable.table[hash] = element
+\end{lstlisting} to
+\begin{lstlisting}[numbers=none, basicstyle=\ttfamily]
+while wonkyHashTable.table[hash] is not None:
+	hash = (hash + 1) % wonkyHashTable.size
+wonkyHashTable.table[hash] = element
+\end{lstlisting}
+
+Note that this code assumes that the specified \texttt{size} of the table is large enough to hold all elements.  This is usually not the case.
+        \end{answer}
+
+    \item Draw the table of the properly behaving hash function.
+
+        \begin{answer}
+		\begin{lstlisting}[numbers=none]
+['once', 'I', 'a', 'wrestled', 'bear']
+		\end{lstlisting}
+    \end{answer}
+\item Assuming that this hash table will only be used on strings, is the hashing function being used a good one? Why or why not?
+
+    \begin{answer}
+        No: It ignores the fact that most English words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
+    \end{answer}
+    \end{enumerate}
