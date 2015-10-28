@@ -10,7 +10,7 @@ You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume 
                 \begin{answer}
 				The implementer may cause the 3 node to point to either \texttt{None} or a sentinel node.
 				\end{answer}
-            \item Draw out the linked list structure and add a 5 to the end.
+            \item \label{linked-list-drawing} Draw out the linked list structure and add a 5 to the end.
 				\begin{answer}
 				\leftmargin=0em
 				\itemindent=0em
@@ -18,7 +18,6 @@ You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume 
 				\begin{verbatim}
 +-------------------+
 | head:    size: 4  |
-|   |               |
 +---|---------------+
     V
 +----------+    +----------+    +----------+    +------------+
@@ -30,7 +29,6 @@ You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume 
 				\begin{verbatim}
 +-------------------+
 | head:    size: 4  |
-|   |               |
 +---|---------------+
     V
 +----------+    +----------+    +----------+    +----------+    +-----------------+
@@ -53,13 +51,14 @@ def append(linked_list, value):
 				\end{lstlisting}
 				\end{answer}
 				\vspace{1in}
-            \item Looking at the list from (b), you notice that we forgot to
-                  add in a 4. What is a procedure for inserting this value at a certain position in the linked list? (There are
-                  many possibilities.) \\
+            \item Let's say we want to add a 4 to the list from \ref{linked-list-drawing}.
+				What is a procedure for inserting this value at a certain position in the linked list?
+				(There are many possibilities.) \\
                 \begin{answer}
 				Use some variation of this strategy:
+
 				Find the preceding element's node, link its next node to the new node containing 4,
 				then link that new node to what was the following node.
 				\end{answer}
-				\vspace{1in}
+				\vspace{.25in}
         \end{enumerate}
