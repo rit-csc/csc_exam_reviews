@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from rit_lib import *
 
 class Hotel( struct ):
