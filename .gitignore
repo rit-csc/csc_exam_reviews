@@ -1,3 +1,6 @@
+**/.deps
+*.fdb_latexmk
+*.fls
 *.aux
 *.log
 *.pdf

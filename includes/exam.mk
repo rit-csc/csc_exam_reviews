@@ -1,54 +1,34 @@
 INCLUDEPATH := $(dir $(lastword $(MAKEFILE_LIST)))
 
-.PHONY: default clean realclean
+TARGETS = *.pdf
+DEPS_DIR = .deps
+LATEXMK = latexmk -recorder -use-make -deps
+
+# We want latexmk to *always* run because make does not have the
+# necessary info on dependencies.
+.PHONY: %.pdf default clean realclean
 
 default: $(shell ls *.tex | sed 's/^\(.*\)\.tex$$/\1.pdf/')
 
-ifeq ($(shell ls -1 code/ | wc -l),0)
-CODEINC := ''
-else
-CODEINC := $(shell ls -d code/*)
-endif
-
-ifeq ($(shell ls -1 questions/ | wc -l),0)
-QUESTINC := ''
-else
-QUESTINC := $(shell ls -d questions/*)
-endif
-
 export TEXINPUTS := $(TEXINPUTS):$(INCLUDEPATH)
 
-INCLUDEDEPS:=$(INCLUDEPATH)/csclogo.pdf\
-	     $(INCLUDEPATH)/csc.sty\
-	     $(QUESTINC)\
-	     $(CODEINC)
+$(foreach file,$(TARGETS),$(eval -include $(DEPS_DIR)/$(file)deps))
 
-%-ANSWERS.pdf: %-ANSWERS.tex %.tex $(INCLUDEDEPS)
-	pdflatex $<
-	pdflatex $<
-	mkdir -p out/pdf/answers
-	mkdir -p out/log
-	mkdir -p out/aux
-	mv *.pdf out/pdf/answers
-	mv *.log out/log/
-	mv *.aux out/aux/
+$(DEPS_DIR):
+	mkdir $@
 
-%.pdf: %.tex $(INCLUDEDEPS)
-	pdflatex $< 
-	pdflatex $< 
-	mkdir -p out/pdf/blanks
-	mkdir -p out/log
-	mkdir -p out/aux
-	mv *.pdf out/pdf/blanks
-	mv *.log out/log/
-	mv *.aux out/aux/
+%.pdf: %.tex
+	if [ ! -e $(DEPS_DIR) ]; then mkdir $(DEPS_DIR); fi
+	$(LATEXMK) -pdf -deps-out=$(DEPS_DIR)/$@deps $<
 
 clean:
-	rm -f out/log/* out/aux/*
-	rm -f out/*/*.dvi
+	rm -f *.log *.aux
+	rm -f *.dvi
 
 realclean: clean
-	rm -f out/*/*/*
-	rm -f out/pdf/*.pdf
+	rm -rf .deps
+	rm -f *.fdb_latexmk
+	rm -f *.fls
+	rm -f *.pdf
 	# rm *.pyc, *.o, *.class?
 
