@@ -1,19 +1,35 @@
 \begin{enumerate}
 
-\item Write a binary tree class and a function that determines whether one contains a given element.
+\item Write a binary tree program that defines the following:
+\begin{list}{$\bullet$}{}
+\item a \texttt{TreeNode} struct with the given properties:
+	\begin{list}{-}{}
+	\item \texttt{data} (an object) : the data in this node
+	\item \texttt{left} : the \texttt{TreeNode} head of the left subtree (or \texttt{None})
+	\item \texttt{right} : the \texttt{TreeNode} head of the right subtree (or \texttt{None})
+	\end{list}
+\item a \texttt{Tree} struct with the given properties:
+	\begin{list}{-}{}
+	\item \texttt{size} (an int) : the size of the binary tree
+	\item \texttt{head} (a \texttt{TreeNode}) : the head node
+	\end{list}
+\item the appropriate maker functions for both structs
+\item
+	a recursive function \texttt{is\_in\_tree(head, element)} that determines
+	whether the binary tree with the given head contains the specified element
+\end{list}
 \begin{answer}
 	\lstinputlisting{code/binarytree.py}
 \end{answer}
 
 \item Give an example of how you could test your code.
 \begin{answer}
-\begin{lstlisting}
-	newTree = mkTree(3, mkTreeNode(3, mkTreeNode(1, None, None),
-			mkTreeNode(4, None, None)))
-	print(is_in_tree(newTree.head, 1)) # -> True
-	print(is_in_tree(newTree.head, 3)) # -> True
-	print(is_in_tree(newTree.head, 4)) # -> True
-	print(is_in_tree(newTree.head, 5)) # -> False
+\begin{lstlisting}[numbers=none]
+newTree = mkTree(3, mkTreeNode(3, mkTreeNode(1, None, None),
+		mkTreeNode(4, None, None)))
+print(is_in_tree(newTree.head, 1)) # -> True
+print(is_in_tree(newTree.head, 3)) # -> True
+print(is_in_tree(newTree.head, 5)) # -> False
 \end{lstlisting}
 \end{answer}
 
