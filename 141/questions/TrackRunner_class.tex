@@ -3,46 +3,45 @@ It also just so happens that a nation-wide track meet is being held today. Thus,
 you write a program to keep track of information relating to all track runners present at the event.
 
 \begin{enumerate}
-\item Write a class named \texttt{TrackRunner} to keep track of all runners competing.
-You will need to store their \texttt{name}, \texttt{age}, and \texttt{fastestTime}.
+\item Write a struct called \texttt{TrackRunner} to keep track of each competing runner.
+You will need to store each runner's \texttt{name} (a string), \texttt{age} (an int), and \texttt{fastestTime} (an int).
 \begin{answer}
-\begin{lstlisting}
-from rit_object import *
-class TrackRunner(rit_object):
-    __slots__=('name','age','fastestTime')
-    _types     =(object,int,int)
+\begin{lstlisting}[numbers=none]
+from rit_lib import *
+class TrackRunner( struct ):
+    _slots = ( (str,'name'), (int,'age'), (int,'fastestTime') )
 
 \end{lstlisting}
 \end{answer}
 
-\item Now write a function to make an individual \texttt{TrackRunner} object.
+\item Now write a function to make an individual \texttt{TrackRunner} struct.
 \begin{answer}
-\begin{lstlisting}
-def makeRunner(r_name,r_age,r_fastestTime):
-    return TrackRunner(r_name, r_age, r_fastestTime)
+\begin{lstlisting}[numbers=none]
+def makeRunner(name,age,fastestTime):
+    return TrackRunner(name, age, fastestTime)
 \end{lstlisting}
 \end{answer}
 
-\item The glorious leader has decided that, on this day, no runner named \texttt{Joe} may win
-gold. Given a list of \texttt{TrackRunner} objects, write the function \texttt{aWinnerIsYou(r)} that finds the runner in the list \texttt{r} with the fastest time who's name is not "Joe". 
-Then print the runner's name, age and time.
-\begin{lstlisting}
-
+\item The glorious leader has decided that, on this day, no runner named "Joe" may win
+gold. Given a list of \texttt{TrackRunner} structs, write the function \texttt{aWinnerIsYou(runners)} that finds the runner in the list \texttt{runners} with the fastest time whose name is not "Joe".
+Then print the runner's name, age, and fastest time.
+\begin{lstlisting}[numbers=none]
+def aWinnerIsYou(runners):
 \end{lstlisting}
 \begin{answer}
-\begin{lstlisting}
-def aWinnerIsYou(r):
+\begin{lstlisting}[numbers=none]
     best = None
-    for i in range(len(r)):
-        if r[i].name != 'Joe':
+    for i in range(len(runners)):
+        curr = runners[i]
+        if curr.name != 'Joe':
             if best == None:
-                best = r[i]
-            elif best.fastestTime > r[i].fastestTime:
-                best = r[i]
+                best = curr
+            elif best.fastestTime > curr.fastestTime:
+                best = curr
     return best
 
-best = aWinnerIsYou(runnersLst)
-print(best.name, best.age, best.fastestTime)
+winner = aWinnerIsYou(runnersLst)
+print(winner.name, winner.age, winner.fastestTime)
 \end{lstlisting}
 \end{answer}
 \end{enumerate}
