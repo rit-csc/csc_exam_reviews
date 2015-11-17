@@ -1,12 +1,12 @@
-from rit_object import *
+from rit_lib import *
 
-class Tree(rit_object):
-	__slots__ = ('head', 'size')
-	_types      = ('TreeNode', int)
+class TreeNode( struct ):
+	_slots = ( (object,'data'),
+				(('TreeNode',NoneType),'left'),
+				(('TreeNode',NoneType),'right') )
 
-class TreeNode:
-	__slots__ = ('data', 'left', 'right')
-	_types      = (object, 'TreeNode', 'TreeNode')
+class Tree( struct ):
+	_slots = ( (int,'size'), (TreeNode,'head') )
 
 def mkTree(head, size):
 	return Tree(head,size)
