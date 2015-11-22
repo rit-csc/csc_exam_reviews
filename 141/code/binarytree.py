@@ -9,7 +9,7 @@ class Tree( struct ):
 	_slots = ( (int,'size'), (TreeNode,'head') )
 
 def mkTree(head, size):
-	return Tree(head,size)
+	return Tree(size, head)
 
 def mkTreeNode(data, left, right):
 	return TreeNode(data,left,right)
