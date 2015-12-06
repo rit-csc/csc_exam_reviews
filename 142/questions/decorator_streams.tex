@@ -1,14 +1,22 @@
-Suppose you have an encoded file called secret.txt that must be decoded using a stream called DecodeStream.  
-Write code to read the file, decode it using the DecodeStream, and print the contents.  
-Assume the containing method throws all IOExceptions and DecodeStream is implemented to correctly handle buffered input.
+Suppose you have the classes DecodeStream and EncodeStream which endcode text in a particular format.
+Assume that both classes buffer I/O and have readLine() which returns a string and writeLine( String s ) respecively to read and write a line at a time.
 
+Write code to read the file "secret.txt", decode it using the DecodeStream, and print the contents.
 \begin{answer}
 \begin{lstlisting}[language=java]
 String line;
-DecodeStream in = new DecodeStream( new BufferedReader( 
-new FileReader( "secret.txt" ) ) );
+DecodeStream in = new DecodeStream( new FileReader( "secret.txt" ) );
 while( ( line = in.readLine() ) != null ) {
 	System.out.println( line );
+}
+\end{lstlisting}
+\end{answer}
+
+Write code to encode and write a string called "message" to a file.
+\begin{answer}
+\begin{lstlisting}[language=java]
+EncodeStream out = new EncodeStream( new FileWriter( "message.txt" ) );
+out.writeLine( message );
 }
 \end{lstlisting}
 \end{answer}

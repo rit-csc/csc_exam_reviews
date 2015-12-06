@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage[margin=0.7in]{geometry}
 \usepackage{fullpage}
 \usepackage{listings}
 \usepackage{needspace}
@@ -6,13 +7,18 @@
 \usepackage{ifthen}
 \usepackage{pgf}
 \usepackage{tikz}
-\usetikzlibrary{arrows,automata}
+\usetikzlibrary{shapes, arrows,automata}
 \usepackage{amsmath}
 \usepackage{url}
 \usepackage{framed}
 \usepackage{enumerate}
 \usepackage{csc}
 \usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{tabu}
+\usepackage{longtable}
+\usepackage{multicol}
 
 \lstset{ %
 basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
@@ -50,19 +56,14 @@ columns=fixed
 \header
 
 \begin{enumerate}
-\item \input{questions/ricks_pizza_place.tex}
-
-\item {\bf The Life of Nick:}
-    \input{questions/life_of_nick.tex}
-
-\pagebreak
-\item {\bf Nick's Heavy Threads:}
-	\input{questions/nicks_heavy_threads.tex}
-
 \pagebreak
 \item \input{questions/differences.tex}
 
 \item \input{questions/equality_and_comparable_and_comparator.tex}
+
+\item \input{questions/convert_to_generics.tex}
+
+\item \input{questions/convert_to_iterator.tex}
 
 \pagebreak
 \item \input{questions/jcf_details.tex}
@@ -73,15 +74,42 @@ columns=fixed
 \item \input{questions/probable_interface_ex.tex}
 \vspace{1in}
 
+\newpage
+\item \input{questions/factory_design_pattern_ex.tex}
+
+\item \input{questions/null_pointer.tex}
+
+\item \input{questions/decorator_streams.tex}
+
+\item \input{questions/dfs_ex.tex}
+
+\item \input{questions/bfs_ex.tex}
+
+\item \input{questions/dijkstra_ex.tex}
+
+\item \input{questions/dijkstra_neg_edge_weights.tex}
+
+\item \input{questions/dijkstra_priority_queue.tex}
+
+\item \input{questions/dijkstra_vertex_finalized_when.tex}
+
+\item \input{questions/ricks_pizza_place.tex}
+
+\item {\bf The Life of Nick:}
+    \input{questions/life_of_nick.tex}
+
+\pagebreak
+\item {\bf Nick's Heavy Threads:}
+	\input{questions/nicks_heavy_threads.tex}
+
+\item \input{questions/calculator_gui_ex.tex}
+
 \item \input{questions/networking_defs.tex}
 
 \newpage
 \item \input{questions/networking_debug.tex}
 
-\newpage
-\item \input{questions/factory_design_pattern_ex.tex}
-
-\item \input{questions/null_pointer.tex}
+\item \input{questions/backtracking_concepts.tex}
 
 \end{enumerate}
 
