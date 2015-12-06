@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage{needspace}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{framed}
+\usepackage{enumerate}
+\usepackage{csc}
+\usepackage{textcomp}
+
+\lstset{ %
+basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+tabsize=4,		                % sets default tabsize to 4 spaces
+language=Java,
+upquote=true,
+columns=fixed
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\tiny\ttfamily}\color{white}}{}
+}
+{
+    \newenvironment{answer}{\large\lstset{basicstyle=\footnotesize\ttfamily}\color{red}}{}
+}
+
+
+\author{Computer Science Community}
+\title{CS-142 Final Exam Review}
+\date{\today}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\begin{document}
+\header
+
+\begin{enumerate}
+\item \input{questions/ricks_pizza_place.tex}
+
+\item {\bf The Life of Nick:}
+    \input{questions/life_of_nick.tex}
+
+\pagebreak
+\item {\bf Nick's Heavy Threads:}
+	\input{questions/nicks_heavy_threads.tex}
+
+\pagebreak
+\item \input{questions/differences.tex}
+
+\item \input{questions/equality_and_comparable_and_comparator.tex}
+
+\pagebreak
+\item \input{questions/jcf_details.tex}
+
+\item \input{questions/exception_types.tex}
+
+\pagebreak
+\item \input{questions/probable_interface_ex.tex}
+\vspace{1in}
+
+\item \input{questions/networking_defs.tex}
+
+\newpage
+\item \input{questions/networking_debug.tex}
+
+\newpage
+\item \input{questions/factory_design_pattern_ex.tex}
+
+\item \input{questions/null_pointer.tex}
+
+\newpage
+\item \input{questions/calculator_gui_ex.tex}
+
+\end{enumerate}
+
+\end{document}
