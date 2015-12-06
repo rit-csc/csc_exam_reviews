@@ -1,0 +1,48 @@
+%
+% NOTE: This question is meant to take up one full page
+%	and includes all necessary spacing.
+%
+
+
+Chris made a mistake in his hash table implementation!
+
+    \lstinputlisting{code/WonkyHashTable.java}
+
+    \begin{enumerate}
+    \item Show what the hash table looks like after the for loop on line 26
+          completes.
+
+        \begin{answer}
+		\begin{lstlisting}[numbers=none]
+[once, a, '', '']
+		\end{lstlisting}
+        \end{answer}
+
+    \item What is wrong with the code? What can we do to make the function behave as Chris expects it to behave?
+
+        \begin{answer}
+        The issue is on line 12. Whenever \texttt{bad\_hash()} dictates that an element should be placed in an occupied bucket, that bucket's contents get overwritten! 
+	We need to change the table to be a list of lists.
+\begin{lstlisting}[numbers=none]
+private ArrayList<ArrayList<String>> table;
+\end{lstlisting}
+	We have to initialize the sublists in the constructor as well as add each element like so:
+\begin{lstlisting}[numbers=none]
+table.get(hash).add(element);
+\end{lstlisting}
+
+        \end{answer}
+
+    \item Draw the table of the properly behaving hash function.
+
+        \begin{answer}
+		\begin{lstlisting}[numbers=none]
+[['wrestled', 'bear', 'once'], ['I', 'a'], [], []]
+		\end{lstlisting}
+    \end{answer}
+\item Assuming that this hash table will only be used on strings, is the hashing function being used a good one? Why or why not?
+
+    \begin{answer}
+        No: It ignores the fact that most English words are the roughly the same length. The number of collisions is expected to be massive. We should take advantage of the characters in the input strings, not the number of characters.
+    \end{answer}
+    \end{enumerate}
