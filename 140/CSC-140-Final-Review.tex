@@ -16,13 +16,13 @@
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{tabularx}
-\usepackage{tabu}
 \usepackage{longtable}
 \usepackage{multicol}
+\usepackage{tabu}
+\setlength{\columnsep}{12em}
 
 \lstset{ %
-basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
-numbers=left,                   % where to put the line-numbers
+basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code numbers=left,                   % where to put the line-numbers
 stepnumber=1,                   % the step between two line-numbers. If it's 1 each line will be numbered
 numbersep=5pt,                  % how far the line-numbers are from the code
 showspaces=false,               % show spaces adding particular underscores
@@ -41,9 +41,29 @@ columns=fixed
     \newenvironment{answer}{\large\lstset{basicstyle=\footnotesize\ttfamily}\color{red}}{}
 }
 
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{white}} #1}
+}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{red}} #1}
+}
+
+% ----- Start matchtabular definition -----
+\newcounter{matchleft}
+\newcounter{matchright}
+\newenvironment{matchtabular}{%
+  \setcounter{matchleft}{0}%
+  \setcounter{matchright}{0}%
+  \tabularx{\textwidth}{%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchleft}\arabic{matchleft}.}}X%
+    >{\leavevmode\hbox to 1.5em{\stepcounter{matchright}\alph{matchright})}}X% 
+    }%
+}{\endtabularx}
+% ----- End matchtabular definition -----
 
 \author{Computer Science Community}
-\title{CS-142 Final Exam Review}
+\title{CS-140 Final Exam Review}
 \date{\today}
 
 \makeatletter
@@ -85,13 +105,13 @@ columns=fixed
 
 \item \input{questions/bfs_ex.tex}
 
-\item \input{questions/dijkstra_ex.tex}
-
-\item \input{questions/dijkstra_neg_edge_weights.tex}
+\item \input{questions/dijkstra_vertex_finalized_when.tex}
 
 \item \input{questions/dijkstra_priority_queue.tex}
 
-\item \input{questions/dijkstra_vertex_finalized_when.tex}
+\item \input{questions/dijkstra_neg_edge_weights.tex}
+
+\item \input{questions/dijkstra_ex.tex}
 
 \item \input{questions/binary_heap_index_vals.tex}
 
