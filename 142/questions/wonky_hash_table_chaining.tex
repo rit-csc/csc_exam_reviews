@@ -9,7 +9,7 @@ Chris made a mistake in his hash table implementation!
     \lstinputlisting{code/WonkyHashTable.java}
 
     \begin{enumerate}
-    \item Show what the hash table looks like after the for loop on line 26
+    \item Show what the hash table looks like after the \texttt{for} loop in \texttt{main}
           completes.
 
         \begin{answer}
@@ -21,7 +21,7 @@ Chris made a mistake in his hash table implementation!
     \item What is wrong with the code? What can we do to make the function behave as Chris expects it to behave?
 
         \begin{answer}
-        The issue is on line 12. Whenever \texttt{bad\_hash()} dictates that an element should be placed in an occupied bucket, that bucket's contents get overwritten! 
+        Whenever \texttt{bad\_hash()} dictates that an element should be placed in an occupied bucket, that bucket's contents get overwritten! 
 	We need to change the table to be a list of lists.
 \begin{lstlisting}[numbers=none]
 private ArrayList<ArrayList<String>> table;
