@@ -19,7 +19,7 @@ Use the following code to answer the questions listed on the next page.
 \item Should the \texttt{Redneck} and \texttt{Professor} classes implement \texttt{Probable} directly?
 
 \begin{answer}
-No! Since \texttt{Redneck} and \texttt{Professor} objects are stored in variables of type \texttt{Human}, they must extend the \texttt{Human} class.
+No! Since \texttt{Redneck} and \texttt{Professor} objects are stored in variables of type \texttt{Human}, they must extend the \texttt{Human} class. \texttt{Human} must be a class rather than an interface because it has state information that must be inherited.
 In addition, since the \texttt{Human} variables are able to be added into a collection of \texttt{Probable} objects, the \texttt{Human} class must implement \texttt{Probable}, which will carry down into the \texttt{Redneck} and \texttt{Professor} classes.
 \end{answer}
 
