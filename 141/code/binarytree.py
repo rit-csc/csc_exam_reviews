@@ -1,18 +1,12 @@
 from rit_lib import *
 
 class TreeNode( struct ):
-	_slots = ( (object,'data'),
-				(('TreeNode',NoneType),'left'),
-				(('TreeNode',NoneType),'right') )
+	_slots = ((object,'data'),
+              (('TreeNode',NoneType),'left'),
+              (('TreeNode',NoneType),'right') )
 
 class Tree( struct ):
 	_slots = ( (int,'size'), (TreeNode,'head') )
-
-def mkTree(head, size):
-	return Tree(size, head)
-
-def mkTreeNode(data, left, right):
-	return TreeNode(data,left,right)
 
 def is_in_tree(head, element):
 	if head == None:

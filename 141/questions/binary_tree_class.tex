@@ -13,7 +13,6 @@
 	\item \texttt{size} (an int) : the size of the binary tree
 	\item \texttt{head} (a \texttt{TreeNode}) : the head node
 	\end{list}
-\item the appropriate maker functions for both structs
 \item
 	a recursive function \texttt{is\_in\_tree(head, element)} that determines
 	whether the binary tree with the given head contains the specified element
@@ -25,8 +24,8 @@
 \item Give an example of how you could test your code.
 \begin{answer}
 \begin{lstlisting}[numbers=none]
-newTree = mkTree(3, mkTreeNode(3, mkTreeNode(1, None, None),
-		mkTreeNode(4, None, None)))
+newTree = Tree(3, TreeNode(3, TreeNode(1, None, None),
+		TreeNode(4, None, None)))
 print(is_in_tree(newTree.head, 1)) # -> True
 print(is_in_tree(newTree.head, 3)) # -> True
 print(is_in_tree(newTree.head, 5)) # -> False
