@@ -42,7 +42,7 @@ Below is a function that, given a lower bound \textit{i}, upper bound \textit{n}
 \item What is the advantage of the new implementation? \\
 \begin{answer}
 Tail recursive functions make no additional calculations after the execution of the recursive call completes; thus, they do not necessitate the preservation of stack frames belonging to intermediate recursive invocations.
-Provided the language implementation supports sufficient optimization, there is no more runtime memory overhead for calling a tail recursive function that makes 100 recursive calls as compared to one that makes none at all.
+Provided the language implementation supports sufficient optimization (Note: Python does not), there is no more runtime memory overhead for calling a tail recursive function that makes 100 recursive calls as compared to one that makes none at all.
 The true benefit becomes apparent when the recursion depth becomes much deeper: a tail recursive function can handle a recursion depth in the millions, which would cause a non--tail recursive one to overflow the stack.
 \end{answer}
 \end{enumerate}
