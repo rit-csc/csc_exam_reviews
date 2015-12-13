@@ -12,7 +12,9 @@
 \usepackage{framed}
 \usepackage{enumerate}
 \usepackage{csc}
+\usepackage{tabu}
 \usepackage{textcomp}
+\usepackage{multicol}
 
 \lstset{ %
 basicstyle=\footnotesize\ttfamily,       % the size of the fonts that are used for the code
@@ -33,6 +35,14 @@ columns=fixed
 }
 {
     \newenvironment{answer}{\large\lstset{basicstyle=\footnotesize\ttfamily}\color{red}}{}
+}
+
+\ifthenelse{\isundefined{\isAnswerKey}}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{white}} #1}
+}
+{
+	\newcommand{\answerrow}[1]{\hline \rowfont{\color{red}} #1}
 }
 
 
@@ -87,10 +97,9 @@ columns=fixed
 
 \item \input{questions/null_pointer.tex}
 
+\item \input{questions/dfs_ex.tex}
 
-\item \input{questions/dfs.tex}
-
-\item \input{questions/bfs.tex}
+\item \input{questions/bfs_ex.tex}
 
 \item \input{questions/dijkstra_ex.tex}
 
