@@ -1,4 +1,4 @@
-Write a function that takes a filename as its parameter and returns all the last names from the given file. Each line of the file follows the format of a first name, a space, a last name, a space, and miscellaneous extra data. 
+Write a function that takes a filename as its parameter and prints all the last names from the given file. Each line of the file follows the format of a first name, a space, a last name, a space, and miscellaneous extra data. 
 
 \begin{answer}
 \begin{lstlisting}
@@ -9,7 +9,7 @@ def getLastNames(fileName):
         for line in file:
             line = line.strip()
             fields = line.split()
-            nameList.add(fields[1])
+            print(fields[1])
 
     return nameList
 \end{lstlisting}
