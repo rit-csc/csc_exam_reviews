@@ -10,16 +10,23 @@ Right now, this includes:
 
 ### Building
 To build the PDFs, you'll need LaTeX, TeXlive-extra, graphviz and PGF/Tikz installed.
-You can generate the PDFs by executing ```make```.
+You can generate the PDFs by executing `make`.
 
+For example, on Ubuntu:
+
+```
+sudo apt-get install texlive-latex-base
+sudo apt-get install texlive-latex-extra
+make
+```
 
 ### Adding Questions
 To add a question to an existing exam, create a new `.tex` file in the appropriate `/questions` directory.
 In the new `.tex` file, write the new question in the same style existing questions have been written.
-Then place the solution to the question in an ```answer``` environment.
+Then place the solution to the question in an `answer` environment.
 
 The answer environment is set up so that it *should* provide enough room for the students to write in their answers.
-You can tailor how much space is given with ```\vspace{}```.
+You can tailor how much space is given with `\vspace{}`.
 
 Here is an example of what the new question file should look like:
 
@@ -29,7 +36,7 @@ Here is an example of what the new question file should look like:
         \end{answer}
 
 Once that is done, you must add the new question file as input in the actual exam.
-To do this, add an ```\item``` at the desired location within the ```enumerate``` environment.
+To do this, add an `\item` at the desired location within the `enumerate` environment.
 Then include your questions as follows:
 
 	\begin{enumerate}
