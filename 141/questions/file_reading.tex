@@ -2,15 +2,12 @@ Write a function that takes a filename as its parameter and prints all the last 
 
 \begin{answer}
 \begin{lstlisting}
-def getLastNames(fileName):
-    nameList = []
-
+def printLastNames(fileName):
     with open(fileName) as file:
         for line in file:
             line = line.strip()
             fields = line.split()
             print(fields[1])
 
-    return nameList
 \end{lstlisting}
 \end{answer}

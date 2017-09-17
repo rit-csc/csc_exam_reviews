@@ -8,7 +8,7 @@ Python basics
 def foo_iter(n):
 	total = 0
 	for num in range(1,n+1):
-		total+=num
+		total += num
 	return total
 \end{lstlisting}
 \end{answer}
@@ -19,12 +19,12 @@ def foo_iter(n):
 The answer described below \emph{is} tail recursive because no additional information must be stored on the stack for each recursive call.
 
 \begin{lstlisting}
-def foo_rec(limit, num=1, total=0):
-	if num > limit:
+def foo_rec(n, count=1, total=0):
+	if count > n:
 		return total
-	total+=num
-	num+=1
-	return foo_rec(limit, num, total)
+	total += count
+	count += 1
+	return foo_rec(n, count, total)
 \end{lstlisting}
 \end{answer}
 
