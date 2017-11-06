@@ -4,7 +4,7 @@
 %
 
 
-You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{next}.
+You are given the linked sequence: $1 \rightarrow 2 \rightarrow 3$.  You may assume that each node has one field called \texttt{value} and one called \texttt{rest}.
         \begin{enumerate}
             \item 1 points to 2 and 2 points to 3. What does 3 point to? \\
                 \begin{answer}
@@ -16,48 +16,40 @@ You are given the linked list: $1 \rightarrow 2 \rightarrow 3$.  You may assume 
 				\itemindent=0em
 				{ \small
 				\begin{verbatim}
-+-------------------+
-| head:    size: 4  |
-+---|---------------+
-    V
 +----------+    +----------+    +----------+    +------------+
 | value: 1 |    | value: 2 |    | value: 3 |    | value: 5   |
-| next: ------->| next: ------->| next: ------->| next: None |
+| rest: ------->| rest: ------->| rest: ------->| rest: None |
 +----------+    +----------+    +----------+    +------------+
 				\end{verbatim}
 				\textit{OR}
 				\begin{verbatim}
-+-------------------+
-| head:    size: 4  |
-+---|---------------+
-    V
 +----------+    +----------+    +----------+    +----------+    +-----------------+
 | value: 1 |    | value: 2 |    | value: 3 |    | value: 5 |    | value: SENTINEL |
-| next: ------->| next: ------->| next: ------->| next: ------->|                 |
+| rest: ------->| rest: ------->| rest: ------->| rest: ------->|                 |
 +----------+    +----------+    +----------+    +----------+    +-----------------+
 				\end{verbatim} }
 				\end{answer}
-            \item Write pseudocode to add an element onto the end of a linked list.
+            \item Write pseudocode to add an element onto the end of a linked sequence.
 				\begin{answer}
 				\begin{lstlisting}[numbers=none]
 def append(linked_list, value):
 	newEnd = new node
 	newEnd.value = value
-	newEnd.next = None # (or SENTINEL)
-	cur = linked_list.head
+	newEnd.rest = None # (or SENTINEL)
+	cur = linked_list
 	while cur is not end of linked_list:
-		cur = cur.next
-	cur.next = newend
+		cur = cur.rest
+	cur.rest = newend
 				\end{lstlisting}
 				\end{answer}
 				\vspace{1in}
             \item Let's say we want to add a 4 to the list from \ref{linked-list-drawing}.
-				What is a procedure for inserting this value at a certain position in the linked list?
+				What is a procedure for inserting this value at a certain position in the linked sequence?
 				(There are many possibilities.) \\
                 \begin{answer}
 				Use some variation of this strategy:
 
-				Find the preceding element's node, link its next node to the new node containing 4,
+				Find the preceding element's node, link its rest node to the new node containing 4,
 				then link that new node to what was the following node.
 				\end{answer}
 				\vspace{.25in}
