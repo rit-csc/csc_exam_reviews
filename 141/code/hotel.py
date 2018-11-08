@@ -1,7 +1,14 @@
-from rit_lib import *
+from dataclasses import dataclass
 
-Hotel = struct_type("Hotel",
-	(str, "name"), (list, "rooms"), (str, "location"))
+@dataclass(frozen=True)
+class Hotel:
+    name: str
+	rooms: list
+	location: str
 
-Room = struct_type("Room",
-	(int, "number"), (int, "capacity"), (float, "price"))
+@dataclass(frozen=True)
+class Room:
+    number: int
+	capacity: int
+	price: float
+

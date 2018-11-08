@@ -32,14 +32,11 @@ You are given the linked sequence: $1 \rightarrow 2 \rightarrow 3$.  You may ass
             \item Write pseudocode to add an element onto the end of a linked sequence.
 				\begin{answer}
 				\begin{lstlisting}[numbers=none]
-def append(linked_list, value):
-	newEnd = new node
-	newEnd.value = value
-	newEnd.rest = None # (or SENTINEL)
-	cur = linked_list
-	while cur is not end of linked_list:
-		cur = cur.rest
-	cur.rest = newend
+def append(lst, value):
+	if lst is None:
+		return LinkNode(value, None)
+	else:
+		return LinkNode(lst.value, append(lst.rest, value))
 				\end{lstlisting}
 				\end{answer}
 				\vspace{1in}
@@ -47,10 +44,8 @@ def append(linked_list, value):
 				What is a procedure for inserting this value at a certain position in the linked sequence?
 				(There are many possibilities.) \\
                 \begin{answer}
-				Use some variation of this strategy:
-
-				Find the preceding element's node, link its rest node to the new node containing 4,
-				then link that new node to what was the following node.
+				Recursively go through the list, re-building the nodes until you get to the position.
+				Add the new node to the new list and link the new node to the rest of the list.
 				\end{answer}
 				\vspace{.25in}
         \end{enumerate}
