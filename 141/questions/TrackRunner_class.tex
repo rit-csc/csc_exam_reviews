@@ -7,10 +7,13 @@ you write a program to keep track of information relating to all track runners p
 You will need to store each runner's \texttt{name} (a string), \texttt{age} (an int), and \texttt{fastestTime} (an int).
 \begin{answer}
 \begin{lstlisting}[numbers=none]
-from rit_lib import *
-class TrackRunner( struct ):
-    _slots = ( (str,'name'), (int,'age'), (int,'fastestTime') )
-
+from dataclasses import dataclass
+@dataclass
+class TrackRunner:
+    '''Class to represent a TrackRunner'''
+    name: str
+    age: int
+    fastestTime: int
 \end{lstlisting}
 \end{answer}
 
